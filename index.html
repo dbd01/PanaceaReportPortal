@@ -12,25 +12,24 @@
 	<!--Controllers-->
     <script src="app/auth/controllers/authenticationController.js"></script>
 	
-	<!--Directives-->
-    <script src="app/layout/sidebarDirective.js"></script>	
+	<!--Controllers-->
+    <script src="app/layout/layoutController.js"></script>	
 	
 	<!-- Application itself -->
     <script src="app/_appModule.js"></script>
 	
 </head>
-<body>
 
-<h3> Panacea Portals </h3>	
-
-<div class = "row">
-	<div class=" col-md-12">
-		 <div class=" col-md-4" >
-		 <sidebar-directive> </sidebar-directive>
-		 </div>
-		 <div class=" col-md-8" > lala main page  </div>
+<body ng-controller="layoutController">
+	<h3> Panacea Portals </h3>	
+	<div class = "row">
+		<div class=" col-md-12">
+			 <div class=" col-md-4" >
+				<sidebar-directive> </sidebar-directive>
+			 </div>
+			 <div class=" col-md-8" > lala main page  </div>
+		</div>
 	</div>
-</div>
 
 
 </body>
