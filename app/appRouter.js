@@ -9,7 +9,7 @@ angular.module('PanaceaReports', [])
         // Now set up the states 
         $stateProvider
             
-						state('dashboard', {
+						.state('dashboard', {
                 url: "/dashboard",
                 templateUrl: "welcome"              
             })
