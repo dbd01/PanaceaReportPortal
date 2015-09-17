@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="PanaceaReports">
+<head>
+	<meta charset="utf-8" />
+    <title>Panacea Reports</title>
+	<link rel="icon" type="img/ico" href="./assets/img/favicon.ico">
+	<script src="./lib/angular.min.js"></script>
+	
+	<!--Controllers-->
+    <script src="app/auth/controllers/authenticationController.js"></script>
+	
+	<!--Directives-->
+    <script src="app/layout/sidebarDirective.js"></script>	
+	
+	<!-- Application itself -->
+    <script src="app/_appModule.js"></script>
+	
+</head>
+<body>
+
+<h3> Panacea Portals </h3>	
+
+<div class = "row">
+	<div class=" col-md-12">
+		 <div class=" col-md-4" sidebar-directive> </div>
+		 <div class=" col-md-12" main-content-directive> </div>
+	</div>
+</div>
+
+
+</body>
+</html>
