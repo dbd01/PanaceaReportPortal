@@ -1,0 +1,11 @@
+{
+  "name": "Panacea Reports",
+  "description": "Panacea reports portal",
+  "version": "1.0",
+  "homepage": "https://github.com/dbd01/PanaceaReportPortal.git",
+  "license": "",
+  "private": true,
+  "dependencies": {
+    "angular": "1.4.x"
+  }
+}
