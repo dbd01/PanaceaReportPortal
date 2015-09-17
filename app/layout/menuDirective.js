@@ -1,6 +1,6 @@
 	"use strict";
 	
-  app.directive('menu',['$location', function ($location){
+  app.directive('menu2',['$location', function ($location){
      	
 		return {
 			restrict: 'EA',
