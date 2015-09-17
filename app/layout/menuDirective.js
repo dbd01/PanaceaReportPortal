@@ -1,11 +1,20 @@
 	"use strict";
 	
-  app.directive('menu', function (){
-				
+  app.directive('menu',['$location', function ($location){
+     	
 		return {
-		restrict: 'EA',
-		templateUrl: 'app/layout/views/sidebarView.html'			
+			restrict: 'EA',
+			templateUrl: 'app/layout/views/sidebarView.html',	
+			link: function ($scope) {
+				
+				$location.path('/login');
+				if(!$scope.$$phase)
+				{					
+					$scope.$apply();	
+				}
+
+    	}			 
 		};
-	});
+	}]);
 	
  
