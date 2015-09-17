@@ -1,6 +1,6 @@
 	"use strict";
 	
-  angular.module('PanaceaReports', [])
+  app
 	.controller('layoutController', ['$scope', function($scope) {
 		$scope.lala=1;
 	}])
