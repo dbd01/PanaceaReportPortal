@@ -1,11 +1,9 @@
-(function () {
-    "use strict";
+	"use strict";
 
-    app.directive("sidebar-directive", [ sidebar-directive])
-
-    return {
-			restrict: 'EA',
-			templateUrl: 'app/layout/views/sidebarView.html'			
+	app.directive("sidebar-directive", [sidebar-directive], function (){
+		return {
+		restrict: 'EA',
+		templateUrl: 'app/layout/views/sidebarView.html'			
 		};
-		
-})();
+	});
+ 
