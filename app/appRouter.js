@@ -9,14 +9,18 @@ angular.module('PanaceaReports', [])
         // Now set up the states 
         $stateProvider
             
-            .state('login', {
-                url: "/login",
+						state('dashboard', {
+                url: "/dashboard",
+                templateUrl: "welcome"              
+            })
+            .state('dashboard.login', {
+                url: "/dashboard/login",
                 templateUrl: "app/auth/views/loginView.html",
                 controller: 'authenticationController',
                 
             })
-						.state('register', {
-                url: "/register",
+						.state('dashboard.register', {
+                url: "/dashboard/register",
                 templateUrl: "app/auth/views/registerView.html",
                 controller: 'registerController',
                 

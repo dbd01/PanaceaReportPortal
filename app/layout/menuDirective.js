@@ -7,7 +7,8 @@
 			templateUrl: 'app/layout/views/sidebarView.html',	
 			link: function ($scope) {
 				
-				$location.path('/login');
+				console.log("dfd33f")
+				$location.path('/dashboard/login');
 				if(!$scope.$$phase)
 				{					
 					$scope.$apply();	
