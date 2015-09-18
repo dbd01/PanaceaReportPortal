@@ -1,6 +1,5 @@
 'use strict';
 
-//angular.module('PanaceaReports', ['ui.router'])
 app
 .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
@@ -10,17 +9,18 @@ app
         $stateProvider
             .state('lala', {
                 url: "/",
-								templateUrl: "app/layout/views/sidebarView.html"							
+								template: "<div ui-view></div> "	,
+								controller: 'lalaController'								
             })
 						.state('lala.login', {
                 url: "login",
                 templateUrl: "app/auth/views/loginView.html",
-                controller: 'authenticationController'                
+							  controller: 'authenticationController'                
             })
 						.state('lala.register', {
                 url: "register",
                 templateUrl: "app/auth/views/registerView.html",
-                controller: 'registerController'                
+                controller: 'registrationController'                
             });						
 		}]);
 						

@@ -4,13 +4,9 @@
 		return {
 			restrict: 'EA',
 			templateUrl: 'app/layout/views/sidebarView.html',	
-			link: function ($scope) {
-				
-				$state.current.name="koko";
+			link: function ($scope) {				
 				console.log("dfd33f", $state)
-				//$location.path('/dashboard/login');
-				
-
+						
     	}			 
 		};
 	}]);

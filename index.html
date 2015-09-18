@@ -25,10 +25,19 @@
 	<script src="app/layout/mainPageDirective.js"></script>
 	
 	<!--Controllers-->
-    <script src="app/layout/layoutController.js"></script>	
-	<script src="app/auth/controllers/authenticationController.js"></script>
+    <script src="app/layout/layoutController.js"></script>
+	<script src="app/layout/lalaController.js"></script>	
 	<script src="app/auth/controllers/registrationController.js"></script>
-    
+	<script src="app/auth/controllers/authenticationController.js"></script>
+	
+	
+    <script> 
+		$.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
+			options.async = true;
+			});
+	</script>
+
+	
 	
 </head>
 
