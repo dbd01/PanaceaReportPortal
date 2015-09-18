@@ -5,9 +5,8 @@
 			restrict: 'EA',
 			templateUrl: 'app/layout/views/sidebarView.html',	
 			link: function ($scope) {				
-				console.log("dfd33f", $state)
-						
-    	}			 
+										
+    		}			 
 		};
 	}]);
 	

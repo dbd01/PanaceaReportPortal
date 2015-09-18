@@ -9,15 +9,15 @@ app
         $stateProvider
             .state('lala', {
                 url: "/",
-								template: "<div ui-view></div> "	,
-								controller: 'lalaController'								
-            })
-						.state('lala.login', {
+				template: "<div ui-view></div> "	,
+				controller: 'lalaController'								
+                 })
+			.state('lala.login', {
                 url: "login",
                 templateUrl: "app/auth/views/loginView.html",
-							  controller: 'authenticationController'                
-            })
-						.state('lala.register', {
+				controller: 'authenticationController'                
+                  })
+			.state('lala.register', {
                 url: "register",
                 templateUrl: "app/auth/views/registerView.html",
                 controller: 'registrationController'                
