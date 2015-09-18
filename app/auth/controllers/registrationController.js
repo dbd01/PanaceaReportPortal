@@ -3,7 +3,7 @@
     
     app.controller("registrationController",  function () {
        
-			 console.log("reggggg");
+		
         
 
     });
