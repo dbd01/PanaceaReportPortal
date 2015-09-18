@@ -1,8 +1,8 @@
 'use strict';
 
-var myapp=angular.module('PanaceaReports', ['ui.router']);
-
-	myapp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+//angular.module('PanaceaReports', ['ui.router'])
+app
+.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
         $urlRouterProvider.otherwise("/");
 
@@ -13,12 +13,12 @@ var myapp=angular.module('PanaceaReports', ['ui.router']);
 								templateUrl: "app/layout/views/sidebarView.html"							
             })
 						.state('lala.login', {
-                url: "/login",
+                url: "login",
                 templateUrl: "app/auth/views/loginView.html",
                 controller: 'authenticationController'                
             })
 						.state('lala.register', {
-                url: "/register",
+                url: "register",
                 templateUrl: "app/auth/views/registerView.html",
                 controller: 'registerController'                
             });						
