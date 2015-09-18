@@ -1,29 +1,26 @@
 'use strict';
 
-angular.module('PanaceaReports', [])
+var myapp=angular.module('PanaceaReports', ['ui.router']);
 
-	.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+	myapp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
         $urlRouterProvider.otherwise("/");
 
         // Now set up the states 
         $stateProvider
-            
-						.state('dashboard', {
-                url: "/dashboard",
-                templateUrl: "welcome"              
+            .state('lala', {
+                url: "/",
+								templateUrl: "app/layout/views/sidebarView.html"							
             })
-            .state('dashboard.login', {
-                url: "/dashboard/login",
+						.state('lala.login', {
+                url: "/login",
                 templateUrl: "app/auth/views/loginView.html",
-                controller: 'authenticationController',
-                
+                controller: 'authenticationController'                
             })
-						.state('dashboard.register', {
-                url: "/dashboard/register",
+						.state('lala.register', {
+                url: "/register",
                 templateUrl: "app/auth/views/registerView.html",
-                controller: 'registerController',
-                
+                controller: 'registerController'                
             });						
 		}]);
 						

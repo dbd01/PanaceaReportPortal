@@ -8,11 +8,8 @@
 			link: function ($scope) {
 				
 				console.log("dfd33f")
-				$location.path('/dashboard/login');
-				if(!$scope.$$phase)
-				{					
-					$scope.$apply();	
-				}
+				//$location.path('/dashboard/login');
+				
 
     	}			 
 		};
