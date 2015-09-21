@@ -29,7 +29,7 @@ var gulp = require('gulp'),
  ]
 
  
-//javascript files
+//javascript  files
 gulp.task('js_files', function () {
    return gulp.src(js_files)
       .pipe(jshint())
