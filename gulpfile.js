@@ -1,17 +1,22 @@
 var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
+    rename = require("gulp-rename"),
     concat = require('gulp-concat');
 
  var js_files =[
-    'app/*.js',
+    'app/_appModule.js',
+    'app/appRouter.js',
    	'app/auth/controllers/*.js',
    	'app/layout/*.js',
-    'app/reports/controllers/*.js' 
+    'app/reports/controllers/*.js',
+    'bower_components/jquery/dist/jquery.js',
+    'bower_components/bootstrap/dist/js/bootstrap.min.js', 
+    'bower_components/angular/angular.js',
+    'bower_components/angular-ui-router/release/angular-ui-router.js'
  ]   
 
  var html_css_files =[
-     'index.html',
      'app/auth/views/*.html',
      'app/layout/views/*.html',
      'app/reports/views/*.html',
@@ -38,6 +43,12 @@ gulp.task('html_css_files', function(){
   .pipe(gulp.dest('dist'));
 });
 
-gulp.task('default', ['js_files', 'html_css_files']);
+gulp.task('rename_index', function() {
+    gulp.src("index.min.html")
+  		.pipe(rename("index.html"))
+  		.pipe(gulp.dest("./dist"));
+});
+
+gulp.task('default', ['js_files', 'html_css_files', 'rename_index']);
 
 
