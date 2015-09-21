@@ -5,15 +5,17 @@ var gulp = require('gulp'),
     concat = require('gulp-concat');
 
  var js_files =[
+    'bower_components/jquery/dist/jquery.js',
+    'bower_components/bootstrap/dist/js/bootstrap.min.js',
+
+    'bower_components/angular/angular.js',
+    'bower_components/angular-ui-router/release/angular-ui-router.js',
+
     'app/_appModule.js',
     'app/appRouter.js',
    	'app/auth/controllers/*.js',
    	'app/layout/*.js',
-    'app/reports/controllers/*.js',
-    'bower_components/jquery/dist/jquery.js',
-    'bower_components/bootstrap/dist/js/bootstrap.min.js', 
-    'bower_components/angular/angular.js',
-    'bower_components/angular-ui-router/release/angular-ui-router.js'
+    'app/reports/controllers/*.js'    
  ]   
 
  var html_css_files =[
