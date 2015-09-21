@@ -1,21 +1,22 @@
 {
-  "name": "Panacea Report Portal ",
+  "name": "PanaceaReportPortal ",
   "version": "1.0.0",
   "description": "Portal for panacea reports",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-   "repository": {
-        "type": "git",
-        "url": "https://github.com/dbd01/PanaceaReportPortal.git"
-    },
-    "keywords": [
-        "angular"
-		      ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dbd01/PanaceaReportPortal.git"
+  },
+  "keywords": [
+    "angular"
+  ],
   "author": "DotByDot",
   "license": "",
-  "dependencies": {
-    
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "^0.4.5"
   }
 }
