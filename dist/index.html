@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ng-app="PanaceaReports">
+<head>
+	<meta charset="utf-8" />
+    <title>Panacea Reports</title>
+	<link rel="icon" type="img/ico" href="./assets/img/favicon.ico">
+	
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+	
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+	
+	<!--Angular -->
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+		
+	<!-- Application itself -->
+	<script src="app/_appModule.js"></script>
+	<script src="app/appRouter.js"></script>
+    	
+	
+	<!--Directives-->
+	<script src="app/layout/menuDirective.js"></script>
+		
+	<!--Controllers-->
+    <script src="app/layout/layoutController.js"></script>
+	<script src="app/layout/lalaController.js"></script>	
+	<script src="app/auth/controllers/registrationController.js"></script>
+	<script src="app/auth/controllers/authenticationController.js"></script>
+	
+	
+    <script> 
+		$.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
+			options.async = true;
+			});
+	</script>
+
+	
+	
+</head>
+
+<body ng-controller="layoutController">
+	<div class = "row">
+		<div class="col-md-12">
+			 <div class="col-md-2"  > 
+			 <p><p>
+			 	<img src="assets/img/panacea.png" alt="panacea" id="logo-img" height="50" width="180" >
+			 </div>
+			 <div class="col-md-10"  > <h3>Panacea Reports</h3></div>
+			 
+		</div>
+	</div>
+	<div class = "row">
+		<div class="col-md-12">
+			 <div class="col-md-2" menu2 >hhh</div>
+			 <div class="col-md-10"  > 
+				<div  class="well" ui-view ></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

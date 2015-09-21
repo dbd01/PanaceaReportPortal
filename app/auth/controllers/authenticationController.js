@@ -9,7 +9,7 @@
 				console.log("username=", $scope.username);
 				console.log("password=", $scope.password);	
 
-			}
+			};
 
 		}]);
 		
