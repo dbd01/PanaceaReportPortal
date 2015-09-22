@@ -44,7 +44,7 @@ gulp.task('js_files', function () {
       .pipe(gulp.dest('dist'));
 });
 
-//views = html files
+//views =  html files
 gulp.task('html_css_files', function(){  
   gulp.src(html_css_files, { base: './' })
   .pipe(gulp.dest('dist'));
