@@ -7,8 +7,9 @@
   "private": true,
   "dependencies": {
     "angular": "1.4.x",
-    "angular-ui-router":"",
+    "angular-ui-router": "",
     "jquery": "",
-	"bootstrap":""
+    "bootstrap": "",
+    "angular-resource": "~1.4.6"
   }
 }
