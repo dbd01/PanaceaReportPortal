@@ -1,10 +1,11 @@
 'use strict';
 
-    app.controller('authenticationController', ['$scope',  function ($scope) {
+    app.controller('authenticationController', ['$scope', 'appSettings', function ($scope, appSettings) {
 			
 			$scope.username = "";
 			$scope.password = "";
-								
+			console.log ("gggg",appSettings.authServerPath);
+
 			$scope.getAuthData = function (){
 				console.log("username=", $scope.username);
 				console.log("password=", $scope.password);	

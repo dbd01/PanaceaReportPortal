@@ -2,11 +2,11 @@
     "use strict";
 
     app
-        .factory("authenticationService", ["$resource", "appSettings", portalService])
+        .factory("authenticationService", ["$resource", "appSettings", authService])
 
-    function portalService($resource, appSettings) {
+    function authService($resource, appSettings) {
 
-        return $resource(appSettings.serverPath + '/api/model/PortalModel/:portalId', {}, {
+        return $resource(appSettings.authServerPath + '/login', {}, {
             query: { method: 'GET', params: { portalId: '' }, isArray: true },
             view: { method: 'GET', params: { portalId: '@portalId' } },
             add: { method: 'POST' },

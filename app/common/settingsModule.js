@@ -4,7 +4,7 @@
         .module("settingsModule",[])
         .constant("appSettings",
         {
-            serverPath: "http://echidna.dotbydot.eu:4444",
-            localPath: "http://localhost:49191"
+            authServerPath: "https://echidna.dotbydot.eu:4451",
+            localPath: "http://localhost:8080"
         });
 })(angular);
