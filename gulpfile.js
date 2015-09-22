@@ -13,6 +13,7 @@ var gulp = require('gulp'),
     'bower_components/angular-resource/angular-resource.js',
     
     'app/_appModule.js',
+    'app/appConfig.js',
     'app/appRouter.js',
    	'app/auth/controllers/*.js',
    	'app/layout/*.js',
