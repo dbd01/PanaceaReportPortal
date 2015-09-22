@@ -15,6 +15,7 @@ var gulp = require('gulp'),
     'app/_appModule.js',
     'app/appConfig.js',
     'app/appRouter.js',
+    
    	'app/auth/controllers/*.js',
    	'app/layout/*.js',
     'app/reports/controllers/*.js',
