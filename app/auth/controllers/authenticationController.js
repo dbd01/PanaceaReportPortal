@@ -4,8 +4,7 @@
 			
 			$scope.username = "";
 			$scope.password = "";
-			console.log ("gggg",appSettings.authServerPath);
-			
+						
 			//send auth data to auth server
 			$scope.authData = {
            		 username: $scope.username,
@@ -21,7 +20,7 @@
 	                //$location.path('/portal/portals');
 	            	},
             	 	function (response) {
-	                	console.log($scope.authData);
+	                	console.log("datta..",$scope.authData);
 		                if (response.data == null)	                
 		                   console.log("response data is null!");	               
 		                else

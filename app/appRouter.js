@@ -23,5 +23,7 @@ app
                 controller: 'registrationController'                
             });						
 		}]);
+
+
 						
 
