@@ -18,17 +18,21 @@
 	<!-- Application itself -->
 	<script src="app/_appModule.js"></script>
 	<script src="app/appRouter.js"></script>
+	<script src="app/common/settingsModule.js"></script>
     	
 	
 	<!--Directives-->
 	<script src="app/layout/menuDirective.js"></script>
+
+	<!--Services-->
+	<script src="app/services/authenticationService.js"></script>
 		
 	<!--Controllers-->
     <script src="app/layout/layoutController.js"></script>
 	<script src="app/layout/lalaController.js"></script>	
 	<script src="app/auth/controllers/registrationController.js"></script>
 	<script src="app/auth/controllers/authenticationController.js"></script>
-	
+
 	
     <script> 
 		$.ajaxPrefilter(function( options, originalOptions, jqXHR ) {

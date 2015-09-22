@@ -10,6 +10,9 @@ var gulp = require('gulp'),
 
     'bower_components/angular/angular.js',
     'bower_components/angular-ui-router/release/angular-ui-router.js',
+    
+    'app/common/settingsModule.js',
+    'app/services/authenticationService.js',
 
     'app/_appModule.js',
     'app/appRouter.js',
