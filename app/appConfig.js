@@ -9,6 +9,9 @@ app
     }])
     .config(['localStorageServiceProvider', function(localStorageServiceProvider){
     localStorageServiceProvider.setPrefix('ls');
-  }])
+     }])
+    .run(['$rootScope', function($rootScope){
+         $rootScope.log_link = {value:"Login"};
+     }])
     ;
     

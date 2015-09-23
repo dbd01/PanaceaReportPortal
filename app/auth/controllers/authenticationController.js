@@ -1,6 +1,7 @@
 'use strict';
 
-    app.controller('authenticationController', ['$scope', 'authenticationService','appSettings','localStorageService','$location', function ($scope, authenticationService, appSettings, localStorageService, $location) {
+    app.controller('authenticationController', ['$scope', 'authenticationService','appSettings','localStorageService','$location','$rootScope', 
+    	function ($scope, authenticationService, appSettings, localStorageService, $location, $rootScope) {
 			
 									
 			//send auth data to auth server
@@ -21,7 +22,8 @@
 		                 	  userName: $scope.authData.userName, 
 		                 	  expires: response.expires		                 	   
 		                 	});
-                       
+                        
+                        $rootScope.log_link.value = "Logout";
 		                $location.path('/reports');
 		                
 	            	},

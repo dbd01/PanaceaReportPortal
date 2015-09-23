@@ -13,17 +13,12 @@ var gulp = require('gulp'),
     'bower_components/angular-resource/angular-resource.js',
     'bower_components/angular-local-storage/dist/angular-local-storage.js',
     
-    'app/_appModule.js',
-    'app/appConfig.js',
-    'app/appRouter.js',
-    
+    'app/*.js',        
    	'app/auth/controllers/*.js',
    	'app/layout/*.js',
     'app/reports/controllers/*.js',
-
-    'app/common/settingsModule.js',
-    
-    'app/services/authenticationService.js'    
+    'app/common/*.js',    
+    'app/services/*.js'    
  ]   
 
  var html_css_files =[
