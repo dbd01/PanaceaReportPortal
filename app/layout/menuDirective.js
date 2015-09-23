@@ -4,8 +4,10 @@
 		return {
 			restrict: 'EA',
 			templateUrl: 'app/layout/views/sidebarView.html',	
-			link: function ($scope) {				
-										
+			link: function ($scope) {
+
+			console.log("sssss",$state.current.name);				
+			$scope.log_link = "Login";							
     		}			 
 		};
 	}]);

@@ -1,6 +1,6 @@
 'use strict';
 
-    app.controller('authenticationController', ['$scope', 'authenticationService','appSettings','localStorageService', function ($scope, authenticationService, appSettings, localStorageService) {
+    app.controller('authenticationController', ['$scope', 'authenticationService','appSettings','localStorageService','$location', function ($scope, authenticationService, appSettings, localStorageService, $location) {
 			
 									
 			//send auth data to auth server
@@ -22,7 +22,8 @@
 		                 	  expires: response.expires		                 	   
 		                 	});
                        
-		                //$location.path('/portal/portals');
+		                $location.path('/reports');
+		                
 	            	},
             	 	function (response) {
 	                	console.log("data..>",$scope.authData);

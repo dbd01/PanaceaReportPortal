@@ -21,7 +21,13 @@ app
                 url: "register",
                 templateUrl: "app/auth/views/registerView.html",
                 controller: 'registrationController'                
-            });						
+            })
+            .state('lala.reports', {
+                url: "reports",
+                templateUrl: "app/reports/views/reportsView.html",
+                controller: 'reportsController'                
+            })
+            ;						
 		}]);
 
 
