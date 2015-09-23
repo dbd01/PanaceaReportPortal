@@ -1,6 +1,6 @@
 'use strict';
 
-    app.controller('authenticationController', ['$scope', 'authenticationService','appSettings', function ($scope, authenticationService, appSettings) {
+    app.controller('authenticationController', ['$scope', 'authenticationService','appSettings','localStorageService', function ($scope, authenticationService, appSettings, localStorageService) {
 			
 									
 			//send auth data to auth server
@@ -14,7 +14,14 @@
         		authenticationService.send($scope.authData, 
             		function (response) {
 		                console.log("authentication data been sent successfully");    
-		                console.log(response.token);          
+		                //console.log(response);  
+		                $scope.message="";
+		                localStorageService.set('authorizationData', 
+		                 	{ token: response.token, 
+		                 	  userName: $scope.authData.userName, 
+		                 	  expires: response.expires		                 	   
+		                 	});
+                       
 		                //$location.path('/portal/portals');
 	            	},
             	 	function (response) {
@@ -32,7 +39,7 @@
         		};
 
 
-
+  
 
 		}]);
 		

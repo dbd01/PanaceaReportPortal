@@ -10,6 +10,7 @@
     "angular-ui-router": "",
     "jquery": "",
     "bootstrap": "",
-    "angular-resource": "~1.4.6"
+    "angular-resource": "~1.4.6",
+    "angular-local-storage": "~0.2.2"
   }
 }
