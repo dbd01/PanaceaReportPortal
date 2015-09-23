@@ -6,8 +6,8 @@
 			templateUrl: 'app/layout/views/sidebarView.html',	
 			link: function ($scope) {
 
-			console.log("sssss",$state.current.name);				
-			//$rootScope.log_link.value;							
+				console.log("sssss",$state.current.name);				
+										
     		}			 
 		};
 	}]);

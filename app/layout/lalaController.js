@@ -1,8 +1,9 @@
 	"use strict";
 	
   app
-	.controller('lalaController', ['$scope', function($scope) {
-		$scope.lala=1;
+	.controller('lalaController', ['$scope','$rootScope', function($scope,$rootScope) {
+		//$rootScope.log_link.value="Login";
+		//console.log("sdfsfdsfsdfs");
 		
 	}]);	
 	
