@@ -1,14 +1,19 @@
 <nav class="navbar navbar-default" role="navigation">
-  <!-- Brand and toggle get grouped for better mobile display -->
   
-
-  <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
    
     <ul class="nav navbar-nav navbar-left">
       <li ng-if="log_link.value=='Login'"><a ui-sref="lala.login" ui-sref-active="active">{{log_link.value}}</a></li><br>
-      <li ng-if="log_link.value=='Logout'"><a ui-sref="lala.logout" ui-sref-active="active">{{log_link.value}}</a></li><br>
-	  <li><a ui-sref="lala.register" ui-sref-active="active">Register</a></li>      
+      <li ng-if="log_link.value=='Logout'"><a ui-sref="lala.logout" ui-sref-active="active">{{log_link.value}}</a></li>   <br>
+      
+      <li><a ui-sref="lala.register" ui-sref-active="active">Register</a></li> <br> 
+      
+      <li ng-if="log_link.value=='Logout'"><a ui-sref="lala.reports" ui-sref-active="active">Reports</a></li><br>
+      <li ng-if="log_link.value=='Login'"><a ui-sref="lala.login" ui-sref-active="active">Reports</a></li><br>
+
+      <li ng-if="log_link.value=='Login'"><a ui-sref="lala.login" ui-sref-active="active">Users</a></li><br>
+      <li ng-if="log_link.value=='Logout'"><a ui-sref="lala.users" ui-sref-active="active">Users</a></li><br>
+	      
     </ul>
   </div>
 </nav>

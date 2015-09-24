@@ -24,7 +24,7 @@
 		                 	});
                         
                         $rootScope.log_link.value = "Logout";
-		                $location.path('/reports');
+		                $location.path('/welcome');
 		                
 	            	},
             	 	function (response) {
@@ -35,7 +35,7 @@
 		                }               
 		                else{
 		                  console.log("response error: ", response);
-		               	  $scope.message = "Authorization error...";
+		               	  $scope.message = "Wrong username or password";
 		                }                  
 		                
              		});            

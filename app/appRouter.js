@@ -9,13 +9,17 @@ app
         $stateProvider
             .state('lala', {
                 url: "/",
-				template: "<div ui-view>Start</div> "	,
+				template: "<div ui-view>Hallo! Please login first</div> "	,
 				controller: 'lalaController'								
                  })
 			.state('lala.login', {
                 url: "login",
                 templateUrl: "app/auth/views/loginView.html",
 				controller: 'authenticationController'                
+                  })
+            .state('lala.logged_in', {
+                url: "welcome",
+                templateUrl: "app/auth/views/logged_inView.html"                               
                   })
             .state('lala.logout', {
                 url: "login",
@@ -31,6 +35,11 @@ app
                 url: "reports",
                 templateUrl: "app/reports/views/reportsView.html",
                 controller: 'reportsController'                
+            })
+            .state('lala.users', {
+                url: "users",
+                templateUrl: "app/users/views/usersView.html",
+                controller: 'usersController'                
             })
             ;						
 		}]);
