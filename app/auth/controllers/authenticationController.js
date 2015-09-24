@@ -1,7 +1,7 @@
 'use strict';
 
-    app.controller('authenticationController', ['$scope', '$route', 'authenticationService','appSettings','localStorageService','$location','$rootScope', 
-    	function ($scope, $route, authenticationService, appSettings, localStorageService, $location, $rootScope) {	  
+    app.controller('authenticationController', ['$scope', '$route', 'authenticationService','appSettings','localStorageService','$location','$rootScope','navigationService', 
+    	function ($scope, $route, authenticationService, appSettings, localStorageService, $location, $rootScope, navigationService) {	  
 			
            $scope.authData = {
            		 	username: $scope.username,
@@ -19,6 +19,7 @@
         	$scope.login = function () {      		
 				
         		authenticationService.send($scope.authData, 
+        			//success
             		function (response) {
 		                console.log("authentication data been sent successfully");    
 		                //console.log(response);  		               
@@ -29,9 +30,19 @@
 		                 	});
                         
                         $rootScope.log_link.value = "Logout";
-		                $location.path('/welcome');
+
+                        //get the last desired navigation
+                        var navLocation = navigationService.list[navigationService.list.length-1];
+                        navigationService.flush();
+
+                        console.log("navLocation=..", navLocation);
+                        if (navLocation==null)
+		                	$location.path('/welcome');
+		                else
+		                	$location.path('/'+navLocation);
 		                
 	            	},
+	            	//error
             	 	function (response) {
 	                	console.log("data..>",$scope.authData);
 		                if (response.data == null)	{                

@@ -9,9 +9,9 @@
       <li><a ui-sref="lala.register" ui-sref-active="active">Register</a></li> <br> 
       
       <li ng-if="log_link.value=='Logout'"><a ui-sref="lala.reports" ui-sref-active="active">Reports</a></li><br>
-      <li ng-if="log_link.value=='Login'"><a ui-sref="lala.login" ui-sref-active="active">Reports</a></li><br>
+      <li ng-if="log_link.value=='Login'"><a ui-sref="lala.login" ui-sref-active="active" ng-click="reports()">Reports</a></li><br>
 
-      <li ng-if="log_link.value=='Login'"><a ui-sref="lala.login" ui-sref-active="active">Users</a></li><br>
+      <li ng-if="log_link.value=='Login'"><a ui-sref="lala.login" ui-sref-active="active" ng-click="users()">Users</a></li><br>
       <li ng-if="log_link.value=='Logout'"><a ui-sref="lala.users" ui-sref-active="active">Users</a></li><br>
 	      
     </ul>
