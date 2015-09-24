@@ -4,6 +4,8 @@ var app = angular.module('PanaceaReports', [
 		'ui.router',
 		'settingsModule',
 		'LocalStorageModule',
-		'ngResource'
+		'ui.bootstrap',
+		'ngResource',
+		'ngRoute'
 	]);
 

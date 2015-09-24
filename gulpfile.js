@@ -12,6 +12,8 @@ var gulp = require('gulp'),
     'bower_components/angular-ui-router/release/angular-ui-router.js',
     'bower_components/angular-resource/angular-resource.js',
     'bower_components/angular-local-storage/dist/angular-local-storage.js',
+    'bower_components/angular-bootstrap/ui-bootstrap.js',
+    'bower_components/angular-route/angular-route.js',
     
     'app/*.js',        
    	'app/auth/controllers/*.js',

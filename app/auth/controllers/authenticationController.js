@@ -1,22 +1,27 @@
 'use strict';
 
-    app.controller('authenticationController', ['$scope', 'authenticationService','appSettings','localStorageService','$location','$rootScope', 
-    	function ($scope, authenticationService, appSettings, localStorageService, $location, $rootScope) {
+    app.controller('authenticationController', ['$scope', '$route', 'authenticationService','appSettings','localStorageService','$location','$rootScope', 
+    	function ($scope, $route, authenticationService, appSettings, localStorageService, $location, $rootScope) {	  
 			
-									
-			//send auth data to auth server
-			$scope.authData = {
-           		 username: $scope.username,
-           		 password: $scope.password,
-           		 applicationId: "testAuthAppServ"
-        		};
+           $scope.authData = {
+           		 	username: $scope.username,
+           			password: $scope.password,
+           			applicationId: "testAuthAppServ"
+        	};       		
 
-        	$scope.login = function () {
+        	$scope.closeAlert = function() {
+        		$scope.authData.username="";
+        		$scope.authData.password = "";
+        		$scope.alert=null;
+        		$location.path('/login');
+			}       
+						    
+        	$scope.login = function () {      		
+				
         		authenticationService.send($scope.authData, 
             		function (response) {
 		                console.log("authentication data been sent successfully");    
-		                //console.log(response);  
-		                $scope.message="";
+		                //console.log(response);  		               
 		                localStorageService.set('authorizationData', 
 		                 	{ token: response.token, 
 		                 	  userName: $scope.authData.userName, 
@@ -35,7 +40,11 @@
 		                }               
 		                else{
 		                  console.log("response error: ", response);
-		               	  $scope.message = "Wrong username or password";
+		                  $scope.alert = { 
+				        		type: 'danger', 
+				        		msg: 'Wrong Username or password' 
+				           };
+
 		                }                  
 		                
              		});            
