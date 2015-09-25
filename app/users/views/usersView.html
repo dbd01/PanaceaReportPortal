@@ -1,36 +1,35 @@
-<div  >
+<div >
 	<div class = "row">
 		<h4> Panacea Users <h4>
-		<table ng-show="usersTable.ready" st-table="displayedCollection" st-safe-src="usersTable.data" class="table table-striped">
-			<thead>
-				<tr>			
-					<th colspan="4">
-						<input st-search="" placeholder="Search" class="input-sm form-control" type="text"/>
-					</th>
-				</tr>
-				<tr>
-					<th st-sort="userId">User Id</th>
-					<th st-sort="username">Username</th>
-					<th st-sort="isDeleted">Is deleted</th>			
-				</tr>		
-			</thead>
-
+		
+		<table id="usersTbl" class="table table-striped table-bordered" cellspacing="0" width="100%">
+		    <thead>
+		        <tr>		            
+		            <th >UserId</th>
+		            <th >Username</th>
+		            <th >isDeleted</th>		           
+		        </tr>
+		    </thead>
+			
 			<tbody>
-			  	<tr ng-repeat="user in usersTable.data">
-					<td>{{user[0].userId}}</td>
-					<td>{{user[1].username}}</td>
-					<td>{{user[2].isDeleted}}</td>					
-				</tr>
+	            <tr ng-repeat = "user in usersTable.data" >
+	                <td>{{user[0].userId}}</td>
+	                <td>{{user[1].username}}</td>
+	                <td>{{user[2].isDeleted}}</td>
+	                
+	            </tr>
 			</tbody>
 
-			<tfoot>
-				<tr>
-					<td colspan="5" class="text-center">
-						<div st-pagination="" st-items-by-page="3" st-displayed-pages="5"></div>
-					</td>
-				</tr>
-			</tfoot>
-	</table>
+
+		    <tfoot>
+		        <tr>		            
+		            <th >UserId</th>
+		            <th >Username</th>
+		            <th >isDeleted</th>	           
+		        </tr>
+		    </tfoot>
+
+		</table>
 	</div>
 	
 </div>

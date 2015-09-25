@@ -6,7 +6,6 @@ var app = angular.module('PanaceaReports', [
 		'LocalStorageModule',
 		'ui.bootstrap',
 		'ngResource',
-		'smart-table',
 		'ngRoute'
 	]);
 
