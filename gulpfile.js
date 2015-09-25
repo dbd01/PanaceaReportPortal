@@ -20,6 +20,7 @@ var gulp = require('gulp'),
     'bower_components/datatables/media/js/jquery.js',
     'bower_components/datatables/media/js/jquery.dataTables.js',
     'bower_components/datatables/media/js/dataTables.bootstrap.js',
+    'bower_components/angular-datatables/dist/angular-datatables.js',
     
     'app/_appModule.js',
     'app/appConfig.js', 

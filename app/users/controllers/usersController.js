@@ -9,7 +9,7 @@ app.controller("usersController", ['localStorageService','usersService','$scope'
     
     
    
-    $scope.usersTable ={
+    var usersTable ={
     				"data": [],
     				"ready": false
     				}
@@ -23,26 +23,16 @@ app.controller("usersController", ['localStorageService','usersService','$scope'
                     userData.push( {"userId": user.userId} );
                     userData.push( {"username": user.username} );
                     userData.push( {"isDeleted": user.isDeleted});
-                    $scope.usersTable.data.push(userData);
-                   
+                    usersTable.data.push(userData);                   
 
                 });
             })    
             .then(function () {
-                //$scope.usersTable = usersTable;
+                $scope.usersTable = usersTable;
                 $scope.usersTable.ready = true;
-                console.log("uuuu", $scope.usersTable.data);
-                
-                 $(document).ready(function() {
-                        $('#usersTbl').DataTable();
-                  } );
+                console.log("uuuu", $scope.usersTable.data);                                
                 
             });
-/*
-           $(document).ready(function() {
-                $('#example').DataTable();
-          } );
-*/
 
     
 }]);

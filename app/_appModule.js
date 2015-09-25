@@ -6,6 +6,7 @@ var app = angular.module('PanaceaReports', [
 		'LocalStorageModule',
 		'ui.bootstrap',
 		'ngResource',
-		'ngRoute'
+		'ngRoute',
+		'datatables'
 	]);
 
