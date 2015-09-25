@@ -15,8 +15,11 @@ var gulp = require('gulp'),
     'bower_components/angular-bootstrap/ui-bootstrap.js',
     'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
     'bower_components/angular-route/angular-route.js',
-    'bower_components/angular-smart-table/dist/smart-table.js',
     'bower_components/lodash/lodash.js',
+    'bower_components/jquery/dist/jquery.js',
+    'bower_components/datatables/media/js/jquery.js',
+    'bower_components/datatables/media/js/jquery.dataTables.js',
+    'bower_components/datatables/media/js/dataTables.bootstrap.js',
     
     'app/_appModule.js',
     'app/appConfig.js', 
@@ -37,7 +40,8 @@ var gulp = require('gulp'),
      'assets/img/*.*',
      'assets/bootstrap/css/*.*',
      'assets/bootstrap/fonts/*.*',
-     'assets/bootstrap/js/*.*'
+     'assets/bootstrap/js/*.*',
+     'bower_components/datatables/media/css/*.*'
  ]
 
  
