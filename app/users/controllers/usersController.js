@@ -7,12 +7,13 @@ app.controller("usersController", ['localStorageService','usersService','$scope'
 	var authData = localStorageService.get('authorizationData');
 	console.log("auth data--uu>", authData);	
     
-   $scope.displayedCollection = [];
+   
 
     var usersTable ={
     				"data": [],
     				"ready": false
     				}
+              
 /*
     var usersTableColumns = [{label:"userId", map: "userId" },
                              {label:"username", map: "username" },
@@ -24,9 +25,9 @@ app.controller("usersController", ['localStorageService','usersService','$scope'
             	console.log("users:=>",users);
                 users.forEach(function (user) {
                     var userData = [];
-                    userData.push( {"value": user.userId} );
-                    userData.push( {"value": user.username} );
-                    userData.push( {"value": user.isDeleted});
+                    userData.push( {"userId": user.userId} );
+                    userData.push( {"username": user.username} );
+                    userData.push( {"isDeleted": user.isDeleted});
                     usersTable.data.push(userData);
                    
 
@@ -35,6 +36,7 @@ app.controller("usersController", ['localStorageService','usersService','$scope'
             .then(function () {
                 $scope.usersTable = usersTable;
                 $scope.usersTable.ready = true;
+                $scope.displayedCollection = [].concat($scope.usersTable.data); 
                 console.log("uuuu", usersTable.data);
                 
             });
