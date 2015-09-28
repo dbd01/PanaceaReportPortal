@@ -11,7 +11,7 @@ app.controller("usersController", ['localStorageService','usersService','$scope'
    
     var usersTable ={
                     "header": [
-                        { "title": "userId" },
+                        { "title": "user_Id" },
                         { "title": "username" },
                         { "title": "isDeleted" },                        
                     ],
