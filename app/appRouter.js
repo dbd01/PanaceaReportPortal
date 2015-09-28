@@ -41,6 +41,11 @@ app
                 templateUrl: "app/users/views/usersView.html",
                 controller: 'usersController'                
             })
+            .state('lala.userInfo', {
+                url: "userInfo",
+                templateUrl: "app/users/views/userInfoView.html",
+                controller: 'userInfoController'                
+            })
             ;						
 		}]);
 

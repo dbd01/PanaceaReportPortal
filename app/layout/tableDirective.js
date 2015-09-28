@@ -21,21 +21,20 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', fu
 
                         var table = $('#' + $scope.tableid);
                   
-                         var oTable = table.dataTable();                     
-                      
+                        var oTable = table.dataTable(); 
+
+                      //click event
                         table.on('click', '.edit', function (e2) {
                             e2.preventDefault();
 
                             var nRow = $(this).parents('tr')[0];
                             var editline = oTable.fnGetPosition(nRow);
-                                    //$scope.tabledata.data[editline][0]
-                             alert( $scope.tabledata.data[editline][1].value );
-
+                            
                             //write data to registered service scopeCommService     
-                           // scopeComService.add($scope.idT);
+                            scopeComService.add($scope.tabledata.data[editline]);
                            
-                           //$location.path('/portal/edit');
-                           // $scope.$apply();
+                            $location.path('/userInfo');
+                            $scope.$apply();
                         });
                                               
 
