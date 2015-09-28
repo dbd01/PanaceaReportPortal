@@ -6,7 +6,10 @@ app.controller("userInfoController", ['localStorageService','usersService','$sco
     
 	 $scope.userData= scopeComService.list[0];
      scopeComService.flush();
-    
+     
+     $scope.userId= $scope.userData[0].value;
+     $scope.isDeleted= $scope.userData[2].value;
+
      $scope.userData={
                         "username":$scope.userData[1].value,
                         "password":'',
