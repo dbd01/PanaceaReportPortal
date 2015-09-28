@@ -1,36 +1,5 @@
-<div >
-	<div class = "row">
-		<h4> Panacea Users <h4>
-		
-		<table table datatable="ng" class="row-border hover" cellspacing="0" width="100%">
-		    <thead>
-		        <tr>		            
-		            <th >UserId</th>
-		            <th >Username</th>
-		            <th >isDeleted</th>		           
-		        </tr>
-		    </thead>
-			
-			<tbody>
-	            <tr ng-repeat = "user in usersTable.data" >
-	                <td>{{user[0].userId}}</td>
-	                <td>{{user[1].username}}</td>
-	                <td>{{user[2].isDeleted}}</td>	                
-	            </tr>
-	            <tr >
-	                <td>lala</td>
-	                <td>wewe</td>
-	                <td>3434</td>	                
-	            </tr>
-	            <tr >
-	                <td>laldsg435a</td>
-	                <td>we35ertetwe</td>
-	                <td>34ertert42234</td>	                
-	            </tr>
-			</tbody>
-
-		    
-		</table>
-	</div>
-	
+<div class="row">
+    <div class="col-md-12">
+        <my-table tableid="cool" tabletitle="Users info here" tabledata="usersTable" ready="{{usersTable.ready}}" tableeditable="true"></my-table>
+    </div>
 </div>
