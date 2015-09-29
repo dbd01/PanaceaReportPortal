@@ -44,7 +44,6 @@ app.controller("userInfoController", ['localStorageService','usersService','$sco
                 console.log($scope.userData);
                 console.log("User has been added successfully!");
                 
-
                 $scope.userData={
                         "username":'',
                         "password":"",
@@ -75,12 +74,8 @@ app.controller("userInfoController", ['localStorageService','usersService','$sco
              });            
         };
 
-       ////////////////////////////////////////////////     
-
-     $scope.delete = function(){
-
-        
-     } 
+      
+     ////////////////////////////////////////////////////
 
      $scope.update = function(){
 

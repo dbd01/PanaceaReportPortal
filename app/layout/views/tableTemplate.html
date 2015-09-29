@@ -15,14 +15,19 @@
             <thead>               
                 <tr>
                     <th ng-repeat="title in tabledata.header" >{{title.title}}</th>  
-                    <th>Edit</th>                    
+                    <th>Edit</th>  
+                    <th>Delete</th>                  
                 </tr>
             </thead>
             <tbody ng-if="tableeditable ">
                 <tr ng-repeat="row in tabledata.data">
                     <td ng-repeat="item in row" >{{item.value}}</td>
-                    <td class="edit">Edit</td>                    
-                                     
+                    <td class="edit">Edit</td> 
+                    <td>
+                        <button class='btn btn-danger btn-xs' type="submit" name="remove_entity" value="delete">
+                           <span class="glyphicon glyphicon-minus fa fa-times" aria-hidden="true"></span> Delete
+                        </button> 
+                    </td>                                  
                 </tr>
             </tbody>
             <tbody ng-if="!tableeditable">

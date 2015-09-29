@@ -1,4 +1,5 @@
-app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', function ($timeout, $log, $location, scopeComService) {
+app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'usersService', 
+  function ($timeout, $log, $location, scopeComService, usersService) {
     return {
         restrict: 'E',
         templateUrl: 'app/layout/views/tableTemplate.html',
@@ -31,9 +32,10 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', fu
                                 //$scope.$apply();  
                             
                             }
+
                         }                         
 
-                      //click event
+                      //click edit event
                         table.on('click', '.edit', function (e2) {
                             e2.preventDefault();
 
@@ -47,7 +49,35 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', fu
                             $scope.$apply();
                         });
                          
-                         /////                     
+                         ///// click delete event
+                         $('button[name="remove_entity"]').on('click', function(e){
+                            e.preventDefault(); 
+                            var nRow2 =  $('button[name="remove_entity"]').parents('tr')[0];
+                            var editline2 = oTable.fnGetPosition(nRow2);
+                            var usernm = $scope.tabledata.data[editline2][1].value;
+                            var _id = $scope.tabledata.data[editline2][0].value;
+
+                            bootbox.confirm("Are you sure you want to delete user " + usernm +" ?", function(ok) {
+                               if (ok){
+                                  //delete user 
+                                  usersService.remove({ userId: _id }, function (response) {          
+                
+                                    console.log("User has been deleted successfully.");                                    
+                                },
+                                 function (response) {
+                                     console.log($scope.userData);
+                                     if (response.data == null){
+                                         console.log("response data is null!!!!!");                                          
+                                     }
+                                     else{
+                                       console.log("response ->", response);                                      
+                                     }
+                                 });
+                               }                                
+                            }); 
+                               
+                          }); 
+                          //////////////////////                    
 
                       
                     }, 0);
