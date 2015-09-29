@@ -35,10 +35,11 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                         }                         
 
                       //click edit event
-                        table.on('click', '.edit', function (e2) {
+                       // table.on('click', '.edit', function (e2) {
+                        $('button[name="edit_entity"]').on('click', function(e2){
                             e2.preventDefault();
 
-                            var nRow = $(this).parents('tr')[0];
+                            var nRow =  $('button[name="edit_entity"]').parents('tr')[0];
                             var editline = oTable.fnGetPosition(nRow);
                             
                             //write data to registered service scopeCommService     
