@@ -20,8 +20,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                         else
                             $scope.toolbar_width = "col-md-12";
 
-                        var table = $('#' + $scope.tableid);
-                  
+                        var table = $('#' + $scope.tableid);                  
                         var oTable = table.dataTable(); 
 
                         //add user btn
@@ -29,13 +28,11 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                             if($location.path()=="/users"){
                                 scopeComService.add("add_new_user");                           
                                 $location.path('/userInfo');
-                                //$scope.$apply();  
-                            
+                                //$scope.$apply();                             
                             }
                         }                         
 
-                      //click edit event
-                       // table.on('click', '.edit', function (e2) {
+                      //click edit btn                      
                         $('button[name="edit_entity"]').on('click', function(e2){
                             e2.preventDefault();
 
@@ -49,7 +46,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                             $scope.$apply();
                         });
                          
-                         ///// click delete event
+                         // click delete btn
                          $('button[name="remove_entity"]').on('click', function(e){
                             e.preventDefault(); 
                             var nRow2 =  $('button[name="remove_entity"]').parents('tr')[0];
