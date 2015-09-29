@@ -7,7 +7,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', fu
             tabletitle: '@',
             tabledata: '=',
             ready: '@',
-            tableresult: '=',          
+            tableresult: '=',                   
             tableeditable: '=' // it was '@' but didn't work with the views
         },
         link: function ($scope, element, attrs) {
@@ -23,6 +23,16 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', fu
                   
                         var oTable = table.dataTable(); 
 
+                        //add user btn
+                        $scope.addNewEntity = function(){
+                            if($location.path()=="/users"){
+                                scopeComService.add("add_new_user");                           
+                                $location.path('/userInfo');
+                                //$scope.$apply();  
+                            
+                            }
+                        }                         
+
                       //click event
                         table.on('click', '.edit', function (e2) {
                             e2.preventDefault();
@@ -36,7 +46,8 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', fu
                             $location.path('/userInfo');
                             $scope.$apply();
                         });
-                                              
+                         
+                         /////                     
 
                       
                     }, 0);

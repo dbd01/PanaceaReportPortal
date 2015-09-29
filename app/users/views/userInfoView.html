@@ -4,7 +4,7 @@
 				<div class="form-group">
 				    <h4> User Information </h4>
 				    <table class="table table-responsive" cellspacing="3" >
-					    <tr>
+					    <tr ng-if="showit">
 					    	<td>User Id:</td>
 					    	<td> {{userId}}</td>
 					    </tr>					   
@@ -16,7 +16,7 @@
 							<td>Password:</td>
 							<td> <input type="password" class="form-control"  ng-model ="userData.password" required> </td> 
 						</tr>
-						<tr>
+						<tr ng-if="showIt">
 							<td>Is Deleted:</td>
 							<td> {{isDeleted}}</td> 
 						</tr>
@@ -28,8 +28,8 @@
 					</table>
 					
 					    <button type="submit" class="btn btn-default" ng-click = "add()">Add</button>
-	  					<button type="submit" class="btn btn-default" ng-click = "delete()">Delete</button>
-	  					<button type="submit" class="btn btn-default" ng-click = "update()">Update</button>
+	  					<button type="submit" class="btn btn-default" ng-click = "delete()" ng-if="showIt">Delete</button>
+	  					<button type="submit" class="btn btn-default" ng-click = "update()" ng-if="showIt">Update</button>
 			</form>
 	</div>
 

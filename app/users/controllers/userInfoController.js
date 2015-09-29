@@ -6,12 +6,21 @@ app.controller("userInfoController", ['localStorageService','usersService','$sco
     
 	 $scope.userData= scopeComService.list[0];
      scopeComService.flush();
+     $scope.showIt = true;
      
-     $scope.userId= $scope.userData[0].value;
-     $scope.isDeleted= $scope.userData[2].value;
+    if ($scope.userData=="add_new_user")
+         $scope.showIt = false;
 
+     if( $scope.showIt){
+        $scope.userId= $scope.userData[0].value;
+        $scope.isDeleted= $scope.userData[2].value;
+        $scope.username = $scope.userData[1].value;
+     }
+     else 
+        $scope.username = "";
+    
      $scope.userData={
-                        "username":$scope.userData[1].value,
+                        "username":$scope.username,
                         "password":'',
                         "applicationId":"polyphemus",
                         "groupId":''
