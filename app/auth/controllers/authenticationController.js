@@ -22,7 +22,7 @@
         			//success
             		function (response) {
 		                console.log("authentication data been sent successfully");    
-		                //console.log(response);  		               
+		                //set the token  		               
 		                localStorageService.set('authorizationData', 
 		                 	{ token: response.token, 
 		                 	  userName: $scope.authData.userName, 
