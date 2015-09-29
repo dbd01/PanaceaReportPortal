@@ -11,7 +11,7 @@ app
     localStorageServiceProvider.setPrefix('ls');
      }])
     .run(['$rootScope', 'localStorageService', function($rootScope, localStorageService){
-        if (localStorageService.get('authorizationData').token==null)
+        if (localStorageService.get('authorizationData')==null)
             $rootScope.log_link = {value:"Login"}
         else
             $rootScope.log_link = {value:"Logout"}
