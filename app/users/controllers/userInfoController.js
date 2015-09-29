@@ -18,7 +18,17 @@ app.controller("userInfoController", ['localStorageService','usersService','$sco
      }
      else 
         $scope.username = "";
-    
+
+    $scope.closeAlert = function() {
+                $scope.alert=null;
+                $scope.userData={
+                        "username":'',
+                        "password":'',
+                        "applicationId":"polyphemus",
+                        "groupId":''
+                    };                    
+            }    
+
      $scope.userData={
                         "username":$scope.username,
                         "password":'',
@@ -49,10 +59,18 @@ app.controller("userInfoController", ['localStorageService','usersService','$sco
                  if (response.data == null)
                  {
                      console.log("response data is null!!!!!");
+                      $scope.alert = { 
+                                type: 'danger', 
+                                msg: 'No response from server' 
+                           };
                  }
                  else
                  {
                    console.log("response ->", response);
+                   $scope.alert = { 
+                                type: 'danger', 
+                                msg: 'Wrong Group Id or username already exists' 
+                           };
                  }
              });            
         };
