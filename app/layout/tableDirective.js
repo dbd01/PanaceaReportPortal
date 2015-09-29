@@ -32,7 +32,6 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                                 //$scope.$apply();  
                             
                             }
-
                         }                         
 
                       //click edit event
@@ -54,10 +53,15 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                             e.preventDefault(); 
                             var nRow2 =  $('button[name="remove_entity"]').parents('tr')[0];
                             var editline2 = oTable.fnGetPosition(nRow2);
-                            var usernm = $scope.tabledata.data[editline2][1].value;
+                            var entityName = $scope.tabledata.data[editline2][1].value;
                             var _id = $scope.tabledata.data[editline2][0].value;
+                            var entity="";
 
-                            bootbox.confirm("Are you sure you want to delete user " + usernm +" ?", function(ok) {
+                            if($location.path()=="/users")
+                                entity = "user";
+
+
+                            bootbox.confirm("Are you sure you want to delete " + entity + " " + entityName +" ?", function(ok) {
                                if (ok){
                                   //delete user 
                                   usersService.remove({ userId: _id }, function (response) {          

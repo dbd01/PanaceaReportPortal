@@ -20,7 +20,7 @@
 							<td>Is Deleted:</td>
 							<td> {{isDeleted}}</td> 
 						</tr>
-						<tr>
+						<tr ng-if="!showIt">
 							<td>Group ID:</td>
 							<td> 
 								<select class="form-control" ng-model ="userData.groupId" required >

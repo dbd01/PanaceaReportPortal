@@ -13,8 +13,9 @@ app.controller("userInfoController", ['localStorageService','usersService','$sco
 
      if( $scope.showIt){
         $scope.userId= $scope.userData[0].value;
-        $scope.isDeleted= $scope.userData[2].value;
         $scope.username = $scope.userData[1].value;
+        $scope.isDeleted= $scope.userData[2].value;
+        $scope.password = $scope.userData[3].value;
      }
      else 
         $scope.username = "";
@@ -30,8 +31,8 @@ app.controller("userInfoController", ['localStorageService','usersService','$sco
             }    
 
      $scope.userData={
-                        "username":$scope.username,
-                        "password":'',
+                        "username": $scope.username,
+                        "password": $scope.password,
                         "applicationId":"polyphemus",
                         "groupId":''
                     }
@@ -79,12 +80,41 @@ app.controller("userInfoController", ['localStorageService','usersService','$sco
 
      $scope.update = function(){
 
-        
-     } 
-     $scope.partialUpdate = function(){
+        $scope.updateData={
+                        "username":$scope.userData.username,
+                        "password":$scope.userData.password                       
+                    }
 
-        
-     } 
+        usersService.update({ userId: $scope.userId }, $scope.updateData, function (response) {
+                
+                console.log("User has been updated successfully.");
+                console.log("update data=>", $scope.updateData);
+                $location.path('/users');
+            },
+             function (response) {
+                 console.log("err update -->", $scope.userData);
+                 if (response.data == null)
+                 {
+                     console.log("response data is null!!!!!");
+                      $scope.alert = { 
+                                type: 'danger', 
+                                msg: 'No response from server' 
+                           };
+                 }
+                 else
+                 {
+                   console.log("response ->", response);
+                   $scope.alert = { 
+                                type: 'danger', 
+                                msg: 'Wrong input data' 
+                           };
+                 }
+             });        
+     }
 
+     ////////////////////////////////
+
+
+     
 }]);
 

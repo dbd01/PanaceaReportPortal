@@ -13,7 +13,9 @@ app.controller("usersController", ['localStorageService','usersService','$scope'
                     "header": [
                         { "title": "user_Id" },
                         { "title": "username" },
-                        { "title": "isDeleted" },                        
+                        { "title": "isDeleted" },
+                        { "title": "hashedPassword"}
+
                     ],
     				"data": [],
     				"ready": false
@@ -27,7 +29,8 @@ app.controller("usersController", ['localStorageService','usersService','$scope'
                     var userData = [];
                     userData.push( {"value": user.userId} );
                     userData.push( {"value": user.username} );
-                    userData.push( {"value": user.isDeleted});                    
+                    userData.push( {"value": user.isDeleted}); 
+                    userData.push( {"value": user.hashedPassword});                   
                     usersTable.data.push(userData);                   
 
                 });
