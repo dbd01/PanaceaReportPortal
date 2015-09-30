@@ -6,8 +6,7 @@ var gulp = require('gulp'),
 
  var js_files =[
     'bower_components/jquery/dist/jquery.js',
-    'bower_components/bootstrap/dist/js/bootstrap.min.js',
-
+    
     'bower_components/angular/angular.js',
     'bower_components/angular-ui-router/release/angular-ui-router.js',
     'bower_components/angular-resource/angular-resource.js',
@@ -23,6 +22,8 @@ var gulp = require('gulp'),
     'bower_components/angular-datatables/dist/angular-datatables.js',    
     'bower_components/datatables-tabletools/js/dataTables.tableTools.js',
     'bower_components/bootbox/bootbox.js',
+
+    'bower_components/bootstrap/dist/js/bootstrap.min.js',
     
     'app/_appModule.js',
     'app/appConfig.js', 
