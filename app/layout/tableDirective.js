@@ -62,50 +62,21 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                             bootbox.confirm("Are you sure you want to delete " + entity + " " + entityName +" ?", function(ok) {
                                if (ok){
                                   //delete entity 
-                                  if (entity=="user"){
-
-                                    groupService.deleteUserFromAllGroups({ userId: _id }, function (response) {                  
-                                      console.log("User has been deleted from all groups.");
-                                      
-                                      userPermissionService.deleteUserFromAllPermissions({ userId: _id }, function (response) {                      
-                                          console.log("User has been deleted from all permissions."); 
-                                          
-                                          usersService.remove({ userId: _id }, function (response) {                   
-                                            console.log("User has been deleted successfully."); 
-                                            //refresh page
-                                            $window.location.reload();                                   
-                                            },
-                                            function (response) {
-                                               console.log($scope.userData);
-                                               if (response.data == null){
-                                                   console.log("response  data is null! -(0)");                                          
-                                               }
-                                               else{
-                                                 console.log("response (0) ->", response);                                      
-                                               }
-                                          });
-
+                                  if (entity=="user"){                                                                            
+                                      usersService.remove({ userId: _id }, function (response) {                   
+                                        console.log("User has been deleted successfully."); 
+                                        //refresh page
+                                        $window.location.reload();                                   
                                         },
                                         function (response) {
                                            console.log($scope.userData);
                                            if (response.data == null){
-                                               console.log("response  data is null! -(2)");                                          
+                                               console.log("response  data is null! -(0)");                                          
                                            }
                                            else{
-                                             console.log("response (2)s ->", response);                                      
+                                             console.log("response (0) ->", response);                                      
                                            }
-                                      });
-                                    },
-                                    function (response) {
-                                       console.log($scope.userData);
-                                       if (response.data == null){
-                                           console.log("response data is null! -(1)");                                          
-                                       }
-                                       else{
-                                         console.log("response (1) ->", response);                                      
-                                       }
-                                   });                                
-
+                                      });                                                     
                                 }//end if entity == user
 
 
