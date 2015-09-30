@@ -1,5 +1,5 @@
-app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'usersService', 
-  function ($timeout, $log, $location, scopeComService, usersService) {
+app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'usersService', 'groupService', 'userPermissionService', '$window',
+  function ($timeout, $log, $location, scopeComService, usersService, groupService, userPermissionService, $window) {
     return {
         restrict: 'E',
         templateUrl: 'app/layout/views/tableTemplate.html',
@@ -61,21 +61,55 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
 
                             bootbox.confirm("Are you sure you want to delete " + entity + " " + entityName +" ?", function(ok) {
                                if (ok){
-                                  //delete user 
-                                  usersService.remove({ userId: _id }, function (response) {          
-                
-                                    console.log("User has been deleted successfully.");                                    
-                                },
-                                 function (response) {
-                                     console.log($scope.userData);
-                                     if (response.data == null){
-                                         console.log("response data is null!!!!!");                                          
-                                     }
-                                     else{
-                                       console.log("response ->", response);                                      
-                                     }
-                                 });
-                               }                                
+                                  //delete entity 
+                                  if (entity=="user"){
+
+                                    groupService.deleteUserFromAllGroups({ userId: _id }, function (response) {                  
+                                      console.log("User has been deleted from all groups.");
+                                      
+                                      userPermissionService.deleteUserFromAllPermissions({ userId: _id }, function (response) {                      
+                                          console.log("User has been deleted from all permissions."); 
+                                          
+                                          usersService.remove({ userId: _id }, function (response) {                   
+                                            console.log("User has been deleted successfully."); 
+                                            //refresh page
+                                            $window.location.reload();                                   
+                                            },
+                                            function (response) {
+                                               console.log($scope.userData);
+                                               if (response.data == null){
+                                                   console.log("response  data is null! -(0)");                                          
+                                               }
+                                               else{
+                                                 console.log("response (0) ->", response);                                      
+                                               }
+                                          });
+
+                                        },
+                                        function (response) {
+                                           console.log($scope.userData);
+                                           if (response.data == null){
+                                               console.log("response  data is null! -(2)");                                          
+                                           }
+                                           else{
+                                             console.log("response (2)s ->", response);                                      
+                                           }
+                                      });
+                                    },
+                                    function (response) {
+                                       console.log($scope.userData);
+                                       if (response.data == null){
+                                           console.log("response data is null! -(1)");                                          
+                                       }
+                                       else{
+                                         console.log("response (1) ->", response);                                      
+                                       }
+                                   });                                
+
+                                }//end if entity == user
+
+
+                               } //end if ok
                             }); 
                                
                           }); 
