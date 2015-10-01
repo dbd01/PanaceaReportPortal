@@ -8,7 +8,8 @@ function authService($injector, $rootScope, $location, localStorageService) {
 	$rootScope.$on('$stateChangeStart', function (event, toState) { 
 
        var authData = localStorageService.get('authorizationData');
-      
+       console.log ("ddddd", $location.path());
+
        if((authData==null) &&   (($location.path()!="/login") || ($location.path()!="/") ) )
        	  	$location.path('/');    	 	
                     	                   

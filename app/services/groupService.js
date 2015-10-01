@@ -13,11 +13,7 @@
                           userId: '@userId',
                           group: '',
                           groupId: ''
-                        },
-                headers: { 
-                        'Content-Type': 'application/json',
-                        'x-access-token': localStorageService.get('authorizationData').token 
-                         } 
+                        }
             },
             deleteUserFromGroup: { 
                 method: 'DELETE',
@@ -25,13 +21,8 @@
                           userId: '@userId',
                           group: 'group',
                           groupId: '@groupId'
-                        },
-                headers: { 
-                        'Content-Type': 'application/json',
-                        'x-access-token': localStorageService.get('authorizationData').token 
-                         } 
+                        }
             }
-
 
         });
     }

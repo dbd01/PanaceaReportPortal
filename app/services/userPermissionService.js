@@ -13,11 +13,7 @@
                           userId: '@userId',
                           permission: '',
                           permissionId: ''
-                        },
-                headers: { 
-                        'Content-Type': 'application/json',
-                        'x-access-token': localStorageService.get('authorizationData').token 
-                         } 
+                        }
             },
             deleteUserFromPermission: { 
                 method: 'DELETE',
@@ -25,11 +21,7 @@
                           userId: '@userId',
                           permission: 'permission',
                           permissionId: '@permissionId'
-                        },
-                headers: { 
-                        'Content-Type': 'application/json',
-                        'x-access-token': localStorageService.get('authorizationData').token 
-                         } 
+                        }
             }
 
 
