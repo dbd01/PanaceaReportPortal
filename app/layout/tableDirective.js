@@ -32,18 +32,17 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                             }
                         }
                                              
-                      //click edit btns
-                                                              
-                        $scope.edit_entity= function(editline) {                          
-                                                        
-                            //write data to registered service scopeCommService     
-                            scopeComService.add($scope.tabledata.data[editline]);
-                           
-                            $location.path('/userInfo');
-                           // $scope.$apply();
-                        }
+                          //click edit btns                                                              
+                          $scope.edit_entity= function(editline) {                          
+                                                          
+                              //write data to registered service scopeCommService     
+                              scopeComService.add($scope.tabledata.data[editline]);
+                             
+                              $location.path('/userInfo');
+                             // $scope.$apply();
+                          }
                                               
-                         // click delete btn
+                         // click delete btns
                           $scope.delete_entity= function(editline) {
                                                          
                             var entityName = $scope.tabledata.data[editline][1].value;
