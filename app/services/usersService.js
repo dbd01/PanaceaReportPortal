@@ -9,43 +9,24 @@
             query: { 
                 method: 'GET', 
                 isArray: true ,
-                params: { userId: '' },
-                headers: { 
-                         'Content-Type': 'application/json',
-                         'x-access-token': localStorageService.get('authorizationData').token 
-                         }
+                params: { userId: '' }               
             },            
             add: {
-                 method: 'POST',
-                 headers: { 
-                        'Content-Type': 'application/json',
-                        'x-access-token': localStorageService.get('authorizationData').token 
-                         }
+                 method: 'POST'                 
             },
             update: { 
                 method: 'PUT',
-                params: { userId: '@userId' },
-                headers: { 
-                        'Content-Type': 'application/json',
-                        'x-access-token': localStorageService.get('authorizationData').token 
-                         } 
+                params: { userId: '@userId' }
+                
             },
              partialUpdate: { 
                 method: 'PATCH',
-                params: { userId: '@userId' },
-                headers: { 
-                        'Content-Type': 'application/json',
-                        'x-access-token': localStorageService.get('authorizationData').token 
-                         } 
+                params: { userId: '@userId' }               
             },
 
             remove: { 
                 method: 'DELETE',
-                params: { userId: '@userId' },
-                headers: { 
-                        'Content-Type': 'application/json',
-                        'x-access-token': localStorageService.get('authorizationData').token 
-                         } 
+                params: { userId: '@userId' }                
             }
 
         });
