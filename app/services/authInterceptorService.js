@@ -10,11 +10,12 @@ function authService($injector, $rootScope, $location, localStorageService) {
        var authData = localStorageService.get('authorizationData');
        console.log ("loc-path", $location.path());
        console.log ("to state", toState.name);
+       
        if ((toState.name =="lala.login") && ($rootScope.log_link.value=="Logout"))
-       	$location.path('/welcome');
+          $location.path('/welcome');
 
        if((authData==null) &&   (($location.path()!="/login") || ($location.path()!="/") ) )
-       	  	$location.path('/');    	 	
+       	  $location.path('/');    	 	
                     	                   
     });
 
