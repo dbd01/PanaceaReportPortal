@@ -30,29 +30,24 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                                 $location.path('/userInfo');
                                 //$scope.$apply();                             
                             }
-                        }                         
-
-                      //click edit btn                      
-                        $('button[name="edit_entity"]').on('click', function(e2){
-                            e2.preventDefault();
-
-                            var nRow =  $('button[name="edit_entity"]').parents('tr')[0];
-                            var editline = oTable.fnGetPosition(nRow);
-                            
+                        }
+                                             
+                      //click edit btns
+                                                              
+                        $scope.edit_entity= function(editline) {                          
+                                                        
                             //write data to registered service scopeCommService     
                             scopeComService.add($scope.tabledata.data[editline]);
                            
                             $location.path('/userInfo');
-                            $scope.$apply();
-                        });
-                         
+                           // $scope.$apply();
+                        }
+                                              
                          // click delete btn
-                         $('button[name="remove_entity"]').on('click', function(e){
-                            e.preventDefault(); 
-                            var nRow2 =  $('button[name="remove_entity"]').parents('tr')[0];
-                            var editline2 = oTable.fnGetPosition(nRow2);
-                            var entityName = $scope.tabledata.data[editline2][1].value;
-                            var _id = $scope.tabledata.data[editline2][0].value;
+                          $scope.delete_entity= function(editline) {
+                                                         
+                            var entityName = $scope.tabledata.data[editline][1].value;
+                            var _id = $scope.tabledata.data[editline][0].value;
                             var entity="";
 
                             if($location.path()=="/users")
@@ -83,7 +78,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                                } //end if ok
                             }); 
                                
-                          }); 
+                          }
                           //////////////////////                    
 
                       
