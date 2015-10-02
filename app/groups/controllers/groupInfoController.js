@@ -1,61 +1,59 @@
 
 "use strict";
 
-app.controller("userInfoController", ['localStorageService','usersService','$scope', 'scopeComService','$location',
-   function (localStorageService, usersService , $scope , scopeComService, $location ) {
+app.controller("groupInfoController", ['localStorageService','groupsService','$scope', 'scopeComService','$location',
+   function (localStorageService, groupsService , $scope , scopeComService, $location ) {
     
-	 $scope.userData= scopeComService.list[0];
+	 $scope.groupData= scopeComService.list[0];
      scopeComService.flush();
      $scope.showIt = true;
      
-    if ($scope.userData=="add_new_user")
+    if ($scope.groupData=="add_new_group")
          $scope.showIt = false;
 
      if( $scope.showIt){
-        $scope.userId= $scope.userData[0].value;
-        $scope.username = $scope.userData[1].value;
-        $scope.isDeleted= $scope.userData[2].value;
-        $scope.password = $scope.userData[3].value;
+        $scope.groupId= $scope.groupData[0].value;
+        $scope.description = $scope.groupData[1].value;
+        $scope.isDeleted= $scope.groupData[2].value;       
      }
      else 
-        $scope.username = "";
+        $scope.groupId = "";
 
     $scope.closeAlert = function() {
                 $scope.alert=null;
-                $scope.userData={
-                        "username":'',
-                        "password":'',
-                        "applicationId":"polyphemus",
-                        "groupId":''
+                $scope.groupData={
+                        "groupId":'',
+                        "description":'',
+                        "isDeleted":''                                              
                     };                    
             }    
 
-     $scope.userData={
-                        "username": $scope.username,
-                        "password": $scope.password,
-                        "applicationId":"polyphemus",
-                        "groupId":''
+     $scope.groupData={
+                        "groupId": $scope.groupId,
+                        "description": $scope.description,
+                        "isDeleted":  $scope.isDeleted                      
                     }
 
      ///////////////////////////////////////////
 
      $scope.add = function(){
 
-            usersService.add($scope.userData, function (response) {
-                console.log($scope.userData);
-                console.log("User has been added successfully!");
-                
-                $scope.userData={
-                        "username":'',
-                        "password":"",
-                        "applicationId":"",                        
-                        "groupId":""
-                    }; 
+            $scope.groupAddData={
+                        "groupId": $scope.groupId,
+                        "description": $scope.groupData.description                                            
+                    }
 
-                $location.path('/users');
+            groupsService.add($scope.groupAddData, function (response) {                
+                console.log("group has been added successfully!");                
+                $scope.groupAddData={
+                        "groupId":'',
+                        "description":''                                               
+                    };    
+
+                $location.path('/groups');
             },
              function (response) {
-                 console.log($scope.userData);
+                 console.log($scope.groupData);
                  if (response.data == null)
                  {
                      console.log("response data is null!!!!!");
@@ -69,7 +67,7 @@ app.controller("userInfoController", ['localStorageService','usersService','$sco
                    console.log("response ->", response);
                    $scope.alert = { 
                                 type: 'danger', 
-                                msg: 'Wrong Group Id or username already exists' 
+                                msg: 'Wrong Group Id or groupname already exists' 
                            };
                  }
              });            
@@ -81,18 +79,18 @@ app.controller("userInfoController", ['localStorageService','usersService','$sco
      $scope.update = function(){
 
         $scope.updateData={
-                        "username":$scope.userData.username,
-                        "password":$scope.userData.password                       
+                        "groupId":$scope.groupData.groupId,
+                        "description":$scope.groupData.description                       
                     }
 
-        usersService.update({ userId: $scope.userId }, $scope.updateData, function (response) {
+        groupsService.update({ groupId: $scope.groupId }, $scope.updateData, function (response) {
                 
-                console.log("User has been updated successfully.");
+                console.log("group has been updated successfully.");
                 console.log("update data=>", $scope.updateData);
-                $location.path('/users');
+                $location.path('/groups');
             },
              function (response) {
-                 console.log("err update -->", $scope.userData);
+                 console.log("err update -->", $scope.groupData);
                  if (response.data == null)
                  {
                      console.log("response data is null!!!!!");

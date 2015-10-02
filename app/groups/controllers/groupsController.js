@@ -31,7 +31,7 @@ app.controller("groupsController", ['localStorageService','groupsService','$scop
             .then(function () {
                 $scope.groupsTable = groupsTable;
                 $scope.groupsTable.ready = true;
-                console.log("uuuu", $scope.groupsTable.data);                                
+                console.log("ggg", $scope.groupsTable.data);                                
                 
             });
     

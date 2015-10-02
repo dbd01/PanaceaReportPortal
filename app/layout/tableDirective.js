@@ -1,5 +1,5 @@
 app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'usersService', 'groupsService', 'userPermissionService', '$window',
-  function ($timeout, $log, $location, scopeComService, usersService, groupService, userPermissionService, $window) {
+  function ($timeout, $log, $location, scopeComService, usersService, groupsService, userPermissionService, $window) {
     return {
         restrict: 'E',
         templateUrl: 'app/layout/views/tableTemplate.html',
@@ -30,6 +30,11 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                                 $location.path('/userInfo');
                                 //$scope.$apply();                             
                             }
+                            if($location.path()=="/groups"){
+                                scopeComService.add("add_new_group");                           
+                                $location.path('/groupInfo');
+                                //$scope.$apply();                             
+                            }
                         }
                                              
                           //click edit btns                                                              
@@ -45,16 +50,22 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                          // click delete btns
                           $scope.delete_entity= function(editline) {
                                                          
-                            var entityName = $scope.tabledata.data[editline][1].value;
-                            var _id = $scope.tabledata.data[editline][0].value;
-                            var entity="";
+                            var entityName, _id, entity="";
 
                             if($location.path()=="/users")
+                            {
                                 entity = "user";
-                            if($location.path()=="/groups")
-                                entity = "group";  
+                                _id = $scope.tabledata.data[editline][0].value;
+                                entityName = $scope.tabledata.data[editline][1].value;
 
-
+                            }
+                            if($location.path()=="/groups")                                
+                                 {
+                                    entity = "group";
+                                    _id = $scope.tabledata.data[editline][0].value;
+                                    entityName = _id;
+                                 }  
+                            
                             bootbox.confirm("Are you sure you want to delete " + entity + " <b>" + entityName +"</b> ?", function(ok) {
                                if (ok){
                                   //delete entity 
@@ -73,7 +84,24 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                                              console.log("response (0) ->", response);                                      
                                            }
                                       });                                                     
-                                }//end if entity == user
+                                }//end if entity == group
+
+                                else if (entity=="group"){                                                                            
+                                      groupsService.remove({ groupId: _id }, function (response) {                   
+                                        console.log("Group has been deleted successfully."); 
+                                        //refresh page
+                                        $window.location.reload();                                   
+                                        },
+                                        function (response) {
+                                           console.log($scope.groupData);
+                                           if (response.data == null){
+                                               console.log("response  data is null! -(0)");                                          
+                                           }
+                                           else{
+                                             console.log("response (0) ->", response);                                      
+                                           }
+                                      });                                                     
+                                }//end if entity == group
 
 
                                } //end if ok
