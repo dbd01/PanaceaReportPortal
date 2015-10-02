@@ -13,7 +13,11 @@
 
 				$scope.users = function(){
 					navigationService.add("users");
-				}	
+				}
+
+				$scope.groups = function(){
+					navigationService.add("groups");
+				}		
 
     		}			 
 		};

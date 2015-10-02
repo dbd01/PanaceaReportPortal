@@ -1,9 +1,9 @@
  "use strict";
 
     app
-        .factory("groupService", ["$resource", "appSettings", "localStorageService", groupService])
+        .factory("userGroupService", ["$resource", "appSettings", "localStorageService", userGroupService])
 
-    function groupService($resource, appSettings, localStorageService) {
+    function userGroupService($resource, appSettings, localStorageService) {
 
         return $resource(appSettings.authServerPath + '/api/v1/usergroup/:user/:userId/:group/:groupId', {}, {
                        

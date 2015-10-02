@@ -6,31 +6,28 @@ app.controller("usersController", ['localStorageService','usersService','$scope'
   
 	var authData = localStorageService.get('authorizationData');
 	console.log("auth data--uu>", authData);	
-    
-    
-   
+       
     var usersTable ={
                     "header": [
-                        { "title": "user_Id" },
-                        { "title": "username" },
-                        { "title": "isDeleted" },
-                        { "title": "hashedPassword"}
+                        { "title": "user_Id",  "showIt": true },
+                        { "title": "username", "showIt": true },
+                        { "title": "isDeleted", "showIt": true },
+                        { "title": "hashedPassword", "showIt": false}
 
                     ],
     				"data": [],
     				"ready": false
-    				}
-    
+    				}    
 
     usersService.query().$promise.then(
             function (users) {
             	console.log("users:=>",users);
                 users.forEach(function (user) {
                     var userData = [];
-                    userData.push( {"value": user.userId} );
-                    userData.push( {"value": user.username} );
-                    userData.push( {"value": user.isDeleted}); 
-                    userData.push( {"value": user.hashedPassword});                   
+                    userData.push( {"value": user.userId, "showIt": true} );
+                    userData.push( {"value": user.username, "showIt": true} );
+                    userData.push( {"value": user.isDeleted, "showIt": true}); 
+                    userData.push( {"value": user.hashedPassword, "showIt": false});                   
                     usersTable.data.push(userData);                   
 
                 });
@@ -41,7 +38,6 @@ app.controller("usersController", ['localStorageService','usersService','$scope'
                 console.log("uuuu", $scope.usersTable.data);                                
                 
             });
-
     
 }]);
 

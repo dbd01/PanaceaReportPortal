@@ -1,4 +1,4 @@
-app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'usersService', 'groupService', 'userPermissionService', '$window',
+app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'usersService', 'groupsService', 'userPermissionService', '$window',
   function ($timeout, $log, $location, scopeComService, usersService, groupService, userPermissionService, $window) {
     return {
         restrict: 'E',
@@ -51,9 +51,11 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
 
                             if($location.path()=="/users")
                                 entity = "user";
+                            if($location.path()=="/groups")
+                                entity = "group";  
 
 
-                            bootbox.confirm("Are you sure you want to delete " + entity + " " + entityName +" ?", function(ok) {
+                            bootbox.confirm("Are you sure you want to delete " + entity + " <b>" + entityName +"</b> ?", function(ok) {
                                if (ok){
                                   //delete entity 
                                   if (entity=="user"){                                                                            
