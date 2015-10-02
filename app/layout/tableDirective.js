@@ -23,7 +23,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                         var table = $('#' + $scope.tableid);                  
                         var oTable = table.dataTable(); 
 
-                        //add user btn
+                        //add user btn////////////////////////////////////////////////
                         $scope.addNewEntity = function(){
                             if($location.path()=="/users"){
                                 scopeComService.add("add_new_user");                           
@@ -64,11 +64,11 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
 
                             }
                             if($location.path()=="/groups")                                
-                                 {
-                                    entity = "group";
-                                    _id = $scope.tabledata.data[editline][0].value;
-                                    entityName = _id;
-                                 }  
+                             {
+                                entity = "group";
+                                _id = $scope.tabledata.data[editline][0].value;
+                                entityName = _id;
+                             }  
                             
                             bootbox.confirm("Are you sure you want to delete " + entity + " <b>" + entityName +"</b> ?", function(ok) {
                                if (ok){
@@ -88,7 +88,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                                              console.log("response (0) ->", response);                                      
                                            }
                                       });                                                     
-                                }//end if entity == group
+                                }//end if entity == user
 
                                 else if (entity=="group"){                                                                            
                                       groupsService.remove({ groupId: _id }, function (response) {                   
