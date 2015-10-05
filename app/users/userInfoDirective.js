@@ -113,7 +113,7 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                                     $location.path('/users');
                                 },
                                  function (response) {
-                                     console.log("err update -->", $scope.userData);
+                                     console.log("err update -->", $scope.updateData);
                                      if (response.data == null)
                                      {
                                          console.log("response data is null!!!!!");

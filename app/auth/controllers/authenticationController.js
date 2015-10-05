@@ -6,7 +6,7 @@
            $scope.authData = {
            		 	username: $scope.username,
            			password: $scope.password,
-           			applicationId: "testAuthAppServ"
+           			applicationId: "polyphemus"
         	};       		
 
         	$scope.closeAlert = function() {
