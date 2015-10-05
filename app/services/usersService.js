@@ -10,7 +10,11 @@
                 method: 'GET', 
                 isArray: true ,
                 params: { userId: '' }               
-            },            
+            }, 
+            viewUser: {
+                 method: 'GET',
+                 params: { userId: '@userId' }
+            },           
             add: {
                  method: 'POST'                 
             },

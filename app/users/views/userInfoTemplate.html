@@ -20,13 +20,20 @@
 							<td>Is Deleted:</td>
 							<td>{{isDeleted}}</td> 
 						</tr>
-						<tr ng-if="!showIt">
-							<td>Group ID:</td>
+						<tr >
+							<td>Group IDs:</td>
+							<td>							  
+								<label ng-repeat="group in groups">								 	
+								  		<input type="checkbox" checklist-model="userData.groupArray" checklist-value="group"> {{group}} <br>								 	 
+								</label>								
+						    </td>							
+                            <!--  
 							<td> 		
   								<select class="form-control"  ng-model ="userData.groupId" required >
 								    <option  ng-repeat = "row in groups" value="{{row}}">{{row}}</option>	   
 								</select>					
 							 </td>
+							 -->
 						</tr>
 						
 					</table>

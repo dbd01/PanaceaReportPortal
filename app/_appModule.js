@@ -7,6 +7,7 @@ var app = angular.module('PanaceaReports', [
 		'ui.bootstrap',
 		'ngResource',
 		'ngRoute',
-		'datatables'
+		'datatables',
+		'checklist-model'
 	]);
 

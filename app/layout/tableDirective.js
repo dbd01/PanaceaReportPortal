@@ -38,8 +38,33 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                         }
                                              
                           //click edit btns  /////////////////////////////////////////////////////                                                            
-                          $scope.edit_entity= function(editline) {                          
-                                                          
+                          $scope.edit_entity= function(editline) {  
+
+                           //query for one entity                        
+                            if ($location.path() == '/users')
+                            {
+                                usersService.viewUser().$promise.then(
+                                function (user) {
+                                   console.log("userrr:=>",user);                                   
+                                         //var userData = [];
+                                        //userData.push( {"value": user._id, "showIt": true} );
+                                        //userData.push( {"value": user.username, "showIt": true} );
+                                        //userData.push( {"value": user.isDeleted, "showIt": true}); 
+                                       // userData.push( {"value": user.hashedPassword, "showIt": false});                   
+                                        //usersTable.data.push(userData);                   
+
+                                    
+                                })    
+                                .then(function () {
+                                   // $scope.usersTable = usersTable;
+                                   // $scope.usersTable.ready = true;
+                                  //  console.log("uuuu", $scope.usersTable.data);                                
+                                    
+                                });
+
+
+                            } ///end if location.path=users
+
                               //write data to registered service scopeCommService     
                               scopeComService.add($scope.tabledata.data[editline]);
                               
