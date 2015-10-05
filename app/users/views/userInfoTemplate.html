@@ -23,9 +23,8 @@
 						<tr ng-if="!showIt">
 							<td>Group ID:</td>
 							<td> 		
-  								<select class="form-control" ng-model ="groupId" required >
-								    <option ng-repeat="row in groups" value="row">{{row}}</option>
-								    <option  value="pppp">ppp</option>
+  								<select class="form-control"  required >
+								    <option ng-repeat="groupId in groups" value="groupId" ng-model ="groupId">{{groupId}}</option>	   
 								</select>					
 							 </td>
 						</tr>
