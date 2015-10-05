@@ -17,7 +17,7 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                         var oTable = table.dataTable(); 
                          
                         $scope.groups =[];
-                        for (var i=0; i<$scope.tabledata.data.length-1; i++) 
+                        for (var i=0; i<$scope.tabledata.data.length; i++) 
                             $scope.groups[i] = $scope.tabledata.data[i][0].value;
                         
                         console.log("eeeeeeggggg0000ee",  $scope.groups ); 
@@ -26,7 +26,8 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                         $scope.userData= scopeComService.list[0];
                         scopeComService.flush();
                         $scope.showIt = true;
-                                                 
+                        $scope.groupId = "init2"; 
+
                         if ($scope.userData=="add_new_user")
                              $scope.showIt = false;
 
