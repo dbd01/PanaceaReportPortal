@@ -24,7 +24,7 @@ app.controller("usersController", ['localStorageService','usersService','$scope'
             	console.log("users:=>",users);
                 users.forEach(function (user) {
                     var userData = [];
-                    userData.push( {"value": user.userId, "showIt": true} );
+                    userData.push( {"value": user._id, "showIt": true} );
                     userData.push( {"value": user.username, "showIt": true} );
                     userData.push( {"value": user.isDeleted, "showIt": true}); 
                     userData.push( {"value": user.hashedPassword, "showIt": false});                   
