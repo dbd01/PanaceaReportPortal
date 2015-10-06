@@ -26,7 +26,7 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                         $scope.userData= scopeComService.list[0];
                         scopeComService.flush();
                         $scope.showIt = true;
-                        $scope.groupArray = []; 
+                        $scope.groupz = []; 
 
                         if ($scope.userData=="add_new_user")
                              $scope.showIt = false;
@@ -36,9 +36,9 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                             $scope.username = $scope.userData[1].value;
                             $scope.isDeleted= $scope.userData[2].value;
                             $scope.password = $scope.userData[3].value;  
-                            //scope.groupArray must contain strings
+                            //scope.groups must contain strings
                             for (var i=0; i<$scope.userData[4].length; i++)
-                                 $scope.groupArray[i] = $scope.userData[4][i].groupId;                       
+                                 $scope.groupz[i] = $scope.userData[4][i].groupId;                       
                          }
                          else 
                             $scope.username = "";                  
@@ -49,7 +49,7 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                                             "username":'',
                                             "password":'',
                                             "applicationId":"polyphemus",
-                                            "groupArray": []
+                                            "groups": []
                                         };                    
                                 }    
 
@@ -57,7 +57,7 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                                             "username": $scope.username,
                                             "password": $scope.password,
                                             "applicationId":"polyphemus",
-                                            "groupArray": $scope.groupArray
+                                            "groups": $scope.groupz
                                         }
 
                        
@@ -73,7 +73,7 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                                             "username":'',
                                             "password":"",
                                             "applicationId":"",                        
-                                            "groupId":""
+                                            "groups":""
                                         }; 
 
                                     $location.path('/users');
@@ -106,7 +106,8 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
 
                             $scope.updateData={
                                             "username":$scope.userData.username,
-                                            "password":$scope.userData.password                       
+                                            "password":$scope.userData.password,
+                                            "groups": $scope.groupz                      
                                         }
 
                             usersService.update({ userId: $scope.userId }, $scope.updateData, function (response) {
