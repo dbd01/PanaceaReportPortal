@@ -22,10 +22,12 @@
 						</tr>
 						<tr >
 							<td>Group IDs:</td>
-							<td>							  
-								<label ng-repeat="group in groups">		  				   							 	
-								  		<input type="checkbox" checklist-model="userData.groups" checklist-value="group"> {{group}} <p>	</p>
-								</label><p></p>								
+							<td>
+							  <div ng-repeat="group in groups">							  
+								<label >		  				   							 	
+								  		<input type="checkbox" checklist-model="userData.groups" checklist-value="group"> {{group}}  
+								</label>
+								</div>								
 						    </td>							
                             <!--  
 							<td> 		
