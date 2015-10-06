@@ -43,33 +43,23 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                            //query for one entity                        
                             if ($location.path() == '/users')
                             {
-                                usersService.viewUser().$promise.then(
-                                function (user) {
-                                   console.log("userrr:=>",user);                                   
-                                         //var userData = [];
-                                        //userData.push( {"value": user._id, "showIt": true} );
-                                        //userData.push( {"value": user.username, "showIt": true} );
-                                        //userData.push( {"value": user.isDeleted, "showIt": true}); 
-                                       // userData.push( {"value": user.hashedPassword, "showIt": false});                   
-                                        //usersTable.data.push(userData);                   
-
-                                    
+                                usersService.viewUser({ userId: $scope.tabledata.data[editline][0].value}).$promise
+                                .then(
+                                  function (user) {
+                                    console.log("userrr:=>",user);                           
+                                    $scope.tabledata.data[editline].push(user.groups);                                                 
                                 })    
                                 .then(function () {
-                                   // $scope.usersTable = usersTable;
-                                   // $scope.usersTable.ready = true;
-                                  //  console.log("uuuu", $scope.usersTable.data);                                
+                                   //write data to registered service scopeCommService     
+                                   scopeComService.add($scope.tabledata.data[editline]); 
+                                   $location.path('/userInfo');                              
                                     
                                 });
 
 
-                            } ///end if location.path=users
-
-                              //write data to registered service scopeCommService     
-                              scopeComService.add($scope.tabledata.data[editline]);
-                              
-                              if ($location.path() == '/users')
-                                 $location.path('/userInfo');
+                            } ///end if location.path=users                                                         
+                             
+                                 
                               if ($location.path() == '/groups')
                                  $location.path('/groupInfo'); 
                              

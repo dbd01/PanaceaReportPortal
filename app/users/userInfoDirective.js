@@ -35,11 +35,14 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                             $scope.userId= $scope.userData[0].value;
                             $scope.username = $scope.userData[1].value;
                             $scope.isDeleted= $scope.userData[2].value;
-                            $scope.password = $scope.userData[3].value;
+                            $scope.password = $scope.userData[3].value;  
+                            //scope.groupArray must contain strings
+                            for (var i=0; i<$scope.userData[4].length; i++)
+                                 $scope.groupArray[i] = $scope.userData[4][i].groupId;                       
                          }
                          else 
-                            $scope.username = "";
-                        
+                            $scope.username = "";                  
+                       
                         $scope.closeAlert = function() {
                                     $scope.alert=null;
                                     $scope.userData={
