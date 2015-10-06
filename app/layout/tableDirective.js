@@ -55,13 +55,15 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                                    $location.path('/userInfo');                              
                                     
                                 });
-
-
                             } ///end if location.path=users                                                         
                              
                                  
                               if ($location.path() == '/groups')
+                              {  
+                                 //write data to registered service scopeCommService     
+                                  scopeComService.add($scope.tabledata.data[editline]);
                                  $location.path('/groupInfo'); 
+                              }
                              
                              // $scope.$apply();
                           }
