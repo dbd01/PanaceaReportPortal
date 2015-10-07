@@ -18,7 +18,7 @@ app.directive('applicationinfo', [ 'localStorageService', 'applicationsService',
                          
                         $scope.groups =[];
                         for (var i=0; i<$scope.tabledata.data.length; i++) 
-                            $scope.groups[i] = $scope.tabledata.data[i][0].value;
+                            $scope.groups[i] = $scope.tabledata.data[i][1].value;
                         
                         console.log("eeeeeeggggg0000ee",  $scope.groups ); 
                         
@@ -42,7 +42,7 @@ app.directive('applicationinfo', [ 'localStorageService', 'applicationsService',
 
                             //scope.groups must contain strings
                             for (var i=0; i<$scope.applicationData[7].length; i++)
-                                 $scope.groupz[i] = $scope.applicationData[7][i].groupId;                       
+                                 $scope.groupz[i] = $scope.applicationData[7][i].name;                       
                          }
                          else 
                             $scope.name = "";                  

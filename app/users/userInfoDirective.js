@@ -18,7 +18,7 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                          
                         $scope.groups =[];
                         for (var i=0; i<$scope.tabledata.data.length; i++) 
-                            $scope.groups[i] = $scope.tabledata.data[i][0].value;
+                            $scope.groups[i] = $scope.tabledata.data[i][1].value;
                         
                         console.log("eeeeeeggggg0000ee",  $scope.groups ); 
                         
@@ -38,7 +38,7 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                             $scope.password = $scope.userData[3].value;  
                             //scope.groups must contain strings
                             for (var i=0; i<$scope.userData[4].length; i++)
-                                 $scope.groupz[i] = $scope.userData[4][i].groupId;                       
+                                 $scope.groupz[i] = $scope.userData[4][i].name;                       
                          }
                          else 
                             $scope.username = "";                  
