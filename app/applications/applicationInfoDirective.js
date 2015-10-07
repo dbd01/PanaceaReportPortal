@@ -2,7 +2,7 @@ app.directive('applicationinfo', [ 'localStorageService', 'applicationsService',
     function (localStorageService, applicationsService,  scopeComService, $location, $timeout) {
     return {
         restrict: 'E',
-        templateUrl: 'app/users/views/applicationInfoTemplate.html',
+        templateUrl: 'app/applications/views/applicationInfoTemplate.html',
         scope: { 
             tableid: '@',          
             tabledata: '=',

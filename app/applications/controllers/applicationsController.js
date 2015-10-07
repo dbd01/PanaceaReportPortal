@@ -25,7 +25,7 @@ app.controller("applicationsController", ['localStorageService','applicationsSer
     applicationsService.query().$promise.then(
             function (applications) {
             	console.log("applications:=>",applications);
-                users.forEach(function (application) {
+                applications.forEach(function (application) {
                     var applicationData = [];
                     applicationData.push( {"value": application.applicationId, "showIt": true} );
                     applicationData.push( {"value": application.name, "showIt": true} );

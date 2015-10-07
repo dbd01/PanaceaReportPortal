@@ -1,5 +1,5 @@
-app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'usersService', 'groupsService', 'userPermissionService', '$window',
-  function ($timeout, $log, $location, scopeComService, usersService, groupsService, userPermissionService, $window) {
+app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'usersService', 'applicationsService', 'groupsService', 'userPermissionService', '$window',
+  function ($timeout, $log, $location, scopeComService, usersService, applicationsService, groupsService, userPermissionService, $window) {
     return {
         restrict: 'E',
         templateUrl: 'app/layout/views/tableTemplate.html',
@@ -65,7 +65,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
 
                             if ($location.path() == '/applications')
                             {
-                                applicationsService.viewUser({ applicationId: $scope.tabledata.data[editline][0].value}).$promise
+                                applicationsService.viewApp({ applicationId: $scope.tabledata.data[editline][0].value}).$promise
                                 .then(
                                   function (application) {
                                     console.log("applicationnn:=>",application);                           

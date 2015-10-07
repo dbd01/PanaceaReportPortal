@@ -1,9 +1,9 @@
  "use strict";
 
     app
-        .factory("applicationsService", ["$resource", "appSettings", "localStorageService", groupsService])
+        .factory("applicationsService", ["$resource", "appSettings", "localStorageService", applicationsService])
 
-    function groupsService($resource, appSettings, localStorageService) {
+    function applicationsService($resource, appSettings, localStorageService) {
 
         return $resource(appSettings.authServerPath + '/api/v1/application/:applicationId', {}, {
                        
@@ -11,6 +11,10 @@
                 method: 'GET', 
                 isArray: true ,
                 params: { applicationId: '' }               
+            }, 
+            viewApp: {
+                 method: 'GET',
+                 params: { applicationId: '@applicationId' }
             },            
             add: {
                  method: 'POST'                 
