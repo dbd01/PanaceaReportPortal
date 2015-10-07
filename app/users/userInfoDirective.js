@@ -48,8 +48,7 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                                     $scope.userData={
                                             "_id":'',
                                             "name":'',
-                                            "password":'',
-                                            "applicationId":"polyphemus",
+                                            "password":'',                                            
                                             "groups": []
                                         };                    
                                 }    
@@ -57,8 +56,7 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                          $scope.userData= {
                                             "_id": $scope._id,
                                             "name": $scope.username,
-                                            "password": $scope.password,
-                                            "applicationId":"polyphemus",
+                                            "password": $scope.password,                                           
                                             "groups": $scope.groupz
                                           }
 
@@ -67,22 +65,27 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
 
                          $scope.add = function(){
 
-                                usersService.add($scope.userData, function (response) {
-                                    console.log($scope.userData);
+                             $scope.userAddData= {                                            
+                                            "name": $scope.userData.name,
+                                            "password": $scope.userData.password,                                           
+                                            "groups":  $scope.userData.groups
+                                          }
+
+                                usersService.add($scope.userAddData, function (response) {
+                                    console.log($scope.userAddData);
                                     console.log("User has been added successfully!");
                                     
                                     $scope.userData={
                                             "_id": '',
                                             "name":'',
-                                            "password":"",
-                                            "applicationId":"",                        
+                                            "password":"",                                                                   
                                             "groups":""
                                         }; 
 
                                     $location.path('/users');
                                 },
                                  function (response) {
-                                     console.log($scope.userData);
+                                     console.log("errr->", $scope.userAddData);
                                      if (response.data == null)
                                      {
                                          console.log("response data is null!!!!!");
