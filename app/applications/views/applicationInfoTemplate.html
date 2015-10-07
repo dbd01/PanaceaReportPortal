@@ -2,29 +2,41 @@
 	<div class = "row" >
 			<form class="navbar-form navbar-left" role="search">
 				<div class="form-group">
-				    <h4> User Information </h4>
+				    <h4> Application Information </h4>
 				    <table class="table table-responsive" cellspacing="3" >
-					    <tr ng-if="showIt">
-					    	<td>User Id:</td>
-					    	<td> {{userId}}</td>
+					    <tr >
+					    	<td>Application Id:</td>
+					    	<td> {{applicationId}}</td>
 					    </tr>					   
 						<tr>
-							<td>Username:</td>
-							<td> <input type="text" class="form-control"  ng-model ="userData.username" required> </td>		
+							<td>Application Name:</td>
+							<td> <input type="text" class="form-control"  ng-model ="applicationData.name" required> </td>		
 						</tr>
 						<tr>
-							<td>Password:</td>
-							<td> <input type="password" class="form-control"  ng-model ="userData.password" required> </td> 
+							<td>Description:</td>
+							<td> <input type="text" class="form-control"  ng-model ="applicationData.description" required> </td> 
 						</tr>
-						<tr ng-if="showIt">
-							<td>Is Deleted:</td>
-							<td>{{isDeleted}}</td> 
+						<tr>
+							<td>Protocol:</td>
+							<td> <input type="text" class="form-control"  ng-model ="applicationData.protocol" required> </td> 
 						</tr>
+						<tr>
+							<td>Link:</td>
+							<td> <input type="text" class="form-control"  ng-model ="applicationData.link" required> </td> 
+						</tr>
+						<tr>
+							<td>Port:</td>
+							<td> <input type="text" class="form-control"  ng-model ="applicationData.port" required> </td> 
+						</tr>
+						<tr>
+							<td>HostName:</td>
+							<td> <input type="text" class="form-control"  ng-model ="applicationData.hostname" required> </td> 
+						</tr>						
 						<tr >
 							<td>Group IDs:</td>
 							<td>
 							   <div ng-repeat="group in groups">			  	  		   							 	
-								  <input type="checkbox" checklist-model="userData.groups" checklist-value="group"> {{group}}  
+								  <input type="checkbox" checklist-model="applicationData.groups" checklist-value="group"> {{group}}  
 							  </div>								
 						    </td>							
                             <!--  

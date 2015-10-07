@@ -1,5 +1,5 @@
-app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComService', '$location', '$timeout', 
-    function (localStorageService, usersService,  scopeComService, $location, $timeout) {
+app.directive('applicationinfo', [ 'localStorageService', 'applicationsService',  'scopeComService', '$location', '$timeout', 
+    function (localStorageService, applicationsService,  scopeComService, $location, $timeout) {
     return {
         restrict: 'E',
         templateUrl: 'app/users/views/applicationInfoTemplate.html',
@@ -23,40 +23,50 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                         console.log("eeeeeeggggg0000ee",  $scope.groups ); 
                         
                         //get the data from the service
-                        $scope.userData= scopeComService.list[0];
+                        $scope.applicationData= scopeComService.list[0];
                         scopeComService.flush();
                         $scope.showIt = true;
                         $scope.groupz = []; 
 
-                        if ($scope.userData=="add_new_user")
+                        if ($scope.applicationData=="add_new_application")
                              $scope.showIt = false;
 
                          if( $scope.showIt){
-                            $scope.userId= $scope.userData[0].value;
-                            $scope.username = $scope.userData[1].value;
-                            $scope.isDeleted= $scope.userData[2].value;
-                            $scope.password = $scope.userData[3].value;  
+                            $scope.applicationId= $scope.applicationData[0].value;
+                            $scope.name = $scope.applicationData[1].value;
+                            $scope.description= $scope.applicationData[2].value;
+                            $scope.protocol = $scope.applicationData[3].value; 
+                            $scope.link = $scope.applicationData[4].value;
+                            $scope.port = $scope.applicationData[5].value;
+                            $scope.hostname = $scope.applicationData[6].value;
+
                             //scope.groups must contain strings
-                            for (var i=0; i<$scope.userData[4].length; i++)
-                                 $scope.groupz[i] = $scope.userData[4][i].groupId;                       
+                            for (var i=0; i<$scope.applicationData[7].length; i++)
+                                 $scope.groupz[i] = $scope.applicationData[7][i].groupId;                       
                          }
                          else 
-                            $scope.username = "";                  
+                            $scope.name = "";                  
                        
                         $scope.closeAlert = function() {
                                     $scope.alert=null;
-                                    $scope.userData={
-                                            "username":'',
-                                            "password":'',
-                                            "applicationId":"polyphemus",
+                                    $scope.applicationData={
+                                            "name":'',
+                                            "description":'',
+                                            "protocol": '',
+                                            "link":"",
+                                            "port":'',
+                                            "hostname": '',
                                             "groups": []
                                         };                    
                                 }    
 
-                         $scope.userData={
-                                            "username": $scope.username,
-                                            "password": $scope.password,
-                                            "applicationId":"polyphemus",
+                         $scope.applicationData={
+                                            "name":$scope.name,
+                                            "description": $scope.description,
+                                            "protocol": $scope.protocol,
+                                            "link": $scope.link,
+                                            "port": $scope.port,
+                                            "hostname": $scope.hostname,
                                             "groups": $scope.groupz
                                         }
 
@@ -65,21 +75,24 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
 
                          $scope.add = function(){
 
-                                usersService.add($scope.userData, function (response) {
-                                    console.log($scope.userData);
-                                    console.log("User has been added successfully!");
+                                applicationsService.add($scope.applicationData, function (response) {
+                                    console.log("app data->", $scope.applicationData);
+                                    console.log("Application has been added successfully!");
                                     
-                                    $scope.userData={
-                                            "username":'',
-                                            "password":"",
-                                            "applicationId":"",                        
-                                            "groups":""
-                                        }; 
+                                    $scope.applicationData={
+                                            "name":'',
+                                            "description":'',
+                                            "protocol": '',
+                                            "link":"",
+                                            "port":'',
+                                            "hostname": '',
+                                            "groups": []
+                                        };       
 
-                                    $location.path('/users');
+                                    $location.path('/applications');
                                 },
                                  function (response) {
-                                     console.log($scope.userData);
+                                     console.log($scope.applicationData);
                                      if (response.data == null)
                                      {
                                          console.log("response data is null!!!!!");
@@ -105,16 +118,20 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                          $scope.update = function(){
 
                             $scope.updateData={
-                                            "username":$scope.userData.username,
-                                            "password":$scope.userData.password,
-                                            "groups": $scope.groupz                      
+                                            "name":$scope.name,
+                                            "description": $scope.description,
+                                            "protocol": $scope.protocol,
+                                            "link": $scope.link,
+                                            "port": $scope.port,
+                                            "hostname": $scope.hostname,
+                                            "groups": $scope.groupz                   
                                         }
 
-                            usersService.update({ userId: $scope.userId }, $scope.updateData, function (response) {
+                            applicationsService.update({ applicationId: $scope.applicationId }, $scope.updateData, function (response) {
                                     
-                                    console.log("User has been updated successfully.");
+                                    console.log("Application has been updated successfully.");
                                     console.log("update data=>", $scope.updateData);
-                                    $location.path('/users');
+                                    $location.path('/applications');
                                 },
                                  function (response) {
                                      console.log("err update -->", $scope.updateData);

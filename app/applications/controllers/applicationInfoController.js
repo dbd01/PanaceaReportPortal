@@ -1,8 +1,8 @@
 
 "use strict";
 
-app.controller("userInfoController", ['localStorageService','usersService', 'groupsService','$scope', 'scopeComService','$location',
-   function (localStorageService, usersService, groupsService, $scope , scopeComService, $location ) {
+app.controller("applicationInfoController", ['localStorageService','applicationsService', 'groupsService','$scope', 'scopeComService','$location',
+   function (localStorageService, applicationsService, groupsService, $scope , scopeComService, $location ) {
     
 	  //fetch the groups list
 

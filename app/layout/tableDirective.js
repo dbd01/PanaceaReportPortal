@@ -35,6 +35,12 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                                 $location.path('/groupInfo');
                                 //$scope.$apply();                             
                             }
+                            if($location.path()=="/applications"){
+                                scopeComService.add("add_new_application");                           
+                                $location.path('/applicationInfo');
+                                //$scope.$apply();                             
+                            }
+
                         }
                                              
                           //click edit btns  /////////////////////////////////////////////////////                                                            
@@ -55,7 +61,23 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                                    $location.path('/userInfo');                              
                                     
                                 });
-                            } ///end if location.path=users                                                         
+                            } ///end if location.path=users    
+
+                            if ($location.path() == '/applications')
+                            {
+                                applicationsService.viewUser({ applicationId: $scope.tabledata.data[editline][0].value}).$promise
+                                .then(
+                                  function (application) {
+                                    console.log("applicationnn:=>",application);                           
+                                    $scope.tabledata.data[editline].push(application.groups);                                                 
+                                })    
+                                .then(function () {
+                                   //write data to registered service scopeCommService     
+                                   scopeComService.add($scope.tabledata.data[editline]); 
+                                   $location.path('/applicationInfo');                              
+                                    
+                                });
+                            } ///end if location.path=applications                                                       
                              
                                  
                               if ($location.path() == '/groups')
@@ -78,7 +100,6 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                                 entity = "user";
                                 _id = $scope.tabledata.data[editline][0].value;
                                 entityName = $scope.tabledata.data[editline][1].value;
-
                             }
                             if($location.path()=="/groups")                                
                              {
@@ -86,6 +107,12 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                                 _id = $scope.tabledata.data[editline][0].value;
                                 entityName = _id;
                              }  
+                             if($location.path()=="/applications")
+                             {
+                                entity = "application";
+                                _id = $scope.tabledata.data[editline][0].value;
+                                entityName = $scope.tabledata.data[editline][0].value;
+                             }
                             
                             bootbox.confirm("Are you sure you want to delete " + entity + " <b>" + entityName +"</b> ?", function(ok) {
                                if (ok){
@@ -106,6 +133,23 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                                            }
                                       });                                                     
                                 }//end if entity == user
+
+                                if (entity=="application"){                                                                            
+                                      applicationsService.remove({ applicationId: _id }, function (response) {                   
+                                        console.log("Application has been deleted successfully."); 
+                                        //refresh page
+                                        $window.location.reload();                                   
+                                        },
+                                        function (response) {
+                                           console.log($scope.userData);
+                                           if (response.data == null){
+                                               console.log("response  data is null! -(0)");                                          
+                                           }
+                                           else{
+                                             console.log("response (0) ->", response);                                      
+                                           }
+                                      });                                                     
+                                }//end if entity == application
 
                                 else if (entity=="group"){                                                                            
                                       groupsService.remove({ groupId: _id }, function (response) {                   
@@ -129,8 +173,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                             }); 
                                
                           }
-                          //////////////////////                    
-
+                          //////////////////////                  
                       
                     }, 0);
                 }
