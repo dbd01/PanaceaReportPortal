@@ -12,9 +12,10 @@ app.controller("groupInfoController", ['localStorageService','groupsService','$s
          $scope.showIt = false;
 
      if( $scope.showIt){
-        $scope.groupId= $scope.groupData[0].value;
-        $scope.description = $scope.groupData[1].value;
-        $scope.isDeleted= $scope.groupData[2].value;       
+        $scope._id= $scope.groupData[0].value;
+        $scope.name= $scope.groupData[1].value;
+        $scope.description = $scope.groupData[2].value;
+        $scope.isDeleted= $scope.groupData[3].value;       
      }
      else 
         $scope.groupId = "";
@@ -22,14 +23,16 @@ app.controller("groupInfoController", ['localStorageService','groupsService','$s
     $scope.closeAlert = function() {
                 $scope.alert=null;
                 $scope.groupData={
-                        "groupId":'',
+                        "_id":'',
+                        "name":'',
                         "description":'',
                         "isDeleted":''                                              
                     };                    
             }    
 
-     $scope.groupData={
-                        "groupId": $scope.groupId,
+     $scope.groupData={ 
+                        "_id": $scope._id,
+                        "name": $scope.name,
                         "description": $scope.description,
                         "isDeleted":  $scope.isDeleted                      
                     }
@@ -39,14 +42,14 @@ app.controller("groupInfoController", ['localStorageService','groupsService','$s
      $scope.add = function(){
 
             $scope.groupAddData={
-                        "groupId": $scope.groupId,
+                        "name": $scope.name,
                         "description": $scope.groupData.description                                            
                     }
 
             groupsService.add($scope.groupAddData, function (response) {                
                 console.log("group has been added successfully!");                
                 $scope.groupAddData={
-                        "groupId":'',
+                        "name":'',
                         "description":''                                               
                     };    
 
@@ -79,7 +82,7 @@ app.controller("groupInfoController", ['localStorageService','groupsService','$s
      $scope.update = function(){
 
         $scope.updateData={
-                        "groupId":$scope.groupData.groupId,
+                        "name":$scope.groupData.name,
                         "description":$scope.groupData.description                       
                     }
 

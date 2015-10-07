@@ -16,7 +16,8 @@ app.controller("userInfoController", ['localStorageService','usersService', 'gro
                     console.log("groups:=>",groups);
                     groups.forEach(function (group) {
                         var groupData = [];
-                        groupData.push( {"value": group.groupId} );
+                        groupData.push( {"value": group._id} );
+                        groupData.push( {"value": group.name} );
                         groupData.push( {"value": group.description} );
                         groupData.push( {"value": group.isDeleted});                                      
                         groupsTbl.data.push(groupData);                 

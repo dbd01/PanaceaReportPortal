@@ -9,7 +9,7 @@ app.controller("applicationsController", ['localStorageService','applicationsSer
        
     var applicationsTable ={
                     "header": [
-                        { "title": "applicationId",  "showIt": true },
+                        { "title": "_id",  "showIt": true },
                         { "title": "name", "showIt": true },
                         { "title": "description", "showIt": true },
                         { "title": "protocol", "showIt": true},
@@ -27,7 +27,7 @@ app.controller("applicationsController", ['localStorageService','applicationsSer
             	console.log("applications:=>",applications);
                 applications.forEach(function (application) {
                     var applicationData = [];
-                    applicationData.push( {"value": application.applicationId, "showIt": true} );
+                    applicationData.push( {"value": application._id, "showIt": true} );
                     applicationData.push( {"value": application.name, "showIt": true} );
                     applicationData.push( {"value": application.description, "showIt": true} );
                     applicationData.push( {"value": application.protocol, "showIt": true} );

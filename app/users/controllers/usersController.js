@@ -9,8 +9,8 @@ app.controller("usersController", ['localStorageService','usersService','$scope'
        
     var usersTable ={
                     "header": [
-                        { "title": "user_Id",  "showIt": true },
-                        { "title": "username", "showIt": true },
+                        { "title": "_id",  "showIt": true },
+                        { "title": "name", "showIt": true },
                         { "title": "isDeleted", "showIt": true },
                         { "title": "hashedPassword", "showIt": false}
 
@@ -25,7 +25,7 @@ app.controller("usersController", ['localStorageService','usersService','$scope'
                 users.forEach(function (user) {
                     var userData = [];
                     userData.push( {"value": user._id, "showIt": true} );
-                    userData.push( {"value": user.username, "showIt": true} );
+                    userData.push( {"value": user.name, "showIt": true} );
                     userData.push( {"value": user.isDeleted, "showIt": true}); 
                     userData.push( {"value": user.hashedPassword, "showIt": false});                   
                     usersTable.data.push(userData);                   

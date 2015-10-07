@@ -32,7 +32,7 @@ app.directive('applicationinfo', [ 'localStorageService', 'applicationsService',
                              $scope.showIt = false;
 
                          if( $scope.showIt){
-                            $scope.applicationId= $scope.applicationData[0].value;
+                            $scope._id= $scope.applicationData[0].value;
                             $scope.name = $scope.applicationData[1].value;
                             $scope.description= $scope.applicationData[2].value;
                             $scope.protocol = $scope.applicationData[3].value; 
@@ -50,6 +50,7 @@ app.directive('applicationinfo', [ 'localStorageService', 'applicationsService',
                         $scope.closeAlert = function() {
                                     $scope.alert=null;
                                     $scope.applicationData={
+                                            "_id":'',
                                             "name":'',
                                             "description":'',
                                             "protocol": '',
@@ -61,6 +62,7 @@ app.directive('applicationinfo', [ 'localStorageService', 'applicationsService',
                                 }    
 
                          $scope.applicationData={
+                                            "_id": $scope._id,
                                             "name":$scope.name,
                                             "description": $scope.description,
                                             "protocol": $scope.protocol,
@@ -80,6 +82,7 @@ app.directive('applicationinfo', [ 'localStorageService', 'applicationsService',
                                     console.log("Application has been added successfully!");
                                     
                                     $scope.applicationData={
+                                            "_id": '',
                                             "name":'',
                                             "description":'',
                                             "protocol": '',

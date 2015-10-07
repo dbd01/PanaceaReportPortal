@@ -32,8 +32,8 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                              $scope.showIt = false;
 
                          if( $scope.showIt){
-                            $scope.userId= $scope.userData[0].value;
-                            $scope.username = $scope.userData[1].value;
+                            $scope._id= $scope.userData[0].value;
+                            $scope.name = $scope.userData[1].value;
                             $scope.isDeleted= $scope.userData[2].value;
                             $scope.password = $scope.userData[3].value;  
                             //scope.groups must contain strings
@@ -46,19 +46,21 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                         $scope.closeAlert = function() {
                                     $scope.alert=null;
                                     $scope.userData={
-                                            "username":'',
+                                            "_id":'',
+                                            "name":'',
                                             "password":'',
                                             "applicationId":"polyphemus",
                                             "groups": []
                                         };                    
                                 }    
 
-                         $scope.userData={
-                                            "username": $scope.username,
+                         $scope.userData= {
+                                            "_id": $scope._id,
+                                            "name": $scope.username,
                                             "password": $scope.password,
                                             "applicationId":"polyphemus",
                                             "groups": $scope.groupz
-                                        }
+                                          }
 
                        
                          ///////////////////////////////////////////
@@ -70,7 +72,8 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                                     console.log("User has been added successfully!");
                                     
                                     $scope.userData={
-                                            "username":'',
+                                            "_id": '',
+                                            "name":'',
                                             "password":"",
                                             "applicationId":"",                        
                                             "groups":""
@@ -105,7 +108,7 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                          $scope.update = function(){
 
                             $scope.updateData={
-                                            "username":$scope.userData.username,
+                                            "name":$scope.userData.username,
                                             "password":$scope.userData.password,
                                             "groups": $scope.groupz                      
                                         }

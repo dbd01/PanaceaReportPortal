@@ -9,7 +9,8 @@ app.controller("groupsController", ['localStorageService','groupsService','$scop
        
     var groupsTable ={
                     "header": [
-                        { "title": "group_Id",  "showIt": true },
+                        { "title": "_id",  "showIt": true },
+                        { "title": "name",  "showIt": true },
                         { "title": "description", "showIt": true },
                         { "title": "isDeleted", "showIt": true }                     
                     ],
@@ -22,7 +23,8 @@ app.controller("groupsController", ['localStorageService','groupsService','$scop
             	console.log("groups:=>",groups);
                 groups.forEach(function (group) {
                     var groupData = [];
-                    groupData.push( {"value": group.groupId, "showIt": true} );
+                    groupData.push( {"value": group._id, "showIt": true} );
+                    groupData.push( {"value": group.name, "showIt": true} );
                     groupData.push( {"value": group.description, "showIt": true} );
                     groupData.push( {"value": group.isDeleted, "showIt": true});                                      
                     groupsTable.data.push(groupData);                 
