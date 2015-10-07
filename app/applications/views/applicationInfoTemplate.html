@@ -1,0 +1,52 @@
+<div>
+	<div class = "row" >
+			<form class="navbar-form navbar-left" role="search">
+				<div class="form-group">
+				    <h4> User Information </h4>
+				    <table class="table table-responsive" cellspacing="3" >
+					    <tr ng-if="showIt">
+					    	<td>User Id:</td>
+					    	<td> {{userId}}</td>
+					    </tr>					   
+						<tr>
+							<td>Username:</td>
+							<td> <input type="text" class="form-control"  ng-model ="userData.username" required> </td>		
+						</tr>
+						<tr>
+							<td>Password:</td>
+							<td> <input type="password" class="form-control"  ng-model ="userData.password" required> </td> 
+						</tr>
+						<tr ng-if="showIt">
+							<td>Is Deleted:</td>
+							<td>{{isDeleted}}</td> 
+						</tr>
+						<tr >
+							<td>Group IDs:</td>
+							<td>
+							   <div ng-repeat="group in groups">			  	  		   							 	
+								  <input type="checkbox" checklist-model="userData.groups" checklist-value="group"> {{group}}  
+							  </div>								
+						    </td>							
+                            <!--  
+							<td> 		
+  								<select class="form-control"  ng-model ="userData.groupId" required >
+								    <option  ng-repeat = "row in groups" value="{{row}}">{{row}}</option>	   
+								</select>					
+							 </td>
+							 -->
+						</tr>
+						
+					</table>
+					
+					    <button type="submit" class="btn btn-default" ng-click = "add()" ng-if="!showIt">Add</button>
+					    <button type="submit" class="btn btn-default" ng-click = "update()" ng-if="showIt">Update</button>
+	  					 					
+	  					<alert type="{{alert.type}}" close="closeAlert()" ng-show="alert != null" >
+							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>		
+								{{alert.msg}}
+						</alert>
+			</form>
+	</div>
+
+
+<div>

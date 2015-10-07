@@ -17,7 +17,11 @@
 
 				$scope.groups = function(){
 					navigationService.add("groups");
-				}		
+				}	
+
+				$scope.applications = function(){
+					navigationService.add("applications");
+				}			
 
     		}			 
 		};

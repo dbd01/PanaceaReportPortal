@@ -56,6 +56,16 @@ app
                 templateUrl: "app/groups/views/groupInfoView.html",
                 controller:  'groupInfoController'                
             })
+            .state('lala.applications', {
+                url: "applications",
+                templateUrl: "app/applications/views/applicationsView.html",
+                controller:  'applicationsController'                
+            })
+            .state('lala.applicationInfo', {
+                url: "applicationInfo",
+                templateUrl: "app/applications/views/applicationInfoView.html",
+                controller:  'applicationInfoController'                
+            })
             ;						
 		}]);
 
