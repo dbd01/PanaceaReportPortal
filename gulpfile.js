@@ -33,6 +33,7 @@ var gulp = require('gulp'),
    	'app/layout/*.js',
     'app/reports/controllers/*.js',
     'app/users/controllers/*.js',
+    'app/users/*.js',
     'app/groups/controllers/*.js',
     'app/common/*.js',    
     'app/services/*.js'    
