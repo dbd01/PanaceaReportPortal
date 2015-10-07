@@ -100,7 +100,7 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                             };
 
                           
-                         ////////////////////////////////////////////////////
+                         /////////////////////////////////////////////////////
 
                          $scope.update = function(){
 
