@@ -94,26 +94,18 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                           $scope.delete_entity= function(editline) {
                                                          
                             var entityName, _id, entity="";
+                            _id = $scope.tabledata.data[editline][0].value;
+                            entityName = $scope.tabledata.data[editline][1].value;
 
-                            if($location.path()=="/users")
-                            {
-                                entity = "user";
-                                _id = $scope.tabledata.data[editline][0].value;
-                                entityName = $scope.tabledata.data[editline][1].value;
-                            }
-                            if($location.path()=="/groups")                                
-                             {
-                                entity = "group";
-                                _id = $scope.tabledata.data[editline][0].value;
-                                entityName = _id;
-                             }  
-                             if($location.path()=="/applications")
-                             {
-                                entity = "application";
-                                _id = $scope.tabledata.data[editline][0].value;
-                                entityName = $scope.tabledata.data[editline][0].value;
-                             }
+                            if($location.path()=="/users")                            
+                                entity = "user";                                
                             
+                            if($location.path()=="/groups")                             
+                                entity = "group";
+                                
+                             if($location.path()=="/applications")                          
+                                entity = "application";                              
+                                                     
                             bootbox.confirm("Are you sure you want to delete " + entity + " <b>" + entityName +"</b> ?", function(ok) {
                                if (ok){
                                   //delete entity 
