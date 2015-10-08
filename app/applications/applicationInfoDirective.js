@@ -85,15 +85,25 @@ app.directive('applicationinfo', [ 'localStorageService', 'applicationsService',
                          $scope.add = function(){
 
                               for (var i=0; i< $scope.applicationData.groups.length; i++)
-                                 $scope.groupzIDz[i] = $scope.applicationData.groups[i].id;  
+                                 $scope.groupzIDz[i] = $scope.applicationData.groups[i].id; 
 
-                            applicationsService.add($scope.applicationData, function (response) {
+                                 $scope.applicationAddData={
+                                            "name":$scope.applicationData.name,
+                                            "description": $scope.applicationData.description,
+                                            "protocol": $scope.applicationData.protocol,
+                                            "link": $scope.applicationData.link,
+                                            "port": $scope.applicationData.port,
+                                            "hostname": $scope.applicationData.hostname,
+                                            "groups": $scope.groupzIDz
+                                        }
+
+                            applicationsService.add($scope.applicationAddData, function (response) {
                                     console.log("app data->", $scope.applicationData);
                                     console.log("Application has been added successfully!");                                                                       
                                     $location.path('/applications');
                                 },
                                  function (response) {
-                                     console.log($scope.applicationData);
+                                     console.log($scope.applicationAddData);
                                      if (response.data == null)
                                      {
                                          console.log("response data is null!!!!!");
@@ -122,13 +132,13 @@ app.directive('applicationinfo', [ 'localStorageService', 'applicationsService',
                                  $scope.groupzIDz[i] = $scope.applicationData.groups[i].id; 
 
                             $scope.updateData={
-                                            "name":$scope.name,
-                                            "description": $scope.description,
-                                            "protocol": $scope.protocol,
-                                            "link": $scope.link,
-                                            "port": $scope.port,
-                                            "hostname": $scope.hostname,
-                                            "groups": $scope.groupz                   
+                                            "name":$scope.applicationData.name,
+                                            "description": $scope.applicationData.description,
+                                            "protocol": $scope.applicationData.protocol,
+                                            "link": $scope.applicationData.link,
+                                            "port": $scope.applicationData.port,
+                                            "hostname": $scope.applicationData.hostname,
+                                            "groups": $scope.groupzIDz                  
                                         }
 
                             applicationsService.update({ applicationId: $scope.applicationId }, $scope.updateData, function (response) {
