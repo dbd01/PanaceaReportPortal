@@ -1,5 +1,5 @@
-app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'usersService', 'applicationsService', 'groupsService', 'userPermissionService', '$window',
-  function ($timeout, $log, $location, scopeComService, usersService, applicationsService, groupsService, userPermissionService, $window) {
+app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'usersService', 'applicationsService', 'groupsService', 'permissionsService', '$window',
+  function ($timeout, $log, $location, scopeComService, usersService, applicationsService, groupsService, permissionsService, $window) {
     return {
         restrict: 'E',
         templateUrl: 'app/layout/views/tableTemplate.html',
@@ -38,6 +38,11 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                             if($location.path()=="/applications"){
                                 scopeComService.add("add_new_application");                           
                                 $location.path('/applicationInfo');
+                                //$scope.$apply();                             
+                            }
+                            if($location.path()=="/permissions"){
+                                scopeComService.add("add_new_permission");                           
+                                $location.path('/permissionInfo');
                                 //$scope.$apply();                             
                             }
 

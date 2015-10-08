@@ -1,39 +1,41 @@
 
 "use strict";
 
-app.controller("groupsController", ['localStorageService','groupsService','$scope',
-   function (localStorageService, groupsService, $scope ) {
+app.controller("permissionsController", ['localStorageService','permissionsService','$scope',
+   function (localStorageService, permissionsService, $scope ) {
   
 	var authData = localStorageService.get('authorizationData');
-	console.log("auth data--gg>", authData);	
+	console.log("auth data--pp>", authData);	
        
-    var groupsTable ={
+    var permissionsTable ={
                     "header": [
                         { "title": "_id",  "showIt": true },
                         { "title": "name",  "showIt": true },
-                        { "title": "description", "showIt": true },
+                        { "title": "type", "showIt": true },
+                        { "title": "url", "showIt": true },
                         { "title": "isDeleted", "showIt": true }                     
                     ],
     				"data": [],
     				"ready": false
     				}    
 
-    groupsService.query().$promise.then(
-            function (groups) {
-            	console.log("groups:=>",groups);
-                groups.forEach(function (group) {
-                    var groupData = [];
-                    groupData.push( {"value": group._id, "showIt": true} );
-                    groupData.push( {"value": group.name, "showIt": true} );
-                    groupData.push( {"value": group.description, "showIt": true} );
-                    groupData.push( {"value": group.isDeleted, "showIt": true});                                      
-                    groupsTable.data.push(groupData);                 
+    permissionsService.query().$promise.then(
+            function (permissions) {
+            	console.log("groups:=>",permissions);
+                permissions.forEach(function (permission) {
+                    var permissionData = [];
+                    permissionData.push( {"value": permission._id, "showIt": true} );
+                    permissionData.push( {"value": permission.name, "showIt": true} );
+                    permissionData.push( {"value": permission.type, "showIt": true} );
+                    permissionData.push( {"value": permission.url, "showIt": true} );
+                    permissionData.push( {"value": permission.isDeleted, "showIt": true});                                      
+                    permissionsTable.data.push(permissionData);                 
                 });
             })    
             .then(function () {
-                $scope.groupsTable = groupsTable;
-                $scope.groupsTable.ready = true;
-                console.log("ggg", $scope.groupsTable.data);                                
+                $scope.permissionsTable = permissionsTable;
+                $scope.permissionsTable.ready = true;
+                console.log("ppp", $scope.permissionsTable.data);                                
                 
             });
     
