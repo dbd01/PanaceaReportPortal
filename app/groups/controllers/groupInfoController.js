@@ -86,7 +86,7 @@ app.controller("groupInfoController", ['localStorageService','groupsService','$s
                         "description":$scope.groupData.description                       
                     }
 
-        groupsService.update({ groupId: $scope.groupId }, $scope.updateData, function (response) {
+        groupsService.update({ groupId: $scope._id }, $scope.updateData, function (response) {
                 
                 console.log("group has been updated successfully.");
                 console.log("update data=>", $scope.updateData);
