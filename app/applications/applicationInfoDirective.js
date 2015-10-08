@@ -141,7 +141,7 @@ app.directive('applicationinfo', [ 'localStorageService', 'applicationsService',
                                             "groups": $scope.groupzIDz                  
                                         }
 
-                            applicationsService.update({ applicationId: $scope.applicationId }, $scope.updateData, function (response) {
+                            applicationsService.update({ applicationId: $scope._id }, $scope.updateData, function (response) {
                                     
                                     console.log("Application has been updated successfully.");
                                     console.log("update data=>", $scope.updateData);
