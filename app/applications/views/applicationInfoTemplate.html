@@ -36,16 +36,10 @@
 							<td>Groups:</td>
 							<td>
 							   <div ng-repeat="group in groups">			  	  		   							 	
-								  <input type="checkbox" checklist-model="applicationData.groups" checklist-value="group"> {{group}}  
+								  <input type="checkbox" data-checklist-model="applicationData.groups" data-checklist-value="group"> {{group.name}}  
 							  </div>								
 						    </td>							
-                            <!--  
-							<td> 		
-  								<select class="form-control"  ng-model ="userData.groupId" required >
-								    <option  ng-repeat = "row in groups" value="{{row}}">{{row}}</option>	   
-								</select>					
-							 </td>
-							 -->
+                            
 						</tr>
 						
 					</table>

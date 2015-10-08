@@ -18,7 +18,10 @@ app.directive('applicationinfo', [ 'localStorageService', 'applicationsService',
                          
                         $scope.groups =[];
                         for (var i=0; i<$scope.tabledata.data.length; i++) 
-                            $scope.groups[i] = $scope.tabledata.data[i][1].value;
+                            $scope.groups[i] = {
+                                "id":    $scope.tabledata.data[i][0].value,
+                                "name":  $scope.tabledata.data[i][1].value
+                            }      
                         
                         console.log("eeeeeeggggg0000ee",  $scope.groups ); 
                         
@@ -26,7 +29,8 @@ app.directive('applicationinfo', [ 'localStorageService', 'applicationsService',
                         $scope.applicationData= scopeComService.list[0];
                         scopeComService.flush();
                         $scope.showIt = true;
-                        $scope.groupz = []; 
+                        $scope.groupz = [];
+                        $scope.groupzIDz =[]; 
 
                         if ($scope.applicationData=="add_new_application")
                              $scope.showIt = false;
@@ -42,7 +46,10 @@ app.directive('applicationinfo', [ 'localStorageService', 'applicationsService',
 
                             //scope.groups must contain strings
                             for (var i=0; i<$scope.applicationData[7].length; i++)
-                                 $scope.groupz[i] = $scope.applicationData[7][i].name;                       
+                                 $scope.groupz[i] = {
+                                                        "id": $scope.applicationData[7][i]._id,
+                                                        "name": $scope.applicationData[7][i].name
+                                                    }                           
                          }
                          else 
                             $scope.name = "";                  
@@ -77,21 +84,12 @@ app.directive('applicationinfo', [ 'localStorageService', 'applicationsService',
 
                          $scope.add = function(){
 
-                                applicationsService.add($scope.applicationData, function (response) {
-                                    console.log("app data->", $scope.applicationData);
-                                    console.log("Application has been added successfully!");
-                                    
-                                    $scope.applicationData={
-                                            "_id": '',
-                                            "name":'',
-                                            "description":'',
-                                            "protocol": '',
-                                            "link":"",
-                                            "port":'',
-                                            "hostname": '',
-                                            "groups": []
-                                        };       
+                              for (var i=0; i< $scope.applicationData.groups.length; i++)
+                                 $scope.groupzIDz[i] = $scope.applicationData.groups[i].id;  
 
+                            applicationsService.add($scope.applicationData, function (response) {
+                                    console.log("app data->", $scope.applicationData);
+                                    console.log("Application has been added successfully!");                                                                       
                                     $location.path('/applications');
                                 },
                                  function (response) {
@@ -119,6 +117,9 @@ app.directive('applicationinfo', [ 'localStorageService', 'applicationsService',
                          /////////////////////////////////////////////////////
 
                          $scope.update = function(){
+                             
+                            for (var i=0; i< $scope.applicationData.groups.length; i++)
+                                 $scope.groupzIDz[i] = $scope.applicationData.groups[i].id; 
 
                             $scope.updateData={
                                             "name":$scope.name,

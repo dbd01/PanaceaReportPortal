@@ -43,9 +43,9 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                             //scope.groups must contain strings
                             for (var i=0; i<$scope.userData[4].length; i++)                           
                                  $scope.groupz[i] = {
-                                    "id": $scope.userData[4][i]._id,
-                                    "name": $scope.userData[4][i].name
-                                 }                                                                                  
+                                                        "id": $scope.userData[4][i]._id,
+                                                        "name": $scope.userData[4][i].name
+                                                    }                                                                                  
                          }
                          else 
                             $scope.username = "";                  
