@@ -18,7 +18,10 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                          
                         $scope.groups =[];
                         for (var i=0; i<$scope.tabledata.data.length; i++) 
-                            $scope.groups[i] = $scope.tabledata.data[i][1].value;
+                            $scope.groups[i] = {
+                                "id":    $scope.tabledata.data[i][0].value,
+                                "name":  $scope.tabledata.data[i][1].value
+                            }                                          
                         
                         console.log("eeeeeeggggg0000ee",  $scope.groups ); 
                         
@@ -27,18 +30,22 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                         scopeComService.flush();
                         $scope.showIt = true;
                         $scope.groupz = []; 
+                        $scope.groupzIDz =[];
 
                         if ($scope.userData=="add_new_user")
                              $scope.showIt = false;
 
                          if( $scope.showIt){
                             $scope._id= $scope.userData[0].value;
-                            $scope.name = $scope.userData[1].value;
+                            $scope.username = $scope.userData[1].value;
                             $scope.isDeleted= $scope.userData[2].value;
                             $scope.password = $scope.userData[3].value;  
                             //scope.groups must contain strings
-                            for (var i=0; i<$scope.userData[4].length; i++)
-                                 $scope.groupz[i] = $scope.userData[4][i].name;                       
+                            for (var i=0; i<$scope.userData[4].length; i++)                           
+                                 $scope.groupz[i] = {
+                                    "id": $scope.userData[4][i].id,
+                                    "name": $scope.userData[4][i].username
+                                 }                                                                                  
                          }
                          else 
                             $scope.username = "";                  
@@ -49,7 +56,7 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                                             "_id":'',
                                             "name":'',
                                             "password":'',                                            
-                                            "groups": []
+                                            "groups": []                                           
                                         };                    
                                 }    
 
@@ -60,28 +67,25 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                                             "groups": $scope.groupz
                                           }
 
-                       
+                        
                          ///////////////////////////////////////////
 
                          $scope.add = function(){
 
+                            for (var i=0; i< $scope.userData.groups.length; i++)
+                                 $scope.groupzIDz[i] = $scope.userData.groups[i].id;
+                             console.log("ggggggggggg",$scope.userData.groups );
+
                              $scope.userAddData= {                                            
-                                            "name": $scope.userData.name,
+                                            "username": $scope.userData.name,
                                             "password": $scope.userData.password,                                           
-                                            "groups":  $scope.userData.groups
+                                            "groups":  $scope.groupzIDz
                                           }
 
                                 usersService.add($scope.userAddData, function (response) {
                                     console.log($scope.userAddData);
                                     console.log("User has been added successfully!");
-                                    
-                                    $scope.userData={
-                                            "_id": '',
-                                            "name":'',
-                                            "password":"",                                                                   
-                                            "groups":""
-                                        }; 
-
+                                                                        
                                     $location.path('/users');
                                 },
                                  function (response) {
@@ -99,7 +103,7 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                                        console.log("response ->", response);
                                        $scope.alert = { 
                                                     type: 'danger', 
-                                                    msg: 'Wrong Group Id or username already exists' 
+                                                    msg: 'Wrong Group Ids or username already exists' 
                                                };
                                      }
                                  });            
@@ -110,10 +114,13 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
 
                          $scope.update = function(){
 
+                            for (var i=0; i< $scope.userData.groups.length; i++)
+                                $scope.groupzIDz[i] = $scope.userData.groups[i].id;
+
                             $scope.updateData={
                                             "name":$scope.userData.username,
                                             "password":$scope.userData.password,
-                                            "groups": $scope.groupz                      
+                                            "groups": $scope.groupzIDz                      
                                         }
 
                             usersService.update({ userId: $scope.userId }, $scope.updateData, function (response) {
