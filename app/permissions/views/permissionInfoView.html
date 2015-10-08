@@ -2,19 +2,23 @@
 	<div class = "row" >
 			<form class="navbar-form navbar-left" role="search">
 				<div class="form-group">
-				    <h4> Group Information </h4>
+				    <h4> Permission Information </h4>
 				    <table class="table table-responsive" cellspacing="3" >
 					    <tr ng-if="showIt">
-					    	<td>Group Id:</td>
+					    	<td>Permission Id:</td>
 					    	<td>{{_id}}</td>
 					    </tr>
 					    <tr>
-					    	<td>Group Name:</td>
-					    	<td> {{name}}</td>
+					    	<td>Permission Name:</td>
+					    	<td> <input type="text" class="form-control"  ng-model ="permissionData.name" > </td>
 					    </tr>						   
 						<tr>
-							<td>Description:</td>
-							<td> <input type="text" class="form-control"  ng-model ="groupData.description" > </td>		
+							<td>Type:</td>
+							<td> <input type="text" class="form-control"  ng-model ="permissionData.type" > </td>		
+						</tr>	
+						<tr>
+							<td>Url:</td>
+							<td> <input type="text" class="form-control"  ng-model ="permissionData.url" > </td>		
 						</tr>						
 						<tr ng-if="showIt" >
 							<td>Is Deleted:</td>

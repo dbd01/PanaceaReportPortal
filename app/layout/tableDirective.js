@@ -68,8 +68,8 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                                 });
                             } ///end if location.path=users    
 
-                            if ($location.path() == '/applications')
-                            {
+                              if ($location.path() == '/applications')
+                              {
                                 applicationsService.viewApp({ applicationId: $scope.tabledata.data[editline][0].value}).$promise
                                 .then(
                                   function (application) {
@@ -82,15 +82,21 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                                    $location.path('/applicationInfo');                              
                                     
                                 });
-                            } ///end if location.path=applications                                                       
+                              } ///end if location.path=applications                                                       
                              
                                  
                               if ($location.path() == '/groups')
-                              {  
-                                 //write data to registered service scopeCommService     
-                                  scopeComService.add($scope.tabledata.data[editline]);
+                              {                                       
+                                 scopeComService.add($scope.tabledata.data[editline]);
                                  $location.path('/groupInfo'); 
                               }
+
+                              if ($location.path() == '/permissions')
+                              {                                       
+                                 scopeComService.add($scope.tabledata.data[editline]);
+                                 $location.path('/permissionInfo'); 
+                              }
+
                              
                              // $scope.$apply();
                           }
@@ -107,6 +113,9 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                             
                             if($location.path()=="/groups")                             
                                 entity = "group";
+
+                            if($location.path()=="/permissions")                             
+                                entity = "permission";  
                                 
                              if($location.path()=="/applications")                          
                                 entity = "application";                              
@@ -120,8 +129,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                                         //refresh page
                                         $window.location.reload();                                   
                                         },
-                                        function (response) {
-                                           console.log($scope.userData);
+                                        function (response) {                                           
                                            if (response.data == null){
                                                console.log("response  data is null! -(0)");                                          
                                            }
@@ -137,8 +145,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                                         //refresh page
                                         $window.location.reload();                                   
                                         },
-                                        function (response) {
-                                           console.log($scope.userData);
+                                        function (response) {                                          
                                            if (response.data == null){
                                                console.log("response  data is null! -(0)");                                          
                                            }
@@ -154,8 +161,23 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                                         //refresh page
                                         $window.location.reload();                                   
                                         },
-                                        function (response) {
-                                           console.log($scope.groupData);
+                                        function (response) {                                          
+                                           if (response.data == null){
+                                               console.log("response  data is null! -(0)");                                          
+                                           }
+                                           else{
+                                             console.log("response (0) ->", response);                                      
+                                           }
+                                      });                                                     
+                                }//end if entity == group
+
+                                else if (entity=="permission"){                                                                            
+                                      permissionsService.remove({ permissionId: _id }, function (response) {                   
+                                        console.log("Permission has been deleted successfully."); 
+                                        //refresh page
+                                        $window.location.reload();                                   
+                                        },
+                                        function (response) {                                          
                                            if (response.data == null){
                                                console.log("response  data is null! -(0)");                                          
                                            }
