@@ -73,8 +73,7 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                          $scope.add = function(){
 
                             for (var i=0; i< $scope.userData.groups.length; i++)
-                                 $scope.groupzIDz[i] = $scope.userData.groups[i].id;
-                             console.log("ggggggggggg",$scope.userData.groups );
+                                 $scope.groupzIDz[i] = $scope.userData.groups[i].id;                             
 
                              $scope.userAddData= {                                            
                                             "username": $scope.userData.name,
@@ -118,19 +117,19 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                                 $scope.groupzIDz[i] = $scope.userData.groups[i].id;
 
                             $scope.updateData={
-                                            "name":$scope.userData.username,
+                                            "username":$scope.userData.name,
                                             "password":$scope.userData.password,
                                             "groups": $scope.groupzIDz                      
                                         }
 
-                            usersService.update({ userId: $scope.userId }, $scope.updateData, function (response) {
+                            usersService.update({ userId: $scope._id }, $scope.updateData, function (response) {
                                     
                                     console.log("User has been updated successfully.");
                                     console.log("update data=>", $scope.updateData);
                                     $location.path('/users');
                                 },
                                  function (response) {
-                                     console.log("err update -->", $scope.updateData);
+                                     console.log("err update -->", $scope.updateData);                                     
                                      if (response.data == null)
                                      {
                                          console.log("response data is null!!!!!");
