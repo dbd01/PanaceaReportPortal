@@ -93,7 +93,7 @@ app.controller("groupInfoController", ['localStorageService','groupsService','$s
                 $location.path('/groups');
             },
              function (response) {
-                 console.log("err update -->", $scope.groupData);
+                 console.log("err update -->", $scope.updateData);
                  if (response.data == null)
                  {
                      console.log("response data is null!!!!!");
