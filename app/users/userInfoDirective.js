@@ -43,8 +43,8 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                             //scope.groups must contain strings
                             for (var i=0; i<$scope.userData[4].length; i++)                           
                                  $scope.groupz[i] = {
-                                    "id": $scope.userData[4][i].id,
-                                    "name": $scope.userData[4][i].username
+                                    "id": $scope.userData[4][i]._id,
+                                    "name": $scope.userData[4][i].name
                                  }                                                                                  
                          }
                          else 
@@ -83,7 +83,7 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                                           }
 
                                 usersService.add($scope.userAddData, function (response) {
-                                    console.log($scope.userAddData);
+                                    console.log("adddddd", $scope.userAddData);
                                     console.log("User has been added successfully!");
                                                                         
                                     $location.path('/users');
