@@ -21,6 +21,10 @@
 
 				$scope.applications = function(){
 					navigationService.add("applications");
+				}	
+
+				$scope.permissions = function(){
+					navigationService.add("permissions");
 				}			
 
     		}			 

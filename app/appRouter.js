@@ -66,6 +66,16 @@ app
                 templateUrl: "app/applications/views/applicationInfoView.html",
                 controller:  'applicationInfoController'                
             })
+            .state('lala.permissions', {
+                url: "permissions",
+                templateUrl: "app/permissions/views/permissionsView.html",
+                controller:  'permissionsController'                
+            })
+            .state('lala.permissionInfo', {
+                url: "permissionInfo",
+                templateUrl: "app/permissions/views/permissionInfoView.html",
+                controller:  'permissionInfoController'                
+            })
             ;						
 		}]);
 
