@@ -42,21 +42,17 @@ app.controller("groupInfoController", ['localStorageService','groupsService','$s
      $scope.add = function(){
 
             $scope.groupAddData={
-                        "name": $scope.name,
+                        "name": $scope.groupData.name,
                         "description": $scope.groupData.description                                            
                     }
 
             groupsService.add($scope.groupAddData, function (response) {                
                 console.log("group has been added successfully!");                
-                $scope.groupAddData={
-                        "name":'',
-                        "description":''                                               
-                    };    
-
+                
                 $location.path('/groups');
             },
              function (response) {
-                 console.log($scope.groupData);
+                 console.log($scope.groupAddData);
                  if (response.data == null)
                  {
                      console.log("response data is null!!!!!");
