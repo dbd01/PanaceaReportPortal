@@ -96,8 +96,9 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                                 .then(function () {
                                    //write data to registered service scopeCommService     
                                    scopeComService.add($scope.tabledata.data[editline]); 
-                                   $location.path('/groupInfo');   
-                              }
+                                   $location.path('/groupInfo'); 
+                                });  
+                              }///end if location.path=groups
 
                               if ($location.path() == '/permissions')
                               {                                       
