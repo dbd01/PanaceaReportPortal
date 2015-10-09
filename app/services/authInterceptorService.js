@@ -29,7 +29,7 @@ function authService($injector, $rootScope, $location, localStorageService) {
 	              {     
 	              	    authData=null;
 	              	    $rootScope.log_link.value="Login";
-	              	    $location.path('/');		
+	              	    $location.path('/login');		
 		                localStorageService.set('authorizationData', null);	              		 
 	              		bootbox.confirm("Your allowed connection period has expired. Please login again.", function(ok) {
 	              		   
