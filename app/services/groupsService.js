@@ -11,7 +11,11 @@
                 method: 'GET', 
                 isArray: true ,
                 params: { groupId: '' }               
-            },            
+            }, 
+             viewGroup: {
+                 method: 'GET',
+                 params: { groupId: '@groupId' }
+            },                   
             add: {
                  method: 'POST'                 
             },

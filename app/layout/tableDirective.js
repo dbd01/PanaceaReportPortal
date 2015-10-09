@@ -86,9 +86,17 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                              
                                  
                               if ($location.path() == '/groups')
-                              {                                       
-                                 scopeComService.add($scope.tabledata.data[editline]);
-                                 $location.path('/groupInfo'); 
+                              {  
+                                groupsService.viewGroup({ groupId: $scope.tabledata.data[editline][0].value}).$promise
+                                .then(
+                                  function (group) {
+                                    console.log("grouppp:=>",group);                           
+                                    $scope.tabledata.data[editline].push(group.permissions);                                                 
+                                })    
+                                .then(function () {
+                                   //write data to registered service scopeCommService     
+                                   scopeComService.add($scope.tabledata.data[editline]); 
+                                   $location.path('/groupInfo');   
                               }
 
                               if ($location.path() == '/permissions')
