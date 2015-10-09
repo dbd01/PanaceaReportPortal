@@ -38,6 +38,7 @@ var gulp = require('gulp'),
     'app/applications/*.js',
     'app/permissions/controllers/*.js',
     'app/groups/controllers/*.js',
+    'app/groups/*.js',
     'app/common/*.js',    
     'app/services/*.js'    
  ]   
