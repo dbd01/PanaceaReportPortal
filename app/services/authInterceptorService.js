@@ -25,9 +25,11 @@ function authService($injector, $rootScope, $location, localStorageService) {
 		 				 		     
 	            var authData = localStorageService.get('authorizationData');
 	            //if token has expired, clear auth data
-	            if (authData && (Date.now() > authData.expires ))	           
-	              {
-	              		authData=null; 
+	            if ((authData !=null) && (Date.now() > authData.expires ))	           
+	              {     
+	              	    authData=null;
+	              	    $rootScope.log_link.value="Login";		
+		                localStorageService.set('authorizationData', null);	              		 
 	              		bootbox.confirm("Your allowed connection period has expired. Please login again.", function(ok) {
 	              		   $location.path('/');
 	              	    });                               
