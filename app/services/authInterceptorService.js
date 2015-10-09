@@ -23,7 +23,16 @@ function authService($injector, $rootScope, $location, localStorageService) {
 	
 		 var _request  = function (config) { 
 		 				 		     
-	            var authData = localStorageService.get('authorizationData');            
+	            var authData = localStorageService.get('authorizationData');
+	            //if token has expired, clear auth data
+	            if (authData && (Date.now() > authData.expires ))	           
+	              {
+	              		authData=null; 
+	              		bootbox.confirm("Your allowed connection period has expired. Please login again.", function(ok) {
+	              		   $location.path('/');
+	              	    });                               
+	              }	
+	                       
 	            if (authData) {
 	                config.headers = { 
 	                       				 'Content-Type': 'application/json',
