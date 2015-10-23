@@ -24,7 +24,7 @@ function authService($injector, $rootScope, $location, localStorageService) {
 		 var _request  = function (config) { 
 		 				 		     
 	            var authData = localStorageService.get('authorizationData');
-	            //if token has expired, clear auth data
+	            //if token has expired, clear auth data..
 	            if ((authData !=null) && (Date.now() > authData.expires ))	           
 	              {     
 	              	    authData=null;
