@@ -59,7 +59,12 @@ var gulp = require('gulp'),
      'bower_components/datatables/media/css/*.*'
  ]
 
- 
+ //views =  html files
+gulp.task('html_css_files', function(){  
+  gulp.src(html_css_files, { base: './' })
+  .pipe(gulp.dest('dist'));
+});
+
 //javascript  files
 gulp.task('js_files', function () {
    return gulp.src(js_files)
@@ -68,12 +73,6 @@ gulp.task('js_files', function () {
       .pipe(uglify())
       .pipe(concat('app.min.js'))
       .pipe(gulp.dest('dist'));
-});
-
-//views =  html files
-gulp.task('html_css_files', function(){  
-  gulp.src(html_css_files, { base: './' })
-  .pipe(gulp.dest('dist'));
 });
 
 gulp.task('rename_index', function() {
