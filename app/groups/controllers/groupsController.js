@@ -1,11 +1,11 @@
 
 "use strict";
 
-app.controller("groupsController", ['localStorageService','groupsService','$scope',
-   function (localStorageService, groupsService, $scope ) {
+app.controller("groupsController", ['localStorageService', 'consoleService' ,'groupsService','$scope',
+   function (localStorageService, consoleService, groupsService, $scope ) {
   
 	var authData = localStorageService.get('authorizationData');
-	console.log("auth data--gg>", authData);	
+	consoleService.printIt("auth data--gg>", authData);	
        
     var groupsTable ={
                     "header": [
@@ -20,7 +20,7 @@ app.controller("groupsController", ['localStorageService','groupsService','$scop
 
     groupsService.query().$promise.then(
             function (groups) {
-            	console.log("groups:=>",groups);
+            	consoleService.printIt("groups:=>",groups);
                 groups.forEach(function (group) {
                     var groupData = [];
                     groupData.push( {"value": group._id, "showIt": true} );
@@ -33,7 +33,7 @@ app.controller("groupsController", ['localStorageService','groupsService','$scop
             .then(function () {
                 $scope.groupsTable = groupsTable;
                 $scope.groupsTable.ready = true;
-                console.log("ggg", $scope.groupsTable.data);                                
+                consoleService.printIt("ggg", $scope.groupsTable.data);                                
                 
             });
     

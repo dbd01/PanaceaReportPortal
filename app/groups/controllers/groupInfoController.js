@@ -1,7 +1,7 @@
 
 "use strict";
 
-app.controller("groupInfoController", ['permissionsService','$scope',  function ( permissionsService, $scope ) {
+app.controller("groupInfoController", ['permissionsService', 'consoleService', '$scope',  function ( permissionsService, consoleService, $scope ) {
     
 	 //fetch the permissions list
 
@@ -12,7 +12,7 @@ app.controller("groupInfoController", ['permissionsService','$scope',  function 
 
         permissionsService.query().$promise.then(
                 function (permissions) {
-                    console.log("permissions:=>",permissions);
+                    consoleService.printIt("permissions:=>",permissions);
                     permissions.forEach(function (permission) {
                         var permissionData = [];
                         permissionData.push( {"value": permission._id} );
@@ -26,7 +26,7 @@ app.controller("groupInfoController", ['permissionsService','$scope',  function 
                 .then(function () {
                     $scope.permissionsTbl = permissionsTbl;
                     $scope.permissionsTbl.ready = true;
-                    console.log("pppppyyy", $scope.permissionsTbl.data);                                
+                    consoleService.printIt("pppppyyy", $scope.permissionsTbl.data);                                
                     
                 });
      

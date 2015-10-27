@@ -1,7 +1,7 @@
 'use strict';
 
-    app.controller('authenticationController', ['$scope', '$route', 'authenticationService','appSettings','localStorageService','$location','$rootScope','navigationService', 
-    	function ($scope, $route, authenticationService, appSettings, localStorageService, $location, $rootScope, navigationService) {	  
+    app.controller('authenticationController', ['$scope', '$route', 'authenticationService','appSettings','localStorageService', 'consoleService' ,'$location','$rootScope','navigationService', 
+    	function ($scope, $route, authenticationService, appSettings, localStorageService, consoleService, $location, $rootScope, navigationService) {	  
 			
            $scope.authData = {
            		 	username: $scope.username,
@@ -21,7 +21,7 @@
         		authenticationService.send($scope.authData, 
         			//success
             		function (response) {
-		                console.log("authentication data been sent successfully");    
+		                consoleService.printIt("authentication data been sent successfully");    
 		                //set the token  		               
 		                localStorageService.set('authorizationData', 
 		                 	{ token: response.token, 
@@ -35,7 +35,7 @@
                         var navLocation = navigationService.list[navigationService.list.length-1];
                         navigationService.flush();
 
-                        console.log("navLocation=..", navLocation);
+                        consoleService.printIt("navLocation=..", navLocation);
                         if (navLocation==null)
 		                	$location.path('/welcome');
 		                else
@@ -44,13 +44,13 @@
 	            	},
 	            	//error
             	 	function (response) {
-	                	console.log("data..>",$scope.authData);
+	                	consoleService.printIt("data..>",$scope.authData);
 		                if (response.data == null)	{                
-		                   console.log("response data is null!");
+		                   consoleService.printIt("response data is null!");
 		                   $scope.message = "Server error";
 		                }               
 		                else{
-		                  console.log("response error: ", response);
+		                  consoleService.printIt("response error: ", response);
 		                  $scope.alert = { 
 				        		type: 'danger', 
 				        		msg: 'Wrong Username or password' 

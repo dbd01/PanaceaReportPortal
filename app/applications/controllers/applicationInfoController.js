@@ -1,8 +1,8 @@
 
 "use strict";
 
-app.controller("applicationInfoController", ['localStorageService','applicationsService', 'groupsService','$scope', 'scopeComService','$location',
-   function (localStorageService, applicationsService, groupsService, $scope , scopeComService, $location ) {
+app.controller("applicationInfoController", ['localStorageService', 'consoleService','applicationsService', 'groupsService','$scope', 'scopeComService','$location',
+   function (localStorageService, consoleService, applicationsService, groupsService, $scope , scopeComService, $location ) {
     
 	  //fetch the groups list
 
@@ -13,7 +13,7 @@ app.controller("applicationInfoController", ['localStorageService','applications
 
         groupsService.query().$promise.then(
                 function (groups) {
-                    console.log("groups:=>",groups);
+                    consoleService.printIt("groups:=>",groups);
                     groups.forEach(function (group) {
                         var groupData = [];
                         groupData.push( {"value": group._id} );
@@ -26,7 +26,7 @@ app.controller("applicationInfoController", ['localStorageService','applications
                 .then(function () {
                     $scope.groupsTbl = groupsTbl;
                     $scope.groupsTbl.ready = true;
-                    console.log("gggyyy", $scope.groupsTbl.data);                                
+                    consoleService.printIt("gggyyy", $scope.groupsTbl.data);                                
                     
                 });
 

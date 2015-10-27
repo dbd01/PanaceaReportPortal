@@ -1,5 +1,5 @@
-app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'usersService', 'applicationsService', 'groupsService', 'permissionsService', '$window',
-  function ($timeout, $log, $location, scopeComService, usersService, applicationsService, groupsService, permissionsService, $window) {
+app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'consoleService', 'usersService', 'applicationsService', 'groupsService', 'permissionsService', '$window',
+  function ($timeout, $log, $location, scopeComService, consoleService, usersService, applicationsService, groupsService, permissionsService, $window) {
     return {
         restrict: 'E',
         templateUrl: 'app/layout/views/tableTemplate.html',
@@ -57,7 +57,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                                 usersService.viewUser({ userId: $scope.tabledata.data[editline][0].value}).$promise
                                 .then(
                                   function (user) {
-                                    console.log("userrr:=>",user);                           
+                                    consoleService.printIt("userrr:=>",user);                           
                                     $scope.tabledata.data[editline].push(user.groups);                                                 
                                 })    
                                 .then(function () {
@@ -73,7 +73,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                                 applicationsService.viewApp({ applicationId: $scope.tabledata.data[editline][0].value}).$promise
                                 .then(
                                   function (application) {
-                                    console.log("applicationnn:=>",application);                           
+                                    consoleService.printIt("applicationnn:=>",application);                           
                                     $scope.tabledata.data[editline].push(application.groups);                                                 
                                 })    
                                 .then(function () {
@@ -90,7 +90,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                                 groupsService.viewGroup({ groupId: $scope.tabledata.data[editline][0].value}).$promise
                                 .then(
                                   function (group) {
-                                    console.log("grouppp:=>",group);                           
+                                    consoleService.printIt("grouppp:=>",group);                           
                                     $scope.tabledata.data[editline].push(group.permissions);                                                 
                                 })    
                                 .then(function () {
@@ -134,64 +134,64 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'u
                                   //delete entity 
                                   if (entity=="user"){                                                                            
                                       usersService.remove({ userId: _id }, function (response) {                   
-                                        console.log("User has been deleted successfully."); 
+                                        consoleService.printIt("User has been deleted successfully."); 
                                         //refresh page
                                         $window.location.reload();                                   
                                         },
                                         function (response) {                                           
                                            if (response.data == null){
-                                               console.log("response  data is null! -(0)");                                          
+                                               consoleService.printIt("response  data is null! -(0)");                                          
                                            }
                                            else{
-                                             console.log("response (0) ->", response);                                      
+                                             consoleService.printIt("response (0) ->", response);                                      
                                            }
                                       });                                                     
                                 }//end if entity == user
 
                                 if (entity=="application"){                                                                            
                                       applicationsService.remove({ applicationId: _id }, function (response) {                   
-                                        console.log("Application has been deleted successfully."); 
+                                        consoleService.printIt("Application has been deleted successfully."); 
                                         //refresh page
                                         $window.location.reload();                                   
                                         },
                                         function (response) {                                          
                                            if (response.data == null){
-                                               console.log("response  data is null! -(0)");                                          
+                                               consoleService.printIt("response  data is null! -(0)");                                          
                                            }
                                            else{
-                                             console.log("response (0) ->", response);                                      
+                                             consoleService.printIt("response (0) ->", response);                                      
                                            }
                                       });                                                     
                                 }//end if entity == application
 
                                 else if (entity=="group"){                                                                            
                                       groupsService.remove({ groupId: _id }, function (response) {                   
-                                        console.log("Group has been deleted successfully."); 
+                                        consoleService.printIt("Group has been deleted successfully."); 
                                         //refresh page
                                         $window.location.reload();                                   
                                         },
                                         function (response) {                                          
                                            if (response.data == null){
-                                               console.log("response  data is null! -(0)");                                          
+                                               consoleService.printIt("response  data is null! -(0)");                                          
                                            }
                                            else{
-                                             console.log("response (0) ->", response);                                      
+                                             consoleService.printIt("response (0) ->", response);                                      
                                            }
                                       });                                                     
                                 }//end if entity == group
 
                                 else if (entity=="permission"){                                                                            
                                       permissionsService.remove({ permissionId: _id }, function (response) {                   
-                                        console.log("Permission has been deleted successfully."); 
+                                        consoleService.printIt("Permission has been deleted successfully."); 
                                         //refresh page
                                         $window.location.reload();                                   
                                         },
                                         function (response) {                                          
                                            if (response.data == null){
-                                               console.log("response  data is null! -(0)");                                          
+                                               consoleService.printIt("response  data is null! -(0)");                                          
                                            }
                                            else{
-                                             console.log("response (0) ->", response);                                      
+                                             consoleService.printIt("response (0) ->", response);                                      
                                            }
                                       });                                                     
                                 }//end if entity == group

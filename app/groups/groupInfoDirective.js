@@ -1,5 +1,5 @@
-app.directive('groupinfo', [ 'localStorageService', 'groupsService',  'scopeComService', '$location', '$timeout', 
-    function (localStorageService, groupsService,  scopeComService, $location, $timeout) {
+app.directive('groupinfo', [ 'localStorageService', 'consoleService', 'groupsService',  'scopeComService', '$location', '$timeout', 
+    function (localStorageService, consoleService, groupsService,  scopeComService, $location, $timeout) {
     return {
         restrict: 'E',
         templateUrl: 'app/groups/views/groupInfoTemplate.html',
@@ -23,7 +23,7 @@ app.directive('groupinfo', [ 'localStorageService', 'groupsService',  'scopeComS
                                 "name":  $scope.tabledata.data[i][1].value
                             }                                          
                         
-                        console.log("perrrrrrrr",  $scope.permissions ); 
+                        consoleService.printIt("perrrrrrrr",  $scope.permissions ); 
                         
                         //get the data from the service
                          $scope.groupData= scopeComService.list[0];
@@ -83,15 +83,15 @@ app.directive('groupinfo', [ 'localStorageService', 'groupsService',  'scopeComS
                                         }
 
                                 groupsService.add($scope.groupAddData, function (response) {                
-                                    console.log("group has been added successfully!");                
+                                    consoleService.printIt("group has been added successfully!");                
                                     
                                     $location.path('/groups');
                                 },
                                  function (response) {
-                                     console.log($scope.groupAddData);
+                                     consoleService.printIt($scope.groupAddData);
                                      if (response.data == null)
                                      {
-                                         console.log("response data is null!!!!!");
+                                         consoleService.printIt("response data is null!!!!!");
                                           $scope.alert = { 
                                                     type: 'danger', 
                                                     msg: 'No response from server' 
@@ -99,7 +99,7 @@ app.directive('groupinfo', [ 'localStorageService', 'groupsService',  'scopeComS
                                      }
                                      else
                                      {
-                                       console.log("response ->", response);
+                                       consoleService.printIt("response ->", response);
                                        $scope.alert = { 
                                                     type: 'danger', 
                                                     msg: 'Wrong Group Id or groupname already exists' 
@@ -124,15 +124,15 @@ app.directive('groupinfo', [ 'localStorageService', 'groupsService',  'scopeComS
 
                             groupsService.update({ groupId: $scope._id }, $scope.updateData, function (response) {
                                     
-                                    console.log("group has been updated successfully.");
-                                    console.log("update data=>", $scope.updateData);
+                                    consoleService.printIt("group has been updated successfully.");
+                                    consoleService.printIt("update data=>", $scope.updateData);
                                     $location.path('/groups');
                                 },
                                  function (response) {
-                                     console.log("err update -->", $scope.updateData);
+                                     consoleService.printIt("err update -->", $scope.updateData);
                                      if (response.data == null)
                                      {
-                                         console.log("response data is null!!!!!");
+                                         consoleService.printIt("response data is null!!!!!");
                                           $scope.alert = { 
                                                     type: 'danger', 
                                                     msg: 'No response from server' 
@@ -140,7 +140,7 @@ app.directive('groupinfo', [ 'localStorageService', 'groupsService',  'scopeComS
                                      }
                                      else
                                      {
-                                       console.log("response ->", response);
+                                       consoleService.printIt("response ->", response);
                                        $scope.alert = { 
                                                     type: 'danger', 
                                                     msg: 'Wrong input data' 

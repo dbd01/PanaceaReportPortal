@@ -4,8 +4,7 @@
     app.factory("consoleService", function () {
         
        var showMode =  JSON.parse(modeData);
-       console.log("ddddddddddddddddddd", showMode);
-       
+              
        var consola={};
 
        consola.printIt = function(message, obj){

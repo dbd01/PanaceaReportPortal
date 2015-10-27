@@ -1,15 +1,15 @@
 "use strict";
 
 app
-   .factory("authInterceptorService", ['$injector','$rootScope', '$location', 'localStorageService', authService])
+   .factory("authInterceptorService", ['$injector','$rootScope', '$location', 'localStorageService','consoleService', authService])
 
-function authService($injector, $rootScope, $location, localStorageService) {
+function authService($injector, $rootScope, $location, localStorageService, consoleService) {
   
 	$rootScope.$on('$stateChangeStart', function (event, toState) { 
 
        var authData = localStorageService.get('authorizationData');
-       console.log ("loc-path", $location.path());
-       console.log ("to state", toState.name);
+       consoleService.printIt ("loc-path", $location.path());
+       consoleService.printIt ("to state", toState.name);
        
        if ((toState.name =="lala.login") && ($rootScope.log_link.value=="Logout"))
           $location.path('/welcome');

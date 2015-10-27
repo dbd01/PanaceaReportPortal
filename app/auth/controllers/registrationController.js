@@ -1,10 +1,10 @@
 
 "use strict";
 
-app.controller("registrationController", ['localStorageService', function (localStorageService) {
+app.controller("registrationController", ['localStorageService', 'consoleService', function (localStorageService, consoleService) {
    
 	var authData = localStorageService.get('authorizationData');
-	//console.log("nowwww--->", Date.now());	
+	consoleService.printIt("nowwww--->", Date.now());	
     
 
 }]);

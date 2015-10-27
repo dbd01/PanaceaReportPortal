@@ -1,8 +1,8 @@
 
 "use strict";
 
-app.controller("permissionInfoController", ['localStorageService','permissionsService','$scope', 'scopeComService','$location',
-   function (localStorageService, permissionsService , $scope , scopeComService, $location ) {
+app.controller("permissionInfoController", ['localStorageService', 'consoleService','permissionsService','$scope', 'scopeComService','$location',
+   function (localStorageService, consoleService, permissionsService , $scope , scopeComService, $location ) {
     
 	 $scope.permissionData= scopeComService.list[0];
      scopeComService.flush();
@@ -51,15 +51,15 @@ app.controller("permissionInfoController", ['localStorageService','permissionsSe
                     }
 
             permissionsService.add($scope.permissionAddData, function (response) {                
-                console.log("permission has been added successfully!");                
+                consoleService.printIt("permission has been added successfully!");                
                 
                 $location.path('/permissions');
             },
              function (response) {
-                 console.log("err-perm->", $scope.permissionAddData);
+                 consoleService.printIt("err-perm->", $scope.permissionAddData);
                  if (response.data == null)
                  {
-                     console.log("response data is null!!!!!");
+                     consoleService.printIt("response data is null!!!!!");
                       $scope.alert = { 
                                 type: 'danger', 
                                 msg: 'No response from server' 
@@ -67,7 +67,7 @@ app.controller("permissionInfoController", ['localStorageService','permissionsSe
                  }
                  else
                  {
-                   console.log("response ->", response);
+                   consoleService.printIt("response ->", response);
                    $scope.alert = { 
                                 type: 'danger', 
                                 msg: 'Wrong Group Id or groupname already exists' 
@@ -89,15 +89,15 @@ app.controller("permissionInfoController", ['localStorageService','permissionsSe
 
         permissionsService.update({ permissionId: $scope._id }, $scope.updateData, function (response) {
                 
-                console.log("permission has been updated successfully.");
-                console.log("update data=>", $scope.updateData);
+                consoleService.printIt("permission has been updated successfully.");
+                consoleService.printIt("update data=>", $scope.updateData);
                 $location.path('/permissions');
             },
              function (response) {
-                 console.log("err update -->", $scope.updateData);
+                 consoleService.printIt("err update -->", $scope.updateData);
                  if (response.data == null)
                  {
-                     console.log("response data is null!!!!!");
+                     consoleService.printIt("response data is null!!!!!");
                       $scope.alert = { 
                                 type: 'danger', 
                                 msg: 'No response from server' 
@@ -105,7 +105,7 @@ app.controller("permissionInfoController", ['localStorageService','permissionsSe
                  }
                  else
                  {
-                   console.log("response ->", response);
+                   consoleService.printIt("response ->", response);
                    $scope.alert = { 
                                 type: 'danger', 
                                 msg: 'Wrong input data' 

@@ -1,7 +1,7 @@
 
 "use strict";
 
-app.controller("userInfoController", ['groupsService','$scope', function (groupsService, $scope ) {
+app.controller("userInfoController", ['groupsService','$scope','consoleService', function (groupsService, $scope, consoleService ) {
     
 	  //fetch the groups list
 
@@ -12,7 +12,7 @@ app.controller("userInfoController", ['groupsService','$scope', function (groups
 
         groupsService.query().$promise.then(
                 function (groups) {
-                    console.log("groups:=>",groups);
+                    consoleService.printIt("groups:=>",groups);
                     groups.forEach(function (group) {
                         var groupData = [];
                         groupData.push( {"value": group._id} );
@@ -25,7 +25,7 @@ app.controller("userInfoController", ['groupsService','$scope', function (groups
                 .then(function () {
                     $scope.groupsTbl = groupsTbl;
                     $scope.groupsTbl.ready = true;
-                    console.log("gggyyy", $scope.groupsTbl.data);                                
+                    consoleService.printIt("gggyyy", $scope.groupsTbl.data);                                
                     
                 });
 

@@ -1,5 +1,5 @@
-app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComService', '$location', '$timeout', 
-    function (localStorageService, usersService,  scopeComService, $location, $timeout) {
+app.directive('userinfo', [ 'localStorageService', 'usersService' ,'consoleService',  'scopeComService', '$location', '$timeout', 
+    function (localStorageService, usersService, consoleService,  scopeComService, $location, $timeout) {
     return {
         restrict: 'E',
         templateUrl: 'app/users/views/userInfoTemplate.html',
@@ -23,7 +23,7 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                                 "name":  $scope.tabledata.data[i][1].value
                             }                                          
                         
-                        console.log("eeeeeeggggg0000ee",  $scope.groups ); 
+                        consoleService.printIt("eeeeeeggggg0000ee",  $scope.groups ); 
                         
                         //get the data from the service
                         $scope.userData= scopeComService.list[0];
@@ -82,16 +82,16 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                                           }
 
                                 usersService.add($scope.userAddData, function (response) {
-                                    console.log("adddddd", $scope.userAddData);
-                                    console.log("User has been added successfully!");
+                                    consoleService.printIt("adddddd", $scope.userAddData);
+                                    consoleService.printIt("User has been added successfully!");
                                                                         
                                     $location.path('/users');
                                 },
                                  function (response) {
-                                     console.log("errr->", $scope.userAddData);
+                                     consoleService.printIt("errr->", $scope.userAddData);
                                      if (response.data == null)
                                      {
-                                         console.log("response data is null!!!!!");
+                                         consoleService.printIt("response data is null!!!!!");
                                           $scope.alert = { 
                                                     type: 'danger', 
                                                     msg: 'No response from server' 
@@ -99,7 +99,7 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                                      }
                                      else
                                      {
-                                       console.log("response ->", response);
+                                       consoleService.printIt("response ->", response);
                                        $scope.alert = { 
                                                     type: 'danger', 
                                                     msg: 'Wrong Group Ids or username already exists' 
@@ -124,15 +124,15 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
 
                             usersService.update({ userId: $scope._id }, $scope.updateData, function (response) {
                                     
-                                    console.log("User has been updated successfully.");
-                                    console.log("update data=>", $scope.updateData);
+                                    consoleService.printIt("User has been updated successfully.");
+                                    consoleService.printIt("update data=>", $scope.updateData);
                                     $location.path('/users');
                                 },
                                  function (response) {
-                                     console.log("err update -->", $scope.updateData);                                     
+                                     consoleService.printIt("err update -->", $scope.updateData);                                     
                                      if (response.data == null)
                                      {
-                                         console.log("response data is null!!!!!");
+                                         consoleService.printIt("response data is null!!!!!");
                                           $scope.alert = { 
                                                     type: 'danger', 
                                                     msg: 'No response from server' 
@@ -140,7 +140,7 @@ app.directive('userinfo', [ 'localStorageService', 'usersService',  'scopeComSer
                                      }
                                      else
                                      {
-                                       console.log("response ->", response);
+                                       consoleService.printIt("response ->", response);
                                        $scope.alert = { 
                                                     type: 'danger', 
                                                     msg: 'Wrong input data' 

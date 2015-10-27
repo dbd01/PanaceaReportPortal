@@ -1,11 +1,11 @@
 
 "use strict";
 
-app.controller("applicationsController", ['localStorageService','applicationsService','$scope',
-   function (localStorageService, applicationsService , $scope ) {
+app.controller("applicationsController", ['localStorageService','consoleService' ,'applicationsService','$scope',
+   function (localStorageService, consoleService, applicationsService , $scope ) {
   
 	var authData = localStorageService.get('authorizationData');
-	console.log("auth data--appl>", authData);	
+	consoleService.printIt("auth data--appl>", authData);	
        
     var applicationsTable ={
                     "header": [
@@ -24,7 +24,7 @@ app.controller("applicationsController", ['localStorageService','applicationsSer
 
     applicationsService.query().$promise.then(
             function (applications) {
-            	console.log("applications:=>",applications);
+            	consoleService.printIt("applications:=>",applications);
                 applications.forEach(function (application) {
                     var applicationData = [];
                     applicationData.push( {"value": application._id, "showIt": true} );
@@ -42,7 +42,7 @@ app.controller("applicationsController", ['localStorageService','applicationsSer
             .then(function () {
                 $scope.applicationsTable = applicationsTable;
                 $scope.applicationsTable.ready = true;
-                console.log("aaaap", $scope.applicationsTable.data);                                
+                consoleService.printIt("aaaap", $scope.applicationsTable.data);                                
                 
             });
     
