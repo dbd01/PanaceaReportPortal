@@ -1,12 +1,12 @@
 
 "use strict";
 
-app.controller("usersController", ['localStorageService','usersService','$scope',
-   function (localStorageService, usersService , $scope ) {
+app.controller("usersController", ['localStorageService','usersService','$scope', 'consoleService',
+   function (localStorageService, usersService , $scope, consoleService ) {
   
 	var authData = localStorageService.get('authorizationData');
-	console.log("auth data--uu>", authData);	
-       
+	consoleService.printIt("auth data--uu>", authData);
+          
     var usersTable ={
                     "header": [
                         { "title": "_id",  "showIt": true },

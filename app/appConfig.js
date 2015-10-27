@@ -16,7 +16,8 @@ app
             $location.path( "/login" );
         }
         else
-            $rootScope.log_link = {value:"Logout"}
+            $rootScope.log_link = {value:"Logout"}        
+        
      }])
     ;
     
