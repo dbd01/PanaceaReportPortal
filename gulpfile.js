@@ -82,6 +82,6 @@ gulp.task('rename_index', function() {
   		.pipe(gulp.dest("./dist"));
 });
 
-gulp.task('default', ['js_files', 'html_css_files', 'rename_index']);
+gulp.task('default', [ 'html_css_files','js_files', 'rename_index']);
 
 
