@@ -6,18 +6,20 @@ Portal utilizing seperate authserver, and panacea hospital portal to provide acc
 	 https://nodejs.org/en/
 
 [2]. install bower
-	 $ npm install -g bower
+	 $npm install -g bower
 
-[3]. install bower components
-	 $ bower install
+[3]. $npm install  	 
+
+[4]. install bower components
+	 $bower install
  
-[4]. install	node http server
-	 $ npm install http-server -g
+[5]. install node http server
+	 $npm install http-server -g
 
-[5]. run http server
+[6]. run http server
 	$http-server
 
-[6]. access http server.
+[7]. access http server.
 	 In your browser, run http://localhost:8080
 
 
