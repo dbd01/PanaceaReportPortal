@@ -56,7 +56,7 @@ app.directive('userinfo', [ 'localStorageService', 'usersService' ,'consoleServi
                                             "_id":'',
                                             "name":'',
                                             "password":'',                                            
-                                            "groups": []                                           
+                                            "Groups": []                                           
                                         };                    
                                 }    
 
@@ -64,7 +64,7 @@ app.directive('userinfo', [ 'localStorageService', 'usersService' ,'consoleServi
                                             "_id": $scope._id,
                                             "name": $scope.username,
                                             "password": $scope.password,                                           
-                                            "groups": $scope.groupz
+                                            "Groups": $scope.groupz
                                           }
 
                         
