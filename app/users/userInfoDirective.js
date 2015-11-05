@@ -15,15 +15,15 @@ app.directive('userinfo', [ 'localStorageService', 'usersService' ,'consoleServi
                                        
                         var table = $('#' + $scope.tableid);                  
                         var oTable = table.dataTable(); 
-                         console.log("1111",$scope.groups);
-                         console.log("222", $scope.Groups);
+                         
                         $scope.groups =[];
                         for (var i=0; i<$scope.tabledata.data.length; i++) 
                             $scope.groups[i] = {
                                 "id":    $scope.tabledata.data[i][0].value,
                                 "name":  $scope.tabledata.data[i][1].value
                             }                                          
-                        
+                        console.log("1111",$scope.groups);
+                         console.log("222", $scope.Groups);
                         consoleService.printIt("eeeeeeggggg0000ee",  $scope.groups ); 
                         
                         //get the data from the service
