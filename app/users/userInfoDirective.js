@@ -15,7 +15,8 @@ app.directive('userinfo', [ 'localStorageService', 'usersService' ,'consoleServi
                                        
                         var table = $('#' + $scope.tableid);                  
                         var oTable = table.dataTable(); 
-                         
+                         console.log("1111",$scope.groups);
+                         console.log("222", $scope.Groups);
                         $scope.groups =[];
                         for (var i=0; i<$scope.tabledata.data.length; i++) 
                             $scope.groups[i] = {
