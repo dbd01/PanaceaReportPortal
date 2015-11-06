@@ -39,16 +39,12 @@ app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'app
                             $scope._id= $scope.applicationData[0].value;
                             $scope.name = $scope.applicationData[1].value;
                             $scope.description= $scope.applicationData[2].value;
-                            $scope.protocol = $scope.applicationData[3].value; 
-                            $scope.link = $scope.applicationData[4].value;
-                            $scope.port = $scope.applicationData[5].value;
-                            $scope.hostname = $scope.applicationData[6].value;
-
+                            
                             //scope.groups must contain strings
-                            for (var i=0; i<$scope.applicationData[7].length; i++)
+                            for (var i=0; i<$scope.applicationData[3].length; i++)
                                  $scope.groupz[i] = {
-                                                        "id": $scope.applicationData[7][i]._id,
-                                                        "name": $scope.applicationData[7][i].name
+                                                        "id": $scope.applicationData[3][i]._id,
+                                                        "name": $scope.applicationData[3][i].name
                                                     }                           
                          }
                          else 
@@ -60,10 +56,6 @@ app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'app
                                             "_id":'',
                                             "name":'',
                                             "description":'',
-                                            "protocol": '',
-                                            "link":"",
-                                            "port":'',
-                                            "hostname": '',
                                             "groups": []
                                         };                    
                                 }    
@@ -72,10 +64,6 @@ app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'app
                                             "_id": $scope._id,
                                             "name":$scope.name,
                                             "description": $scope.description,
-                                            "protocol": $scope.protocol,
-                                            "link": $scope.link,
-                                            "port": $scope.port,
-                                            "hostname": $scope.hostname,
                                             "groups": $scope.groupz
                                         }
 
@@ -90,10 +78,6 @@ app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'app
                                  $scope.applicationAddData={
                                             "name":$scope.applicationData.name,
                                             "description": $scope.applicationData.description,
-                                            "protocol": $scope.applicationData.protocol,
-                                            "link": $scope.applicationData.link,
-                                            "port": $scope.applicationData.port,
-                                            "hostname": $scope.applicationData.hostname,
                                             "groups": $scope.groupzIDz
                                         }
 
@@ -134,10 +118,6 @@ app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'app
                             $scope.updateData={
                                             "name":$scope.applicationData.name,
                                             "description": $scope.applicationData.description,
-                                            "protocol": $scope.applicationData.protocol,
-                                            "link": $scope.applicationData.link,
-                                            "port": $scope.applicationData.port,
-                                            "hostname": $scope.applicationData.hostname,
                                             "groups": $scope.groupzIDz                  
                                         }
 
