@@ -19,7 +19,6 @@ app.controller("applicationInfoController", ['localStorageService', 'consoleServ
                         groupData.push( {"value": group._id} );
                         groupData.push( {"value": group.name} );
                         groupData.push( {"value": group.description} );
-                        groupData.push( {"value": group.isDeleted});                                      
                         groupsTbl.data.push(groupData);                 
                     });
                 })    
