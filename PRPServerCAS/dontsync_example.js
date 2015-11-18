@@ -14,7 +14,7 @@ config.development = {
   },
  
   //web server settigns
-  serverPort: process.env.port || 1337,
+  serverPort: 4457 || process.env.port || 1337,
   useWebHttps: false,
   serverHost: "localhost",
   server: "http://localhost:1337/",
