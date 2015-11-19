@@ -22,9 +22,6 @@ var favicon = require('serve-favicon');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-//concepts for different things
-require('./utilities/concepts.js');
-
 var app = express();
 
 //morgan logger (used only to see how long it takes to reply)
@@ -46,13 +43,8 @@ if (config.env != 'production') {
 app.use(scribe.express.logger());
 app.use('/logs', scribe.webPanel());
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-
 // favicon
 app.use(favicon(__dirname + '/public/favicon.ico'));
-
 
 // generic middleware for express
 app.use(bodyParser.json());
