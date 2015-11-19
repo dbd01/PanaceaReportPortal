@@ -29,7 +29,7 @@ config.development = {
   polyphemusActive: true,
   polyphemusHttps: true,
   useCAS:true,
-  CASService:"http://echidna.dotbydot.eu:4454/cas",
+  CASService:"http://echidna.dotbydot.eu:4457/cas",
 
   // other settings
   other: {}
@@ -37,8 +37,6 @@ config.development = {
 
 // config when running from the host of vagrant (NODE_ENV=host)
 config.host = ld.cloneDeep(config.development);
-config.host.mongoConnParamaters.connectionString = 'mongodb://localhost:27117/example';
-config.host.mySqlConnParameters.port = '3406';
 config.host.env = 'host';
 config.host.serverPort = process.env.PORT || 1337;
 

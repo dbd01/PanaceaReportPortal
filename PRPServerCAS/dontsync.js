@@ -29,7 +29,7 @@ config.development = {
   polyphemusActive: true,
   polyphemusHttps: true,
   useCAS:true,
-  CASService:"http://echidna.dotbydot.eu:4454/cas",
+  CASService:"http://echidna.dotbydot.eu:4457/cas",
 
   // other settings
   other: {}
