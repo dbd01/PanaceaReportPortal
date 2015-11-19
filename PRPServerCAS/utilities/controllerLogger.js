@@ -1,5 +1,4 @@
-﻿"use strict";
-
+﻿
 var console = process.console;
 var config = require('../dontsync.js')[process.env.NODE_ENV || 'development'];
 

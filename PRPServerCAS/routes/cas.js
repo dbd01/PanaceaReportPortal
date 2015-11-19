@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var controllerLogger = require('../utilities/controllerLogger');
 var polyphemus = require('polyphemus-connector');
-var config = require('../dontsync.js');
+var config = require('../dontsync.js')[process.env.NODE_ENV || 'development'];
 
 var path = '/cas';
 

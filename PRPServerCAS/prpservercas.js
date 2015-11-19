@@ -1,5 +1,5 @@
 var app = require('./app');
-var config = require('./dontsync.js');
+var config = require('./dontsync.js')[process.env.NODE_ENV || 'development'];
 var console = process.console;
 
 app.set('port', config.serverPort);
