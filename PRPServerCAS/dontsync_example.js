@@ -14,7 +14,7 @@ config.development = {
   },
  
   //web server settigns
-  serverPort: 4457 ,
+  serverPort: 4457 || process.env.port || 1337,
   useWebHttps: false,
   serverHost: "echidna.dotbydot.eu",
   server: "https://echidna.dotbydot.eu:4457/",
