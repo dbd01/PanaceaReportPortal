@@ -22,6 +22,10 @@ var app = express();
 app.use(scribe.express.logger());
 app.use('/logs', scribe.webPanel());
 
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+
 // favicon
 app.use(favicon(__dirname + '/public/favicon.ico'));
 

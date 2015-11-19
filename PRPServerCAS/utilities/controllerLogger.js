@@ -1,7 +1,7 @@
 ﻿"use strict";
 
 var console = process.console;
-var config = require('../dontsync.js')[process.env.NODE_ENV || 'development'];
+var config = require('../dontsync.js');
 
 function controllerLogger(controllerName) {
   return function (req, res, next) {
