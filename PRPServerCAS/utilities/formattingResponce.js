@@ -1,3 +1,5 @@
+"use strict";
+
 var console = process.console;
 
 // json and xml final responce
