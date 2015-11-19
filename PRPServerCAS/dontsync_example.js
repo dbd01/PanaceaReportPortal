@@ -23,6 +23,6 @@ config.polyphemusHost= "echidna.dotbydot.eu";
 config.polyphemusActive= true;
 config.polyphemusHttps= true;
 config.useCAS=true;
-config.CASService="http://echidna.dotbydot.eu:4457/cas";
+config.CASService="https://echidna.dotbydot.eu:4457/cas";
 
 module.exports = config;
