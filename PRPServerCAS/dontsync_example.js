@@ -1,43 +1,23 @@
-var ld = require('lodash');
-
+"use strict"
 var config = {};
 
 // default config for running within vagrant
 // exceptions for running in different evironments are set at the end
-config.development = {
-  //environment
-  env: 'development',
+//web server settigns
+config.serverPort: 4457 ,
+config.useWebHttps: false,
+config.serverHost: "echidna.dotbydot.eu",
 
-  //logging  options are: all, warn, info, error, log. example: {error:true, log:false }
-  loglevel: {
-    all: true
-  },
- 
-  //web server settigns
-  serverPort: 4457,
-  useWebHttps: false,
-  serverHost: "echidna.dotbydot.eu",
+//cors settigns
+config.validDomains: "*",
 
-  //cors settigns
-  validDomains: "*",
-
-  //polyphemus settings
-  applicationName: "PRPServerCAS",
-  polyphemusPort: 4451,
-  polyphemusHost: "echidna.dotbydot.eu",
-  polyphemusActive: true,
-  polyphemusHttps: true,
-  useCAS:true,
-  CASService:"https://echidna.dotbydot.eu:4457/cas",
-
-  // other settings
-  other: {}
-};
-
-
-// config when running on a production server (NODE_ENV=production)
-config.production = ld.cloneDeep(config.development);
-config.production.env = 'production';
-config.production.loglevel = {error:true, warn:true, log:false,  info:false};
+//polyphemus settings
+config.applicationName: "PRPServerCAS",
+config.polyphemusPort: 4451,
+config.polyphemusHost: "echidna.dotbydot.eu",
+config.polyphemusActive: true,
+config.polyphemusHttps: true,
+config.useCAS:true,
+config.CASService:"http://echidna.dotbydot.eu:4457/cas"
 
 module.exports = config;
