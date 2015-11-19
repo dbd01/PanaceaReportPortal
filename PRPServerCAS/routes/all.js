@@ -4,7 +4,7 @@
 var console = process.console;
 var fs = require("fs");
 var path = require("path");
-var config = require('../utilities/config');
+var config = require('../dontsync.js');
 
 var routing = function(app) {
   var routers = {};

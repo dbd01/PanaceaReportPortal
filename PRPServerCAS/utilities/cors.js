@@ -1,4 +1,6 @@
-var config = require('../dontsync.js')[process.env.NODE_ENV || 'development'];
+"use strict";
+
+var config = require('../dontsync.js');
 
 var cors = function (req, res, next) {
   // CORS headers
