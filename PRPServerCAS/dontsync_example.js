@@ -16,8 +16,8 @@ config.development = {
   //web server settigns
   serverPort: 4457 || process.env.port || 1337,
   useWebHttps: false,
-  serverHost: "localhost",
-  server: "http://localhost:1337/",
+  serverHost: "echidna.dotbydot.eu",
+  server: "https://echidna.dotbydot.eu:4457/",
 
   //cors settigns
   validDomains: "*",
@@ -29,7 +29,7 @@ config.development = {
   polyphemusActive: true,
   polyphemusHttps: true,
   useCAS:true,
-  CASService:"http://echidna.dotbydot.eu:4457/cas",
+  CASService:"https://echidna.dotbydot.eu:4457/cas",
 
   // other settings
   other: {}
