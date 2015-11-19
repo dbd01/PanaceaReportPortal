@@ -11,6 +11,10 @@ config.serverHost= "echidna.dotbydot.eu";
 
 //cors settigns
 config.validDomains= "*";
+//web server settigns
+config.serverPort= 4457;
+config.useWebHttps= false;
+config.serverHost= "echidna.dotbydot.eu";
 
 //polyphemus settings
 config.applicationName= "PRPServerCAS";
