@@ -2,18 +2,12 @@
 "use strict";
 
 //configuration
-var config = require('./utilities/config');
+var config = require('./dontsync.js');
 
-// logging
-var setLogLevel = require("dbd-loglevel");
 var scribe = require('scribe-js')({
   rootPath: "./logs/"
 });
 var console = process.console;
-setLogLevel(config.loglevel);
-
-// In order to note settings for loading application
-console.time().file().log('Loading on settings for NODE_ENV = ' + config.env);
 
 //express
 var express = require('express');
@@ -23,21 +17,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var app = express();
-
-//morgan logger (used only to see how long it takes to reply)
-if (config.env != 'production') {
-  var logger = require('morgan');
-  app.use(logger('dev', {
-    "stream": {
-      write: function(str) {
-        console.tag({
-          msg: 'MORGAN',
-          colors: ['cyan']
-        }).time().log(str.substring(0, str.length - 1));
-      }
-    }
-  }));
-}
 
 //scribe logger (used for logging everything)
 app.use(scribe.express.logger());
@@ -72,19 +51,6 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
-
-// error handlers
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
-  });
-}
 
 // production error handler
 // no stacktraces leaked to user

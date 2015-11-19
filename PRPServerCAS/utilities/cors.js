@@ -1,3 +1,5 @@
+"use strict";
+
 var config = require('../dontsync.js')[process.env.NODE_ENV || 'development'];
 
 var cors = function (req, res, next) {
