@@ -1,7 +1,14 @@
 'use strict';
 
-    app.controller('authenticationController', ['$scope', 'localStorageService', '$location', 'navigationService', 
-    	function ($scope, localStorageService, $location, navigationService) {	  
+    app.controller('authenticationController', ['$scope', 'localStorageService', '$location', 'navigationService', '$window', 
+    	function ($scope, localStorageService, $location, navigationService, $window) {
+
+    	$window.addEventListener( "message",
+	          function (e) {
+	               // if (e.origin != 'https://echidna.dotbydot.eu:4457/cas/login/') { return; } 
+	                console.log("xaxa->", e.data);
+	          },
+	          false);	  
 			     
                                
 		       		
