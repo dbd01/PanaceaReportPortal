@@ -3,14 +3,14 @@
 	    <p>Login</p>
 	     <iframe id="loginFrame" src="https://echidna.dotbydot.eu:4457/cas/login/" width="500" height="500"> 
 			<p>iframes are not supported by your browser.</p>
-			<script>
-		        window.addEventListener( "message",
-		          function (e) {
-		                if (e.origin !== 'https://echidna.dotbydot.eu:4457/cas/login/') { return; } 
-		                console.log("xaxa->", e.data);
-		          },
-		          false);
-		    </script>
-		</iframe>	
+		</iframe>
+		<script>
+	        window.addEventListener( "message",
+	          function (e) {
+	               // if (e.origin != 'https://echidna.dotbydot.eu:4457/cas/login/') { return; } 
+	                console.log("xaxa->", e.data);
+	          },
+	          false);
+	    </script>			
 	</div>	
 </div>
