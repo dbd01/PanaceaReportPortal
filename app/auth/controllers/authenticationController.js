@@ -3,8 +3,8 @@
     app.controller('authenticationController', ['$scope', 'localStorageService', '$location', 'navigationService', 
     	function ($scope, localStorageService, $location, navigationService) {	  
 			     
-           var content = $("#loginFrame").contents().find("#login-form").val();
-           console.log("gg3", content);
+           //var content = $("#loginFrame").contents().find("#login-form").val();
+           //console.log("gg3", content);
                          
 
 		        if(content!=null){		            
