@@ -3,7 +3,7 @@
     app.controller('authenticationController', ['$scope', 'localStorageService', '$location', 'navigationService', '$window', 
     	function ($scope, localStorageService, $location, navigationService, $window) {
 
-    	var source = new MyEventSource('https://echidna.dotbydot.eu:4457/cas/');
+    	var source = new EventSource('https://echidna.dotbydot.eu:4457/cas/');
 
 		// Add event listener
 		source.on('eventName', function(data) {
