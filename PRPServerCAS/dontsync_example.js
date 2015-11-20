@@ -1,5 +1,5 @@
 "use strict"
-var config = {};
+var config = {}; 
 
 // default config for running within vagrant
 // exceptions for running in different evironments are set at the end
