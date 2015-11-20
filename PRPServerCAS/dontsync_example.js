@@ -23,5 +23,6 @@ config.polyphemusActive= true;
 config.polyphemusHttps= true;
 config.useCAS=true;
 config.CASService="https://echidna.dotbydot.eu:4457/cas";
+config.CASResponseFormat="XML"; //other option is XML
 
 module.exports = config;
