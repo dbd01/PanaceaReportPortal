@@ -6,9 +6,9 @@
     	var source = new EventSource('https://echidna.dotbydot.eu:4457/cas/');
 
 		// Add event listener
-		source.on('eventName', function(data) {
-		  console.log("lalaaaaa", data);
-		});
+		source.onmessage = function (event) {
+		  console.log("lalaaaa", event.data);
+		};
 
 		// Fire a event (also very useful for testing and debugging!!)
 		//source.trigger('eventName', { mykey: 'myvalue' });
