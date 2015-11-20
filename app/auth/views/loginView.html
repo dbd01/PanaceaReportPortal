@@ -1,22 +1,16 @@
 <div >
-	<div class = "row" >
-		<form class="navbar-form navbar-left" role="search">
-			<div class="form-group">
-			    <p> Login<p>
-			    <iframe src="https://echidna.dotbydot.eu:4457/cas/login/" width="500" height="500">
-				<input type="text" class="form-control" placeholder="Username" ng-model ="authData.username" required> <p> <p>
-				<input type="password" class="form-control" placeholder="Password" ng-model ="authData.password" required><p> <p>
-			</div>
-			<p><button type="submit" class="btn btn-default" ng-click = "login()">Submit</button>
-			
-			<div>				
-				<alert type="{{alert.type}}" close="closeAlert()" ng-show="alert != null" >
-					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>		
-						{{alert.msg}}
-				</alert>
-			</div>	
-			
-		</form>
-	</div>
-	
+	<div class = "row" >		
+	    <p> Login</p>
+	     <iframe id="loginFrame" src="https://echidna.dotbydot.eu:4457/cas/login/" width="500" height="500"> 
+			<p>iframes are not supported by your browser.</p>
+			<script>
+		        window.addEventListener( "message",
+		          function (e) {
+		                if(e.origin !== 'https://echidna.dotbydot.eu:4457/cas'){ return; } 
+		                console.log(e.data);
+		          },
+		          false);
+		    </script>
+		</iframe>	
+	</div>	
 </div>
