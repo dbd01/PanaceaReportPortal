@@ -3,12 +3,18 @@
     app.controller('authenticationController', ['$scope', 'localStorageService', '$location', 'navigationService', '$window', 
     	function ($scope, localStorageService, $location, navigationService, $window) {
 
-    	$window.addEventListener( "message",
-	          function (e) {
-	               // if (e.origin != 'https://echidna.dotbydot.eu:4457/cas/login/') { return; } 
-	                console.log("xaxa->", e.data);
-	          },
-	          false);	  
+    	var source = new MyEventSource('https://echidna.dotbydot.eu:4457/cas/');
+
+		// Add event listener
+		source.on('eventName', function(data) {
+		  console.log("lalaaaaa", data);
+		});
+
+		// Fire a event (also very useful for testing and debugging!!)
+		//source.trigger('eventName', { mykey: 'myvalue' });
+
+		// Unbind event listener (very important for complex applications)
+		//source.off('eventName'); 
 			     
                                
 		       		
