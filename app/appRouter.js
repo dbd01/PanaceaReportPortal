@@ -7,10 +7,16 @@ app
 
         // Now set up the states 
         $stateProvider
+        /*
             .state('lala', {
                 url: "/",
 				template: "<div ui-view>Hallo!</div> "	,
 				controller: 'lalaController'								
+                 })
+*/          .state('lala', {
+                url: "/:token/:expires",
+                template: "<div ui-view>Hallo!</div> "  ,
+                controller: 'authenticationController'                                
                  })
 			.state('lala.login', {
                 url: "login/:token/:expires",
