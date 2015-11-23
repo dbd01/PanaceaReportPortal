@@ -10,15 +10,15 @@ app
     .config(['localStorageServiceProvider', function(localStorageServiceProvider){
     localStorageServiceProvider.setPrefix('ls');
      }])
-/*
+
     .run(['$rootScope','$location', 'localStorageService', function($rootScope, $location, localStorageService){
-        if  ( (localStorageService.get('authorizationData')==null) && ($location.path().substring(0,6)!="/login"){
+        if  (localStorageService.get('authorizationData')==null){
             $rootScope.log_link = {value:"Login"};
-            $location.path( "/login" );
+          //  $location.path( "/login" );
         }
         else
             $rootScope.log_link = {value:"Logout"}    
      }])
-            */
+            
     ;
     
