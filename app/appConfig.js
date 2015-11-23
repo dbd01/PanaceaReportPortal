@@ -12,9 +12,9 @@ app
      }])
 
     .run(['$rootScope','$location', 'localStorageService', function($rootScope, $location, localStorageService){
-        if  ( (localStorageService.get('authorizationData')==null) && ($location.path().substring(0,1)!="/") ) {
+        if  ( (localStorageService.get('authorizationData')==null)  ) {
             $rootScope.log_link = {value:"Login"};
-            $location.path( "/" );             
+           // $location.path( "/" );             
         }
         else
             $rootScope.log_link = {value:"Logout"}    

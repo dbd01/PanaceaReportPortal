@@ -4,8 +4,7 @@
     	function ($scope, localStorageService, $location, navigationService, $stateParams, $rootScope, $http, appSettings) {
 	    	$rootScope.urlLink = {value:"true"};
 	    	
-	    	console.log("dddd", $stateParams);
-	        console.log("tt", $location.absUrl());  
+	    	console.log("dddd", $stateParams);	        
 	         
 	        //set the token  		               
 	        localStorageService.set('authorizationData', 
@@ -31,6 +30,7 @@
                     }).
                     error(function (response, status) {                        
                         console.log('errorrrr44->', response);
+                        //reset everything
                         $rootScope.log_link.value="Login";		
 		                localStorageService.set('authorizationData', null);
                     });           
