@@ -122,6 +122,7 @@ app.directive('userinfo', [ 'localStorageService', 'usersService' ,'consoleServi
                             $scope.updateData={
                                             "username":$scope.userData.name,
                                             "password":$scope.userData.password,
+                                            "email":$scope.userData.email,
                                             "groups": $scope.groupzIDz                      
                                         }
 
