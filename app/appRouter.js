@@ -14,10 +14,15 @@ app
 				controller: 'lalaController'								
                  }) 
          */
-            .state('lala', {
+            .state('lalo', {
                 url: "/:token/:expires",
-                template: "<div ui-view>Hallo!</div> "  ,
+                template: "Hallo!. "  ,
                 controller: 'authenticationController'                                
+                 })
+            .state('lala', {
+                url: "/",
+                template: "<div ui-view>Hallo!!</div> "  ,
+                controller: 'lalaController'                                
                  })
 			.state('lala.login', {
                 url: "login",
