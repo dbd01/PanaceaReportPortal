@@ -3,7 +3,7 @@
 app
 .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
-        $urlRouterProvider.otherwise("/");
+       // $urlRouterProvider.otherwise("/");
 
         // Now set up the states 
         $stateProvider
