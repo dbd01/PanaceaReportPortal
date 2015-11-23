@@ -12,8 +12,9 @@ app
                 url: "/",
 				template: "<div ui-view>Hallo!</div> "	,
 				controller: 'lalaController'								
-                 })
-*/          .state('lala', {
+                 }) 
+         */
+            .state('lala', {
                 url: "/:token/:expires",
                 template: "<div ui-view>Hallo!</div> "  ,
                 controller: 'authenticationController'                                
