@@ -1,10 +1,10 @@
 'use strict';
 
-    app.controller('authenticationController', ['$scope', 'localStorageService', '$location', 'navigationService', '$window', 
-    	function ($scope, localStorageService, $location, navigationService, $window) {
+    app.controller('authenticationController', ['$scope', 'localStorageService', '$location', 'navigationService', '$stateParams', 
+    	function ($scope, localStorageService, $location, navigationService, $stateParams) {
 
     	console.log("dddd", $stateParams);
-        console.log("GGG", $location.path();   
+        console.log("GGG", $location.path());   
 		 
 			     
                                
