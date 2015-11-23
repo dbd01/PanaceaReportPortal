@@ -6,24 +6,17 @@ app
        // $urlRouterProvider.otherwise("/");
 
         // Now set up the states 
-        $stateProvider
-        /*
+        $stateProvider      
             .state('lala', {
                 url: "/",
 				template: "<div ui-view>Hallo!</div> "	,
 				controller: 'lalaController'								
-                 }) 
-         */
+                 })         
             .state('lalo', {
                 url: "/:token/:expires",
                 template: "Hallo!"  ,
                 controller: 'authenticationController'                                
-                 }) 
-            .state('lala', {
-                url: "/",
-                template: "Hallo!!"  ,
-                controller: 'lalaController'                                
-                 })                  
+                 })                     
 			.state('lala.login', {
                 url: "login",
                 templateUrl: "app/auth/views/loginView.html",
