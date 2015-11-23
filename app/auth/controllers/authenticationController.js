@@ -6,7 +6,7 @@
 	    	
 	    	console.log("dddd", $stateParams);	        
 	         
-	        //set the token  		               
+	        //set the token. 		               
 	        localStorageService.set('authorizationData', 
 	         	{ token: $stateParams.token,              	   
 	         	  expires: $stateParams.expires		                 	   
