@@ -13,7 +13,7 @@ app
 				controller: 'lalaController'								
                  })
 			.state('lala.login', {
-                url: "login/:token:/expires",
+                url: "login/:token/:expires",
                 templateUrl: "app/auth/views/loginView.html",
 				controller: 'authenticationController'                
                   })

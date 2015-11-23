@@ -4,7 +4,7 @@
     	function ($scope, localStorageService, $location, navigationService, $window) {
 
     	console.log("dddd", $stateParams);
-
+        console.log("GGG", $location.path();   
 		 
 			     
                                
