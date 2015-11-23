@@ -7,6 +7,8 @@
 			link: function ($scope) {
 				consoleService.printIt("sssss",$rootScope.log_link.value);				
 				
+				$scope.casPath = appSettings.casPath;
+				
 				$scope.reports = function(){
 					navigationService.add("reports");
 				}	

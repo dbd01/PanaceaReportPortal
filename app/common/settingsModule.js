@@ -5,6 +5,7 @@
         .constant("appSettings",
         {
             authServerPath: "https://echidna.dotbydot.eu:4451",
+            casPath : "https://echidna.dotbydot.eu:4457/cas/login/", 
             localPath: "http://localhost:8080"
         });
 })(angular);
