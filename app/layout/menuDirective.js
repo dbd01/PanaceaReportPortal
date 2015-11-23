@@ -1,12 +1,11 @@
 	"use strict";
 	
-  app.directive('menu2', ['$location', 'navigationService', 'consoleService','$rootScope', function ($location, navigationService, consoleService, $rootScope){
+  app.directive('menu2', ['$location', 'navigationService', 'consoleService','$rootScope', 'appSettings', function ($location, navigationService, consoleService, $rootScope, appSettings){
 		return {
 			restrict: 'EA',
 			templateUrl: 'app/layout/views/sidebarView.html',	
 			link: function ($scope) {
-				consoleService.printIt("sssss",$rootScope.log_link.value);				
-				
+				consoleService.printIt("sssss",$rootScope.log_link.value);		
 				$scope.casPath = appSettings.casPath;
 				
 				$scope.reports = function(){
