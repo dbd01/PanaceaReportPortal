@@ -24,6 +24,6 @@ config.polyphemusHttps= true;
 config.useCAS=true;
 config.CASService="https://echidna.dotbydot.eu:4457/cas";
 config.CASResponseFormat="JSON"; //other option is XML 
-config.CASRedirectAfterSuccess='http://echidna.dotbydot.eu:4453/#/login/';
+config.CASRedirectAfterSuccess='http://echidna.dotbydot.eu:4453/#/';
 
 module.exports = config;
