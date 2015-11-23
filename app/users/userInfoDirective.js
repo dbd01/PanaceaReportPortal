@@ -55,7 +55,8 @@ app.directive('userinfo', [ 'localStorageService', 'usersService' ,'consoleServi
                                     $scope.userData={
                                             "_id":'',
                                             "name":'',
-                                            "password":'',                                            
+                                            "password":'', 
+                                            "email":'',                                           
                                             "groups": []                                           
                                         };                    
                                 }    
@@ -63,7 +64,8 @@ app.directive('userinfo', [ 'localStorageService', 'usersService' ,'consoleServi
                          $scope.userData= {
                                             "_id": $scope._id,
                                             "name": $scope.username,
-                                            "password": $scope.password,                                           
+                                            "password": $scope.password, 
+                                            "email" :   $scope.email,                                        
                                             "groups": $scope.groupz
                                           }
 
@@ -77,7 +79,8 @@ app.directive('userinfo', [ 'localStorageService', 'usersService' ,'consoleServi
 
                              $scope.userAddData= {                                            
                                             "username": $scope.userData.name,
-                                            "password": $scope.userData.password,                                           
+                                            "password": $scope.userData.password,  
+                                            "email": $scope.userData.email,                                         
                                             "groups":  $scope.groupzIDz
                                           }
 
