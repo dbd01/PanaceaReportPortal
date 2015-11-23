@@ -3,18 +3,9 @@
     app.controller('authenticationController', ['$scope', 'localStorageService', '$location', 'navigationService', '$window', 
     	function ($scope, localStorageService, $location, navigationService, $window) {
 
-    	var source = new EventSource('https://echidna.dotbydot.eu:4457/cas/');
+    	console.log("dddd", $stateParams);
 
-		// Add event listener
-		source.onmessage = function (event) {
-		  console.log("lalaaaa", event.data);
-		};
-
-		// Fire a event (also very useful for testing and debugging!!)
-		//source.trigger('eventName', { mykey: 'myvalue' });
-
-		// Unbind event listener (very important for complex applications)
-		//source.off('eventName'); 
+		 
 			     
                                
 		       		

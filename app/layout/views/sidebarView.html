@@ -3,7 +3,9 @@
   <div class="collapse navbar-collapse navbar-ex1-collapse">
    
     <ul class="nav navbar-nav navbar-left">
-      <li ng-if="log_link.value=='Login'"><a ui-sref="lala.login" ui-sref-active="active">{{log_link.value}}</a></li>
+      <!-- <li ng-if="log_link.value=='Login'"><a ui-sref="lala.login" ui-sref-active="active">{{log_link.value}}</a></li>-->
+     <li ng-if="log_link.value=='Login'"><a href="https://echidna.dotbydot.eu:4457/cas/login/">{{log_link.value}}</a></li>
+      
       <li ng-if="log_link.value=='Logout'"><a ui-sref="lala.logout" ui-sref-active="active">{{log_link.value}}</a></li>   <br>
  
       <li ng-if="log_link.value=='Logout'"><a ui-sref="lala.reports" ui-sref-active="active">Reports</a></li><br>
