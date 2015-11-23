@@ -35,7 +35,7 @@ app.controller("usersController", ['localStorageService','usersService','$scope'
             .then(function () {
                 $scope.usersTable = usersTable;
                 $scope.usersTable.ready = true;
-                consoleService.printIt("uuuu", $scope.usersTable.data);                                
+                console.log("uuuu", $scope.usersTable.data);                                
                 
             });
     
