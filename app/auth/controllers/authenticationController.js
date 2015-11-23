@@ -11,6 +11,8 @@
 	         	{ token: $stateParams.token,              	   
 	         	  expires: $stateParams.expires		                 	   
 	         	});
+            
+            console.log("authData--->", localStorageService.get('authorizationData'));
 
             //make a test call to see if the token provided in the url is correct
              $http.get(appSettings.authServerPath + '/api/v1/user/').
