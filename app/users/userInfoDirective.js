@@ -61,7 +61,9 @@ app.directive('userinfo', [ 'localStorageService', 'usersService' ,'consoleServi
                                             "_id":'',
                                             "name":'',
                                             "password":'', 
-                                            "email":'',                                           
+                                            "email":'',
+                                            "confirmed":'',  
+                                            "active":'',                                                                                     
                                             "groups": []                                           
                                         };                    
                                 }    
@@ -70,7 +72,9 @@ app.directive('userinfo', [ 'localStorageService', 'usersService' ,'consoleServi
                                             "_id": $scope._id,
                                             "name": $scope.username,
                                             "password": $scope.password, 
-                                            "email" :   $scope.email,                                        
+                                            "email" :   $scope.email, 
+                                            "confirmed" :   $scope.confirmed, 
+                                            "active" :   $scope.active,                                      
                                             "groups": $scope.groupz
                                           }
 
@@ -128,6 +132,8 @@ app.directive('userinfo', [ 'localStorageService', 'usersService' ,'consoleServi
                                             "username":$scope.userData.name,
                                             "password":$scope.userData.password,
                                             "email":$scope.userData.email,
+                                            "confirmed": $scope.userData.confirmed,
+                                            "active": $scope.userData.active,
                                             "groups": $scope.groupzIDz                      
                                         }
 
