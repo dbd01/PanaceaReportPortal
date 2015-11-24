@@ -24,7 +24,7 @@ app.controller("usersController", ['localStorageService','usersService','$scope'
 
     usersService.query().$promise.then(
             function (users) {
-            	console.log("users:=>",users);
+            	//console.log("users:=>",users);
                 users.forEach(function (user) {
                     var userData = [];
                     userData.push( {"value": user._id, "showIt": true} );
