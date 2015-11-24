@@ -70,7 +70,7 @@ app.controller("permissionInfoController", ['localStorageService', 'consoleServi
                    consoleService.printIt("response ->", response);
                    $scope.alert = { 
                                 type: 'danger', 
-                                msg: 'Wrong Group Id or groupname already exists' 
+                                msg: 'Wrong permission data or permission already exists' 
                            };
                  }
              });            
