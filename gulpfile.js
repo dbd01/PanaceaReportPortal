@@ -2,6 +2,7 @@ var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
     rename = require("gulp-rename"),
+    del = require('del'),
     concat = require('gulp-concat');
 
  var js_lib_files =[
