@@ -36,7 +36,7 @@ app.directive('userinfo', [ 'localStorageService', 'usersService' ,'consoleServi
                              $scope.showIt = false;
 
                          if( $scope.showIt){
-                            console.log("zzzz",$scope.userData );
+                           // console.log("zzzz",$scope.userData );
 
                             $scope._id= $scope.userData[0].value;
                             $scope.username = $scope.userData[1].value;
