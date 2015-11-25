@@ -6,7 +6,7 @@
 		$rootScope.log_link.value="Login";		
 		localStorageService.set('authorizationData', null);
 
-		$http.get(appSettings.casPath + '/cas/logout').
+		$http.get(appSettings.casLogoutPath).
                     success(function (response, status) {
                        console.log('sucesfull logout->', response);                       	 
                     }).
