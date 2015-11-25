@@ -143,7 +143,9 @@ app.directive('userinfo', [ 'localStorageService', 'usersService' ,'consoleServi
                                     $location.path('/users');
                                 },
                                  function (response) {
-                                     consoleService.printIt("err update -->", $scope.updateData);                                     
+                                     console.log("err update -->", $scope.updateData); 
+                                     console.log("er -->", response) 
+
                                      if (response.data == null)
                                      {
                                          consoleService.printIt("response data is null!!!!!");
@@ -153,8 +155,7 @@ app.directive('userinfo', [ 'localStorageService', 'usersService' ,'consoleServi
                                                };
                                      }
                                      else
-                                     {
-                                       consoleService.printIt("response ->", response);
+                                     {                                       
                                        $scope.alert = { 
                                                     type: 'danger', 
                                                     msg: 'Wrong input data' 
