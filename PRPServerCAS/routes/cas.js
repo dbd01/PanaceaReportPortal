@@ -5,7 +5,7 @@ var polyphemus = require('polyphemus-connector');
 var config = require('../dontsync.js');
 
 var path = '/cas';
-
+ 
 router.get('/logout', controllerLogger('polyphemus.caslogout'), polyphemus.caslogout(config)); 
 router.get('/login', controllerLogger('polyphemus.caslogin'), polyphemus.caslogin(config)); 
 router.get('/', controllerLogger('polyphemus.serviceValidate'), polyphemus.serviceValidate(config));
