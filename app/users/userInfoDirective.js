@@ -39,17 +39,16 @@ app.directive('userinfo', [ 'localStorageService', 'usersService' ,'consoleServi
                            // console.log("zzzz",$scope.userData );
 
                             $scope._id= $scope.userData[0].value;
-                            $scope.username = $scope.userData[1].value;
-                            $scope.isDeleted= $scope.userData[2].value;
-                            $scope.email= $scope.userData[3].value;
-                            $scope.confirmed= $scope.userData[4].value;
-                            $scope.active= $scope.userData[5].value;
-                            $scope.password = $scope.userData[6].value;  
+                            $scope.username = $scope.userData[1].value;                            
+                            $scope.email= $scope.userData[2].value;
+                            $scope.confirmed= $scope.userData[3].value;
+                            $scope.active= $scope.userData[4].value;
+                            $scope.password = $scope.userData[5].value;  
                             //scope.groups must contain strings
-                            for (var i=0; i<$scope.userData[7].length; i++)                           
+                            for (var i=0; i<$scope.userData[6].length; i++)                           
                                  $scope.groupz[i] = {
-                                                        "id": $scope.userData[7][i]._id,
-                                                        "name": $scope.userData[7][i].name
+                                                        "id": $scope.userData[6][i]._id,
+                                                        "name": $scope.userData[6][i].name
                                                     }                                                                                  
                          }
                          else 
