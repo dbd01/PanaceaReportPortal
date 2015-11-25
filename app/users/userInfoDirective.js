@@ -93,11 +93,10 @@ app.directive('userinfo', [ 'localStorageService', 'usersService' ,'consoleServi
                                           }
 
                                 usersService.add($scope.userAddData, function (response) {
-                                    consoleService.printIt("adddddd", $scope.userAddData);
-                                    consoleService.printIt("User has been added successfully!");
-                                                                        
-                                    $location.path('/users');
-                                },
+                                        consoleService.printIt("adddddd", $scope.userAddData);
+                                        consoleService.printIt("User has been added successfully!");                                                                        
+                                        $location.path('/users');
+                                    },
                                  function (response) {
                                      consoleService.printIt("errr->", $scope.userAddData);
                                      if (response.data == null)
@@ -136,10 +135,9 @@ app.directive('userinfo', [ 'localStorageService', 'usersService' ,'consoleServi
                                             "groups": $scope.groupzIDz                      
                                         }
 
-                            usersService.update({ userId: $scope._id }, $scope.updateData, function (response) {
-                                    
-                                  //  console.log("rrr", response);
-                                   // console.log("update data=>", $scope.updateData);
+                            usersService.update({ userId: $scope._id }, $scope.updateData, function (response) {                                    
+                                    consoleService.printIt("rrr", response);
+                                    consoleService.printIt("update data=>", $scope.updateData);
                                     $location.path('/users');
                                 },
                                  function (response) {
