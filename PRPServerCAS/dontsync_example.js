@@ -28,3 +28,4 @@ config.CASRedirectAfterSuccess='http://echidna.dotbydot.eu:4453/#/';
 config.CASRedirectAfterLogout='http://echidna.dotbydot.eu:4453';
 
 module.exports = config;
+ 
