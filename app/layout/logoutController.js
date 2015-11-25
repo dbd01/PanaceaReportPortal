@@ -1,7 +1,8 @@
 	"use strict";
 	
   app
-	.controller('logoutController', ['$scope','$rootScope','localStorageService', function($scope, $rootScope, localStorageService) {
+	.controller('logoutController', ['$scope','$rootScope','localStorageService', '$http',
+	    function($scope, $rootScope, localStorageService, $http) {
 		
 		$rootScope.log_link.value="Login";		
 		localStorageService.set('authorizationData', null);
