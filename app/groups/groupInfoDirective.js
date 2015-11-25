@@ -38,8 +38,7 @@ app.directive('groupinfo', [ 'localStorageService', 'consoleService', 'groupsSer
                          if( $scope.showIt){
                             $scope._id= $scope.groupData[0].value;
                             $scope.name= $scope.groupData[1].value;
-                            $scope.description = $scope.groupData[2].value;
-                            $scope.isDeleted= $scope.groupData[3].value;
+                            $scope.description = $scope.groupData[2].value;                            
                             //scope.permissions must contain strings
                             for (var i=0; i<$scope.groupData[4].length; i++)                           
                                  $scope.permissionz[i] = {
@@ -55,8 +54,7 @@ app.directive('groupinfo', [ 'localStorageService', 'consoleService', 'groupsSer
                                     $scope.groupData={
                                             "_id":'',
                                             "name":'',
-                                            "description":'',
-                                            "isDeleted":'',
+                                            "description":'',                                           
                                             "permissions": []                                              
                                         };                    
                                 }    
@@ -64,8 +62,7 @@ app.directive('groupinfo', [ 'localStorageService', 'consoleService', 'groupsSer
                          $scope.groupData={ 
                                             "_id": $scope._id,
                                             "name": $scope.name,
-                                            "description": $scope.description,
-                                            "isDeleted":  $scope.isDeleted,
+                                            "description": $scope.description,                                            
                                             "permissions": $scope.permissionz                      
                                         }
 

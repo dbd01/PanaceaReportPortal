@@ -17,8 +17,7 @@ app.controller("userInfoController", ['groupsService','$scope','consoleService',
                         var groupData = [];
                         groupData.push( {"value": group._id} );
                         groupData.push( {"value": group.name} );
-                        groupData.push( {"value": group.description} );
-                        groupData.push( {"value": group.isDeleted});                                      
+                        groupData.push( {"value": group.description} );                                                             
                         groupsTbl.data.push(groupData);                 
                     });
                 })    

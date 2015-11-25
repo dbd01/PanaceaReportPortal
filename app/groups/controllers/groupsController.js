@@ -11,8 +11,7 @@ app.controller("groupsController", ['localStorageService', 'consoleService' ,'gr
                     "header": [
                         { "title": "_id",  "showIt": true },
                         { "title": "name",  "showIt": true },
-                        { "title": "description", "showIt": true },
-                        { "title": "isDeleted", "showIt": true }                     
+                        { "title": "description", "showIt": true }                                             
                     ],
     				"data": [],
     				"ready": false
@@ -25,8 +24,7 @@ app.controller("groupsController", ['localStorageService', 'consoleService' ,'gr
                     var groupData = [];
                     groupData.push( {"value": group._id, "showIt": true} );
                     groupData.push( {"value": group.name, "showIt": true} );
-                    groupData.push( {"value": group.description, "showIt": true} );
-                    groupData.push( {"value": group.isDeleted, "showIt": true});                                      
+                    groupData.push( {"value": group.description, "showIt": true} );                                                        
                     groupsTable.data.push(groupData);                 
                 });
             })    

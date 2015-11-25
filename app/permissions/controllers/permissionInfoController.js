@@ -15,8 +15,7 @@ app.controller("permissionInfoController", ['localStorageService', 'consoleServi
         $scope._id= $scope.permissionData[0].value;
         $scope.name= $scope.permissionData[1].value;
         $scope.type = $scope.permissionData[2].value;
-        $scope.url= $scope.permissionData[3].value;
-        $scope.isDeleted= $scope.permissionData[4].value; 
+        $scope.url= $scope.permissionData[3].value;        
      }
      else 
         $scope._id = "";
@@ -27,8 +26,7 @@ app.controller("permissionInfoController", ['localStorageService', 'consoleServi
                         "_id":'',
                         "name":'',
                         "type":'',
-                        "url":'',
-                        "isDeleted":''                                              
+                        "url":''                                                                    
                     };                    
             }    
 
@@ -36,8 +34,7 @@ app.controller("permissionInfoController", ['localStorageService', 'consoleServi
                         "_id": $scope._id,
                         "name": $scope.name,
                         "type": $scope.type,
-                        "url": $scope.url,
-                        "isDeleted":  $scope.isDeleted                      
+                        "url": $scope.url                                           
                     }
 
      ///////////////////////////////////////////

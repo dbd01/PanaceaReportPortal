@@ -18,8 +18,7 @@ app.controller("groupInfoController", ['permissionsService', 'consoleService', '
                         permissionData.push( {"value": permission._id} );
                         permissionData.push( {"value": permission.name} );
                         permissionData.push( {"value": permission.type} );
-                        permissionData.push( {"value": permission.url}); 
-                        permissionData.push( {"value": permission.isDeleted});                                     
+                        permissionData.push( {"value": permission.url});                                                             
                         permissionsTbl.data.push(permissionData);                 
                     });
                 })    
