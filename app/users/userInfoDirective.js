@@ -138,13 +138,13 @@ app.directive('userinfo', [ 'localStorageService', 'usersService' ,'consoleServi
 
                             usersService.update({ userId: $scope._id }, $scope.updateData, function (response) {
                                     
-                                    console.log("rrr", response);
-                                    console.log("update data=>", $scope.updateData);
+                                  //  console.log("rrr", response);
+                                   // console.log("update data=>", $scope.updateData);
                                     $location.path('/users');
                                 },
                                  function (response) {
-                                     console.log("err update -->", $scope.updateData); 
-                                     console.log("er -->", response) 
+                                   //  console.log("err update -->", $scope.updateData); 
+                                   //  console.log("er -->", response) 
 
                                      if (response.data == null)
                                      {
