@@ -40,10 +40,10 @@ app.directive('groupinfo', [ 'localStorageService', 'consoleService', 'groupsSer
                             $scope.name= $scope.groupData[1].value;
                             $scope.description = $scope.groupData[2].value;                            
                             //scope.permissions must contain strings
-                            for (var i=0; i<$scope.groupData[4].length; i++)                           
+                            for (var i=0; i<$scope.groupData[3].length; i++)                           
                                  $scope.permissionz[i] = {
-                                                        "id": $scope.groupData[4][i]._id,
-                                                        "name": $scope.groupData[4][i].name
+                                                        "id": $scope.groupData[3][i]._id,
+                                                        "name": $scope.groupData[3][i].name
                                                     }           
                          }
                          else 
