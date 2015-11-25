@@ -12,7 +12,9 @@ app.controller("permissionsController", ['localStorageService', 'consoleService'
                         { "title": "_id",  "showIt": true },
                         { "title": "name",  "showIt": true },
                         { "title": "type", "showIt": true },
-                        { "title": "url", "showIt": true }                                            
+                        { "title": "url", "showIt": true },
+                        { "title": "description", "showIt": true },
+                        { "title": "model", "showIt": true }                                            
                     ],
     				"data": [],
     				"ready": false
@@ -26,7 +28,9 @@ app.controller("permissionsController", ['localStorageService', 'consoleService'
                     permissionData.push( {"value": permission._id, "showIt": true} );
                     permissionData.push( {"value": permission.name, "showIt": true} );
                     permissionData.push( {"value": permission.type, "showIt": true} );
-                    permissionData.push( {"value": permission.url, "showIt": true} );                                                          
+                    permissionData.push( {"value": permission.url, "showIt": true} ); 
+                    permissionData.push( {"value": permission.description, "showIt": true} );
+                    permissionData.push( {"value": permission.model, "showIt": true} );                                                         
                     permissionsTable.data.push(permissionData);                 
                 });
             })    

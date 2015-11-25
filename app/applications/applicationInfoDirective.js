@@ -39,12 +39,12 @@ app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'app
                             $scope._id= $scope.applicationData[0].value;
                             $scope.name = $scope.applicationData[1].value;
                             $scope.description= $scope.applicationData[2].value;
-                            
+                            $scope.url= $scope.applicationData[3].value;
                             //scope.groups must contain strings
-                            for (var i=0; i<$scope.applicationData[3].length; i++)
+                            for (var i=0; i<$scope.applicationData[4].length; i++)
                                  $scope.groupz[i] = {
-                                                        "id": $scope.applicationData[3][i]._id,
-                                                        "name": $scope.applicationData[3][i].name
+                                                        "id": $scope.applicationData[4][i]._id,
+                                                        "name": $scope.applicationData[4][i].name
                                                     }                           
                          }
                          else 
@@ -56,6 +56,7 @@ app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'app
                                             "_id":'',
                                             "name":'',
                                             "description":'',
+                                            "url":'',
                                             "groups": []
                                         };                    
                                 }    
@@ -64,6 +65,7 @@ app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'app
                                             "_id": $scope._id,
                                             "name":$scope.name,
                                             "description": $scope.description,
+                                            "url": $scope.url,
                                             "groups": $scope.groupz
                                         }
 
@@ -78,6 +80,7 @@ app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'app
                                  $scope.applicationAddData={
                                             "name":$scope.applicationData.name,
                                             "description": $scope.applicationData.description,
+                                            "url": $scope.applicationData.url,
                                             "groups": $scope.groupzIDz
                                         }
 
@@ -101,7 +104,7 @@ app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'app
                                        consoleService.printIt("response ->", response);
                                        $scope.alert = { 
                                                     type: 'danger', 
-                                                    msg: 'Wrong Group Id or username already exists' 
+                                                    msg: 'Wrong application Id or application already exists' 
                                                };
                                      }
                                  });            
@@ -118,6 +121,7 @@ app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'app
                             $scope.updateData={
                                             "name":$scope.applicationData.name,
                                             "description": $scope.applicationData.description,
+                                            "url": $scope.applicationData.url,
                                             "groups": $scope.groupzIDz                  
                                         }
 

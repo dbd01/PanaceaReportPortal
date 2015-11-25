@@ -11,7 +11,8 @@ app.controller("applicationsController", ['localStorageService','consoleService'
                     "header": [
                         { "title": "_id",  "showIt": true },
                         { "title": "name", "showIt": true },
-                        { "title": "description", "showIt": true }
+                        { "title": "description", "showIt": true },
+                        { "title": "url", "showIt": true }
                     ],
     				"data": [],
     				"ready": false
@@ -25,7 +26,7 @@ app.controller("applicationsController", ['localStorageService','consoleService'
                     applicationData.push( {"value": application._id, "showIt": true} );
                     applicationData.push( {"value": application.name, "showIt": true} );
                     applicationData.push( {"value": application.description, "showIt": true} );
-                                     
+                    applicationData.push( {"value": application.url, "showIt": true} );                 
                     applicationsTable.data.push(applicationData);                   
 
                 });

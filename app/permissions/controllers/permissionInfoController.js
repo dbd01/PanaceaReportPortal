@@ -15,7 +15,9 @@ app.controller("permissionInfoController", ['localStorageService', 'consoleServi
         $scope._id= $scope.permissionData[0].value;
         $scope.name= $scope.permissionData[1].value;
         $scope.type = $scope.permissionData[2].value;
-        $scope.url= $scope.permissionData[3].value;        
+        $scope.url= $scope.permissionData[3].value; 
+        $scope.description= $scope.permissionData[4].value;
+        $scope.model= $scope.permissionData[5].value;       
      }
      else 
         $scope._id = "";
@@ -26,7 +28,9 @@ app.controller("permissionInfoController", ['localStorageService', 'consoleServi
                         "_id":'',
                         "name":'',
                         "type":'',
-                        "url":''                                                                    
+                        "url":'',
+                        "description": '',
+                        "model": ''                                                                   
                     };                    
             }    
 
@@ -34,7 +38,9 @@ app.controller("permissionInfoController", ['localStorageService', 'consoleServi
                         "_id": $scope._id,
                         "name": $scope.name,
                         "type": $scope.type,
-                        "url": $scope.url                                           
+                        "url": $scope.url,
+                        "description": $scope.description,
+                        "model": $scope.model                                           
                     }
 
      ///////////////////////////////////////////
@@ -44,7 +50,9 @@ app.controller("permissionInfoController", ['localStorageService', 'consoleServi
             $scope.permissionAddData={
                         "name": $scope.permissionData.name,
                         "type": $scope.permissionData.type,
-                        "url": $scope.permissionData.url                                           
+                        "url": $scope.permissionData.url,
+                        "description": $scope.permissionData.description,
+                        "model": $scope.permissionData.model                                          
                     }
 
             permissionsService.add($scope.permissionAddData, function (response) {                
@@ -81,7 +89,9 @@ app.controller("permissionInfoController", ['localStorageService', 'consoleServi
         $scope.updateData={
                        "name": $scope.permissionData.name,
                         "type": $scope.permissionData.type,
-                        "url": $scope.permissionData.url                       
+                        "url": $scope.permissionData.url ,
+                        "description": $scope.permissionData.description,
+                        "model": $scope.permissionData.model                      
                     }
 
         permissionsService.update({ permissionId: $scope._id }, $scope.updateData, function (response) {
