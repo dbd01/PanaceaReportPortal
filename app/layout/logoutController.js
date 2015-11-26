@@ -8,8 +8,7 @@
 
 			$http({
 				method: 'GET',
-				url: appSettings.casLogoutPath, 
-				headers: {'Access-Control-Allow-Origin':'*'}
+				url: appSettings.casLogoutPath
 			}).then(function sucessCb(response) {
 					console.log('sucesfull logout->', response);
 				}, function errorCb(response) {  
