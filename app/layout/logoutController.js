@@ -11,7 +11,8 @@
                     success(function (response, status) {
                        console.log('sucesfull logout->', response);                       	 
                     }).
-                    error(function (response, status) {                        
+                    error(function (response, status) {  
+                    	console.log(status);                      
                        console.log('logout error->', response);
                     });    
 				
