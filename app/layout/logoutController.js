@@ -2,12 +2,20 @@
 	
   app
 	.controller('logoutController', ['$scope','$rootScope','localStorageService', '$http', 'appSettings',
-	    function($scope, $rootScope, localStorageService, $http, appSettings) {
-		
-		$rootScope.log_link.value="Login";		
-		localStorageService.set('authorizationData', null);
+		function($scope, $rootScope, localStorageService, $http, appSettings) {
+			$rootScope.log_link.value="Login";		
+			localStorageService.set('authorizationData', null);
 
-		$http.get(appSettings.casLogoutPath).
+			$http.get(appSettings.casLogoutPath).then(
+				function (response, status) {
+					console.log(status);
+					console.log('sucesfull logout->', response);
+				},
+				function (response, status) {  
+					console.log(status);
+					console.log('logout error->', response);
+				});
+      /*$http.get(appSettings.casLogoutPath).
       success(function (response, status) {
       	console.log(status);
          console.log('sucesfull logout->', response);                       	 
@@ -15,6 +23,5 @@
       error(function (response, status) {  
       	console.log(status);                      
          console.log('logout error->', response);
-      });    
-				
+      });   */
 	}]);
