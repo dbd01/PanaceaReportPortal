@@ -8,12 +8,13 @@
 		localStorageService.set('authorizationData', null);
 
 		$http.get(appSettings.casLogoutPath).
-                    success(function (response, status) {
-                       console.log('sucesfull logout->', response);                       	 
-                    }).
-                    error(function (response, status) {  
-                    	console.log(status);                      
-                       console.log('logout error->', response);
-                    });    
+      success(function (response, status) {
+      	console.log(status);
+         console.log('sucesfull logout->', response);                       	 
+      }).
+      error(function (response, status) {  
+      	console.log(status);                      
+         console.log('logout error->', response);
+      });    
 				
 	}]);
