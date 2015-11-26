@@ -8,7 +8,8 @@
 
 			$http({
 				method: 'GET',
-				url: appSettings.casLogoutPath
+				url: appSettings.casLogoutPath, 
+				headers: {'Origin':'http://echidna.dotbydot.eu:4453/'}
 			}).then(function sucessCb(response) {
 					console.log('sucesfull logout->', response);
 				}, function errorCb(response) {  
