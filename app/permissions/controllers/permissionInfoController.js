@@ -5,13 +5,23 @@ app.controller("permissionInfoController", ['localStorageService', 'consoleServi
    function (localStorageService, consoleService, permissionsService , $scope , scopeComService, $location ) {
     
 	 $scope.permissionData= scopeComService.list[0];
-     scopeComService.flush();
-     $scope.showIt = true;
      
-    if ($scope.permissionData=="add_new_permission")
-         $scope.showIt = false;
+     $scope.showIt = true;
+     $scope.createPermission=false;
+     
+     if ($scope.permissionData=="add_requested_permission"){
+        $scope.showIt = false;
+        $scope.createPermission=true;
+        $scope.permissionData=scopeComService.list[1];
+    }
 
-     if($scope.showIt){
+    if ($scope.permissionData=="add_new_permission")
+        $scope.showIt = false;
+
+    if ($scope.createPermission){
+        $scope.name= $scope.permissionData[1].value;
+    }
+    else if($scope.showIt){
         $scope._id= $scope.permissionData[0].value;
         $scope.name= $scope.permissionData[1].value;
         $scope.type = $scope.permissionData[2].value;
@@ -21,6 +31,8 @@ app.controller("permissionInfoController", ['localStorageService', 'consoleServi
      }
      else 
         $scope._id = "";
+
+    scopeComService.flush();
 
     $scope.closeAlert = function() {
                 $scope.alert=null;

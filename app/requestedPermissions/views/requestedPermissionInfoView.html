@@ -10,15 +10,15 @@
 					  </tr>
 					  <tr>
 					   	<td>RequestedPermission Name:</td>
-					   	<td> <input type="text" class="form-control"  ng-model ="requestedPermissionData.name" > </td>
-					  </tr>						   
+					   	<td>{{name}}</td>
+					  </tr>
 					  <tr>
 					   	<td>User:</td>
-							<td> <input type="text" class="form-control"  ng-model ="requestedPermissionData.user" > </td>		
+							<td> {{user}}</td>
 						</tr>	
 						<tr>
 							<td>Application:</td>
-							<td> <input type="text" class="form-control"  ng-model ="requestedPermissionData.application" > </td>		
+							<td> {{application}} </td>
 						</tr>	
 					</table>
 					<alert type="{{alert.type}}" close="closeAlert()" ng-show="alert != null" >

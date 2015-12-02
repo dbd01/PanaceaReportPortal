@@ -9,7 +9,8 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
         tabledata: '=',
         ready: '@',
         tableresult: '=',
-        tableeditable: '=' // it was '@' but didn't work with the views
+        tableeditable: '=', // it was '@' but didn't work with the views
+        tablecreatetable: '=' // it was '@' but didn't work with the views
       },
       link: function ($scope, element, attrs) {
         $scope.$watch('ready', function (newvalue, oldvalue) {
@@ -91,10 +92,15 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                   scopeComService.add($scope.tabledata.data[editline]);
                   $location.path('/permissionInfo'); 
                 }
+              }
 
+              //click edit btns  /////////////////////////////////////////////////////                                                            
+              $scope.create_permission= function(editline){
+                //query for one entity                        
                 if ($location.path() == '/requestedPermissions'){
+                  scopeComService.add("add_requested_permission");
                   scopeComService.add($scope.tabledata.data[editline]);
-                  $location.path('/requestedPermissionInfo'); 
+                  $location.path('/permissionInfo'); 
                 }
                 // $scope.$apply();
               }

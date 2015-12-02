@@ -14,10 +14,27 @@
       <thead>               
         <tr>
           <th ng-repeat="title in tabledata.header" ng-if="title.showIt">{{title.title}}</th>  
-          <th>Edit</th>  
-          <th>Delete</th>                  
+          <th ng-if="tableeditable">Edit</th>
+          <th ng-if="tablecreatetable">Create</th>
+          <th ng-if="tablecreatetable">Delete</th>
+          <th ng-if="tableeditable">Delete</th>
         </tr>
       </thead>
+      <tbody ng-if="tablecreatetable ">
+        <tr ng-repeat="row in tabledata.data" ng-init="rowNum = $index">
+          <td ng-repeat="item in row" ng-if="item.showIt" >{{item.value}}</td>
+          <td>
+            <button class='btn btn-warning btn-xs' type="submit" ng-click="create_permission(rowNum)" value="create">
+              <span class="glyphicon glyphicon-plus fa fa-times" aria-hidden="true"></span> Create
+            </button>
+          </td>
+          <td>
+            <button class='btn btn-danger btn-xs' type="submit" ng-click="delete_entity(rowNum)" value="delete">
+              <span class="glyphicon glyphicon-minus fa fa-times" aria-hidden="true"></span> Delete
+            </button> 
+          </td>
+        </tr>
+      </tbody>
       <tbody ng-if="tableeditable ">
         <tr ng-repeat="row in tabledata.data" ng-init="rowNum = $index">
           <td ng-repeat="item in row" ng-if="item.showIt" >{{item.value}}</td>
@@ -25,15 +42,15 @@
             <button class='btn btn-warning btn-xs' type="submit" ng-click="edit_entity(rowNum)" value="edit">
               <span class="glyphicon glyphicon-pencil fa fa-times" aria-hidden="true"></span> Edit
             </button>
-          </td> 
+          </td>
           <td>
             <button class='btn btn-danger btn-xs' type="submit" ng-click="delete_entity(rowNum)" value="delete">
               <span class="glyphicon glyphicon-minus fa fa-times" aria-hidden="true"></span> Delete
             </button> 
-          </td>                                  
+          </td>
         </tr>
       </tbody>
-      <tbody ng-if="!tableeditable">
+      <tbody ng-if="false">
         <tr ng-repeat="row in tabledata.data">
           <td ng-repeat="item in row">{{item.value}}</td>
         </tr>

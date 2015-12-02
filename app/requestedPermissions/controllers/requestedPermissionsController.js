@@ -26,7 +26,7 @@ app.controller("requestedPermissionsController", ['localStorageService', 'consol
           requestedPermissionData.push( {"value": requestedPermission.name, "showIt": true} );
           requestedPermissionData.push( {"value": requestedPermission.User.username, "showIt": true} );
           requestedPermissionData.push( {"value": requestedPermission.Application.name, "showIt": true} ); 
-          requestedPermissionsTable.data.push(requestedPermissionData);                 
+          requestedPermissionsTable.data.push(requestedPermissionData);
         });
       })    
     .then(function () {
