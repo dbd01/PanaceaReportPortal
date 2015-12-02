@@ -1,11 +1,9 @@
 <nav class="navbar navbar-default" role="navigation">
-  
   <div class="collapse navbar-collapse navbar-ex1-collapse">
-   
     <ul class="nav navbar-nav navbar-left">
       <!-- <li ng-if="log_link.value=='Login'"><a ui-sref="lala.login" ui-sref-active="active">{{log_link.value}}</a></li>-->
-     <li ng-if="log_link.value=='Login'"><a href="{{casPath}}">{{log_link.value}}</a></li>
-      
+      <li ng-if="log_link.value=='Login'"><a href="{{casPath}}">{{log_link.value}}</a></li>
+
       <li ng-if="log_link.value=='Logout'"><a ui-sref="lala.logout" ui-sref-active="active">{{log_link.value}}</a></li>   <br>
  
       <li ng-if="log_link.value=='Logout'"><a ui-sref="lala.reports" ui-sref-active="active">Reports</a></li><br>
@@ -23,8 +21,10 @@
       <li ng-if="log_link.value=='Login'"><a ui-sref="lala.login" ui-sref-active="active" ng-click="permissions()">Permissions</a></li><br>
       <li ng-if="log_link.value=='Logout'"><a ui-sref="lala.permissions" ui-sref-active="active">Permissions</a></li><br>
 
+      <li ng-if="log_link.value=='Login'"><a ui-sref="lala.login" ui-sref-active="active" ng-click="requestedPermissions()">RequestedPermissions</a></li><br>
+      <li ng-if="log_link.value=='Logout'"><a ui-sref="lala.requestedPermissions" ui-sref-active="active">RequestedPermissions</a></li><br>
+
       <li ng-if="log_link.value=='Logout'"><a ui-sref="lala.register" ui-sref-active="active" >Register</a></li> <br> 
-	      
     </ul>
   </div>
 </nav>
