@@ -12,8 +12,8 @@ app.controller("requestedPermissionInfoController", ['localStorageService', 'con
     if($scope.showIt){
       $scope._id= $scope.requestedPermissionData[0].value;
       $scope.name= $scope.requestedPermissionData[1].value;
-      $scope.userId = $scope.requestedPermissionData[2].value;
-      $scope.applicationId= $scope.requestedPermissionData[3].value; 
+      $scope.user = $scope.requestedPermissionData[2].value;
+      $scope.application= $scope.requestedPermissionData[3].value; 
     }
     else 
       $scope._id = "";
@@ -23,16 +23,16 @@ app.controller("requestedPermissionInfoController", ['localStorageService', 'con
       $scope.requestedPermissionData={
         "_id":'',
         "name":'',
-        "userId":'',
-        "applicationId":''
-      };                    
+        "user":'',
+        "application":''
+      };
     }    
 
     $scope.requestedPermissionData={ 
       "_id": $scope._id,
       "name": $scope.name,
-      "userId": $scope.userId,
-      "applicationId": $scope.applicationId
+      "user": $scope.user,
+      "application": $scope.application
     }
   }
 ]);

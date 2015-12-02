@@ -10,8 +10,8 @@ app.controller("requestedPermissionsController", ['localStorageService', 'consol
       "header": [
         { "title": "_id",  "showIt": true },
         { "title": "name",  "showIt": true },
-        { "title": "userId", "showIt": true },
-        { "title": "applicationId", "showIt": true }
+        { "title": "user", "showIt": true },
+        { "title": "application", "showIt": true }
       ],
       "data": [],
       "ready": false
@@ -24,8 +24,8 @@ app.controller("requestedPermissionsController", ['localStorageService', 'consol
           var requestedPermissionData = [];
           requestedPermissionData.push( {"value": requestedPermission._id, "showIt": true} );
           requestedPermissionData.push( {"value": requestedPermission.name, "showIt": true} );
-          requestedPermissionData.push( {"value": requestedPermission.userId, "showIt": true} );
-          requestedPermissionData.push( {"value": requestedPermission.applicationId, "showIt": true} ); 
+          requestedPermissionData.push( {"value": requestedPermission.User.username, "showIt": true} );
+          requestedPermissionData.push( {"value": requestedPermission.Application.name, "showIt": true} ); 
           requestedPermissionsTable.data.push(requestedPermissionData);                 
         });
       })    

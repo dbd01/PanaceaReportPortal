@@ -8,7 +8,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
         tabletitle: '@',
         tabledata: '=',
         ready: '@',
-        tableresult: '=',                   
+        tableresult: '=',
         tableeditable: '=' // it was '@' but didn't work with the views
       },
       link: function ($scope, element, attrs) {
@@ -20,28 +20,28 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
               else
                 $scope.toolbar_width = "col-md-12";
 
-              var table = $('#' + $scope.tableid);                  
+              var table = $('#' + $scope.tableid);
               var oTable = table.dataTable(); 
               
               //add user btn////////////////////////////////////////////////
               $scope.addNewEntity = function(){
                 if($location.path()=="/users"){
-                    scopeComService.add("add_new_user");                           
+                    scopeComService.add("add_new_user");
                     $location.path('/userInfo');
                     //$scope.$apply();                             
                 }
                 if($location.path()=="/groups"){
-                    scopeComService.add("add_new_group");                           
+                    scopeComService.add("add_new_group");
                     $location.path('/groupInfo');
                     //$scope.$apply();                             
                 }
                 if($location.path()=="/applications"){
-                    scopeComService.add("add_new_application");                           
+                    scopeComService.add("add_new_application");
                     $location.path('/applicationInfo');
                     //$scope.$apply();                             
                 }
                 if($location.path()=="/permissions"){
-                    scopeComService.add("add_new_permission");                           
+                    scopeComService.add("add_new_permission");
                     $location.path('/permissionInfo');
                     //$scope.$apply();                             
                 }

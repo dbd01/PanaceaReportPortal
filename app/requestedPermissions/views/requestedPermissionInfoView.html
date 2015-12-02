@@ -13,16 +13,14 @@
 					   	<td> <input type="text" class="form-control"  ng-model ="requestedPermissionData.name" > </td>
 					  </tr>						   
 					  <tr>
-					   	<td>UserId:</td>
-							<td> <input type="text" class="form-control"  ng-model ="requestedPermissionData.userId" > </td>		
+					   	<td>User:</td>
+							<td> <input type="text" class="form-control"  ng-model ="requestedPermissionData.user" > </td>		
 						</tr>	
 						<tr>
-							<td>ApplicationId:</td>
-							<td> <input type="text" class="form-control"  ng-model ="requestedPermissionData.url" > </td>		
+							<td>Application:</td>
+							<td> <input type="text" class="form-control"  ng-model ="requestedPermissionData.application" > </td>		
 						</tr>	
 					</table>
-					<button type="submit" class="btn btn-default" ng-click = "add()" ng-if="!showIt">Add</button>
-					<button type="submit" class="btn btn-default" ng-click = "update()" ng-if="showIt">Update</button>
 					<alert type="{{alert.type}}" close="closeAlert()" ng-show="alert != null" >
 						<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>		
 							{{alert.msg}}
