@@ -3,7 +3,8 @@
   app
 	.controller('logoutController', ['$scope','$rootScope','localStorageService', '$http', 'appSettings',
 		function($scope, $rootScope, localStorageService, $http, appSettings) {
-			$rootScope.log_link.value="Login";		
+			$rootScope.log_link.value="Login";
+			$rootScope.log_name="";
 			localStorageService.set('authorizationData', null);
 
 			$http({

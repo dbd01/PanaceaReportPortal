@@ -17,8 +17,9 @@
             //make a test call to see if the token provided in the url is correct
              $http.get(appSettings.authServerPath + '/api/v1/user/').
                 success(function (response, status) {
-                  // console.log('sucessss->', response);
+                  //console.log('sucessss->', response[0].username);
                   $rootScope.log_link.value = "Logout";
+                  $rootScope.log_name=response[0].username;
 
 					        //get the last desired navigation
 					        var navLocation = navigationService.list[navigationService.list.length-1];
@@ -33,7 +34,8 @@
                 error(function (response, status) {                        
                    // console.log('errorrrr44->', response);
                     //reset everything
-                    $rootScope.log_link.value="Login";		
+                    $rootScope.log_link.value="Login";
+                    $rootScope.log_name="";
                 localStorageService.set('authorizationData', null);
                 });           
 	}]);

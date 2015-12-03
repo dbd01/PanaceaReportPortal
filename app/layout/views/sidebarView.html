@@ -3,7 +3,7 @@
     <ul class="nav navbar-nav navbar-left">
       <!-- <li ng-if="log_link.value=='Login'"><a ui-sref="lala.login" ui-sref-active="active">{{log_link.value}}</a></li><br>-->
       <li ng-if="log_link.value=='Login'"><a href="{{casPath}}">{{log_link.value}}</a></li><br>
-      <li ng-if="log_link.value=='Logout'"><a ui-sref="lala.logout" ui-sref-active="active">{{log_link.value}}</a></li><br>
+      <li ng-if="log_link.value=='Logout'">Logged in as {{log_name}}<a ui-sref="lala.logout" ui-sref-active="active">{{log_link.value}}</a></li><br>
       <li ng-if="log_link.value=='Login'"><a ui-sref="lala.login" ui-sref-active="active" ng-click="reports()">Reports</a></li><br>
       <li ng-if="log_link.value=='Logout'"><a ui-sref="lala.reports" ui-sref-active="active">Reports</a></li><br>
       <li ng-if="log_link.value=='Login'"><a ui-sref="lala.login" ui-sref-active="active" ng-click="users()">Users</a></li><br>
