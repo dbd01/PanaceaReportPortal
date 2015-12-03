@@ -15,12 +15,12 @@
         <tr>
           <th ng-repeat="title in tabledata.header" ng-if="title.showIt">{{title.title}}</th>  
           <th ng-if="tableeditable">Edit</th>
-          <th ng-if="tablecreatetable">Create</th>
-          <th ng-if="tablecreatetable">Delete</th>
+          <th ng-if="tablerequestedperm">Create</th>
+          <th ng-if="tablerequestedperm">Delete</th>
           <th ng-if="tableeditable">Delete</th>
         </tr>
       </thead>
-      <tbody ng-if="tablecreatetable ">
+      <tbody ng-if="tablerequestedperm ">
         <tr ng-repeat="row in tabledata.data" ng-init="rowNum = $index">
           <td ng-repeat="item in row" ng-if="item.showIt" >{{item.value}}</td>
           <td>

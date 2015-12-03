@@ -10,7 +10,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
         ready: '@',
         tableresult: '=',
         tableeditable: '=', // it was '@' but didn't work with the views
-        tablecreatetable: '=' // it was '@' but didn't work with the views
+        tablerequestedperm: '=' // it was '@' but didn't work with the views
       },
       link: function ($scope, element, attrs) {
         $scope.$watch('ready', function (newvalue, oldvalue) {
