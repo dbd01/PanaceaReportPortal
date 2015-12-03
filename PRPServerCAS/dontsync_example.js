@@ -1,12 +1,6 @@
 "use strict"
 var config = {};
 
-// default config for running within vagrant
-// exceptions for running in different evironments are set at the end
-//web server settigns
-config.serverPort= 4457;
-config.useWebHttps= false;
-config.serverHost= "echidna.dotbydot.eu";
 
 //cors settigns
 config.validDomains= "*";
