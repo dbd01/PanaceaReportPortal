@@ -24,15 +24,57 @@ app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'app
               }
               consoleService.printIt("eeeeeeggggg0000ee",  $scope.groups );
               //get the data from the service
-              $scope.applicationData= scopeComService.list[0];
+              $scope.mode = scopeComService.list[0];
+              console.log("mode: ", $scope.mode);
+              if ($scope.mode=="view"){
+                $scope.applicationData= scopeComService.list[1];
+                $scope.view=true;
+                $scope.edit = false;
+                $scope.add=false;
+              }
+              else if ($scope.mode=="edit"){
+                $scope.applicationData= scopeComService.list[1];
+                $scope.view=false;
+                $scope.edit = true;
+                $scope.add=false;
+              }
+              else if ($scope.mode=="add"){
+                $scope.view=false;
+                $scope.edit = false;
+                $scope.add=true;
+              }
+              console.log("view: ", $scope.view);
+              console.log("edit: ", $scope.edit);
+              console.log("add: ", $scope.add);
               scopeComService.flush();
-              $scope.showIt = true;
               $scope.groupz = [];
               $scope.groupzIDz =[]; 
               
-              if ($scope.applicationData=="add_new_application")
-                $scope.showIt = false;
-              if( $scope.showIt){
+              if($scope.view){
+                console.log("view: ", $scope.applicationData[4])
+                $scope._id= $scope.applicationData[0].value;
+                $scope.name = $scope.applicationData[1].value;
+                $scope.description= $scope.applicationData[2].value;
+                $scope.url= $scope.applicationData[3].value;
+                //scope.groups must contain strings
+                for (var i=0; i<$scope.applicationData[4].length; i++){
+                  $scope.groupz[i] = {
+                    "id": $scope.applicationData[4][i]._id,
+                    "name": $scope.applicationData[4][i].name,
+                    "description": $scope.applicationData[4][i].description,
+                    "permissions": []
+                  }
+                  for (var j=0; j<$scope.applicationData[4][i].permissions.length; j++){
+                    $scope.groupz[i].permissionz[j] = {
+                      "id": $scope.applicationData[4][i]._id,
+                      "name": $scope.applicationData[4][i].name,
+                      "description": $scope.applicationData[4][i].description
+                    }
+                  }
+                }
+              }
+              else if($scope.edit){
+                console.log("edit: ", $scope.applicationData[4])
                 $scope._id= $scope.applicationData[0].value;
                 $scope.name = $scope.applicationData[1].value;
                 $scope.description= $scope.applicationData[2].value;
@@ -45,8 +87,17 @@ app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'app
                   }
                 }
               }
-              else 
+              else
                 $scope.name = "";
+
+              $scope.applicationData={
+                "_id": $scope._id,
+                "name":$scope.name,
+                "description": $scope.description,
+                "url": $scope.url,
+                "groups": $scope.groupz
+              }
+              console.log("mode: ",$scope.mode, $scope.applicationData)
               $scope.closeAlert = function() {
                 $scope.alert=null;
                 $scope.applicationData={
@@ -56,13 +107,6 @@ app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'app
                   "url":'',
                   "groups": []
                 };                    
-              }
-              $scope.applicationData={
-                "_id": $scope._id,
-                "name":$scope.name,
-                "description": $scope.description,
-                "url": $scope.url,
-                "groups": $scope.groupz
               }
               $scope.add = function(){
                 for (var i=0; i< $scope.applicationData.groups.length; i++){

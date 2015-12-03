@@ -37,7 +37,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                     //$scope.$apply();                             
                 }
                 if($location.path()=="/applications"){
-                    scopeComService.add("add_new_application");
+                    scopeComService.add("add");
                     $location.path('/applicationInfo');
                     //$scope.$apply();                             
                 }
@@ -47,9 +47,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                     //$scope.$apply();                             
                 }
               }
-              
-              //click edit btns  /////////////////////////////////////////////////////                                                            
-              $scope.edit_entity= function(editline){
+              $scope.view_entity= function(editline){
                 //query for one entity                        
                 if ($location.path() == '/users'){
                   usersService.viewUser({ userId: $scope.tabledata.data[editline][0].value}).$promise
@@ -70,7 +68,8 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                     $scope.tabledata.data[editline].push(application.groups);
                   }).then(function () {
                     //write data to registered service scopeCommService     
-                    scopeComService.add($scope.tabledata.data[editline]); 
+                    scopeComService.add("view");
+                    scopeComService.add($scope.tabledata.data[editline]);
                     $location.path('/applicationInfo');
                   });
                 } ///end if location.path=applications                                                       
@@ -93,8 +92,52 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                   $location.path('/permissionInfo'); 
                 }
               }
-
               //click edit btns  /////////////////////////////////////////////////////                                                            
+              $scope.edit_entity= function(editline){
+                //query for one entity                        
+                if ($location.path() == '/users'){
+                  usersService.viewUser({ userId: $scope.tabledata.data[editline][0].value}).$promise
+                  .then(function (user) {
+                    consoleService.printIt("userrr:=>",user);
+                    $scope.tabledata.data[editline].push(user.groups);
+                  }).then(function () {
+                    //write data to registered service scopeCommService     
+                    scopeComService.add($scope.tabledata.data[editline]); 
+                    $location.path('/userInfo');
+                  });
+                } ///end if location.path=users    
+
+                if ($location.path() == '/applications'){
+                  applicationsService.viewApp({ applicationId: $scope.tabledata.data[editline][0].value}).$promise
+                  .then(function (application) {
+                    consoleService.printIt("applicationnn:=>",application);
+                    $scope.tabledata.data[editline].push(application.groups);
+                  }).then(function () {
+                    //write data to registered service scopeCommService     
+                    scopeComService.add("edit");
+                    scopeComService.add($scope.tabledata.data[editline]);
+                    $location.path('/applicationInfo');
+                  });
+                } ///end if location.path=applications                                                       
+
+                if ($location.path() == '/groups'){  
+                  groupsService.viewGroup({ groupId: $scope.tabledata.data[editline][0].value}).$promise
+                  .then(function (group) {
+                    consoleService.printIt("grouppp:=>",group);
+                    $scope.tabledata.data[editline].push(group.permissions);
+                  })
+                  .then(function () {
+                    //write data to registered service scopeCommService     
+                    scopeComService.add($scope.tabledata.data[editline]); 
+                    $location.path('/groupInfo'); 
+                  });  
+                }///end if location.path=groups
+
+                if ($location.path() == '/permissions'){
+                  scopeComService.add($scope.tabledata.data[editline]);
+                  $location.path('/permissionInfo'); 
+                }
+              }
               $scope.create_permission= function(editline){
                 //query for one entity                        
                 if ($location.path() == '/requestedPermissions'){

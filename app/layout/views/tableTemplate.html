@@ -14,10 +14,11 @@
       <thead>               
         <tr>
           <th ng-repeat="title in tabledata.header" ng-if="title.showIt">{{title.title}}</th>  
+          <th ng-if="tableeditable">View</th>
           <th ng-if="tableeditable">Edit</th>
+          <th ng-if="tableeditable">Delete</th>
           <th ng-if="tablerequestedperm">Create</th>
           <th ng-if="tablerequestedperm">Delete</th>
-          <th ng-if="tableeditable">Delete</th>
         </tr>
       </thead>
       <tbody ng-if="tablerequestedperm ">
@@ -38,6 +39,11 @@
       <tbody ng-if="tableeditable ">
         <tr ng-repeat="row in tabledata.data" ng-init="rowNum = $index">
           <td ng-repeat="item in row" ng-if="item.showIt" >{{item.value}}</td>
+          <td>
+            <button class='btn btn-info btn-xs' type="submit" ng-click="view_entity(rowNum)" value="view">
+              <span class="glyphicon glyphicon-zoom-in fa fa-times" aria-hidden="true"></span> View
+            </button>
+          </td>
           <td>
             <button class='btn btn-warning btn-xs' type="submit" ng-click="edit_entity(rowNum)" value="edit">
               <span class="glyphicon glyphicon-pencil fa fa-times" aria-hidden="true"></span> Edit
