@@ -24,7 +24,6 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
               var table = $('#' + $scope.tableid);
               var oTable = table.dataTable(); 
               
-              //add user btn////////////////////////////////////////////////
               $scope.addNewEntity = function(){
                 if($location.path()=="/users"){
                     scopeComService.add("add_new_user");
@@ -92,7 +91,6 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                   $location.path('/permissionInfo'); 
                 }
               }
-              //click edit btns  /////////////////////////////////////////////////////                                                            
               $scope.edit_entity= function(editline){
                 //query for one entity                        
                 if ($location.path() == '/users'){
@@ -147,7 +145,6 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                 }
                 // $scope.$apply();
               }
-              // click delete btns//////////////////////////////////////////////////////////
               $scope.delete_entity= function(editline){
                 var entityName, _id, entity="";
                 _id = $scope.tabledata.data[editline][0].value;

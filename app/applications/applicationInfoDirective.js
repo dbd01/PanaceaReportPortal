@@ -1,6 +1,6 @@
 "use strict";
-app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'applicationsService',  'scopeComService', '$location', '$timeout', 
-  function (localStorageService, consoleService, applicationsService,  scopeComService, $location, $timeout) {
+app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'applicationsService',  'scopeComService', '$location', '$timeout', '$window',
+  function (localStorageService, consoleService, applicationsService,  scopeComService, $location, $timeout, $window) {
     return {
       restrict: 'E',
       templateUrl: 'app/applications/views/applicationInfoTemplate.html',
@@ -24,21 +24,23 @@ app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'app
                   "name": $scope.tabledata.data[i].name
                 }
               }
-              consoleService.printIt("eeeeeeggggg0000ee",  $scope.groups );
+              //consoleService.printIt("eeeeeeggggg0000ee",  $scope.groups );
               //get the data from the service
               $scope.mode = scopeComService.list[0];
               console.log("mode: ", $scope.mode);
-              if ($scope.mode=="view")
+              if ($scope.mode=="view" || $scope.mode=="edit"){
                 $scope.applicationData= scopeComService.list[1];
-              else if ($scope.mode=="edit")
-                $scope.applicationData= scopeComService.list[1];
-
+                $scope.previousData=scopeComService.list[1];
+              }
+              else {
+                $scope.previousData=null;
+              }
+              console.log("previuos data: ", $scope.previousData);
               scopeComService.flush();
               $scope.groupz = [];
               $scope.groupzIDz =[]; 
               
-              if($scope.mode=="view" || $scope.mode=="edit"){
-                console.log("view: ", $scope.applicationData[4])
+              function populateDetails(){
                 $scope._id= $scope.applicationData[0].value;
                 $scope.name = $scope.applicationData[1].value;
                 $scope.description= $scope.applicationData[2].value;
@@ -63,6 +65,9 @@ app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'app
                   }
                 }
               }
+              if($scope.mode=="view" || $scope.mode=="edit"){
+                populateDetails();
+              }
               /*else if($scope.edit || $scope.view){
                 $scope._id= $scope.applicationData[0].value;
                 $scope.name = $scope.applicationData[1].value;
@@ -79,13 +84,16 @@ app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'app
               else
                 $scope.name = "";
 
-              $scope.applicationData={
-                "_id": $scope._id,
-                "name":$scope.name,
-                "description": $scope.description,
-                "url": $scope.url,
-                "groups": $scope.groupz
+              function populateApplicationData(){
+                $scope.applicationData={
+                  "_id": $scope._id,
+                  "name":$scope.name,
+                  "description": $scope.description,
+                  "url": $scope.url,
+                  "groups": $scope.groupz
+                }
               }
+              populateApplicationData();
               $scope.closeAlert = function() {
                 $scope.alert=null;
                 $scope.applicationData={
@@ -163,6 +171,8 @@ app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'app
                 });
               }
               $scope.edit = function(){
+                console.log("mode from : "+$scope.mode+" to edit")
+                console.log("previousData3: ", $scope.previousData)
                 $scope.mode="edit";
               }
               $scope.cancelEdit = function(){
@@ -172,7 +182,18 @@ app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'app
                 $location.path('/applications');
               }
               $scope.cancelUpdate = function(){
-                $location.path('/applications');
+                console.log("previousData2: ", $scope.previousData)
+                console.log("applicationData: ", $scope.applicationData)
+                console.log("mode from : "+$scope.mode+" to view")
+                //scopeComService.add("view");
+                //scopeComService.add($scope.previousData);
+                //$window.location.reload();
+                //$location.path('/applications');
+                $scope.applicationData=$scope.previousData;
+                console.log("applicationData: ", $scope.applicationData)
+                $scope.mode="view";
+                populateDetails();
+                populateApplicationData();
               }
               $scope.previousValues=[];
             },0);
