@@ -163,8 +163,16 @@ app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'app
               $scope.edit = function(){
                 $scope.mode="edit";
               }
-              console.log("applicationData data: ", $scope.applicationData)
-              console.log("groups: ", $scope.groups)
+              $scope.cancelEdit = function(){
+                $location.path('/applications');
+              }
+              $scope.cancelAdd = function(){
+                $location.path('/applications');
+              }
+              $scope.cancelUpdate = function(){
+                $location.path('/applications');
+              }
+              $scope.previousValues=[];
             },0);
           }
         });
