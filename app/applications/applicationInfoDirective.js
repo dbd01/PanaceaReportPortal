@@ -18,6 +18,7 @@ app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'app
               $scope.groups =[];
               for (var i=0; i<$scope.tabledata.data.length; i++){
                 $scope.groups[i] = {
+                  "users": $scope.tabledata.data[i].users,
                   "permissions": $scope.tabledata.data[i].permissions,
                   "id": $scope.tabledata.data[i]._id,
                   "name": $scope.tabledata.data[i].name
@@ -47,16 +48,17 @@ app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'app
                   $scope.groupz[i] = {
                     "id": $scope.applicationData[4][i]._id,
                     "name": $scope.applicationData[4][i].name,
-                    "permissions": []
+                    "permissions": [],
+                    "users": []
                   }
                   for (var j=0; j<$scope.applicationData[4][i].permissions.length; j++){
                     $scope.groupz[i].permissions[j] = {
-                      "_id": $scope.applicationData[4][i].permissions[j]._id,
-                      "name": $scope.applicationData[4][i].permissions[j].name,
-                      "description": $scope.applicationData[4][i].permissions[j].description,
-                      "type": $scope.applicationData[4][i].permissions[j].type,
-                      "model": $scope.applicationData[4][i].permissions[j].model,
-                      "url": $scope.applicationData[4][i].permissions[j].url
+                      "name": $scope.applicationData[4][i].permissions[j].name
+                    }
+                  }
+                  for (var j=0; j<$scope.applicationData[4][i].users.length; j++){
+                    $scope.groupz[i].users[j] = {
+                      "username": $scope.applicationData[4][i].users[j].username
                     }
                   }
                 }
