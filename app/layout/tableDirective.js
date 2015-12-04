@@ -41,7 +41,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                     //$scope.$apply();                             
                 }
                 if($location.path()=="/permissions"){
-                    scopeComService.add("add_new_permission");
+                    scopeComService.add("add");
                     $location.path('/permissionInfo');
                     //$scope.$apply();                             
                 }
@@ -87,9 +87,21 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                 }///end if location.path=groups
 
                 if ($location.path() == '/permissions'){
-                  scopeComService.add($scope.tabledata.data[editline]);
-                  $location.path('/permissionInfo'); 
+                  //scopeComService.add($scope.tabledata.data[editline]);
+                  //$location.path('/permissionInfo'); 
+
+                  permissionsService.viewPerm({permissionId: $scope.tabledata.data[editline][0].value}).$promise
+                  .then(function (permission) {
+                    consoleService.printIt("permission:=>",permission);
+                    $scope.tabledata.data[editline].push(permission.groups);
+                  }).then(function () {
+                    //write data to registered service scopeCommService     
+                    scopeComService.add("view");
+                    scopeComService.add($scope.tabledata.data[editline]);
+                    $location.path('/permissionInfo');
+                  });
                 }
+
               }
               $scope.edit_entity= function(editline){
                 //query for one entity                        
@@ -132,8 +144,19 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                 }///end if location.path=groups
 
                 if ($location.path() == '/permissions'){
-                  scopeComService.add($scope.tabledata.data[editline]);
-                  $location.path('/permissionInfo'); 
+                  //scopeComService.add($scope.tabledata.data[editline]);
+                  //$location.path('/permissionInfo'); 
+
+                  permissionsService.viewApp({permissionId: $scope.tabledata.data[editline][0].value}).$promise
+                  .then(function (permission) {
+                    consoleService.printIt("permission:=>",permission);
+                    $scope.tabledata.data[editline].push(permission.groups);
+                  }).then(function () {
+                    //write data to registered service scopeCommService     
+                    scopeComService.add("edit");
+                    scopeComService.add($scope.tabledata.data[editline]);
+                    $location.path('/permissionInfo');
+                  });
                 }
               }
               $scope.create_permission= function(editline){
