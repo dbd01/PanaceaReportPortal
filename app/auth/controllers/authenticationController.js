@@ -4,7 +4,6 @@
     	function ($scope, localStorageService, $location, navigationService, $stateParams, $rootScope, $http, appSettings) {
 	    	$rootScope.urlLink = {value:"true"};
 	    	
-	    	console.log("dddd", $stateParams);	        
 	         $rootScope.log_name=$stateParams.user;
 	        //set the token. 		               
 	        localStorageService.set('authorizationData', 
