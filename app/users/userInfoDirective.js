@@ -43,7 +43,7 @@ app.directive('userinfo', [ 'localStorageService', 'usersService' ,'consoleServi
                 $scope.confirmed= $scope.userData[3].value;
                 $scope.active= $scope.userData[4].value;
                 $scope.password = $scope.userData[5].value;
-                //scope.groups must contain strings
+                console.log("scope.userData[6].length : ", $scope.userData[6].length;)
                 for (var i=0; i<$scope.userData[6].length; i++){
                   $scope.groupz[i] = {
                     "id": $scope.userData[6][i]._id,
@@ -51,11 +51,13 @@ app.directive('userinfo', [ 'localStorageService', 'usersService' ,'consoleServi
                     "permissions": [],
                     "applications": []
                   }
+                  console.log("scope.userData[6][i].permissions.length : ", $scope.userData[6][i].permissions.length;)
                   for (var j=0; j<$scope.userData[6][i].permissions.length; j++){
                     $scope.groupz[i].permissions[j] = {
                       "name": $scope.userData[6][i].permissions[j].name
                     }
                   }
+                  console.log("scope.userData[6][i].applications.length : ", $scope.userData[6][i].applications.length;)
                   for (var j=0; j<$scope.userData[6][i].applications.length; j++){
                     $scope.groupz[i].applications[j] = {
                       "name": $scope.userData[4][i].applications[j].name

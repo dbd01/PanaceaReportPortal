@@ -48,6 +48,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                   .then(function (user) {
                     $scope.tabledata.data[editline].push(user.groups);
                   }).then(function () {
+                    console.log("user.groups: ", user.groups);
                     scopeComService.add("view");
                     scopeComService.add($scope.tabledata.data[editline]); 
                     $location.path('/userInfo');
@@ -71,6 +72,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                     $scope.tabledata.data[editline].push(group.permissions);
                   })
                   .then(function () {
+                    console.log("group.permisisons: ", group.permisisons);
                     scopeComService.add($scope.tabledata.data[editline]);
                     scopeComService.add("view");
                     $location.path('/groupInfo'); 
@@ -127,6 +129,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                   permissionsService.viewApp({permissionId: $scope.tabledata.data[editline][0].value}).$promise
                   .then(function (permission) {
                     consoleService.printIt("permission:=>",permission);
+                    console.log("permission.groups: ",permission.groups);
                     $scope.tabledata.data[editline].push(permission.groups);
                   }).then(function () {
                     scopeComService.add("edit");
