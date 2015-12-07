@@ -5,9 +5,9 @@ app.directive('groupinfo', [ 'localStorageService', 'consoleService', 'groupsSer
       restrict: 'E',
       templateUrl: 'app/groups/views/groupInfoTemplate.html',
       scope: { 
-        tableid: '@',          
+        tableid: '@',
         tabledata: '=',
-        ready: '@'           
+        ready: '@'
       },
       link: function ($scope) {
         $scope.$watch('ready', function (newvalue, oldvalue) {
@@ -22,31 +22,46 @@ app.directive('groupinfo', [ 'localStorageService', 'consoleService', 'groupsSer
                   "name":  $scope.tabledata.data[i][1].value
                 }
               }
-              consoleService.printIt("perrrrrrrr",  $scope.permissions ); 
-              //get the data from the service
+              $scope.mode = scopeComService.list[0];
+              if ($scope.mode=="view" || $scope.mode=="edit"){
+                $scope.groupData= scopeComService.list[1];
+                $scope.previousData=scopeComService.list[1];
+              }
+              else {
+                $scope.previousData=null;
+              }
               $scope.groupData= scopeComService.list[0];
               scopeComService.flush();
               $scope.showIt = true;
               $scope.permissionz = []; 
               $scope.permissionzIDz =[];
 
-              if ($scope.groupData=="add_new_group")
-                $scope.showIt = false;
-              if( $scope.showIt){
+              function populateDetails(){
                 $scope._id= $scope.groupData[0].value;
                 $scope.name= $scope.groupData[1].value;
-                $scope.description = $scope.groupData[2].value;                            
-                //scope.permissions must contain strings
+                $scope.description = $scope.groupData[2].value;
                 for (var i=0; i<$scope.groupData[3].length; i++){
                   $scope.permissionz[i] = {
                     "id": $scope.groupData[3][i]._id,
                     "name": $scope.groupData[3][i].name
-                  }     
+                  }
                 }
               }
-              else 
-                $scope.groupId = "";
+              if($scope.mode=="view" || $scope.mode=="edit"){
+                populateDetails();
+              }
+              else
+                $scope.name = "";
 
+              function populateGroupData(){
+                $scope.groupData={
+                  "_id": $scope._id,
+                  "name": $scope.name,
+                  "description": $scope.description,                                            
+                  "permissions": $scope.permissionz
+                }
+              }
+              populateGroupData();
               $scope.closeAlert = function() {
                 $scope.alert=null;
                 $scope.groupData={
@@ -55,12 +70,6 @@ app.directive('groupinfo', [ 'localStorageService', 'consoleService', 'groupsSer
                   "description":'',                                           
                   "permissions": []
                 };
-              }
-              $scope.groupData={
-                "_id": $scope._id,
-                "name": $scope.name,
-                "description": $scope.description,                                            
-                "permissions": $scope.permissionz
               }
               $scope.add = function(){
                 for (var i=0; i< $scope.groupData.permissions.length; i++){

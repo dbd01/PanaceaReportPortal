@@ -1,6 +1,6 @@
 "use strict";
-app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'applicationsService',  'scopeComService', '$location', '$timeout', '$window',
-  function (localStorageService, consoleService, applicationsService,  scopeComService, $location, $timeout, $window) {
+app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'applicationsService',  'scopeComService', '$location', '$timeout',
+  function (localStorageService, consoleService, applicationsService,  scopeComService, $location, $timeout) {
     return {
       restrict: 'E',
       templateUrl: 'app/applications/views/applicationInfoTemplate.html',
@@ -24,10 +24,7 @@ app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'app
                   "name": $scope.tabledata.data[i].name
                 }
               }
-              //consoleService.printIt("eeeeeeggggg0000ee",  $scope.groups );
-              //get the data from the service
               $scope.mode = scopeComService.list[0];
-              console.log("mode: ", $scope.mode);
               if ($scope.mode=="view" || $scope.mode=="edit"){
                 $scope.applicationData= scopeComService.list[1];
                 $scope.previousData=scopeComService.list[1];
@@ -35,7 +32,6 @@ app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'app
               else {
                 $scope.previousData=null;
               }
-              console.log("previuos data: ", $scope.previousData);
               scopeComService.flush();
               $scope.groupz = [];
               $scope.groupzIDz =[]; 
