@@ -43,7 +43,7 @@ app.directive('userinfo', [ 'localStorageService', 'usersService' ,'consoleServi
                 $scope.confirmed= $scope.userData[3].value;
                 $scope.active= $scope.userData[4].value;
                 $scope.password = $scope.userData[5].value;
-                console.log("scope.userData[6].length : ", $scope.userData[6].length;)
+                console.log("scope.userData[6].length : ", $scope.userData[6].length)
                 for (var i=0; i<$scope.userData[6].length; i++){
                   $scope.groupz[i] = {
                     "id": $scope.userData[6][i]._id,
