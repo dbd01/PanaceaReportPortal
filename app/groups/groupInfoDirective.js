@@ -131,6 +131,25 @@ app.directive('groupinfo', [ 'localStorageService', 'consoleService', 'groupsSer
                     };}
                   });
               }
+              $scope.edit = function(){
+                console.log("mode from : "+$scope.mode+" to edit")
+                console.log("previousData3: ", $scope.previousData)
+                $scope.mode="edit";
+              }
+              $scope.cancelEdit = function(){
+                $location.path('/groups');
+              }
+              $scope.cancelAdd = function(){
+                $location.path('/groups');
+              }
+              $scope.cancelUpdate = function(){
+                console.log("mode from : "+$scope.mode+" to view")
+                $scope.groupData=$scope.previousData;
+                $scope.mode="view";
+                populateDetails();
+                populateGroupData();
+              }
+              $scope.previousValues=[];
             }, 0);
           }
         });

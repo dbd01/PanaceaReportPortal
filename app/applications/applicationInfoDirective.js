@@ -5,9 +5,9 @@ app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'app
       restrict: 'E',
       templateUrl: 'app/applications/views/applicationInfoTemplate.html',
       scope: { 
-        tableid: '@',          
+        tableid: '@',
         tabledata: '=',
-        ready: '@'           
+        ready: '@'
       },
       link: function ($scope) {
         $scope.$watch('ready', function (newvalue, oldvalue) {
