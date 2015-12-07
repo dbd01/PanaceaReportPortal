@@ -11,7 +11,7 @@ app
       controller: 'lalaController'
     })
     .state('lalo', {
-      url: "/:token/:expires",
+      url: "/:token/:expires/:user",
       template: "Hallo!"  ,
       controller: 'authenticationController'
      })                     
