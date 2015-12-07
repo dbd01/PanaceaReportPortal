@@ -7,7 +7,7 @@
 					  <tr ng-if="mode!='add'">
 				    	<td>Application Id:</td>
 				    	<td> {{_id}}</td>
-				    </tr>					   
+				    </tr>
 						<tr>
 							<td>Application Name:</td>
 							<td ng-if="mode!='view'"> <input type="text" class="form-control"  ng-model ="applicationData.name" required> </td>
@@ -26,18 +26,24 @@
 						<tr >
 							<td>Groups:</td>
 							<td>
-								<div ng-repeat="group in groups">
+								<div ng-repeat="group in groups" ng-show="mode!='view'">
 									{{group.name}} <input type="checkbox" data-checklist-model="applicationData.groups" data-checklist-value="group" ng-disabled="mode=='view'"> Show Permissions <input type="checkbox" ng-model="permissions_checked">
 									<div ng-show="permissions_checked">
-										<ul>
-											<li ng-repeat="permission in group.permissions">{{permission.name}}</li>
-										</ul>
+											<div ng-repeat="permission in group.permissions">{{permission.name}}</div>
 									</div>
 									Show Users <input type="checkbox" ng-model="users_checked">
 									<div ng-show="users_checked">
-										<ul>
-											<li ng-repeat="user in group.users">{{user.username}}</li>
-										</ul>
+											<div ng-repeat="user in group.users">{{user.username}}</div>
+									</div>
+							  </div>
+							  <div ng-repeat="group in applicationData.groups" ng-show="mode=='view'">
+									{{group.name}} : Show Permissions <input type="checkbox" ng-model="permissions_checked">
+									<div ng-show="permissions_checked">
+											<div ng-repeat="permission in group.permissions">{{permission.name}}</div>
+									</div>
+									Show Users <input type="checkbox" ng-model="users_checked">
+									<div ng-show="users_checked">
+											<div ng-repeat="user in group.users">{{user.username}}</div>
 									</div>
 							  </div>
 							</td>

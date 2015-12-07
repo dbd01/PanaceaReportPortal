@@ -33,18 +33,24 @@
 						<tr >
 							<td>Groups:</td>
 							<td>
-								<div ng-repeat="group in groups">
+								<div ng-repeat="group in groups" ng-show="mode!='view'">
 									{{group.name}} <input type="checkbox" data-checklist-model="userData.groups" data-checklist-value="group" ng-disabled="mode=='view'"> Show Permissions <input type="checkbox" ng-model="permissions_checked">
 									<div ng-show="permissions_checked">
-										<ul>
-											<li ng-repeat="permission in group.permissions">{{permission.name}}</li>
-										</ul>
+											<div ng-repeat="permission in group.permissions">{{permission.name}}</div>
 									</div>
 									Show Applications <input type="checkbox" ng-model="applications_checked">
 									<div ng-show="applications_checked">
-										<ul>
-											<li ng-repeat="application in group.applications">{{application.name}}</li>
-										</ul>
+											<div ng-repeat="application in group.applications">{{application.name}}</div>
+									</div>
+							  </div>
+							  <div ng-repeat="group in userData.groups" ng-show="mode=='view'">
+									{{group.name}} : Show Permissions <input type="checkbox" ng-model="permissions_checked">
+									<div ng-show="permissions_checked">
+											<div ng-repeat="permission in group.permissions">{{permission.name}}</div>
+									</div>
+									Show Applications <input type="checkbox" ng-model="applications_checked">
+									<div ng-show="applications_checked">
+											<div ng-repeat="application in group.applications">{{application.name}}</div>
 									</div>
 							  </div>
 							</td>
