@@ -4,33 +4,57 @@
 				<div class="form-group">
 				  <h4> Application Information </h4>
 				  <table class="table table-responsive" cellspacing="3" >
-					  <tr ng-if="edit">
+					  <tr ng-if="!add">
 				    	<td>Application Id:</td>
 				    	<td> {{_id}}</td>
 				    </tr>					   
 						<tr>
 							<td>Application Name:</td>
-							<td> <input type="text" class="form-control"  ng-model ="applicationData.name" required> </td>		
+							<td ng-if="mode!='view'"> <input type="text" class="form-control"  ng-model ="applicationData.name" required> </td>
+							<td ng-if="mode=='view'"> {{applicationData.name}} </td>
 						</tr>
 						<tr>
 							<td>Description:</td>
-							<td> <input type="text" class="form-control"  ng-model ="applicationData.description" > </td> 
+							<td ng-if="mode!='view'"> <input type="textarea" rows="4" class="form-control"  ng-model ="applicationData.description" > </td>
+							<td ng-if="mode=='view'"> {{applicationData.description}} </td>
 						</tr>
 						<tr>
 							<td>Url:</td>
-							<td> <input type="text" class="form-control"  ng-model ="applicationData.url"> </td> 
+							<td ng-if="mode!='view'"> <input type="textarea" rows="2" class="form-control"  ng-model ="applicationData.url"> </td>
+							<td ng-if="mode=='view'"> {{applicationData.url}} </td>
 						</tr>
 						<tr >
 							<td>Groups:</td>
 							<td>
-								<div ng-repeat="group in groups">			  	  		   							 	
-									<input type="checkbox" data-checklist-model="applicationData.groups" data-checklist-value="group"> {{group.name}}
+								<div ng-repeat="group in groups">
+									{{group.name}} <input type="checkbox" data-checklist-model="applicationData.groups" data-checklist-value="group" ng-disabled="mode=='view'"> Show Permissions <input type="checkbox" ng-model="permissions_checked">
+									<div ng-show="permissions_checked">
+										<ul>
+											<li ng-repeat="permission in group.permissions">{{permission.name}}</li>
+										</ul>
+									</div>
+									Show Users <input type="checkbox" ng-model="users_checked">
+									<div ng-show="users_checked">
+										<ul>
+											<li ng-repeat="user in group.users">{{user.username}}</li>
+										</ul>
+									</div>
 							  </div>								
 							</td>							
 						</tr>
 					</table>
-			    <button type="submit" class="btn btn-default" ng-click = "add()" ng-if="add">Add</button>
-			    <button type="submit" class="btn btn-default" ng-click = "update()" ng-if="edit">Update</button>
+					<div ng-show="mode=='add'">
+			    	<button  type="submit" class="btn btn-default" ng-click = "add()" ng-if="add">Add</button>
+			    	<button  type="submit" class="btn btn-default" ng-click = "cancelAdd()" ng-if="add">Cancel</button>
+			    </div>
+			    <div ng-show="mode=='edit'">
+			    	<button type="submit" class="btn btn-default" ng-click = "update()" ng-if="edit">Update</button>
+			    	<button type="submit" class="btn btn-default" ng-click = "cancelUpdate()" ng-if="edit">Cancel</button>
+			    </div>
+			    <div ng-show="mode=='view'">
+			    	<button type="submit" class="btn btn-default" ng-click = "edit()">Edit</button>
+			    	<button type="submit" class="btn btn-default" ng-click = "cancelEdit()">Cancel</button>
+			    </div>
 					<alert type="{{alert.type}}" close="closeAlert()" ng-show="alert != null" >
 						<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>		
 							{{alert.msg}}

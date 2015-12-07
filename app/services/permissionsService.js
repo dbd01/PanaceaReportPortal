@@ -6,11 +6,14 @@
     function permissionsService($resource, appSettings, localStorageService) {
 
         return $resource(appSettings.authServerPath + '/api/v1/permission/:permissionId', {}, {
-                       
             query: { 
                 method: 'GET', 
                 isArray: true ,
                 params: { permissionId: '' }               
+            },
+            viewPerm: {
+                 method: 'GET',
+                 params: { permissionId: '@permissionId' }
             },            
             add: {
                  method: 'POST'                 
