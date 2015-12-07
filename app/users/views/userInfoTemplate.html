@@ -4,45 +4,71 @@
 				<div class="form-group">
 				    <h4> User Information</h4>
 				    <table class="table table-responsive" cellspacing="3" >
-					    <tr ng-if="showIt">
+					    <tr ng-if="mode!='add'">
 					    	<td>User Id:</td>
 					    	<td> {{_id}}</td>
 					    </tr>					   
 						<tr>
 							<td>Username:</td>
-							<td> <input type="text" class="form-control"  ng-model ="userData.name" required> </td>		
+							<td ng-if="mode!='view'"> <input type="text" class="form-control"  ng-model ="userData.name" required> </td>
+							<td ng-if="mode=='view'"> {{userData.name}} </td>
 						</tr>
 						<tr>
-							<td>Password:</td>
-							<td> <input type="password" class="form-control"  ng-model ="userData.password" required> </td> 
+							<td ng-if="mode!='view'">Password:</td>
+							<td ng-if="mode!='view'"> <input type="password" class="form-control"  ng-model ="userData.password" required > </td>
 						</tr>
 						<tr>
 							<td>Email:</td>
-							<td> <input type="email" class="form-control"  ng-model ="userData.email" required> </td>		
-						</tr>						
-						<tr ng-if="showIt">
-							<td>Confirmed:</td>
-							<td><input type="checkbox" ng-model="userData.confirmed" ></td>
+							<td ng-if="mode!='view'"> <input type="textarea" rows="4" class="form-control"  ng-model ="userData.email" required> </td>
+							<td ng-if="mode=='view'"> {{userData.email}} </td>
 						</tr>
-						<tr ng-if="showIt">
+						<tr ng-if="mode!='add'">
+							<td>Confirmed:</td>
+							<td> <input type="checkbox" ng-model="userData.confirmed" ng-disabled="mode=='view'"> </td>
+						</tr>
+						<tr ng-if="mode!='add'">
 							<td>Active:</td>
-							<td><input type="checkbox" ng-model="userData.active" ></td> 
+							<td><input type="checkbox" ng-model="userData.active" ng-disabled="mode=='view'"></td> 
 						</tr>
 						<tr >
 							<td>Groups:</td>
 							<td>
-							   <div ng-repeat="group in groups">			  	  		   							 	
-								  <input type="checkbox" data-checklist-model="userData.groups" data-checklist-value="group"> {{group.name}}  
-							  </div>								
-						    </td>							
-                            
+								<div ng-repeat="group in groups" ng-show="mode!='view'">
+									{{group.name}} <input type="checkbox" data-checklist-model="userData.groups" data-checklist-value="group" ng-disabled="mode=='view'"> Show Permissions <input type="checkbox" ng-model="permissions_checked">
+									<div ng-show="permissions_checked">
+											<div ng-repeat="permission in group.permissions">{{permission.name}}</div>
+									</div>
+									Show Applications <input type="checkbox" ng-model="applications_checked">
+									<div ng-show="applications_checked">
+											<div ng-repeat="application in group.applications">{{application.name}}</div>
+									</div>
+							  </div>
+							  <div ng-repeat="group in userData.groups" ng-show="mode=='view'">
+									{{group.name}} : Show Permissions <input type="checkbox" ng-model="permissions_checked">
+									<div ng-show="permissions_checked">
+											<div ng-repeat="permission in group.permissions">{{permission.name}}</div>
+									</div>
+									Show Applications <input type="checkbox" ng-model="applications_checked">
+									<div ng-show="applications_checked">
+											<div ng-repeat="application in group.applications">{{application.name}}</div>
+									</div>
+							  </div>
+							</td>
 						</tr>
 						
 					</table>
-					
-					    <button type="submit" class="btn btn-default" ng-click = "add()" ng-if="!showIt">Add</button>
-					    <button type="submit" class="btn btn-default" ng-click = "update()" ng-if="showIt">Update</button>
-	  					 					
+					<div ng-show="mode=='add'">
+			    	<button  type="submit" class="btn btn-default" ng-click = "add()" ng-if="add">Add</button>
+			    	<button  type="submit" class="btn btn-default" ng-click = "cancelAdd()" ng-if="add">Cancel</button>
+			    </div>
+			    <div ng-show="mode=='edit'">
+			    	<button type="submit" class="btn btn-default" ng-click = "update()" ng-if="edit">Update</button>
+			    	<button type="submit" class="btn btn-default" ng-click = "cancelUpdate()" ng-if="edit">Cancel</button>
+			    </div>
+			    <div ng-show="mode=='view'">
+			    	<button type="submit" class="btn btn-default" ng-click = "edit()">Edit</button>
+			    	<button type="submit" class="btn btn-default" ng-click = "cancelEdit()">Cancel</button>
+			    </div>
 	  					<alert type="{{alert.type}}" close="closeAlert()" ng-show="alert != null" >
 							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>		
 								{{alert.msg}}

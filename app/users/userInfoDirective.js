@@ -16,38 +16,71 @@ app.directive('userinfo', [ 'localStorageService', 'usersService' ,'consoleServi
               var table = $('#' + $scope.tableid);
               var oTable = table.dataTable(); 
               $scope.groups =[];
-              for (var i=0; i<$scope.tabledata.data.length; i++) {
+              for (var i=0; i<$scope.tabledata.data.length; i++){
                 $scope.groups[i] = {
-                  "id":    $scope.tabledata.data[i][0].value,
-                  "name":  $scope.tabledata.data[i][1].value
-                }  
+                  "applications": $scope.tabledata.data[i].applications,
+                  "permissions": $scope.tabledata.data[i].permissions,
+                  "id": $scope.tabledata.data[i]._id,
+                  "name": $scope.tabledata.data[i].name
+                }
               }
-              consoleService.printIt("eeeeeeggggg0000ee",  $scope.groups );
-              //get the data from the service
-              $scope.userData= scopeComService.list[0];
+              $scope.mode = scopeComService.list[0];
+              if ($scope.mode=="view" || $scope.mode=="edit"){
+                $scope.userData= scopeComService.list[1];
+                $scope.previousData=scopeComService.list[1];
+              }
+              else {
+                $scope.previousData=null;
+              }
               scopeComService.flush();
-              $scope.showIt = true;
               $scope.groupz = []; 
               $scope.groupzIDz =[];
-              if ($scope.userData=="add_new_user")
-                $scope.showIt = false;
-              if( $scope.showIt){
+              
+              function populateDetails(){
                 $scope._id= $scope.userData[0].value;
                 $scope.username = $scope.userData[1].value;
                 $scope.email= $scope.userData[2].value;
                 $scope.confirmed= $scope.userData[3].value;
                 $scope.active= $scope.userData[4].value;
                 $scope.password = $scope.userData[5].value;
-                //scope.groups must contain strings
+                console.log("scope.userData[6].length : ", $scope.userData[6].length)
                 for (var i=0; i<$scope.userData[6].length; i++){
                   $scope.groupz[i] = {
                     "id": $scope.userData[6][i]._id,
-                    "name": $scope.userData[6][i].name
+                    "name": $scope.userData[6][i].name,
+                    "permissions": [],
+                    "applications": []
+                  }
+                  for (var j=0; j<$scope.userData[6][i].permissions.length; j++){
+                    $scope.groupz[i].permissions[j] = {
+                      "name": $scope.userData[6][i].permissions[j].name
+                    }
+                  }
+                  for (var j=0; j<$scope.userData[6][i].applications.length; j++){
+                    $scope.groupz[i].applications[j] = {
+                      "name": $scope.userData[6][i].applications[j].name
+                    }
                   }
                 }
               }
-              else 
-                $scope.username = "";
+              if($scope.mode=="view" || $scope.mode=="edit"){
+                populateDetails();
+              }
+              else
+                $scope.name = "";
+
+              function populateUserData(){
+                $scope.userData= {
+                  "_id":$scope._id,
+                  "name":$scope.username,
+                  "password":$scope.password,
+                  "email":$scope.email,
+                  "confirmed":$scope.confirmed,
+                  "active":$scope.active,
+                  "groups":$scope.groupz
+                }
+              }
+              populateUserData();
               $scope.closeAlert = function() {
                 $scope.alert=null;
                 $scope.userData={
@@ -60,15 +93,7 @@ app.directive('userinfo', [ 'localStorageService', 'usersService' ,'consoleServi
                   "groups": []
                 };
               }
-              $scope.userData= {
-                "_id":$scope._id,
-                "name":$scope.username,
-                "password":$scope.password,
-                "email":$scope.email,
-                "confirmed":$scope.confirmed,
-                "active":$scope.active,
-                "groups":$scope.groupz
-              }
+             
               $scope.add = function(){
                 for (var i=0; i< $scope.userData.groups.length; i++){
                   $scope.groupzIDz[i] = $scope.userData.groups[i].id;
@@ -134,6 +159,25 @@ app.directive('userinfo', [ 'localStorageService', 'usersService' ,'consoleServi
                   }
                 });
               }
+              $scope.edit = function(){
+                console.log("mode from : "+$scope.mode+" to edit")
+                console.log("previousData3: ", $scope.previousData)
+                $scope.mode="edit";
+              }
+              $scope.cancelEdit = function(){
+                $location.path('/users');
+              }
+              $scope.cancelAdd = function(){
+                $location.path('/users');
+              }
+              $scope.cancelUpdate = function(){
+                console.log("mode from : "+$scope.mode+" to view")
+                $scope.userData=$scope.previousData;
+                $scope.mode="view";
+                populateDetails();
+                populateUserData();
+              }
+              $scope.previousValues=[];
             }, 0);
           }
         });
