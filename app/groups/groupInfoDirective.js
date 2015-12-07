@@ -15,11 +15,12 @@ app.directive('groupinfo', [ 'localStorageService', 'consoleService', 'groupsSer
             $timeout(function () {
               var table = $('#' + $scope.tableid);
               var oTable = table.dataTable();
+              console.log("oTable: ", oTable)
               $scope.permissions =[];
               for (var i=0; i<$scope.tabledata.data.length; i++){
                 $scope.permissions[i] = {
-                  "id":    $scope.tabledata.data[i][0].value,
-                  "name":  $scope.tabledata.data[i][1].value
+                  "id":$scope.tabledata.data[i]._id,
+                  "name":$scope.tabledata.data[i].name
                 }
               }
               $scope.mode = scopeComService.list[0];
@@ -30,11 +31,13 @@ app.directive('groupinfo', [ 'localStorageService', 'consoleService', 'groupsSer
               else {
                 $scope.previousData=null;
               }
-              $scope.groupData= scopeComService.list[0];
+              
               scopeComService.flush();
               $scope.showIt = true;
-              $scope.permissionz = []; 
+              $scope.permissionz = [];
               $scope.permissionzIDz =[];
+              $scope.applicationz = [];
+              $scope.userz = [];
 
               function populateDetails(){
                 $scope._id= $scope.groupData[0].value;
@@ -44,6 +47,18 @@ app.directive('groupinfo', [ 'localStorageService', 'consoleService', 'groupsSer
                   $scope.permissionz[i] = {
                     "id": $scope.groupData[3][i]._id,
                     "name": $scope.groupData[3][i].name
+                  }
+                }
+                for (var i=0; i<$scope.groupData[4].length; i++){
+                  $scope.applicationz[i] = {
+                    "id": $scope.groupData[4][i]._id,
+                    "name": $scope.groupData[4][i].name
+                  }
+                }
+                for (var i=0; i<$scope.groupData[5].length; i++){
+                  $scope.userz[i] = {
+                    "id": $scope.groupData[5][i]._id,
+                    "username": $scope.groupData[5][i].username
                   }
                 }
               }
@@ -57,18 +72,23 @@ app.directive('groupinfo', [ 'localStorageService', 'consoleService', 'groupsSer
                 $scope.groupData={
                   "_id": $scope._id,
                   "name": $scope.name,
-                  "description": $scope.description,                                            
-                  "permissions": $scope.permissionz
+                  "description": $scope.description,
+                  "permissions": $scope.permissionz,
+                  "applications": $scope.applicationz,
+                  "users": $scope.userz
                 }
               }
               populateGroupData();
+              console.log("groupData: ", $scope.groupData)
               $scope.closeAlert = function() {
                 $scope.alert=null;
                 $scope.groupData={
                   "_id":'',
                   "name":'',
-                  "description":'',                                           
-                  "permissions": []
+                  "description":'',
+                  "permissions": [],
+                  "applications": [],
+                  "users": []
                 };
               }
               $scope.add = function(){

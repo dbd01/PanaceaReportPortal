@@ -26,6 +26,18 @@
 							  </div>
 						    </td>
 						</tr>
+						<tr ng-show="mode!='add'">
+							<td>Applications:</td>
+							<td>
+							   <li ng-repeat="application in groupData.applications">{{application.name}}</li>
+						  </td>
+						</tr>
+						<tr ng-show="mode!='add'">
+							<td>Users:</td>
+							<td>
+							   <li ng-repeat="user in groupData.users">{{user.username}}</li>
+						  </td>
+						</tr>
 					</table>
 					<div ng-show="mode=='add'">
 			    	<button  type="submit" class="btn btn-default" ng-click = "add()" ng-if="add">Add</button>
@@ -40,7 +52,7 @@
 			    	<button type="submit" class="btn btn-default" ng-click = "cancelEdit()">Cancel</button>
 			    </div>
 	  					<alert type="{{alert.type}}" close="closeAlert()" ng-show="alert != null" >
-							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>		
+							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
 								{{alert.msg}}
 						</alert>
 			</form>

@@ -46,9 +46,9 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                 if ($location.path() == '/users'){
                   usersService.viewUser({ userId: $scope.tabledata.data[editline][0].value}).$promise
                   .then(function (user) {
+                    console.log("user.groups: ", user.groups);
                     $scope.tabledata.data[editline].push(user.groups);
                   }).then(function () {
-                    console.log("user.groups: ", user.groups);
                     scopeComService.add("view");
                     scopeComService.add($scope.tabledata.data[editline]); 
                     $location.path('/userInfo');
@@ -70,11 +70,12 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                   .then(function (group) {
                     consoleService.printIt("grouppp:=>",group);
                     $scope.tabledata.data[editline].push(group.permissions);
+                    $scope.tabledata.data[editline].push(group.applications);
+                    $scope.tabledata.data[editline].push(group.users);
                   })
                   .then(function () {
-                    console.log("group.permisisons: ", group.permisisons);
-                    scopeComService.add($scope.tabledata.data[editline]);
                     scopeComService.add("view");
+                    scopeComService.add($scope.tabledata.data[editline]);
                     $location.path('/groupInfo'); 
                   });  
                 }
@@ -118,6 +119,8 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                   .then(function (group) {
                     consoleService.printIt("grouppp:=>",group);
                     $scope.tabledata.data[editline].push(group.permissions);
+                    $scope.tabledata.data[editline].push(group.applications);
+                    $scope.tabledata.data[editline].push(group.users);
                   })
                   .then(function () {
                     scopeComService.add("edit");
