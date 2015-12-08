@@ -35,14 +35,13 @@ app.directive('userinfo', [ 'localStorageService', 'usersService' ,'consoleServi
               scopeComService.flush();
               $scope.groupz = []; 
               $scope.groupzIDz =[];
-              
+            
               function populateDetails(){
                 $scope._id= $scope.userData[0].value;
                 $scope.username = $scope.userData[1].value;
                 $scope.email= $scope.userData[2].value;
                 $scope.confirmed= $scope.userData[3].value;
                 $scope.active= $scope.userData[4].value;
-                $scope.password = $scope.userData[5].value;
                 console.log("scope.userData[6].length : ", $scope.userData[6].length)
                 for (var i=0; i<$scope.userData[6].length; i++){
                   $scope.groupz[i] = {
@@ -131,13 +130,12 @@ app.directive('userinfo', [ 'localStorageService', 'usersService' ,'consoleServi
                   $scope.groupzIDz[i] = $scope.userData.groups[i].id;
                 $scope.updateData={
                   "username":$scope.userData.name,
-                  "password":$scope.userData.password,
                   "email":$scope.userData.email,
                   "confirmed": $scope.userData.confirmed,
                   "active": $scope.userData.active,
                   "groups": $scope.groupzIDz
                 }
-                usersService.update({ userId: $scope._id }, $scope.updateData, function (response) {
+                usersService.partialUpdate({ userId: $scope._id }, $scope.updateData, function (response) {
                   consoleService.printIt("rrr", response);
                   consoleService.printIt("update data=>", $scope.updateData);
                   $location.path('/users');

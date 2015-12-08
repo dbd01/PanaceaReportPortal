@@ -14,8 +14,8 @@
 							<td ng-if="mode=='view'"> {{userData.name}} </td>
 						</tr>
 						<tr>
-							<td ng-if="mode!='view'">Password:</td>
-							<td ng-if="mode!='view'"> <input type="password" class="form-control"  ng-model ="userData.password" required > </td>
+							<td ng-if="mode=='add'">Password:</td>
+							<td ng-if="mode=='add'"> <input type="password" class="form-control"  ng-model ="userData.password" required > </td>
 						</tr>
 						<tr>
 							<td>Email:</td>
