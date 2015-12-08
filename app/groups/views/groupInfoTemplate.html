@@ -24,21 +24,19 @@
 							   <div ng-repeat="permission in permissions" ng-show="mode!='view'">
 								  <input type="checkbox" data-checklist-model="groupData.permissions" data-checklist-value="permission" ng-disabled="mode=='view'"> {{permission.name}}  
 							  </div>
-							  <div ng-repeat="permission in permissions" ng-show="mode=='view'">
-								  {{permission.name}}
-							  </div>
+							  <span ng-repeat="permission in permissions" ng-show="mode=='view'">{{permission.name}}, </span>
 						    </td>
 						</tr>
 						<tr ng-show="mode!='add'">
 							<td>Applications:</td>
 							<td>
-							<div ng-repeat="application in groupData.applications" ng-show="mode=='view'">{{application.name}}</div>
+							<span ng-repeat="application in groupData.applications" ng-show="mode=='view'">{{application.name}}, </span>
 						  </td>
 						</tr>
 						<tr ng-show="mode!='add'">
 							<td>Users:</td>
 							<td>
-							<div ng-repeat="user in groupData.users">{{user.username}}</div>
+							<span ng-repeat="user in groupData.users">{{user.username}}, </span>
 						  </td>
 						</tr>
 					</table>
