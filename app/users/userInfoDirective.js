@@ -32,7 +32,6 @@ app.directive('userinfo', [ 'localStorageService', 'usersService' ,'consoleServi
               else if ($scope.mode=="view"){
                 $scope.userData= scopeComService.list[1];
                 $scope.previousData=scopeComService.list[1];
-                console.log("scopeComService.list.length: ",scopeComService.list)
                 if (scopeComService.list.length==3)
                   $scope.deletedData=true;
                 else

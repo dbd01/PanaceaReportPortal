@@ -11,7 +11,8 @@ app.controller("groupsController", ['localStorageService', 'consoleService' ,'gr
         { "title": "description", "showIt": true }
       ],
       "data": [],
-      "ready": false
+      "ready": false,
+      "mode": ""
     }
     groupsService.query().$promise
     .then(function (groups) {

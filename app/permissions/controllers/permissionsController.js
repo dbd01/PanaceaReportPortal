@@ -14,7 +14,8 @@ app.controller("permissionsController", ['localStorageService', 'consoleService'
         { "title": "model", "showIt": true }
       ],
   		"data": [],
-  		"ready": false
+  		"ready": false,
+      "mode": ""
     }
     permissionsService.query().$promise.then(
       function (permissions) {

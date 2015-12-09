@@ -58,6 +58,8 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                   }).then(function () {
                     scopeComService.add("view");
                     scopeComService.add($scope.tabledata.data[editline]);
+                    if ($scope.tabledata.mode=="deleted")
+                      scopeComService.add("deleted");
                     $location.path('/applicationInfo');
                   });
                 }
@@ -72,6 +74,8 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                   .then(function () {
                     scopeComService.add("view");
                     scopeComService.add($scope.tabledata.data[editline]);
+                    if ($scope.tabledata.mode=="deleted")
+                      scopeComService.add("deleted");
                     $location.path('/groupInfo'); 
                   });  
                 }
@@ -83,6 +87,8 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                   }).then(function () {
                     scopeComService.add("view");
                     scopeComService.add($scope.tabledata.data[editline]);
+                    if ($scope.tabledata.mode=="deleted")
+                      scopeComService.add("deleted");
                     $location.path('/permissionInfo');
                   });
                 }

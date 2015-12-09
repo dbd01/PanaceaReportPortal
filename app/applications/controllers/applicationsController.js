@@ -12,7 +12,8 @@ app.controller("applicationsController", ['localStorageService','consoleService'
         { "title": "url", "showIt": true }
       ],
       "data": [],
-      "ready": false
+      "ready": false,
+      "mode": ""
     }
     applicationsService.query().$promise
     .then(function (applications) {

@@ -3,10 +3,17 @@
 app.controller("permissionInfoController", ['localStorageService', 'consoleService','permissionsService','$scope', 'scopeComService','$location',
   function (localStorageService, consoleService, permissionsService , $scope , scopeComService, $location ) {
     $scope.mode = scopeComService.list[0];
-    console.log("mode: ", $scope.mode);
-    if ($scope.mode=="view" || $scope.mode=="edit"){
+    if ($scope.mode=="edit"){
       $scope.permissionData= scopeComService.list[1];
       $scope.previousData=scopeComService.list[1];
+    }
+    else if ($scope.mode=="view"){
+      $scope.permissionData= scopeComService.list[1];
+      $scope.previousData=scopeComService.list[1];
+      if (scopeComService.list.length==3)
+        $scope.deletedData=true;
+      else
+        $scope.deletedData=false;
     }
     else {
       if ($scope.mode=="add_requested")

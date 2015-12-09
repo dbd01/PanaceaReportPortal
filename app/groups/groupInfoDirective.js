@@ -24,9 +24,17 @@ app.directive('groupinfo', [ 'localStorageService', 'consoleService', 'groupsSer
                 }
               }
               $scope.mode = scopeComService.list[0];
-              if ($scope.mode=="view" || $scope.mode=="edit"){
+              if ($scope.mode=="edit"){
                 $scope.groupData= scopeComService.list[1];
                 $scope.previousData=scopeComService.list[1];
+              }
+              else if ($scope.mode=="view"){
+                $scope.groupData= scopeComService.list[1];
+                $scope.previousData=scopeComService.list[1];
+                if (scopeComService.list.length==3)
+                  $scope.deletedData=true;
+                else
+                  $scope.deletedData=false;
               }
               else {
                 $scope.previousData=null;
