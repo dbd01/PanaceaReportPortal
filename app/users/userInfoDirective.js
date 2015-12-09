@@ -25,9 +25,18 @@ app.directive('userinfo', [ 'localStorageService', 'usersService' ,'consoleServi
                 }
               }
               $scope.mode = scopeComService.list[0];
-              if ($scope.mode=="view" || $scope.mode=="edit"){
+              if ($scope.mode=="edit"){
                 $scope.userData= scopeComService.list[1];
                 $scope.previousData=scopeComService.list[1];
+              }
+              else if ($scope.mode=="view"){
+                $scope.userData= scopeComService.list[1];
+                $scope.previousData=scopeComService.list[1];
+                console.log("scopeComService.list.length: ",scopeComService.list)
+                if (scopeComService.list.length==3)
+                  $scope.deletedData=true;
+                else
+                  $scope.deletedData=false;
               }
               else {
                 $scope.previousData=null;

@@ -8,9 +8,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
         tabletitle: '@',
         tabledata: '=',
         ready: '@',
-        tableresult: '=',
-        editable: '@', // it was '@' but didn't work with the views
-        requestedperm: '=' // it was '@' but didn't work with the views
+        tableresult: '='
       },
       link: function ($scope, element, attrs) {
         $scope.$watch('ready', function (newvalue, oldvalue) {
@@ -46,7 +44,9 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                     $scope.tabledata.data[editline].push(user.groups);
                   }).then(function () {
                     scopeComService.add("view");
-                    scopeComService.add($scope.tabledata.data[editline]); 
+                    scopeComService.add($scope.tabledata.data[editline]);
+                    if ($scope.tabledata.mode=="deleted")
+                      scopeComService.add("deleted");
                     $location.path('/userInfo');
                   });
                 }
@@ -138,18 +138,20 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                 }
               }
               $scope.restore_entity= function(editline){
-                if ($location.path() == '/users'){
+                //TODO : restore the deleted row 
+                /*if ($location.path() == '/usersDeleted'){
                   usersService.viewUser({ userId: $scope.tabledata.data[editline][0].value}).$promise
                   .then(function (user) {
                     consoleService.printIt("userrr:=>",user);
                     $scope.tabledata.data[editline].push(user.groups);
                   }).then(function () {
-                    scopeComService.add("restore");
-                    scopeComService.add($scope.tabledata.data[editline]); 
+                    scopeComService.add("view");
+                    scopeComService.add($scope.tabledata.data[editline]);
+                    scopeComService.add("deleted");
                     $location.path('/userInfo');
                   });
                 }
-                if ($location.path() == '/applications'){
+                if ($location.path() == '/applicationsDeleted'){
                   applicationsService.viewApp({ applicationId: $scope.tabledata.data[editline][0].value}).$promise
                   .then(function (application) {
                     consoleService.printIt("applicationnn:=>",application);
@@ -160,7 +162,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                     $location.path('/applicationInfo');
                   });
                 }
-                if ($location.path() == '/groups'){  
+                if ($location.path() == '/groupsDeleted'){  
                   groupsService.viewGroup({ groupId: $scope.tabledata.data[editline][0].value}).$promise
                   .then(function (group) {
                     consoleService.printIt("grouppp:=>",group);
@@ -174,7 +176,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                     $location.path('/groupInfo'); 
                   });  
                 }
-                if ($location.path() == '/permissions'){
+                if ($location.path() == '/permissionsDeleted'){
                   permissionsService.viewPerm({permissionId: $scope.tabledata.data[editline][0].value}).$promise
                   .then(function (permission) {
                     consoleService.printIt("permission:=>",permission);
@@ -185,7 +187,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                     scopeComService.add($scope.tabledata.data[editline]);
                     $location.path('/permissionInfo');
                   });
-                }
+                }*/
               }
               $scope.create_permission= function(editline){
                 if ($location.path() == '/requestedPermissions'){
