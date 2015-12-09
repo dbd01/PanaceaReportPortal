@@ -1,7 +1,7 @@
 "use strict";
 
-app.controller("permissionsController", ['localStorageService', 'consoleService','permissionsService','$scope',
-  function (localStorageService, consoleService, permissionsService, $scope ) {
+app.controller("permissionsController", ['localStorageService', 'consoleService','permissionsService','$scope', '$state',
+  function (localStorageService, consoleService, permissionsService, $scope, $state ) {
     var authData = localStorageService.get('authorizationData');
     consoleService.printIt("auth data--pp>", authData);
     var permissionsTable ={
@@ -11,12 +11,11 @@ app.controller("permissionsController", ['localStorageService', 'consoleService'
         { "title": "type", "showIt": true },
         { "title": "description", "showIt": true },
         { "title": "url", "showIt": true },
-        { "title": "model", "showIt": true }                                            
+        { "title": "model", "showIt": true }
       ],
   		"data": [],
   		"ready": false
     }
-
     permissionsService.query().$promise.then(
       function (permissions) {
         consoleService.printIt("groups:=>",permissions);
@@ -27,13 +26,16 @@ app.controller("permissionsController", ['localStorageService', 'consoleService'
           permissionData.push( {"value": permission.type, "showIt": true} );
           permissionData.push( {"value": permission.url, "showIt": true} ); 
           permissionData.push( {"value": permission.description, "showIt": true} );
-          permissionData.push( {"value": permission.model, "showIt": true} );                                                         
-          permissionsTable.data.push(permissionData);                 
+          permissionData.push( {"value": permission.model, "showIt": true} );
+          permissionsTable.data.push(permissionData);
         });
       }).then(function () {
         $scope.permissionsTable = permissionsTable;
         $scope.permissionsTable.ready = true;
-        consoleService.printIt("ppp", $scope.permissionsTable.data);
+        if ($state.includes('lala.permissionsDeleted'))
+          $scope.permissionsTable.mode='deleted';
+        else
+          $scope.permissionsTable.mode='editable';
       }
     );
   }

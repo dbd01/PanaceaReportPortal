@@ -28,11 +28,11 @@ app.controller("requestedPermissionsController", ['localStorageService', 'consol
           requestedPermissionData.push( {"value": requestedPermission.Application.name, "showIt": true} ); 
           requestedPermissionsTable.data.push(requestedPermissionData);
         });
-      })    
+      })
     .then(function () {
       $scope.requestedPermissionsTable = requestedPermissionsTable;
       $scope.requestedPermissionsTable.ready = true;
-      consoleService.printIt("ppp", $scope.requestedPermissionsTable.data);
+      $scope.requestedPermissionsTable.mode = "requestedperm";
     });
   }
 ]);

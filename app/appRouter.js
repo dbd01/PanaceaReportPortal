@@ -44,6 +44,11 @@ app
       templateUrl: "app/users/views/usersView.html",
       controller: 'usersController'
     })
+    .state('lala.usersDeleted', {
+      url: "usersDeleted",
+      templateUrl: "app/users/views/usersView.html",
+      controller: 'usersController'
+    })
     .state('lala.userInfo', {
       url: "userInfo",
       templateUrl: "app/users/views/userInfoView.html",
@@ -51,6 +56,11 @@ app
     })
     .state('lala.groups', {
       url: "groups",
+      templateUrl: "app/groups/views/groupsView.html",
+      controller:  'groupsController'
+    })
+    .state('lala.groupsDeleted', {
+      url: "groupsDeleted",
       templateUrl: "app/groups/views/groupsView.html",
       controller:  'groupsController'
     })
@@ -64,6 +74,11 @@ app
       templateUrl: "app/applications/views/applicationsView.html",
       controller:  'applicationsController'
     })
+    .state('lala.applicationsDeleted', {
+      url: "applicationsDeleted",
+      templateUrl: "app/applications/views/applicationsView.html",
+      controller:  'applicationsController'
+    })
     .state('lala.applicationInfo', {
       url: "applicationInfo",
       templateUrl: "app/applications/views/applicationInfoView.html",
@@ -71,6 +86,11 @@ app
     })
     .state('lala.permissions', {
       url: "permissions",
+      templateUrl: "app/permissions/views/permissionsView.html",
+      controller:  'permissionsController'
+    })
+    .state('lala.permissionsDeleted', {
+      url: "permissionsDeleted",
       templateUrl: "app/permissions/views/permissionsView.html",
       controller:  'permissionsController'
     })

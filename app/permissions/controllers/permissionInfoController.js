@@ -9,6 +9,8 @@ app.controller("permissionInfoController", ['localStorageService', 'consoleServi
       $scope.previousData=scopeComService.list[1];
     }
     else {
+      if ($scope.mode=="add_requested")
+        $scope.newPermissionName=scopeComService.list[1][1].value;
       $scope.previousData=null;
     }
     console.log("previous data: ", $scope.previousData);
@@ -44,21 +46,12 @@ app.controller("permissionInfoController", ['localStorageService', 'consoleServi
     if($scope.mode=="view" || $scope.mode=="edit"){
       populateDetails();
     }
-    /*else if($scope.edit || $scope.view){
-      $scope._id= $scope.applicationData[0].value;
-      $scope.name = $scope.applicationData[1].value;
-      $scope.description= $scope.applicationData[2].value;
-      $scope.url= $scope.applicationData[3].value;
-      //scope.groups must contain strings
-      for (var i=0; i<$scope.applicationData[4].length; i++){
-        $scope.groupz[i] = {
-          "id": $scope.applicationData[4][i]._id,
-          "name": $scope.applicationData[4][i].name
-        }
-      }
-    }*/
-    else
-      $scope.name = "";
+    else{
+      if ($scope.mode=="add_requested")
+        $scope.name=$scope.newPermissionName;
+      else 
+        $scope.name = "";
+    }
 
     function populatePermissionData(){
       $scope.permissionData={

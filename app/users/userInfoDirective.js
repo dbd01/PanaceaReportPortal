@@ -42,22 +42,22 @@ app.directive('userinfo', [ 'localStorageService', 'usersService' ,'consoleServi
                 $scope.email= $scope.userData[2].value;
                 $scope.confirmed= $scope.userData[3].value;
                 $scope.active= $scope.userData[4].value;
-                console.log("scope.userData[6].length : ", $scope.userData[6].length)
-                for (var i=0; i<$scope.userData[6].length; i++){
+                console.log("scope.userData[6].length : ", $scope.userData[5].length)
+                for (var i=0; i<$scope.userData[5].length; i++){
                   $scope.groupz[i] = {
-                    "id": $scope.userData[6][i]._id,
-                    "name": $scope.userData[6][i].name,
+                    "id": $scope.userData[5][i]._id,
+                    "name": $scope.userData[5][i].name,
                     "permissions": [],
                     "applications": []
                   }
-                  for (var j=0; j<$scope.userData[6][i].permissions.length; j++){
+                  for (var j=0; j<$scope.userData[5][i].permissions.length; j++){
                     $scope.groupz[i].permissions[j] = {
-                      "name": $scope.userData[6][i].permissions[j].name
+                      "name": $scope.userData[5][i].permissions[j].name
                     }
                   }
-                  for (var j=0; j<$scope.userData[6][i].applications.length; j++){
+                  for (var j=0; j<$scope.userData[5][i].applications.length; j++){
                     $scope.groupz[i].applications[j] = {
-                      "name": $scope.userData[6][i].applications[j].name
+                      "name": $scope.userData[5][i].applications[j].name
                     }
                   }
                 }

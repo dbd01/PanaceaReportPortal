@@ -2,26 +2,27 @@
   <div class="portlet-title">
     <div class="caption">
       <i class="fa fa-globe"></i>
-      <h3> {{tabletitle}} </h3>
+      <h3> {{tabletitle}}</h3>
     </div>
   </div>
-  <div class="portlet-body">		
-    <button type="button" class="btn btn-info btn-sm" ng-click="addNewEntity()">
+  <div class="portlet-body">
+    <button ng-if="tabledata.mode!='requestedperm'" type="button" class="btn btn-info btn-sm" ng-click="addNewEntity()">
       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New 
     </button>
-
     <table class="table table-striped table-bordered table-hover" id="{{tableid}}">
-      <thead>               
+      <thead>
         <tr>
-          <th ng-repeat="title in tabledata.header" ng-if="title.showIt">{{title.title}}</th>  
-          <th ng-if="tableeditable">View</th>
-          <th ng-if="tableeditable">Edit</th>
-          <th ng-if="tableeditable">Delete</th>
-          <th ng-if="tablerequestedperm">Create</th>
-          <th ng-if="tablerequestedperm">Delete</th>
+          <th ng-repeat="title in tabledata.header" ng-if="title.showIt">{{title.title}}</th>
+          <th ng-if="tabledata.mode=='editable'">View</th>
+          <th ng-if="tabledata.mode=='editable'">Edit</th>
+          <th ng-if="tabledata.mode=='editable'">Delete</th>
+          <th ng-if="tabledata.mode=='deleted'">View</th>
+          <th ng-if="tabledata.mode=='deleted'">Restore</th>
+          <th ng-if="tabledata.mode=='requestedperm'">Create</th>
+          <th ng-if="tabledata.mode=='requestedperm'">Delete</th>
         </tr>
       </thead>
-      <tbody ng-if="tablerequestedperm ">
+      <tbody ng-show="tabledata.mode=='requestedperm'">
         <tr ng-repeat="row in tabledata.data" ng-init="rowNum = $index">
           <td ng-repeat="item in row" ng-if="item.showIt" >{{item.value}}</td>
           <td>
@@ -36,7 +37,7 @@
           </td>
         </tr>
       </tbody>
-      <tbody ng-if="tableeditable ">
+      <tbody ng-show="tabledata.mode=='editable'">
         <tr ng-repeat="row in tabledata.data" ng-init="rowNum = $index">
           <td ng-repeat="item in row" ng-if="item.showIt" >{{item.value}}</td>
           <td>
@@ -51,14 +52,24 @@
           </td>
           <td>
             <button class='btn btn-danger btn-xs' type="submit" ng-click="delete_entity(rowNum)" value="delete">
-              <span class="glyphicon glyphicon-minus fa fa-times" aria-hidden="true"></span> Delete
+              <span class="glyphicon glyphicon-trash fa fa-times" aria-hidden="true"></span> Delete
             </button> 
           </td>
         </tr>
       </tbody>
-      <tbody ng-if="false">
-        <tr ng-repeat="row in tabledata.data">
-          <td ng-repeat="item in row">{{item.value}}</td>
+      <tbody ng-show="tabledata.mode=='deleted'">
+        <tr ng-repeat="row in tabledata.data" ng-init="rowNum = $index">
+          <td ng-repeat="item in row" ng-if="item.showIt" >{{item.value}}</td>
+          <td>
+            <button class='btn btn-info btn-xs' type="submit" ng-click="view_entity(rowNum)" value="view">
+              <span class="glyphicon glyphicon-zoom-in fa fa-times" aria-hidden="true"></span> View
+            </button>
+          </td>
+          <td>
+            <button class='btn btn-warning btn-xs' type="submit" ng-click="restore_entity(rowNum)" value="restore">
+              <span class="glyphicon glyphicon-refresh fa fa-times" aria-hidden="true"></span> Restore
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>

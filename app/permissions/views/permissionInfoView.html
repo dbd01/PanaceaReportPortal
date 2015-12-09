@@ -51,11 +51,11 @@
 									<div ng-show="users_checked">
 										<span ng-repeat="user in group.users">{{user.username}} ,</span>
 									</div>
-							  </div>								
-							</td>							
+							  </div>
+							</td>
 						</tr>
 					</table>
-					<div ng-show="mode=='add'">
+					<div ng-show="mode=='add' || mode=='add_requested'">
 			    	<button  type="submit" class="btn btn-default" ng-click = "add()" ng-if="add">Add</button>
 			    	<button  type="submit" class="btn btn-default" ng-click = "cancelAdd()" ng-if="add">Cancel</button>
 			    </div>
