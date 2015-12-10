@@ -18,6 +18,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                 $scope.toolbar_width = "col-md-6";
               else
                 $scope.toolbar_width = "col-md-12";
+              console.log($scope.tabledata.mode)
               console.log($scope.tabledata)
               var table = $('#' + $scope.tableid);
               var oTable = table.dataTable(); 
