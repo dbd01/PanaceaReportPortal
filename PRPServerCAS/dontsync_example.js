@@ -11,7 +11,7 @@ config.serverHost= "pandora.dotbydot.eu";
 
 //polyphemus settings
 config.applicationName= "PRPServerCAS";
-config.polyphemusPort= 1451;
+config.polyphemusPort= 4451;
 config.polyphemusHost= "pandora.dotbydot.eu";
 config.polyphemusActive= true;
 config.polyphemusHttps= true;
