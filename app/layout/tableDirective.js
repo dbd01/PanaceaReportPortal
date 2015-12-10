@@ -14,10 +14,13 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
         $scope.$watch('ready', function (newvalue, oldvalue) {
           if (newvalue=="true") {
             $timeout(function () {
-
+              if ($scope.tabledata.mode=='editable')
+                $scope.toolbar_width = "col-md-6";
+              else
+                $scope.toolbar_width = "col-md-12";
+              console.log($scope.tabledata)
               var table = $('#' + $scope.tableid);
               var oTable = table.dataTable(); 
-              
               $scope.addNewEntity = function(){
                 if($location.path()=="/users"){
                   scopeComService.add("add");
