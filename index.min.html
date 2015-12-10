@@ -22,22 +22,10 @@
 </head>
 
 <body ng-controller="layoutController">
-	<div class = "row">
-		<div class="col-md-12">
-			 <div class="col-md-2"  > 
-			 <p><p>
-			 	<img src="assets/img/panacea.png" alt="panacea" id="logo-img" height="50" width="180" >
-			 </div>
-			 <div class="col-md-10"  > <h3>Panacea Reports</h3></div>
-			 
-		</div>
-	</div>
-	<div class = "row">
-		<div class="col-md-12">
-			 <div class="col-md-2" menu2 >hhh</div>
-			 <div class="col-md-10"  > 
-				<div  class="well" ui-view ></div>
-			</div>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div menu2></div>
+			<div class="well" ui-view ></div>
 		</div>
 	</div>
 </body>
