@@ -5,7 +5,7 @@ app.directive('menu2', ['$location', 'navigationService', 'consoleService','$roo
 		restrict: 'EA',
 		templateUrl: 'app/layout/views/sidebarView.html',	
 		link: function ($scope) {
-			consoleService.printIt("sssss",$rootScope.log_link.value);		
+			console.log("menuDirective: log_link",$rootScope.log_link.value);		
 			$scope.casPath = appSettings.casPath;
 
 			$scope.reports = function(){

@@ -3,7 +3,7 @@
 app
 .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
   // $urlRouterProvider.otherwise("/");
-  // Now set up the states 
+  console.log("appRouter"); 
   $stateProvider
     .state('lala', {
       url: "/",
@@ -109,4 +109,5 @@ app
       templateUrl: "app/requestedPermissions/views/requestedPermissionInfoView.html",
       controller:  'requestedPermissionInfoController'
     });
+  console.log("appRouter: OK");
 }]);
