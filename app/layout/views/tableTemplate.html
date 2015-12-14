@@ -22,7 +22,7 @@
           <th ng-if="tabledata.mode=='requestedperm'">Delete</th>
         </tr>
       </thead>
-      <tbody ng-show="tabledata.mode=='requestedperm'">
+      <tbody ng-if="tabledata.mode=='requestedperm'">
         <tr ng-repeat="row in tabledata.data" ng-init="rowNum = $index">
           <td ng-repeat="item in row" ng-if="item.showIt" >{{item.value}}</td>
           <td>
@@ -37,7 +37,7 @@
           </td>
         </tr>
       </tbody>
-      <tbody ng-show="tabledata.mode=='editable'">
+      <tbody ng-if="tabledata.mode=='editable'">
         <tr ng-repeat="row in tabledata.data" ng-init="rowNum = $index">
           <td ng-repeat="item in row" ng-if="item.showIt" >{{item.value}}</td>
           <td>
@@ -57,7 +57,7 @@
           </td>
         </tr>
       </tbody>
-      <tbody ng-show="tabledata.mode=='deleted'">
+      <tbody ng-if="tabledata.mode=='deleted'">
         <tr ng-repeat="row in tabledata.data" ng-init="rowNum = $index">
           <td ng-repeat="item in row" ng-if="item.showIt" >{{item.value}}</td>
           <td>

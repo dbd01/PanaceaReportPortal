@@ -2,7 +2,7 @@
  
 app
 .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-  // $urlRouterProvider.otherwise("/");
+  $urlRouterProvider.otherwise("/");
   console.log("appRouter"); 
   $stateProvider
     .state('lala', {
@@ -10,7 +10,7 @@ app
       template: "<div ui-view>Hallo!</div> ",
       controller: 'lalaController'
     })
-    .state('lalo', {
+    .state('casGetCreds', {
       url: "/:token/:expires/:user",
       template: "Hallo!"  ,
       controller: 'authenticationController'
