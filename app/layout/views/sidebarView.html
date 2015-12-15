@@ -13,9 +13,7 @@
     </div>
     <div class="navbar-collapse" id="main-menu-navbar-collapse">
       <ul class="nav navbar-nav">
-        <!-- <li ng-if="log_link.value=='Login'"><a ui-sref="lala.login" ui-sref-active="active">{{log_link.value}}</a></li><br>-->
         <li ng-if="log_name"><a>Logged in as {{log_name}}</a></li>
-        <li ng-if="!log_name"><a href="{{casPath}}">{{log_link.value}}</a></li>
         <li ng-if="log_name"><a ui-sref="lala.logout" ui-sref-active="active"> {{log_link.value}}</a></li>
         <li role="separator" class="divider"></li>
         <li ng-if="log_name"><a ui-sref="lala.reports" ui-sref-active="active">Reports</a></li>

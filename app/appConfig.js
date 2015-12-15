@@ -15,13 +15,10 @@ app
 
     .run(['$rootScope','$location', 'localStorageService', function($rootScope, $location, localStorageService){
       console.log("app.config : run");
-        if  ( (localStorageService.get('authorizationData')==null)  ) {
+        /*if  ( (localStorageService.get('authorizationData')==null)  ) {
             $rootScope.log_link = {value:"Login"};
            // $location.path( "/" );             
         }
-        else
-            $rootScope.log_link = {value:"Logout"}    
-     }])
-            
-    ;
-    
+        else*/
+            $rootScope.log_link = {value:"Logout"};
+     }]);
