@@ -5,28 +5,36 @@ app
 
 function authService($injector, $rootScope, $location, localStorageService, consoleService) {
 	var state=null;
-	$rootScope.$on('$stateChangeStart', function (event, toState) {
-    console.log("authInterceptorService")
+	$rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+    console.log("authInterceptorService : fromState: ", fromState.name);
 		state=toState.name;
 		var authData = localStorageService.get('authorizationData');
     console.log("authInterceptorService: loc-path: ", $location.path());
     console.log("authInterceptorService :to state: ", toState.name);
     if (authData) {
-      console.log("authInterceptorService: authData: ", authData);
-      $rootScope.log_name=authData.log_name;
+      console.log("authInterceptorService: authorized");
+      $rootScope.state='authorized';
+      //$rootScope.log_name=authData.log_name;
     }
     else {
-      $rootScope.log_name=null;
-      console.log("authInterceptorService: No authData")
+      if (state!="casGetCreds"){
+        console.log("authInterceptorService: /")
+        $location.path('/');
+      }
+      console.log("authInterceptorService: unauthorized");
+      $rootScope.state='unauthorized';
+      //$rootScope.log_name=null;
     }
-    if ((toState.name =="lala.login") && ($rootScope.log_link.value=="Logout")){
+    /*if ((state =="lala.login") && ($rootScope.log_link.value=="Logout")){
       console.log("authInterceptorService: welcome")
     	$location.path('/welcome');
-    }
-    if((authData==null) &&   (($location.path()!="/login") || ($location.path()!="/") ) ){
-      console.log("authInterceptorService: /")
-    	$location.path('/');
-    }
+    }*/
+  });
+  $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+    console.log("authInterceptorService: stateChangeSuccess")
+  });
+  $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
+    console.log("authInterceptorService: stateChangeError: ", error);
   });
   var quest = {};
   var _request  = function (config) {

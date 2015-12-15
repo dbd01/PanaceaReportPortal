@@ -14,12 +14,12 @@ app
       url: "/:token/:expires/:user",
       template: "Hallo!"  ,
       controller: 'authenticationController'
-     })                     
-    .state('lala.login', {
+     })
+    /*.state('lala.login', {
       url: "login",
       templateUrl: "app/auth/views/loginView.html",
       controller: 'authenticationController'
-    })
+    })*/
     .state('lala.logged_in', {
       url: "welcome",
       templateUrl: "app/auth/views/logged_inView.html"

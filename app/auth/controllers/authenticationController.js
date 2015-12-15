@@ -1,33 +1,15 @@
 'use strict';
 
-app.controller('authenticationController', ['$scope', 'localStorageService', '$location', 'navigationService', '$stateParams', '$rootScope','$http','appSettings', 
-	function ($scope, localStorageService, $location, navigationService, $stateParams, $rootScope, $http, appSettings) {
-		$rootScope.urlLink = {value:"true"};
-		$rootScope.log_name= $stateParams.user;
-		//set the token. 		               
+app.controller('authenticationController', ['localStorageService', '$stateParams', '$rootScope', 
+	function (localStorageService, $stateParams, $rootScope) {
+		//$rootScope.urlLink = {value:"true"};
+    console.log("authenticationController")
+		//set the token.
 		localStorageService.set('authorizationData', { 
 			token: $stateParams.token,
 			expires: $stateParams.expires,
 			log_name: $stateParams.user
 		});
-
-    //make a test call to see if the token provided in the url is correct
-    $http.get(appSettings.authServerPath + '/api/v1/user/')
-    .success(function (response, status) {
-    	console.log('sucessss->', response);
-    	$rootScope.log_link.value = "Logout";
-    	//get the last desired navigation
-    	var navLocation = navigationService.list[navigationService.list.length-1];
-    	navigationService.flush();
-    	if (navLocation==null)
-    		$location.path('/welcome');
-    	else
-    		$location.path('/'+navLocation);
-    })
-    .error(function (response, status){
-    	$rootScope.log_link.value="Login";
-    	$rootScope.log_name="";
-    	localStorageService.set('authorizationData', null);
-    });
+    $rootScope.state='authorized';
 	}]);
 		

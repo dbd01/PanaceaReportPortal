@@ -6,14 +6,14 @@ angular.module('PanaceaReports').factory('polyphemusCommService',['localStorageS
 	      return this.myValue;
 	    },
 	    setValue : function(newValue) {
+	    	console.log("polyphemusCommService");
 	      this.myValue = newValue;
-	      localStorageService.set('authorizationData',{token: this.myValue.token, 
-	      	userName: this.myValue.userName, 
-	      	expires: this.myValue.expires
+	      localStorageService.set('authorizationData', { 
+	      	token: this.myValue.token, 
+	      	expires: this.myValue.expires,
+	      	log_name: this.myValue.userName 
 	      });
 	      $rootScope.state="authorized";
-	      $rootScope.log_name=this.myValue.userName;
-	      console.log(this.myValue);
 	    }
     }
 }]);
