@@ -6,7 +6,6 @@ app.directive('menu2', ['$location', 'navigationService', 'consoleService','$roo
 		templateUrl: 'app/layout/views/sidebarView.html',	
 		link: function ($scope) {
 			console.log("menuDirective: log_name",$rootScope.log_name);
-			$scope.casPath = appSettings.casPath;
 
 			$scope.reports = function(){
 				navigationService.add("reports");

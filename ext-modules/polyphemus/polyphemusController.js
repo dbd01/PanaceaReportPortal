@@ -1,8 +1,8 @@
 ﻿'use strict';
 
 angular.module("polyphemusModule").controller("polyphemusController",
-  ['$scope', 'polyphemusService' , '$rootScope', 'polyphemusCommService2',
-  function ($scope, polyphemusService, $rootScope, polyphemusCommService2) {
+  ['$scope', 'polyphemusService' , '$rootScope', 'polyphemusCommServiceOut',
+  function ($scope, polyphemusService, $rootScope, polyphemusCommServiceOut) {
     console.log("polyphemusController");
     $scope.authData = {
       username: $scope.username,
@@ -32,7 +32,7 @@ angular.module("polyphemusModule").controller("polyphemusController",
           //$rootScope.$broadcast("authData");
           console.log("polyphemusController: login: $broadcast");
           //$rootscope.broadcast(authorizationData);
-          polyphemusCommService2.setValue(authorizationData);
+          polyphemusCommServiceOut.setValue(authorizationData);
         },
         //error
         function (response) {

@@ -14,18 +14,13 @@ app
       template: "Hallo!"  ,
       controller: 'authenticationController'
      })
-    /*.state('lala.login', {
-      url: "login",
-      templateUrl: "app/auth/views/loginView.html",
-      controller: 'authenticationController'
-    })*/
     .state('lala.logged_in', {
       url: "welcome",
       templateUrl: "app/auth/views/logged_inView.html",
       controller: 'loggedInController'
     })
     .state('logout', {
-      url: "/login",
+      url: "/",
       template: "<div> Bye bye </div>",
       controller: 'logoutController',
       data: {
