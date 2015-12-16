@@ -8,17 +8,17 @@ angular.module("dbdMenuModule").controller("dbdMenuController", ['$rootScope', '
       var all_states = $rootScope.states;
       var new_sidebar = [];
       _(all_states).forEach(function (state) {
-        if (state.data) {
-          console.log("state.data: ", state.data);
+        if (state.menuData) {
+          //console.log("state.menuData: ", state.menuData);
           // break name by dots
           var hier = state.name.split(".");
           // if no dots, create new item
           if (hier.length == 1) {
             new_sidebar.push({
-              "title": state.data.displayName,
+              "title": state.menuData.displayName,
               "state": state.name,
               "url": "#" + state.url,
-              //"icon": state.data.icon,
+              "icon": state.menuData.icon,
               "children": []
             });
           }
@@ -30,10 +30,10 @@ angular.module("dbdMenuModule").controller("dbdMenuController", ['$rootScope', '
             });
             // add to the parents childre the current node
             new_sidebar[position].children.push({
-              "title": state.data.displayName,
+              "title": state.menuData.displayName,
               "state": state.name,
               "url": "#" + state.url,
-              //"icon": state.data.icon,
+              "icon": state.menuData.icon,
               "children": []
             })
           }

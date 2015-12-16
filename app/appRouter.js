@@ -23,7 +23,7 @@ app
       url: "/",
       template: "<div> Bye bye </div>",
       controller: 'logoutController',
-      data: {
+      menuData: {
         displayName: "Logout"
       }
     })
@@ -36,22 +36,23 @@ app
       url: "/reports",
       templateUrl: "app/reports/views/reportsView.html",
       controller: 'reportsController',
-      data: {
+      menuData: {
         displayName: "Reports"
       }
     })
     .state('users', {
       url: "/users",
       template:'<div ui-view></div>',
-      data: {
-        displayName: "Users"
+      menuData: {
+        displayName: "Users",
+        icon:"glyphicon glyphicon-user"
       }
     })
     .state('users.all', {
       url: "/all",
       templateUrl: "app/users/views/usersView.html",
       controller: 'usersController',
-      data: {
+      menuData: {
         displayName: "All"
       }
     })
@@ -59,8 +60,9 @@ app
       url: "/deleted",
       templateUrl: "app/users/views/usersView.html",
       controller: 'usersController',
-      data: {
-        displayName: "Deleted"
+      menuData: {
+        displayName: "Deleted",
+        icon: "glyphicon glyphicon-remove"
       }
     })
     .state('userInfo', {
@@ -71,7 +73,7 @@ app
     .state('groups', {
       url: "/groups",
       template:'<div ui-view></div>',
-      data: {
+      menuData: {
         displayName: "Groups"
       }
     })
@@ -79,7 +81,7 @@ app
       url: "/all",
       templateUrl: "app/groups/views/groupsView.html",
       controller:  'groupsController',
-      data: {
+      menuData: {
         displayName: "All"
       }
     })
@@ -87,7 +89,7 @@ app
       url: "/deleted",
       templateUrl: "app/groups/views/groupsView.html",
       controller:  'groupsController',
-      data: {
+      menuData: {
         displayName: "Deleted"
       }
     })
@@ -99,7 +101,7 @@ app
     .state('applications', {
       url: "/applications",
       template:'<div ui-view></div>',
-      data: {
+      menuData: {
         displayName: "Applications"
       }
     })
@@ -107,7 +109,7 @@ app
       url: "/all",
       templateUrl: "app/applications/views/applicationsView.html",
       controller:  'applicationsController',
-      data: {
+      menuData: {
         displayName: "All"
       }
     })
@@ -115,7 +117,7 @@ app
       url: "/deleted",
       templateUrl: "app/applications/views/applicationsView.html",
       controller:  'applicationsController',
-      data: {
+      menuData: {
         displayName: "Deleted"
       }
     })
@@ -127,7 +129,7 @@ app
     .state('permissions', {
       url: "/permissions",
       template:'<div ui-view></div>',
-      data: {
+      menuData: {
         displayName: "Permissions"
       }
     })
@@ -135,7 +137,7 @@ app
       url: "/all",
       templateUrl: "app/permissions/views/permissionsView.html",
       controller:  'permissionsController',
-      data: {
+      menuData: {
         displayName: "All"
       }
     })
@@ -143,7 +145,7 @@ app
       url: "/deleted",
       templateUrl: "app/permissions/views/permissionsView.html",
       controller:  'permissionsController',
-      data: {
+      menuData: {
         displayName: "Deleted"
       }
     })
@@ -156,7 +158,7 @@ app
       url: "/requestedPermissions",
       templateUrl: "app/requestedPermissions/views/requestedPermissionsView.html",
       controller:  'requestedPermissionsController',
-      data: {
+      menuData: {
         displayName: "Requested Permissions"
       }
     })

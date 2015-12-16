@@ -18,7 +18,7 @@
             <i ng-show=" item.icon" class="{{ item.icon }}"></i>
             {{ item.title }}
           </a>
-          <a ng-if="item.children.length > 0" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{item.title}} <span class="caret"></span></a>
+          <a ng-if="item.children.length > 0" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i ng-show=" item.icon" class="{{ item.icon }}"></i>{{item.title}} <span class="caret"></span></a>
           <ul ng-if="item.children.length > 0" class="dropdown-menu">
             <li ng-repeat="child in item.children" ui-sref-active="active">
               <a ui-sref="{{ child.state }}" >
@@ -27,7 +27,6 @@
                 {{ child.title }}
               </a>
             </li>
-            <li role="separator" class="divider"></li>
           </ul>
         </li>
       </ul>

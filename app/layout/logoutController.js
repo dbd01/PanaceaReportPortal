@@ -3,7 +3,7 @@
   app
 	.controller('logoutController', ['$scope','$rootScope','localStorageService', '$http', 'appSettings',
 		function($scope, $rootScope, localStorageService, $http, appSettings) {
-			$rootScope.log_link.value="Login";
+			$rootScope.state='unauthorized';
 			$rootScope.log_name="";
 			localStorageService.set('authorizationData', null);
 
@@ -15,7 +15,7 @@
 				}, function errorCb(response) {  
 					console.log('logout error->', response);
 				});
-			$window.location.reload();
+			
       /*$http.get(appSettings.casLogoutPath).
       success(function (response, status) {
       	console.log(status);
