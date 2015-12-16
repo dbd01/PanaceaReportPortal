@@ -33,7 +33,7 @@ app.controller("permissionsController", ['localStorageService', 'consoleService'
       }).then(function () {
         $scope.permissionsTable = permissionsTable;
         $scope.permissionsTable.ready = true;
-        if ($state.includes('lala.permissionsDeleted'))
+        if ($state.includes('permissions.deleted'))
           $scope.permissionsTable.mode='deleted';
         else
           $scope.permissionsTable.mode='editable';

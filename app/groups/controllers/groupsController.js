@@ -28,7 +28,7 @@ app.controller("groupsController", ['localStorageService', 'consoleService' ,'gr
     .then(function () {
       $scope.groupsTable = groupsTable;
       $scope.groupsTable.ready = true;
-      if ($state.includes('lala.groupsDeleted'))
+      if ($state.includes('groups.deleted'))
         $scope.groupsTable.mode='deleted';
       else
         $scope.groupsTable.mode='editable';

@@ -7,8 +7,7 @@ app
   $stateProvider
     .state('lala', {
       url: "/",
-      template: "<div ui-view>Hallo!</div> ",
-      controller: 'lalaController'
+      template: "<div ui-view>Hallo!</div> "
     })
     .state('casGetCreds', {
       url: "/:token/:expires/:user",
@@ -22,90 +21,152 @@ app
     })*/
     .state('lala.logged_in', {
       url: "welcome",
-      templateUrl: "app/auth/views/logged_inView.html"
+      templateUrl: "app/auth/views/logged_inView.html",
+      controller: 'loggedInController'
     })
-    .state('lala.logout', {
-      url: "login",
+    .state('logout', {
+      url: "/login",
       template: "<div> Bye bye </div>",
-      controller: 'logoutController'
+      controller: 'logoutController',
+      data: {
+        displayName: "Logout"
+      }
     })
-    .state('lala.register', {
+    /*.state('register', {
       url: "register",
       templateUrl: "app/auth/views/registerView.html",
       controller: 'registrationController'
-    })
-    .state('lala.reports', {
-      url: "reports",
+    })*/
+    .state('reports', {
+      url: "/reports",
       templateUrl: "app/reports/views/reportsView.html",
-      controller: 'reportsController'
+      controller: 'reportsController',
+      data: {
+        displayName: "Reports"
+      }
     })
-    .state('lala.users', {
-      url: "users",
+    .state('users', {
+      url: "/users",
+      template:'<div ui-view></div>',
+      data: {
+        displayName: "Users"
+      }
+    })
+    .state('users.all', {
+      url: "/all",
       templateUrl: "app/users/views/usersView.html",
-      controller: 'usersController'
+      controller: 'usersController',
+      data: {
+        displayName: "All"
+      }
     })
-    .state('lala.usersDeleted', {
-      url: "usersDeleted",
+    .state('users.deleted', {
+      url: "/deleted",
       templateUrl: "app/users/views/usersView.html",
-      controller: 'usersController'
+      controller: 'usersController',
+      data: {
+        displayName: "Deleted"
+      }
     })
-    .state('lala.userInfo', {
-      url: "userInfo",
+    .state('userInfo', {
+      url: "/userInfo",
       templateUrl: "app/users/views/userInfoView.html",
       controller: 'userInfoController'
     })
-    .state('lala.groups', {
-      url: "groups",
-      templateUrl: "app/groups/views/groupsView.html",
-      controller:  'groupsController'
+    .state('groups', {
+      url: "/groups",
+      template:'<div ui-view></div>',
+      data: {
+        displayName: "Groups"
+      }
     })
-    .state('lala.groupsDeleted', {
-      url: "groupsDeleted",
+    .state('groups.all', {
+      url: "/all",
       templateUrl: "app/groups/views/groupsView.html",
-      controller:  'groupsController'
+      controller:  'groupsController',
+      data: {
+        displayName: "All"
+      }
     })
-    .state('lala.groupInfo', {
-      url: "groupInfo",
+    .state('groups.deleted', {
+      url: "/deleted",
+      templateUrl: "app/groups/views/groupsView.html",
+      controller:  'groupsController',
+      data: {
+        displayName: "Deleted"
+      }
+    })
+    .state('groupInfo', {
+      url: "/groupInfo",
       templateUrl: "app/groups/views/groupInfoView.html",
-      controller:  'groupInfoController'                
+      controller:  'groupInfoController'
     })
-    .state('lala.applications', {
-      url: "applications",
+    .state('applications', {
+      url: "/applications",
+      template:'<div ui-view></div>',
+      data: {
+        displayName: "Applications"
+      }
+    })
+    .state('applications.all', {
+      url: "/all",
       templateUrl: "app/applications/views/applicationsView.html",
-      controller:  'applicationsController'
+      controller:  'applicationsController',
+      data: {
+        displayName: "All"
+      }
     })
-    .state('lala.applicationsDeleted', {
-      url: "applicationsDeleted",
+    .state('applications.deleted', {
+      url: "/deleted",
       templateUrl: "app/applications/views/applicationsView.html",
-      controller:  'applicationsController'
+      controller:  'applicationsController',
+      data: {
+        displayName: "Deleted"
+      }
     })
-    .state('lala.applicationInfo', {
-      url: "applicationInfo",
+    .state('applicationInfo', {
+      url: "/applicationInfo",
       templateUrl: "app/applications/views/applicationInfoView.html",
       controller:  'applicationInfoController'
     })
-    .state('lala.permissions', {
-      url: "permissions",
-      templateUrl: "app/permissions/views/permissionsView.html",
-      controller:  'permissionsController'
+    .state('permissions', {
+      url: "/permissions",
+      template:'<div ui-view></div>',
+      data: {
+        displayName: "Permissions"
+      }
     })
-    .state('lala.permissionsDeleted', {
-      url: "permissionsDeleted",
+    .state('permissions.all', {
+      url: "/all",
       templateUrl: "app/permissions/views/permissionsView.html",
-      controller:  'permissionsController'
+      controller:  'permissionsController',
+      data: {
+        displayName: "All"
+      }
     })
-    .state('lala.permissionInfo', {
-      url: "permissionInfo",
+    .state('permissions.deleted', {
+      url: "/deleted",
+      templateUrl: "app/permissions/views/permissionsView.html",
+      controller:  'permissionsController',
+      data: {
+        displayName: "Deleted"
+      }
+    })
+    .state('permissionInfo', {
+      url: "/permissionInfo",
       templateUrl: "app/permissions/views/permissionInfoView.html",
       controller:  'permissionInfoController'
     })
-    .state('lala.requestedPermissions', {
-      url: "requestedPermissions",
+    .state('requestedPermissions', {
+      url: "/requestedPermissions",
       templateUrl: "app/requestedPermissions/views/requestedPermissionsView.html",
-      controller:  'requestedPermissionsController'
+      controller:  'requestedPermissionsController',
+      data: {
+        displayName: "Requested Permissions"
+      }
     })
-    .state('lala.requestedPermissionInfo', {
-      url: "requestedPermissionInfo",
+    .state('requestedPermissionInfo', {
+      url: "/requestedPermissionInfo",
       templateUrl: "app/requestedPermissions/views/requestedPermissionInfoView.html",
       controller:  'requestedPermissionInfoController'
     });

@@ -54,8 +54,7 @@ function authService($injector, $rootScope, $location, localStorageService, cons
   			'Content-Type': 'application/json',
   			'x-access-token': localStorageService.get('authorizationData').token
   		}
-  		if (state && state.indexOf("Deleted")>-1){
-  			consoleService.printIt("state: ", state);
+  		if (state && state.indexOf("deleted")>-1){
   			config.headers["deleted"]=true;
   		}
   	}

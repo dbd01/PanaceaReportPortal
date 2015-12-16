@@ -23,25 +23,25 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
               var table = $('#' + $scope.tableid);
               var oTable = table.dataTable(); 
               $scope.addNewEntity = function(){
-                if($location.path()=="/users"){
+                if($location.path().indexOf("/users")>-1){
                   scopeComService.add("add");
                   $location.path('/userInfo');
                 }
-                if($location.path()=="/groups"){
+                if($location.path().indexOf("/groups")>-1){
                   scopeComService.add("add");
                   $location.path('/groupInfo');
                 }
-                if($location.path()=="/applications"){
+                if($location.path().indexOf("/applications")>-1){
                   scopeComService.add("add");
                   $location.path('/applicationInfo');
                 }
-                if($location.path()=="/permissions"){
+                if($location.path().indexOf("/permissions")>-1){
                   scopeComService.add("add");
                   $location.path('/permissionInfo');
                 }
               }
               $scope.view_entity= function(editline){
-                if ($location.path() == '/users' || $location.path() == '/usersDeleted' ){
+                if($location.path().indexOf("/users")>-1){
                   usersService.viewUser({ userId: $scope.tabledata.data[editline][0].value}).$promise
                   .then(function (user) {
                     console.log("user.groups: ", user.groups);
@@ -54,7 +54,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                     $location.path('/userInfo');
                   });
                 }
-                if ($location.path() == '/applications' || $location.path() == '/applicationsDeleted'){
+                if($location.path().indexOf("/applications")>-1){
                   applicationsService.viewApp({ applicationId: $scope.tabledata.data[editline][0].value}).$promise
                   .then(function (application) {
                     consoleService.printIt("applicationnn:=>",application);
@@ -67,7 +67,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                     $location.path('/applicationInfo');
                   });
                 }
-                if ($location.path() == '/groups' || $location.path() == '/groupsDeleted'){  
+                if($location.path().indexOf("/groups")>-1){
                   groupsService.viewGroup({ groupId: $scope.tabledata.data[editline][0].value}).$promise
                   .then(function (group) {
                     consoleService.printIt("grouppp:=>",group);
@@ -83,7 +83,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                     $location.path('/groupInfo'); 
                   });  
                 }
-                if ($location.path() == '/permissions' || $location.path() == '/permissionsDeleted'){
+                if($location.path().indexOf("/permissions")>-1){
                   permissionsService.viewPerm({permissionId: $scope.tabledata.data[editline][0].value}).$promise
                   .then(function (permission) {
                     consoleService.printIt("permission:=>",permission);
@@ -98,7 +98,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                 }
               }
               $scope.edit_entity= function(editline){
-                if ($location.path() == '/users'){
+                if($location.path().indexOf("/users")>-1){
                   usersService.viewUser({ userId: $scope.tabledata.data[editline][0].value}).$promise
                   .then(function (user) {
                     consoleService.printIt("userrr:=>",user);
@@ -109,7 +109,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                     $location.path('/userInfo');
                   });
                 }
-                if ($location.path() == '/applications'){
+                if($location.path().indexOf("/applications")>-1){
                   applicationsService.viewApp({ applicationId: $scope.tabledata.data[editline][0].value}).$promise
                   .then(function (application) {
                     consoleService.printIt("applicationnn:=>",application);
@@ -120,7 +120,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                     $location.path('/applicationInfo');
                   });
                 }
-                if ($location.path() == '/groups'){  
+                if($location.path().indexOf("/groups")>-1){
                   groupsService.viewGroup({ groupId: $scope.tabledata.data[editline][0].value}).$promise
                   .then(function (group) {
                     consoleService.printIt("grouppp:=>",group);
@@ -134,7 +134,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                     $location.path('/groupInfo'); 
                   });  
                 }
-                if ($location.path() == '/permissions'){
+                if($location.path().indexOf("/permissions")>-1){
                   permissionsService.viewPerm({permissionId: $scope.tabledata.data[editline][0].value}).$promise
                   .then(function (permission) {
                     consoleService.printIt("permission:=>",permission);
@@ -210,15 +210,15 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                 var entityName, _id, entity="";
                 _id = $scope.tabledata.data[editline][0].value;
                 entityName = $scope.tabledata.data[editline][1].value;
-                if($location.path()=="/users")
+                if($location.path().indexOf("/users")>-1)
                   entity = "user";
-                if($location.path()=="/groups")
+                if($location.path().indexOf("/groups")>-1)
                   entity = "group";
-                if($location.path()=="/permissions")
+                if($location.path().indexOf("/permissions")>-1)
                   entity = "permission";
                 if($location.path()=="/requestedPermissions")
                   entity = "requestedPermission";
-                if($location.path()=="/applications")
+                if($location.path().indexOf("/applications")>-1)
                   entity = "application";
                 bootbox.confirm("Are you sure you want to delete " + entity + " <b>" + entityName +"</b> ?", function(ok){
                   if (ok){

@@ -69,7 +69,8 @@
 	<script src="app/services/permissionsService.js"></script>
 	<script src="app/services/requestedPermissionsService.js"></script>
 	<script src="app/services/consoleService.js"></script>
-	<script src="app/services/polyphemusCommService.js"></script>
+	<script src="app/services/polyphemusCommServiceIn.js"></script>
+	<script src="app/services/dbdMenuCommServiceOut.js"></script>
 		
 	<!--Controllers-->
     <script src="app/layout/layoutController.js"></script>
@@ -88,14 +89,19 @@
 	<script src="app/permissions/controllers/permissionInfoController.js"></script>
 	<script src="app/requestedPermissions/controllers/requestedPermissionsController.js"></script>
 	<script src="app/requestedPermissions/controllers/requestedPermissionInfoController.js"></script>
+	<script src="app/layout/loggedInController.js"></script>
 
 	<script type="text/javascript" src="ext-modules/polyphemus/polyphemusSettingsModule.js"></script>
 	<script type="text/javascript" src="ext-modules/polyphemus/polyphemusModule.js"></script>
 	<script type="text/javascript" src="ext-modules/polyphemus/polyphemusDirective.js"></script>
 	<script type="text/javascript" src="ext-modules/polyphemus/polyphemusService.js"></script>
-	<script type="text/javascript" src="ext-modules/polyphemus/polyphemusCommService2.js"></script>
+	<script type="text/javascript" src="ext-modules/polyphemus/polyphemusCommServiceOut.js"></script>
 	<script type="text/javascript" src="ext-modules/polyphemus/polyphemusController.js"></script>
 	
+	<script type="text/javascript" src="ext-modules/dbdMenu/dbdMenuModule.js"></script>
+	<script type="text/javascript" src="ext-modules/dbdMenu/dbdMenuDirective.js"></script>
+	<script type="text/javascript" src="ext-modules/dbdMenu/dbdMenuCommServiceIn.js"></script>
+	<script type="text/javascript" src="ext-modules/dbdMenu/dbdMenuController.js"></script>
 
     	
     <script> 
@@ -112,7 +118,7 @@
 <body ng-controller="layoutController">
 	<div class="panel panel-default">
 		<div class="panel-body">
-			<div menu2></div>
+			<dbd-menu></dbd-menu>
 			<div ng-switch="state">
 				<div ng-switch-default>
 					<polyphemus-login></polyphemus-login>
@@ -121,6 +127,7 @@
 					</div>
 				</div>
 				<div ng-switch-when="authorized">
+					<div>Logged In as {{log_name}}</div>
 					<div class="well" ui-view >
 					</div>
 				</div>

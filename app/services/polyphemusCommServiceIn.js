@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module('PanaceaReports').factory('polyphemusCommService',['localStorageService', '$rootScope', function(localStorageService, $rootScope) {
+angular.module('PanaceaReports').factory('polyphemusCommServiceIn',['localStorageService', '$rootScope', function(localStorageService, $rootScope) {
     return{
     	getValue : function() {
 	      return this.myValue;

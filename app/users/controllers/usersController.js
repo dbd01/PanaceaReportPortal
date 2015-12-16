@@ -2,6 +2,7 @@
 
 app.controller("usersController", ['localStorageService','usersService','$scope', '$state', 'consoleService',
   function (localStorageService, usersService , $scope, $state, consoleService ) {
+    console.log("usersController");
     var authData = localStorageService.get('authorizationData');
     consoleService.printIt("auth data--uu>", authData);
     var usersTable ={
@@ -32,7 +33,7 @@ app.controller("usersController", ['localStorageService','usersService','$scope'
     .then(function () {
       $scope.usersTable = usersTable;
       $scope.usersTable.ready = true;
-      if ($state.includes('lala.usersDeleted'))
+      if ($state.includes('users.deleted'))
         $scope.usersTable.mode='deleted';
       else
         $scope.usersTable.mode='editable';

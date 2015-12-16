@@ -29,7 +29,7 @@ app.controller("applicationsController", ['localStorageService','consoleService'
     .then(function () {
       $scope.applicationsTable = applicationsTable;
       $scope.applicationsTable.ready = true;
-      if ($state.includes('lala.applicationsDeleted'))
+      if ($state.includes('applications.deleted'))
         $scope.applicationsTable.mode='deleted';
       else
         $scope.applicationsTable.mode='editable';
