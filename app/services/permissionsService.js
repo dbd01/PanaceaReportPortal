@@ -11,7 +11,7 @@
                 isArray: true ,
                 params: { permissionId: '' }               
             },
-            viewPerm: {
+            getOne: {
                  method: 'GET',
                  params: { permissionId: '@permissionId' }
             },            

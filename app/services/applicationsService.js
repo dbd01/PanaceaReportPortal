@@ -9,7 +9,7 @@
       isArray: true ,
       params: { applicationId: '' }
     },
-    viewApp: {
+    getOne: {
       method: 'GET',
       params: { applicationId: '@applicationId' }
     },

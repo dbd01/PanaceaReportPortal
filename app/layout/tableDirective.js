@@ -1,5 +1,5 @@
-app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'consoleService', 'usersService', 'applicationsService', 'groupsService', 'permissionsService', 'requestedPermissionsService', '$window',
-  function ($timeout, $log, $location, scopeComService, consoleService, usersService, applicationsService, groupsService, permissionsService, requestedPermissionsService, $window) {
+app.directive('myTable', ['$state', '$timeout', '$log', '$location', 'scopeComService', 'consoleService', 'usersService', 'applicationsService', 'groupsService', 'permissionsService', 'requestedPermissionsService', '$window',
+  function ($state, $timeout, $log, $location, scopeComService, consoleService, usersService, applicationsService, groupsService, permissionsService, requestedPermissionsService, $window) {
     return {
       restrict: 'E',
       templateUrl: 'app/layout/views/tableTemplate.html',
@@ -18,29 +18,23 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                 $scope.toolbar_width = "col-md-6";
               else
                 $scope.toolbar_width = "col-md-12";
-              console.log($scope.tabledata.mode)
-              console.log($scope.tabledata)
+              //console.log($scope.tabledata.detailView);
               var table = $('#' + $scope.tableid);
               var oTable = table.dataTable(); 
               $scope.addNewEntity = function(){
-                if($location.path().indexOf("/users")>-1){
-                  scopeComService.add("add");
-                  $location.path('/userInfo');
-                }
-                if($location.path().indexOf("/groups")>-1){
-                  scopeComService.add("add");
-                  $location.path('/groupInfo');
-                }
-                if($location.path().indexOf("/applications")>-1){
-                  scopeComService.add("add");
-                  $location.path('/applicationInfo');
-                }
-                if($location.path().indexOf("/permissions")>-1){
-                  scopeComService.add("add");
-                  $location.path('/permissionInfo');
-                }
+                scopeComService.add("add");
+                $state.go($scope.tabledata.detailView);
               }
               $scope.view_entity= function(editline){
+                scopeComService.add($scope.tabledata.data[editline][0].value);
+                scopeComService.add("view");
+                $state.go($scope.tabledata.detailView);
+                if ($scope.tabledata.mode=="deleted"){
+                  scopeComService.add("deleted");
+                  $state.go($scope.tabledata.detailViewDeleted);
+                }
+                
+                /*
                 if($location.path().indexOf("/users")>-1){
                   usersService.viewUser({ userId: $scope.tabledata.data[editline][0].value}).$promise
                   .then(function (user) {
@@ -95,7 +89,7 @@ app.directive('myTable', ['$timeout', '$log', '$location', 'scopeComService', 'c
                       scopeComService.add("deleted");
                     $location.path('/permissionInfo');
                   });
-                }
+                }*/
               }
               $scope.edit_entity= function(editline){
                 if($location.path().indexOf("/users")>-1){

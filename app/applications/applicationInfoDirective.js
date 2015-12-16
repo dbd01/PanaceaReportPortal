@@ -39,65 +39,19 @@ app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'app
               }
               else {
                 $scope.previousData=null;
+                $scope.applicationData=null;
               }
               scopeComService.flush();
               $scope.groupz = [];
               $scope.groupzIDz =[]; 
               
-              function populateDetails(){
-                $scope._id= $scope.applicationData[0].value;
-                $scope.name = $scope.applicationData[1].value;
-                $scope.description= $scope.applicationData[2].value;
-                $scope.url= $scope.applicationData[3].value;
-                //scope.groups must contain strings
-                for (var i=0; i<$scope.applicationData[4].length; i++){
-                  $scope.groupz[i] = {
-                    "id": $scope.applicationData[4][i]._id,
-                    "name": $scope.applicationData[4][i].name,
-                    "permissions": [],
-                    "users": []
-                  }
-                  for (var j=0; j<$scope.applicationData[4][i].permissions.length; j++){
-                    $scope.groupz[i].permissions[j] = {
-                      "name": $scope.applicationData[4][i].permissions[j].name
-                    }
-                  }
-                  for (var j=0; j<$scope.applicationData[4][i].users.length; j++){
-                    $scope.groupz[i].users[j] = {
-                      "username": $scope.applicationData[4][i].users[j].username
-                    }
-                  }
-                }
-              }
+              console.log("mode: ", $scope.mode);
               if($scope.mode=="view" || $scope.mode=="edit"){
-                populateDetails();
+                //populateDetails();
               }
-              /*else if($scope.edit || $scope.view){
-                $scope._id= $scope.applicationData[0].value;
-                $scope.name = $scope.applicationData[1].value;
-                $scope.description= $scope.applicationData[2].value;
-                $scope.url= $scope.applicationData[3].value;
-                //scope.groups must contain strings
-                for (var i=0; i<$scope.applicationData[4].length; i++){
-                  $scope.groupz[i] = {
-                    "id": $scope.applicationData[4][i]._id,
-                    "name": $scope.applicationData[4][i].name
-                  }
-                }
-              }*/
-              else
+              else{
                 $scope.name = "";
-
-              function populateApplicationData(){
-                $scope.applicationData={
-                  "_id": $scope._id,
-                  "name":$scope.name,
-                  "description": $scope.description,
-                  "url": $scope.url,
-                  "groups": $scope.groupz
-                }
               }
-              populateApplicationData();
               $scope.closeAlert = function() {
                 $scope.alert=null;
                 $scope.applicationData={
@@ -112,7 +66,6 @@ app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'app
                 for (var i=0; i< $scope.applicationData.groups.length; i++){
                   $scope.groupzIDz[i] = $scope.applicationData.groups[i].id; 
                 }
-                
                 $scope.applicationAddData={
                   "name":$scope.applicationData.name,
                   "description": $scope.applicationData.description,
@@ -145,7 +98,6 @@ app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'app
                 for (var i=0; i< $scope.applicationData.groups.length; i++){
                   $scope.groupzIDz[i] = $scope.applicationData.groups[i].id; 
                 }
-
                 $scope.updateData={
                   "name":$scope.applicationData.name,
                   "description": $scope.applicationData.description,
@@ -180,7 +132,12 @@ app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'app
                 $scope.mode="edit";
               }
               $scope.cancelEdit = function(){
-                $location.path('/applications');
+                if ($scope.deletedData){
+                  $location.path('/applications/deleted');
+                }
+                else{
+                  $location.path('/applications/all');
+                }
               }
               $scope.cancelAdd = function(){
                 $location.path('/applications');

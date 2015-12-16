@@ -12,7 +12,7 @@
                 isArray: true ,
                 params: { groupId: '' }               
             }, 
-             viewGroup: {
+             getOne: {
                  method: 'GET',
                  params: { groupId: '@groupId' }
             },                   

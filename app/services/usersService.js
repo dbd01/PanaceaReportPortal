@@ -10,7 +10,7 @@ function userService($resource, appSettings, localStorageService) {
       isArray: true ,
       params: { userId: '' }
     },
-    viewUser: {
+    getOne: {
       method: 'GET',
       params: { userId: '@userId' }
     },

@@ -24,7 +24,8 @@ app
       template: "<div> Bye bye </div>",
       controller: 'logoutController',
       menuData: {
-        displayName: "Logout"
+        displayName: "Logout",
+        icon:"glyphicon glyphicon-log-out"
       }
     })
     /*.state('register', {
@@ -123,6 +124,11 @@ app
     })
     .state('applicationInfo', {
       url: "/applicationInfo",
+      templateUrl: "app/applications/views/applicationInfoView.html",
+      controller:  'applicationInfoController'
+    })
+    .state('applicationInfodeleted', {
+      url: "/applicationInfoDeleted",
       templateUrl: "app/applications/views/applicationInfoView.html",
       controller:  'applicationInfoController'
     })

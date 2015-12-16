@@ -32,6 +32,7 @@ app.controller("groupsController", ['localStorageService', 'consoleService' ,'gr
         $scope.groupsTable.mode='deleted';
       else
         $scope.groupsTable.mode='editable';
+      $scope.groupsTable.detailView='groupInfo';
     });
 }]);
 

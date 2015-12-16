@@ -33,6 +33,8 @@ app.controller("applicationsController", ['localStorageService','consoleService'
         $scope.applicationsTable.mode='deleted';
       else
         $scope.applicationsTable.mode='editable';
+      $scope.applicationsTable.detailView='applicationInfo';
+      $scope.applicationsTable.detailViewDeleted='applicationInfodeleted';
     });
 }]);
 

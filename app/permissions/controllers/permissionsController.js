@@ -37,6 +37,7 @@ app.controller("permissionsController", ['localStorageService', 'consoleService'
           $scope.permissionsTable.mode='deleted';
         else
           $scope.permissionsTable.mode='editable';
+        $scope.permissionsTable.detailView='permissionInfo';
       }
     );
   }

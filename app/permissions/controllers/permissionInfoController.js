@@ -1,7 +1,24 @@
 "use strict";
 
-app.controller("permissionInfoController", ['localStorageService', 'consoleService','permissionsService','$scope', 'scopeComService','$location',
-  function (localStorageService, consoleService, permissionsService , $scope , scopeComService, $location ) {
+app.controller("permissionInfoController", ['localStorageService', 'permissionsService','$scope', 'scopeComService','$location',
+  function (localStorageService, permissionsService , $scope , scopeComService, $location ) {
+    var permissionData = [];
+    var _id=scopeComService.list[0];
+    var mode=scopeComService.list[1];
+    var deleted=false;
+    if (scopeComService.list.length==3)
+      deleted=true;
+    scopeComService.flush();
+    permissionsService.getOne({permissionId: _id}).$promise
+    .then(function (permission) {
+      permissionData=permission;
+    })
+    .then(function () {
+      scopeComService.add(mode);
+      scopeComService.add(permissionData);
+      if (deleted)
+        scopeComService.add("deleted");
+    });
     $scope.mode = scopeComService.list[0];
     if ($scope.mode=="edit"){
       $scope.permissionData= scopeComService.list[1];
@@ -82,7 +99,7 @@ app.controller("permissionInfoController", ['localStorageService', 'consoleServi
         "url":'',
         "model":'',
         "groups": []
-      };                    
+      };
     }
     $scope.add = function(){
       $scope.permissionAddData={
@@ -93,7 +110,7 @@ app.controller("permissionInfoController", ['localStorageService', 'consoleServi
         "model": $scope.permissionData.model
       }
       permissionsService.add($scope.permissionAddData, function (response) {
-        consoleService.printIt("Permission has been added successfully!", response.uri);                                                                  
+        consoleService.printIt("Permission has been added successfully!", response.uri);
         $location.path('/permissions');
       },function (response) {
         if (response.data == null){
