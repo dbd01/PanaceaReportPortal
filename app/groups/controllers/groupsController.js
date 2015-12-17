@@ -33,6 +33,9 @@ app.controller("groupsController", ['localStorageService', 'consoleService' ,'gr
       else
         $scope.groupsTable.mode='editable';
       $scope.groupsTable.detailView='groupInfo';
+      $scope.groupsTable.detailViewDeleted='groupInfodeleted';
+      $scope.groupsTable.detailViewRemove='groupInfoRemove';
+      $scope.groupsTable.entity='group';
     });
 }]);
 

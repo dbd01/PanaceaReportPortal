@@ -7,10 +7,9 @@ function authService($injector, $rootScope, $location, localStorageService, cons
 	var state=null;
 	$rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
     console.log("authInterceptorService : fromState: ", fromState.name);
+    console.log("authInterceptorService :to state: ", toState.name);
 		state=toState.name;
 		var authData = localStorageService.get('authorizationData');
-    console.log("authInterceptorService: loc-path: ", $location.path());
-    console.log("authInterceptorService :to state: ", toState.name);
     if (authData) {
       console.log("authInterceptorService: authorized");
       $rootScope.state='authorized';

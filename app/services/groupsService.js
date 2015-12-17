@@ -10,28 +10,28 @@
             query: { 
                 method: 'GET', 
                 isArray: true ,
-                params: { groupId: '' }               
+                params: { groupId: '' }
             }, 
              getOne: {
                  method: 'GET',
                  params: { groupId: '@groupId' }
-            },                   
+            },
             add: {
-                 method: 'POST'                 
+                 method: 'POST'
             },
             update: { 
                 method: 'PUT',
-                params: { groupId: '@userId' }
+                params: { groupId: '@groupId' }
                 
             },
              partialUpdate: { 
                 method: 'PATCH',
-                params: { groupId: '@userId' }               
+                params: { groupId: '@groupId' }
             },
 
             remove: { 
                 method: 'DELETE',
-                params: { groupId: '@userId' }                
+                params: { groupId: '@ugroupId' }
             }
 
         });

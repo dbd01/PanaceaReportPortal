@@ -6,7 +6,7 @@
 				    <table class="table table-responsive" cellspacing="3" >
 					    <tr ng-if="mode!='add'">
 					    	<td>Group Id:</td>
-					    	<td>{{_id}}</td>
+					    	<td>{{groupData._id}}</td>
 					    </tr>
 					    <tr>
 					    	<td>Group Name:</td>
@@ -21,34 +21,34 @@
 						<tr >
 							<td>Permissions:</td>
 							<td>
-							   <div ng-repeat="permission in permissions" ng-show="mode!='view'">
-								  <input type="checkbox" data-checklist-model="groupData.permissions" data-checklist-value="permission" ng-disabled="mode=='view'"> {{permission.name}}  
-							  </div>
+								<div ng-if="mode!='view'" ng-repeat="permission in permissions">
+									<input type="checkbox" data-checklist-model="groupData.permissions" data-checklist-value="permission" ng-disabled="mode=='view'"> {{permission.name}}
+								</div>
 							  <span ng-repeat="permission in permissions" ng-show="mode=='view'">{{permission.name}}, </span>
 						    </td>
 						</tr>
-						<tr ng-show="mode!='add'">
+						<tr ng-if="mode!='add'">
 							<td>Applications:</td>
 							<td>
 							<span ng-repeat="application in groupData.applications">{{application.name}}, </span>
 						  </td>
 						</tr>
-						<tr ng-show="mode!='add'">
+						<tr ng-if="mode!='add'">
 							<td>Users:</td>
 							<td>
 							<span ng-repeat="user in groupData.users">{{user.username}}, </span>
 						  </td>
 						</tr>
 					</table>
-					<div ng-show="mode=='add'">
-			    	<button  type="submit" class="btn btn-default" ng-click = "add()" ng-if="add">Add</button>
-			    	<button  type="submit" class="btn btn-default" ng-click = "cancelAdd()" ng-if="add">Cancel</button>
+					<div ng-if="mode=='add'">
+			    	<button  type="submit" class="btn btn-default" ng-click = "add()">Add</button>
+			    	<button  type="submit" class="btn btn-default" ng-click = "cancelAdd()">Cancel</button>
 			    </div>
-			    <div ng-show="mode=='edit'">
-			    	<button type="submit" class="btn btn-default" ng-click = "update()" ng-if="edit">Update</button>
-			    	<button type="submit" class="btn btn-default" ng-click = "cancelUpdate()" ng-if="edit">Cancel</button>
+			    <div ng-if="mode=='edit'">
+			    	<button type="submit" class="btn btn-default" ng-click = "update()">Update</button>
+			    	<button type="submit" class="btn btn-default" ng-click = "cancelUpdate()">Cancel</button>
 			    </div>
-			    <div ng-show="mode=='view'">
+			    <div ng-if="mode=='view'">
 			    	<button ng-if="!deletedData" type="submit" class="btn btn-default" ng-click = "edit()">Edit</button>
 			    	<button ng-if="deletedData" type="submit" class="btn btn-default" ng-click = "restore()">Restore</button>
 			    	<button type="submit" class="btn btn-default" ng-click = "cancelEdit()">Cancel</button>

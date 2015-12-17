@@ -3,8 +3,8 @@
 app.controller("permissionInfoController", ['localStorageService', 'permissionsService','$scope', 'scopeComService','$location',
   function (localStorageService, permissionsService , $scope , scopeComService, $location ) {
     var permissionData = [];
-    var _id=scopeComService.list[0];
-    var mode=scopeComService.list[1];
+    var mode=scopeComService.list[0];
+    var _id=scopeComService.list[1];
     var deleted=false;
     if (scopeComService.list.length==3)
       deleted=true;

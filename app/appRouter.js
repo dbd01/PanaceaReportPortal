@@ -71,6 +71,15 @@ app
       templateUrl: "app/users/views/userInfoView.html",
       controller: 'userInfoController'
     })
+    .state('userInfodeleted', {
+      url: "/userInfoDeleted",
+      templateUrl: "app/users/views/userInfoView.html",
+      controller: 'userInfoController'
+    })
+    .state('userInfoRemove', {
+      url: "/userInfoRemove",
+      controller: 'userInfoController'
+    })
     .state('groups', {
       url: "/groups",
       template:'<div ui-view></div>',
@@ -99,6 +108,15 @@ app
       templateUrl: "app/groups/views/groupInfoView.html",
       controller:  'groupInfoController'
     })
+    .state('groupInfodeleted', {
+      url: "/groupInfoDeleted",
+      templateUrl: "app/groups/views/groupInfoView.html",
+      controller:  'groupInfoController'
+    })
+    .state('groupInfoRemove', {
+      url: "/groupInfoRemove",
+      controller: 'groupInfoController'
+    })
     .state('applications', {
       url: "/applications",
       template:'<div ui-view></div>',
@@ -125,12 +143,16 @@ app
     .state('applicationInfo', {
       url: "/applicationInfo",
       templateUrl: "app/applications/views/applicationInfoView.html",
-      controller:  'applicationInfoController'
+      controller: 'applicationInfoController'
     })
     .state('applicationInfodeleted', {
       url: "/applicationInfoDeleted",
       templateUrl: "app/applications/views/applicationInfoView.html",
-      controller:  'applicationInfoController'
+      controller: 'applicationInfoController'
+    })
+    .state('applicationInfoRemove', {
+      url: "/applicationInfoRemove",
+      controller: 'applicationInfoController'
     })
     .state('permissions', {
       url: "/permissions",
@@ -159,6 +181,15 @@ app
       url: "/permissionInfo",
       templateUrl: "app/permissions/views/permissionInfoView.html",
       controller:  'permissionInfoController'
+    })
+    .state('permissionInfodeleted', {
+      url: "/permissionInfoDeleted",
+      templateUrl: "app/permissions/views/permissionInfoView.html",
+      controller: 'permissionInfoController'
+    })
+    .state('permissionInfoRemove', {
+      url: "/permissionInfoRemove",
+      controller: 'permissionInfoController'
     })
     .state('requestedPermissions', {
       url: "/requestedPermissions",

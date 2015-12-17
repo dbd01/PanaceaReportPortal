@@ -10,8 +10,8 @@
 					    </tr>
 						<tr>
 							<td>Username:</td>
-							<td ng-if="mode!='view'"> <input type="text" class="form-control"  ng-model ="userData.name" required> </td>
-							<td ng-if="mode=='view'"> {{userData.name}} </td>
+							<td ng-if="mode!='view'"> <input type="text" class="form-control"  ng-model ="userData.username" required> </td>
+							<td ng-if="mode=='view'"> {{userData.username}} </td>
 						</tr>
 						<tr>
 							<td ng-if="mode=='add'">Password:</td>
@@ -33,7 +33,7 @@
 						<tr >
 							<td>Groups:</td>
 							<td>
-								<div ng-repeat="group in groups" ng-show="mode!='view'">
+								<div ng-if="mode!='view'" ng-repeat="group in groups">
 									{{group.name}} <input type="checkbox" data-checklist-model="userData.groups" data-checklist-value="group" ng-disabled="mode=='view'"> Show Permissions <input type="checkbox" ng-model="permissions_checked">
 									<div ng-show="permissions_checked">
 											<span ng-repeat="permission in group.permissions">{{permission.name}}, </span>
@@ -43,7 +43,7 @@
 											<span ng-repeat="application in group.applications">{{application.name}}, </span>
 									</div>
 							  </div>
-							  <div ng-repeat="group in userData.groups" ng-show="mode=='view'">
+							  <div ng-if="mode=='view'" ng-repeat="group in userData.groups">
 									{{group.name}} : Show Permissions <input type="checkbox" ng-model="permissions_checked">
 									<div ng-show="permissions_checked">
 											<span ng-repeat="permission in group.permissions">{{permission.name}}, </span>
@@ -57,15 +57,15 @@
 						</tr>
 						
 					</table>
-					<div ng-show="mode=='add'">
-			    	<button  type="submit" class="btn btn-default" ng-click = "add()" ng-if="add">Add</button>
-			    	<button  type="submit" class="btn btn-default" ng-click = "cancelAdd()" ng-if="add">Cancel</button>
+					<div ng-if="mode=='add'">
+			    	<button  type="submit" class="btn btn-default" ng-click = "add()">Add</button>
+			    	<button  type="submit" class="btn btn-default" ng-click = "cancelAdd()">Cancel</button>
 			    </div>
-			    <div ng-show="mode=='edit'">
-			    	<button type="submit" class="btn btn-default" ng-click = "update()" ng-if="edit">Update</button>
-			    	<button type="submit" class="btn btn-default" ng-click = "cancelUpdate()" ng-if="edit">Cancel</button>
+			    <div ng-if="mode=='edit'">
+			    	<button type="submit" class="btn btn-default" ng-click = "update()">Update</button>
+			    	<button type="submit" class="btn btn-default" ng-click = "cancelUpdate()">Cancel</button>
 			    </div>
-			    <div ng-show="mode=='view'">
+			    <div ng-if="mode=='view'">
 			    	<button ng-if="!deletedData" type="submit" class="btn btn-default" ng-click = "edit()">Edit</button>
 			    	<button ng-if="deletedData" type="submit" class="btn btn-default" ng-click = "restore()">Restore</button>
 			    	<button type="submit" class="btn btn-default" ng-click = "cancelEdit()">Cancel</button>

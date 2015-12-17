@@ -38,6 +38,9 @@ app.controller("usersController", ['localStorageService','usersService','$scope'
       else
         $scope.usersTable.mode='editable';
       $scope.usersTable.detailView='userInfo';
+      $scope.usersTable.detailViewDeleted='userInfodeleted';
+      $scope.usersTable.detailViewRemove='userInfoRemove';
+      $scope.usersTable.entity='user';
     });
 }]);
 
