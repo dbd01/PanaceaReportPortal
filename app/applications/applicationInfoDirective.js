@@ -1,6 +1,6 @@
 "use strict";
-app.directive('applicationinfo', [ 'localStorageService','consoleService' , 'applicationsService',  'scopeComService', '$timeout',
-  function (localStorageService, consoleService, applicationsService,  scopeComService, $timeout) {
+app.directive('applicationinfo', ['$state', 'localStorageService' , 'applicationsService',  'scopeComService', '$timeout',
+  function ($state, localStorageService, applicationsService,  scopeComService, $timeout) {
     return {
       restrict: 'E',
       templateUrl: 'app/applications/views/applicationInfoTemplate.html',

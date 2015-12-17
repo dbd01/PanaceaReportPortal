@@ -1,8 +1,8 @@
 "use strict";
 
 angular.module('PanaceaReports').controller('layoutController',
-	['$scope', '$rootScope', 'localStorageService', '$location', 'appSettings',
-		function ($scope, $rootScope, localStorageService, $location, appSettings) {
+	['$state', '$scope', '$rootScope', 'localStorageService', 'appSettings',
+		function ($state, $scope, $rootScope, localStorageService, appSettings) {
 			console.log("layoutController");
 			$scope.casPath = appSettings.casPath;
 			$scope.state = 'unauthorized';
@@ -12,13 +12,13 @@ angular.module('PanaceaReports').controller('layoutController',
 					console.log("layoutController: watch: authorized")
 					$scope.state = 'authorized';
 					$rootScope.log_name=localStorageService.get('authorizationData').log_name;
-					$location.path('/welcome');
+					$state.go('lala.logged_in');
 				}
 				else{
 					console.log("layoutController: watch: unauthorized")
 					$scope.state = 'unauthorized';
 					$rootScope.log_name=null;
-					$location.path('/');
+					$state.go('lala');
 				}
 			})
 		}]);
