@@ -1,11 +1,8 @@
 
 "use strict";
 
-app.controller("requestedPermissionsController", ['localStorageService', 'consoleService','requestedPermissionsService','$scope',
-  function (localStorageService, consoleService, requestedPermissionsService, $scope ) {
-    var authData = localStorageService.get('authorizationData');
-    consoleService.printIt("auth data--pp>", authData);	
-
+app.controller("requestedPermissionsController", ['localStorageService', 'requestedPermissionsService','$scope',
+  function (localStorageService, requestedPermissionsService, $scope ) {
     var requestedPermissionsTable ={
       "header": [
         { "title": "_id",  "showIt": true },
@@ -19,7 +16,6 @@ app.controller("requestedPermissionsController", ['localStorageService', 'consol
 
     requestedPermissionsService.query().$promise.then(
       function (requestedPermissions) {
-        consoleService.printIt("groups:=>",requestedPermissions);
         requestedPermissions.forEach(function (requestedPermission) {
           var requestedPermissionData = [];
           requestedPermissionData.push( {"value": requestedPermission._id, "showIt": true} );

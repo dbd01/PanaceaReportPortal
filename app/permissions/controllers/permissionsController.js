@@ -2,8 +2,6 @@
 
 app.controller("permissionsController", ['localStorageService', 'consoleService','permissionsService','$scope', '$state',
   function (localStorageService, consoleService, permissionsService, $scope, $state ) {
-    var authData = localStorageService.get('authorizationData');
-    consoleService.printIt("auth data--pp>", authData);
     var permissionsTable ={
       "header": [
         { "title": "_id",  "showIt": true },

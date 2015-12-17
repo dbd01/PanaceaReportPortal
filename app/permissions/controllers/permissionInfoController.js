@@ -2,6 +2,7 @@
 
 app.controller("permissionInfoController", ['$state', 'localStorageService', 'permissionsService','$scope', 'scopeComService', '$timeout',
   function ($state, localStorageService, permissionsService , $scope , scopeComService, $timeout) {
+    console.log("permissionInfoController");
     var permissionTable={
       "permission":null,
       "ready": false
@@ -25,7 +26,7 @@ app.controller("permissionInfoController", ['$state', 'localStorageService', 'pe
         }
       });
     }
-    else if (mode=='add'){
+    else if (mode=='add' || mode=='add_requested'){
       scopeComService.add(mode);
       $scope.ready = true;
     }
@@ -45,7 +46,6 @@ app.controller("permissionInfoController", ['$state', 'localStorageService', 'pe
         $timeout(function(){
           $scope.mode = scopeComService.list[0];
           console.log("mode: ", $scope.mode)
-          console.log("mode: ", scopeComService.list)
           if ($scope.mode=="edit"){
             $scope.permissionData=$scope.permissionTable.permission
             $scope.previousData=$scope.permissionTable.permission
@@ -61,7 +61,7 @@ app.controller("permissionInfoController", ['$state', 'localStorageService', 'pe
           else {
             $scope.newPermissionName='';
             if ($scope.mode=="add_requested")
-              $scope.newPermissionName=scopeComService.list[1][1].value;
+              $scope.newPermissionName=_id;
             $scope.previousData=null;
             $scope.permissionData={
               "_id":'',
@@ -156,7 +156,12 @@ app.controller("permissionInfoController", ['$state', 'localStorageService', 'pe
             }
           };
           $scope.cancelAdd = function(){
-            $state.go('permissions.all');
+            if ($scope.mode=='add_requested'){
+              $state.go('requestedPermissions');
+            }
+            else{
+              $state.go('permissions.all');
+            }
           };
           $scope.cancelUpdate = function(){
             console.log("mode from : "+$scope.mode+" to view")

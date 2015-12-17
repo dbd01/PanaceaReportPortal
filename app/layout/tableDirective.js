@@ -1,5 +1,5 @@
-app.directive('myTable', ['$state', '$timeout', '$log', '$location', 'scopeComService', 'consoleService', 'usersService', 'applicationsService', 'groupsService', 'permissionsService', 'requestedPermissionsService', '$window',
-  function ($state, $timeout, $log, $location, scopeComService, consoleService, usersService, applicationsService, groupsService, permissionsService, requestedPermissionsService, $window) {
+app.directive('myTable', ['$state', '$timeout', 'scopeComService', 'usersService', 'applicationsService', 'groupsService', 'permissionsService', 'requestedPermissionsService',
+  function ($state, $timeout, scopeComService, usersService, applicationsService, groupsService, permissionsService, requestedPermissionsService) {
     return {
       restrict: 'E',
       templateUrl: 'app/layout/views/tableTemplate.html',
@@ -107,7 +107,7 @@ app.directive('myTable', ['$state', '$timeout', '$log', '$location', 'scopeComSe
               $scope.create_permission= function(editline){
                 if ($state.includes('requestedPermissions')){
                   scopeComService.add("add_requested");
-                  scopeComService.add($scope.tabledata.data[editline]);
+                  scopeComService.add($scope.tabledata.data[editline][1].value);
                   $state.go('permissionInfo'); 
                 }
               }
