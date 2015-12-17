@@ -13,7 +13,7 @@ app.controller("permissionInfoController", ['$state', 'localStorageService', 'pe
       deleted=true;
     scopeComService.flush();
     if (mode=='remove'){
-      permissionsService.remove({ permisssionId: _id }, function (response) {
+      permissionsService.remove({ permissionId: _id }, function (response) {
         console.log("Permission has been deleted successfully."); 
         $state.go('permissions.all')
       },function (response) {
