@@ -3,7 +3,6 @@
 app
 .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise("/");
-  console.log("appRouter"); 
   $stateProvider
     .state('lala', {
       url: "/",
@@ -28,11 +27,6 @@ app
         icon:"glyphicon glyphicon-log-out"
       }
     })
-    /*.state('register', {
-      url: "register",
-      templateUrl: "app/auth/views/registerView.html",
-      controller: 'registrationController'
-    })*/
     .state('reports', {
       url: "/reports",
       templateUrl: "app/reports/views/reportsView.html",
@@ -270,5 +264,4 @@ app
       templateUrl: "app/requestedPermissions/views/requestedPermissionInfoView.html",
       controller:  'requestedPermissionInfoController'
     });
-  console.log("appRouter: OK");
 }]);

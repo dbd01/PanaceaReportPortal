@@ -8,8 +8,7 @@ angular.module("dbdGridViewModule").directive("dbdGridView", ['$state', '$timeou
         tableid: '@',
         tabletitle: '@',
         tabledata: '=',
-        ready: '@',
-        tableresult: '='
+        ready: '@'
       },
       link: function ($scope, element, attrs) {
         $scope.$watch('ready', function (newvalue, oldvalue) {
