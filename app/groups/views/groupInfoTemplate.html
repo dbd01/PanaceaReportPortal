@@ -4,43 +4,45 @@
 				<div class="form-group">
 				    <h4> Group Information </h4>
 				    <table class="table table-responsive" cellspacing="3" >
-					    <tr ng-if="mode!='add'">
+					    <tr ng-if="mode!='new'">
 					    	<td>Group Id:</td>
-					    	<td>{{groupData._id}}</td>
+					    	<td>{{tabledata.entity._id}}</td>
 					    </tr>
 					    <tr>
 					    	<td>Group Name:</td>
-					    	<td ng-if="mode!='view'"> <input type="text" class="form-control"  ng-model ="groupData.name" required> </td>
-								<td ng-if="mode=='view'"> {{groupData.name}} </td>
+					    	<td ng-if="mode=='edit' || mode=='new'"> <input type="text" class="form-control"  ng-model ="tabledata.entity.name" required> </td>
+								<td ng-if="mode=='view' || mode=='deleted'"> {{tabledata.entity.name}} </td>
 					    </tr>
 						<tr>
 							<td>Description:</td>
-							<td ng-if="mode!='view'"> <input type="textarea" rows="4" class="form-control"  ng-model ="groupData.description" > </td>
-							<td ng-if="mode=='view'"> {{groupData.description}} </td>
+							<td ng-if="mode=='edit' || mode=='new'"> <input type="textarea" rows="4" class="form-control"  ng-model ="tabledata.entity.description" > </td>
+							<td ng-if="mode=='view' || mode=='deleted'"> {{tabledata.entity.description}} </td>
 						</tr>
 						<tr >
 							<td>Permissions:</td>
 							<td>
-								<div ng-if="mode!='view'" ng-repeat="permission in permissions">
-									<input type="checkbox" data-checklist-model="groupData.permissions" data-checklist-value="permission" ng-disabled="mode=='view'"> {{permission.name}}
-								</div>
-							  <span ng-repeat="permission in permissions" ng-show="mode=='view'">{{permission.name}}, </span>
-						    </td>
+								<div ng-if="mode=='edit' || mode=='new'" ng-repeat="permission in tabledata.permissions">
+									{{permission.name}} <input type="checkbox" checklist-model="tabledata.entity.permissions" checklist-value="permission">
+							  </div>
+							  <div ng-if="mode=='view' || mode=='deleted'" ng-repeat="permission in tabledata.entity.permissions">
+									{{permission.name}}
+							  </div>
+							</td>
 						</tr>
-						<tr ng-if="mode!='add'">
+						<tr ng-if="mode!='new'">
 							<td>Applications:</td>
 							<td>
-							<span ng-repeat="application in groupData.applications">{{application.name}}, </span>
+							<span ng-repeat="application in tabledata.entity.applications">{{application.name}}, </span>
 						  </td>
 						</tr>
-						<tr ng-if="mode!='add'">
+						<tr ng-if="mode!='new'">
 							<td>Users:</td>
 							<td>
-							<span ng-repeat="user in groupData.users">{{user.username}}, </span>
+							<span ng-repeat="user in tabledata.entity.users">{{user.username}}, </span>
 						  </td>
 						</tr>
 					</table>
-					<div ng-if="mode=='add'">
+					<div ng-if="mode=='new'">
 			    	<button  type="submit" class="btn btn-default" ng-click = "add()">Add</button>
 			    	<button  type="submit" class="btn btn-default" ng-click = "cancelAdd()">Cancel</button>
 			    </div>
@@ -49,8 +51,11 @@
 			    	<button type="submit" class="btn btn-default" ng-click = "cancelUpdate()">Cancel</button>
 			    </div>
 			    <div ng-if="mode=='view'">
-			    	<button ng-if="!deletedData" type="submit" class="btn btn-default" ng-click = "edit()">Edit</button>
-			    	<button ng-if="deletedData" type="submit" class="btn btn-default" ng-click = "restore()">Restore</button>
+			    	<button type="submit" class="btn btn-default" ng-click = "edit()">Edit</button>
+			    	<button type="submit" class="btn btn-default" ng-click = "cancelEdit()">Cancel</button>
+			    </div>
+			    <div ng-if="mode=='deleted'">
+			    	<button type="submit" class="btn btn-default" ng-click = "restore()">Restore</button>
 			    	<button type="submit" class="btn btn-default" ng-click = "cancelEdit()">Cancel</button>
 			    </div>
 	  					<alert type="{{alert.type}}" close="closeAlert()" ng-show="alert != null" >

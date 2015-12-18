@@ -1,19 +1,18 @@
 "use strict";
 
-app.controller("permissionInfoController", ['$state', 'localStorageService', 'permissionsService','$scope', 'scopeComService', '$timeout',
-  function ($state, localStorageService, permissionsService , $scope , scopeComService, $timeout) {
-    console.log("permissionInfoController");
+app.controller("permissionInfoController", ['$state', 'permissionsService','$scope', 'scopeComService',
+  function ($state, permissionsService , $scope , scopeComService) {
     var permissionTable={
-      "permission":null,
+      "entity":null,
       "ready": false
     };
-    var mode=scopeComService.list[0];
-    var _id=scopeComService.list[1];
-    var deleted=false;
-    if (scopeComService.list.length==3)
-      deleted=true;
+    var mode=$state.current.name;
+    var _id=scopeComService.list[0];
+    var newData=scopeComService.list[1];
+    var newPermissionName=scopeComService.list[2];
     scopeComService.flush();
-    if (mode=='remove'){
+    console.log(mode, _id, newData);
+    if (mode.indexOf('remove')>-1){
       permissionsService.remove({ permissionId: _id }, function (response) {
         console.log("Permission has been deleted successfully."); 
         $state.go('permissions.all')
@@ -26,151 +25,83 @@ app.controller("permissionInfoController", ['$state', 'localStorageService', 'pe
         }
       });
     }
-    else if (mode=='add' || mode=='add_requested'){
-      scopeComService.add(mode);
-      $scope.ready = true;
-    }
-    else{
-      var permission=permissionsService.getOne({permissionId: _id}, function(){
-        permissionTable.permission=permission;
+    else if (mode.indexOf('new')>-1){
+      var permissions=permissionsService.query(function(){
+        if (!newPermissionName)
+          newPermissionName='';
+        permissionTable.entity={
+          "_id":'',
+          "name":newPermissionName,
+          "type":'',
+          "description":'',
+          "url":'',
+          "model":'',
+          "groups": []
+        };
         $scope.permissionTable = permissionTable
-        scopeComService.add(mode);
-        if (deleted)
-          scopeComService.add("deleted");
-        $scope.ready = true;
+        $scope.permissionTable.detailView='permissionInfo';
+        $scope.permissionTable.gridView='permissions';
+        $scope.permissionTable.detailViewTemplate='app/permissions/views/permissionInfoTemplate.html';
+        $scope.permissionTable.ready = true;
       });
     }
-
-    $scope.$watch('ready', function (newvalue, oldvalue) {
-      if (newvalue==true) {
-        $timeout(function(){
-          $scope.mode = scopeComService.list[0];
-          console.log("mode: ", $scope.mode)
-          if ($scope.mode=="edit"){
-            $scope.permissionData=$scope.permissionTable.permission
-            $scope.previousData=$scope.permissionTable.permission
-          }
-          else if ($scope.mode=="view"){
-            $scope.permissionData=$scope.permissionTable.permission
-            $scope.previousData=$scope.permissionTable.permission
-            if (scopeComService.list.length==2)
-              $scope.deletedData=true;
-            else
-              $scope.deletedData=false;
-          }
-          else {
-            $scope.newPermissionName='';
-            if ($scope.mode=="add_requested")
-              $scope.newPermissionName=_id;
-            $scope.previousData=null;
-            $scope.permissionData={
-              "_id":'',
-              "name":$scope.newPermissionName,
-              "type":'',
-              "description":'',
-              "url":'',
-              "model":'',
-              "groups": []
+    else if (mode.indexOf('edit')>-1 || mode.indexOf('view')>-1 || mode.indexOf('deleted')>-1){
+      var permission=permissionsService.getOne({permissionId: _id}, function(){
+        permissionTable.entity=permission;
+        $scope.permissionTable = permissionTable
+        $scope.permissionTable.detailView='permissionInfo';
+        $scope.permissionTable.gridView='permissions';
+        $scope.permissionTable.detailViewTemplate='app/permissions/views/permissionInfoTemplate.html';
+        $scope.permissionTable.ready = true;
+      });
+    }
+    else if (mode.indexOf('add')>-1){
+      if (newData){
+        permissionsService.add(newData, function (response) {
+          console.log("Permission has been added successfully!");
+          $state.go('permissions.all');
+        },function (response) {
+          if (response.data == null){
+            console.log("response data is null!!!!!");
+            $scope.alert = { 
+              type: 'danger',
+              msg: 'No response from server'
             };
           }
-          scopeComService.flush();
-
-          $scope.closeAlert = function() {
-            $scope.alert=null;
-            $scope.permissionData={
-              "_id":'',
-              "name":'',
-              "type":'',
-              "description":'',
-              "url":'',
-              "model":'',
-              "groups": []
+          else{
+            console.log("response ->", response);
+            $scope.alert = {
+              type: 'danger', 
+              msg: response.data.message 
             };
-          };
-          $scope.add = function(){
-            $scope.permissionAddData={
-              "name":$scope.permissionData.name,
-              "type":$scope.permissionData.type,
-              "description": $scope.permissionData.description,
-              "url": $scope.permissionData.url,
-              "model": $scope.permissionData.model
-            }
-            permissionsService.add($scope.permissionAddData, function (response) {
-              console.log("Permission has been added successfully!", response.uri);
-              $state.go('permissions.all');
-            },function (response) {
-              if (response.data == null){
-                console.log("response data is null!!!!!");
-                $scope.alert = { 
-                  type: 'danger',
-                  msg: 'No response from server'
-                };
-              }
-              else{
-                console.log("response ->", response);
-                $scope.alert = {
-                  type: 'danger', 
-                  msg: response.data.message 
-                };
-              }
-            });
-          };
-          $scope.update = function(){
-            $scope.updateData={
-             "name":$scope.permissionData.name,
-              "type":$scope.permissionData.type,
-              "description": $scope.permissionData.description,
-              "url": $scope.permissionData.url,
-              "model": $scope.permissionData.model
-            }
-            permissionsService.update({ permissionId: $scope.permissionData._id }, $scope.updateData, function (response) {
-              console.log("Permission has been updated successfully.");
-              $state.go('permissions.all');
-            },function (response) {
-              if (response.data == null){
-                console.log("response data is null!!!!!");
-                $scope.alert = {
-                  type: 'danger',
-                  msg: 'No response from server'
-                };
-              }
-              else{
-                console.log("response ->", response);
-                $scope.alert = {
-                  type: 'danger',
-                  msg: response.data.message
-                };
-              }
-            });
-          };
-          $scope.edit = function(){
-            console.log("mode from : "+$scope.mode+" to edit")
-            $scope.mode="edit";
-          };
-          $scope.cancelEdit = function(){
-            if ($scope.deletedData){
-              $state.go('permissions.deleted');
-            }
-            else{
-              $state.go('permissions.all');
-            }
-          };
-          $scope.cancelAdd = function(){
-            if ($scope.mode=='add_requested'){
-              $state.go('requestedPermissions');
-            }
-            else{
-              $state.go('permissions.all');
-            }
-          };
-          $scope.cancelUpdate = function(){
-            console.log("mode from : "+$scope.mode+" to view")
-            $scope.permissionData=$scope.previousData;
-            $scope.mode="view";
-          };
-          $scope.previousValues=[];
-        },0);
+          }
+        });
       }
-    });
+    }
+    else if (mode.indexOf('update')>-1){
+      if (newData){
+        permissionsService.update({permissionId: _id }, newData, function (response) {
+          console.log("Permission has been updated successfully.");
+          $state.go('permissions.all');
+        },function (response) {
+          if (response.data == null){
+            console.log("response data is null!!!!!");
+            $scope.alert = {
+              type: 'danger',
+              msg: 'No response from server'
+            };
+          }
+          else{
+            $scope.alert = {
+              type: 'danger',
+              msg: response.data.message
+            };
+          }
+        });
+      }
+    }
+    else{
+      //error
+    }
   }]);
 

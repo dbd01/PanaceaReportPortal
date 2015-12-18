@@ -28,6 +28,8 @@ app.controller("requestedPermissionsController", ['requestedPermissionsService',
     .then(function () {
       $scope.requestedPermissionsTable = requestedPermissionsTable;
       $scope.requestedPermissionsTable.ready = true;
+      $scope.requestedPermissionsTable.detailView='permissionInfo';
+      $scope.requestedPermissionsTable.entity='requested permission';
     });
   }
 ]);

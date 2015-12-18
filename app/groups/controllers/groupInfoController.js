@@ -1,20 +1,19 @@
 "use strict";
 
-app.controller("groupInfoController", ['$state', 'groupsService', 'permissionsService', '$scope', 'scopeComService',
+app.controller("groupInfoController", ['$state', 'groupsService', 'permissionsService','$scope', 'scopeComService',
   function ($state, groupsService, permissionsService, $scope , scopeComService) {
     var groupTable ={
-      "group": null,
+      "entity":null,
       "permissions": [],
       "ready": false
-    }
-    var mode=scopeComService.list[0];
-    var _id=scopeComService.list[1];
-    var deleted=false;
-    if (scopeComService.list.length==3)
-      deleted=true;
+    };
+    var mode=$state.current.name;
+    var _id=scopeComService.list[0];
+    var newData=scopeComService.list[1];
     scopeComService.flush();
-    if (mode=='remove'){
-       groupsService.remove({ groupId: _id }, function (response) {
+    console.log(mode, _id, newData);
+    if (mode.indexOf('remove')>-1){
+      groupsService.remove({ groupId: _id }, function (response) {
         console.log("Group has been deleted successfully."); 
         $state.go('groups.all')
       },function (response) {
@@ -26,21 +25,92 @@ app.controller("groupInfoController", ['$state', 'groupsService', 'permissionsSe
         }
       });
     }
-    else if (mode=='add'){
-
+    else if (mode.indexOf('new')>-1){
+      var permissions=permissionsService.query(function(){
+        groupTable.permissions=permissions;
+        groupTable.entity={
+          "_id":'',
+          "name":'',
+          "description":'',
+          "permissions": []
+        };
+        $scope.groupTable = groupTable
+        $scope.groupTable.detailView='groupInfo';
+        $scope.groupTable.gridView='groups';
+        $scope.groupTable.detailViewTemplate='app/groups/views/groupInfoTemplate.html';
+        $scope.groupTable.ready = true;
+      });
     }
-    else{
+    else if (mode.indexOf('edit')>-1 || mode.indexOf('view')>-1 || mode.indexOf('deleted')>-1){
       var group=groupsService.getOne({groupId: _id}, function(){
         var permissions=permissionsService.query(function(){
-          groupTable.group=group;
+          groupTable.entity=group;
           groupTable.permissions=permissions;
           $scope.groupTable = groupTable;
-          scopeComService.add(mode);
-          if (deleted)
-            scopeComService.add("deleted");
+          $scope.groupTable.detailView='groupInfo';
+          $scope.groupTable.gridView='groups';
+          $scope.groupTable.detailViewTemplate='app/groups/views/groupInfoTemplate.html';
           $scope.groupTable.ready = true;
         });
       });
     }
-  }]);
-
+    else if (mode.indexOf('add')>-1){
+      if (newData){
+        var permissionzIDz =[];
+        for (var i=0; i< newData.permissions.length; i++){
+          permissionzIDz[i] = newData.permissions[i]._id; 
+        }
+        newData.permissions=permissionzIDz;
+        groupsService.add(newData, function (response) {
+          console.log("Group has been added successfully!");
+          $state.go('groups.all');
+        },function (response) {
+          if (response.data == null){
+            console.log("response data is null!!!!!");
+            $scope.alert = { 
+              type: 'danger',
+              msg: 'No response from server'
+            };
+          }
+          else{
+            console.log("response ->", response);
+            $scope.alert = {
+              type: 'danger', 
+              msg: response.data.message 
+            };
+          }
+        });
+      }
+    }
+    else if (mode.indexOf('update')>-1){
+      if (newData){
+        var permissionzIDz =[];
+        for (var i=0; i< newData.permissions.length; i++){
+          permissionzIDz[i] = newData.permissions[i]._id; 
+        }
+        newData.permissions=permissionzIDz;
+        groupsService.update({groupId: _id }, newData, function (response) {
+          console.log("Group has been updated successfully.");
+          $state.go('groups.all');
+        },function (response) {
+          if (response.data == null){
+            console.log("response data is null!!!!!");
+            $scope.alert = {
+              type: 'danger',
+              msg: 'No response from server'
+            };
+          }
+          else{
+            $scope.alert = {
+              type: 'danger',
+              msg: response.data.message
+            };
+          }
+        });
+      }
+    }
+    else{
+      //error
+    }
+  }
+]);

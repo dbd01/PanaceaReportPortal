@@ -105,16 +105,38 @@ app
     })
     .state('groupInfo', {
       url: "/groupInfo",
-      templateUrl: "app/groups/views/groupInfoView.html",
-      controller:  'groupInfoController'
+      template:'<div ui-view></div>',
     })
-    .state('groupInfodeleted', {
-      url: "/groupInfoDeleted",
+    .state('groupInfo.view', {
+      url: "/view",
       templateUrl: "app/groups/views/groupInfoView.html",
-      controller:  'groupInfoController'
+      controller: 'groupInfoController'
     })
-    .state('groupInfoRemove', {
-      url: "/groupInfoRemove",
+    .state('groupInfo.deleted', {
+      url: "/deleted",
+      templateUrl: "app/groups/views/groupInfoView.html",
+      controller: 'groupInfoController'
+    })
+    .state('groupInfo.remove', {
+      url: "/remove",
+      controller: 'groupInfoController'
+    })
+    .state('groupInfo.edit', {
+      url: "/edit",
+      templateUrl: "app/groups/views/groupInfoView.html",
+      controller: 'groupInfoController'
+    })
+    .state('groupInfo.new', {
+      url: "/new",
+      templateUrl: "app/groups/views/groupInfoView.html",
+      controller: 'groupInfoController'
+    })
+    .state('groupInfo.add', {
+      url: "/add",
+      controller: 'groupInfoController'
+    })
+    .state('groupInfo.update', {
+      url: "/update",
       controller: 'groupInfoController'
     })
     .state('applications', {
@@ -169,11 +191,11 @@ app
       controller: 'applicationInfoController'
     })
     .state('applicationInfo.add', {
-      url: "/save",
+      url: "/add",
       controller: 'applicationInfoController'
     })
     .state('applicationInfo.update', {
-      url: "/save",
+      url: "/update",
       controller: 'applicationInfoController'
     })
     .state('permissions', {
@@ -201,16 +223,38 @@ app
     })
     .state('permissionInfo', {
       url: "/permissionInfo",
-      templateUrl: "app/permissions/views/permissionInfoView.html",
-      controller:  'permissionInfoController'
+      template:'<div ui-view></div>',
     })
-    .state('permissionInfodeleted', {
-      url: "/permissionInfoDeleted",
+    .state('permissionInfo.view', {
+      url: "/view",
       templateUrl: "app/permissions/views/permissionInfoView.html",
       controller: 'permissionInfoController'
     })
-    .state('permissionInfoRemove', {
-      url: "/permissionInfoRemove",
+    .state('permissionInfo.deleted', {
+      url: "/deleted",
+      templateUrl: "app/permissions/views/permissionInfoView.html",
+      controller: 'permissionInfoController'
+    })
+    .state('permissionInfo.remove', {
+      url: "/remove",
+      controller: 'permissionInfoController'
+    })
+    .state('permissionInfo.edit', {
+      url: "/edit",
+      templateUrl: "app/permissions/views/permissionInfoView.html",
+      controller: 'permissionInfoController'
+    })
+    .state('permissionInfo.new', {
+      url: "/new",
+      templateUrl: "app/permissions/views/permissionInfoView.html",
+      controller: 'permissionInfoController'
+    })
+    .state('permissionInfo.add', {
+      url: "/add",
+      controller: 'permissionInfoController'
+    })
+    .state('permissionInfo.update', {
+      url: "/update",
       controller: 'permissionInfoController'
     })
     .state('requestedPermissions', {
