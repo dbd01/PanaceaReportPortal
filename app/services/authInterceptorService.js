@@ -1,9 +1,9 @@
 "use strict";
 
 app
-  .factory("authInterceptorService", ['$injector','$rootScope', '$location', 'localStorageService','consoleService', authService])
+  .factory("authInterceptorService", ['$injector','$rootScope', '$location', 'localStorageService', authService])
 
-function authService($injector, $rootScope, $location, localStorageService, consoleService) {
+function authService($injector, $rootScope, $location, localStorageService) {
 	var state=null;
 	$rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
     console.log("authInterceptorService : fromState: ", fromState.name);

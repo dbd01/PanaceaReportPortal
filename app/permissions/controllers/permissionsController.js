@@ -1,7 +1,7 @@
 "use strict";
 
-app.controller("permissionsController", ['localStorageService', 'consoleService','permissionsService','$scope', '$state',
-  function (localStorageService, consoleService, permissionsService, $scope, $state ) {
+app.controller("permissionsController", ['localStorageService', 'permissionsService','$scope', '$state',
+  function (localStorageService, permissionsService, $scope, $state ) {
     var permissionsTable ={
       "header": [
         { "title": "_id",  "showIt": true },
@@ -17,7 +17,6 @@ app.controller("permissionsController", ['localStorageService', 'consoleService'
     }
     permissionsService.query().$promise.then(
       function (permissions) {
-        consoleService.printIt("groups:=>",permissions);
         permissions.forEach(function (permission) {
           var permissionData = [];
           permissionData.push( {"value": permission._id, "showIt": true} );
