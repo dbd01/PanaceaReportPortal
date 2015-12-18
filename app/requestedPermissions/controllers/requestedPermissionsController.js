@@ -1,8 +1,8 @@
 
 "use strict";
 
-app.controller("requestedPermissionsController", ['localStorageService', 'requestedPermissionsService','$scope',
-  function (localStorageService, requestedPermissionsService, $scope ) {
+app.controller("requestedPermissionsController", ['requestedPermissionsService','$scope',
+  function (requestedPermissionsService, $scope ) {
     var requestedPermissionsTable ={
       "header": [
         { "title": "_id",  "showIt": true },
@@ -28,7 +28,6 @@ app.controller("requestedPermissionsController", ['localStorageService', 'reques
     .then(function () {
       $scope.requestedPermissionsTable = requestedPermissionsTable;
       $scope.requestedPermissionsTable.ready = true;
-      $scope.requestedPermissionsTable.mode = "requestedperm";
     });
   }
 ]);

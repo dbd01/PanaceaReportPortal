@@ -12,8 +12,7 @@ app.directive('applicationinfo', ['$state', 'localStorageService' , 'application
       link: function ($scope) {
         $scope.$watch('ready', function (newvalue, oldvalue) {
           if (newvalue=="true") {
-            $timeout(function(){
-              var table = $('#' + $scope.tableid);
+            $timeout(function(){              
               $scope.groups =$scope.tabledata.groups;
               $scope.mode = scopeComService.list[0];
               if ($scope.mode=="edit"){
