@@ -6,7 +6,7 @@
     </div>
   </div>
   <div class="portlet-body">
-    <button type="button" class="btn btn-info btn-sm" ng-click="addNewEntity()">
+    <button ng-if="tabledata.mode=='editable'" type="button" class="btn btn-info btn-sm" ng-click="addNewEntity()">
       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New 
     </button>
     <table class="table table-striped table-bordered table-hover table-responsive" id="{{tableid}}">

@@ -10,8 +10,7 @@ app.controller("applicationsController", ['localStorageService','applicationsSer
         { "title": "url", "showIt": true }
       ],
       "data": [],
-      "ready": false,
-      "mode": ""
+      "ready": false
     }
     applicationsService.query().$promise
     .then(function (applications) {
@@ -32,8 +31,6 @@ app.controller("applicationsController", ['localStorageService','applicationsSer
       else
         $scope.applicationsTable.mode='editable';
       $scope.applicationsTable.detailView='applicationInfo';
-      $scope.applicationsTable.detailViewDeleted='applicationInfodeleted';
-      $scope.applicationsTable.detailViewRemove='applicationInfoRemove';
       $scope.applicationsTable.entity='application';
     });
 }]);

@@ -1,6 +1,6 @@
 "use strict";
-app.directive('applicationinfo', ['$state', 'localStorageService' , 'applicationsService',  'scopeComService', '$timeout',
-  function ($state, localStorageService, applicationsService,  scopeComService, $timeout) {
+app.directive('applicationinfo', ['$state', 'scopeComService', '$timeout',
+  function ($state, scopeComService, $timeout) {
     return {
       restrict: 'E',
       templateUrl: 'app/applications/views/applicationInfoTemplate.html',
@@ -12,22 +12,25 @@ app.directive('applicationinfo', ['$state', 'localStorageService' , 'application
       link: function ($scope) {
         $scope.$watch('ready', function (newvalue, oldvalue) {
           if (newvalue=="true") {
-            $timeout(function(){              
+            $timeout(function(){
+              var mode=$state.current.name;
               $scope.groups =$scope.tabledata.groups;
-              $scope.mode = scopeComService.list[0];
-              if ($scope.mode=="edit"){
+              if (mode.indexOf("edit")>-1){
                 $scope.applicationData= $scope.tabledata.application;
                 $scope.previousData=$scope.tabledata.application;
+                $scope.mode="edit";
               }
-              else if ($scope.mode=="view"){
+              else if (mode.indexOf("view")>-1){
                 $scope.applicationData= $scope.tabledata.application;
                 $scope.previousData=$scope.tabledata.application;
-                if (scopeComService.list.length==2)
-                  $scope.deletedData=true;
-                else
-                  $scope.deletedData=false;
+                $scope.mode="view";
               }
-              else {
+              else if (mode.indexOf("deleted")>-1){
+                $scope.applicationData= $scope.tabledata.application;
+                $scope.previousData=$scope.tabledata.application;
+                $scope.mode="deleted";
+              }
+              else if (mode.indexOf("new")>-1){
                 $scope.previousData=null;
                 $scope.applicationData={
                   "_id":'',
@@ -36,6 +39,10 @@ app.directive('applicationinfo', ['$state', 'localStorageService' , 'application
                   "url":'',
                   "groups": []
                 };
+                $scope.mode="new";
+              }
+              else {
+               //error
               }
               scopeComService.flush();
               
@@ -54,70 +61,27 @@ app.directive('applicationinfo', ['$state', 'localStorageService' , 'application
                 for (var i=0; i< $scope.applicationData.groups.length; i++){
                   $scope.groupzIDz[i] = $scope.applicationData.groups[i]._id; 
                 }
-                $scope.applicationAddData={
-                  "name":$scope.applicationData.name,
-                  "description": $scope.applicationData.description,
-                  "url": $scope.applicationData.url,
-                  "groups": $scope.groupzIDz
-                }
-                applicationsService.add($scope.applicationAddData, function (response) {
-                  console.log("Application has been added successfully!");
-                  $state.go('applications.all');
-                },function (response) {
-                  console.log($scope.applicationAddData);
-                  if (response.data == null){
-                    console.log("response data is null!!!!!");
-                    $scope.alert = { 
-                      type: 'danger',
-                      msg: 'No response from server'
-                    };
-                  }
-                  else{
-                    console.log("response ->", response);
-                    $scope.alert = {
-                      type: 'danger', 
-                      msg: response.data.message 
-                    };
-                  }
-                });
+                $scope.applicationData.groups=$scope.groupzIDz;
+                scopeComService.add(null);
+                scopeComService.add($scope.applicationData);
+                $state.go('applicationInfo.add');
               };
               $scope.update = function(){
                 for (var i=0; i< $scope.applicationData.groups.length; i++){
                   $scope.groupzIDz[i] = $scope.applicationData.groups[i]._id; 
                 }
-                $scope.updateData={
-                  "name":$scope.applicationData.name,
-                  "description": $scope.applicationData.description,
-                  "url": $scope.applicationData.url,
-                  "groups": $scope.groupzIDz
-                }
-                applicationsService.update({ applicationId: $scope.applicationData._id }, $scope.updateData, function (response) {
-                  console.log("Application has been updated successfully.");
-                  console.log("update data=>", $scope.updateData);
-                  $state.go('applications.all');
-                },function (response) {
-                  console.log("err update -->", $scope.updateData);
-                  if (response.data == null){
-                    console.log("response data is null!!!!!");
-                    $scope.alert = {
-                      type: 'danger',
-                      msg: 'No response from server'
-                    };
-                  }
-                  else{
-                    $scope.alert = {
-                      type: 'danger',
-                      msg: response.data.message
-                    };
-                  }
-                });
+                $scope.applicationData.groups=$scope.groupzIDz;
+                scopeComService.add($scope.applicationData._id);
+                scopeComService.add($scope.applicationData);
+                $state.go('applicationInfo.update');
               }
               $scope.edit = function(){
-                console.log("mode from : "+$scope.mode+" to edit");
-                $scope.mode="edit";
+                scopeComService.add($scope.applicationData._id);
+                $state.go('applicationInfo.edit');
               }
               $scope.cancelEdit = function(){
-                if ($scope.deletedData){
+                scopeComService.add($scope.applicationData._id);
+                if ($scope.mode.indexOf('deleted')>-1){
                   $state.go('applications.deleted');
                 }
                 else{
@@ -128,20 +92,10 @@ app.directive('applicationinfo', ['$state', 'localStorageService' , 'application
                 $state.go('applications.all');
               }
               $scope.cancelUpdate = function(){
-                //console.log("previousData2: ", $scope.previousData)
-                //console.log("applicationData: ", $scope.applicationData)
-                //console.log("mode from : "+$scope.mode+" to view")
-                //scopeComService.add("view");
-                //scopeComService.add($scope.previousData);
-                //$window.location.reload();
-                //$location.path('/applications');
                 $scope.applicationData=$scope.previousData;
-                //console.log("applicationData: ", $scope.applicationData)
-                $scope.mode="view";
-                //populateDetails();
-                //populateApplicationData();
+                scopeComService.add($scope.applicationData._id);
+                $state.go('applicationInfo.view');
               }
-              $scope.previousValues=[];
             },0);
           }
         });

@@ -142,16 +142,38 @@ app
     })
     .state('applicationInfo', {
       url: "/applicationInfo",
+      template:'<div ui-view></div>',
+    })
+    .state('applicationInfo.view', {
+      url: "/view",
       templateUrl: "app/applications/views/applicationInfoView.html",
       controller: 'applicationInfoController'
     })
-    .state('applicationInfodeleted', {
-      url: "/applicationInfoDeleted",
+    .state('applicationInfo.deleted', {
+      url: "/deleted",
       templateUrl: "app/applications/views/applicationInfoView.html",
       controller: 'applicationInfoController'
     })
-    .state('applicationInfoRemove', {
-      url: "/applicationInfoRemove",
+    .state('applicationInfo.remove', {
+      url: "/remove",
+      controller: 'applicationInfoController'
+    })
+    .state('applicationInfo.edit', {
+      url: "/edit",
+      templateUrl: "app/applications/views/applicationInfoView.html",
+      controller: 'applicationInfoController'
+    })
+    .state('applicationInfo.new', {
+      url: "/new",
+      templateUrl: "app/applications/views/applicationInfoView.html",
+      controller: 'applicationInfoController'
+    })
+    .state('applicationInfo.add', {
+      url: "/save",
+      controller: 'applicationInfoController'
+    })
+    .state('applicationInfo.update', {
+      url: "/save",
       controller: 'applicationInfoController'
     })
     .state('permissions', {
