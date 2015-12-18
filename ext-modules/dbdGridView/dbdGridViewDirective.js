@@ -2,7 +2,6 @@
 angular.module("dbdGridViewModule").directive("dbdGridView", ['$state', '$timeout', 'scopeComService',
   function ($state, $timeout, scopeComService) {
     return {
-    	transclude: true,
     	templateUrl: "ext-modules/dbdGridView/dbdGridViewTemplate.html",
       restrict: 'E',
       scope: {
