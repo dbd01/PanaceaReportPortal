@@ -1,5 +1,5 @@
-app.directive('myTable', ['$state', '$timeout', 'scopeComService', 'usersService', 'applicationsService', 'groupsService', 'permissionsService', 'requestedPermissionsService',
-  function ($state, $timeout, scopeComService, usersService, applicationsService, groupsService, permissionsService, requestedPermissionsService) {
+app.directive('dbdGridView', ['$state', '$timeout', 'scopeComService',
+  function ($state, $timeout, scopeComService) {
     return {
       restrict: 'E',
       templateUrl: 'app/layout/views/tableTemplate.html',
@@ -19,8 +19,6 @@ app.directive('myTable', ['$state', '$timeout', 'scopeComService', 'usersService
               else
                 $scope.toolbar_width = "col-md-12";
               //console.log($scope.tabledata.detailView);
-              var table = $('#' + $scope.tableid);
-              var oTable = table.dataTable();
               scopeComService.flush();
               $scope.addNewEntity = function(){
                 scopeComService.add("add");

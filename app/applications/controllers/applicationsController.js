@@ -1,9 +1,7 @@
 "use strict";
 
-app.controller("applicationsController", ['localStorageService','consoleService' ,'applicationsService','$scope', '$state',
-  function (localStorageService, consoleService, applicationsService , $scope, $state ) {
-    var authData = localStorageService.get('authorizationData');
-    consoleService.printIt("auth data--appl>", authData);
+app.controller("applicationsController", ['localStorageService','applicationsService','$scope', '$state',
+  function (localStorageService, applicationsService , $scope, $state ) {
     var applicationsTable ={
       "header": [
         { "title": "_id",  "showIt": true },
