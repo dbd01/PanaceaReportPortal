@@ -15,11 +15,6 @@
 	<link rel="stylesheet" href="bower_components/datatables/media/css/dataTables.bootstrap.min.css">
 
 	<link href="ext-modules/dbdDashboard/dbdDashboard.css" rel="stylesheet" />
-
-
-	<link href="app/widgets/wwaTemperature/wwaTemperature.css" rel="stylesheet" />
-  <link href="app/widgets/wwaInventory/wwaInventory.css" rel="stylesheet" />
-  <link href="app/widgets/wwaEmployee/wwaEmployee.css" rel="stylesheet" />
 		    		
 	<script src="assets/jq.js"></script>
 
@@ -65,13 +60,18 @@
 	<script src="app/requestedPermissions/requestedPermissionsDirective.js"></script>
 	<script src="app/users/userInfoDirective.js"></script>
 
-	<script src="app/directives/wwaDashboardDirective.js"></script>
-  
+	  <script src="app/directives/wwaDashboardDirective.js"></script>
   
 
+    <!-- widget JavaScript files -->
+  <script src="app/widgets/wwaUser/wwaUserDirective.js"></script>
+  <script src="app/widgets/wwaApplication/wwaApplicationDirective.js"></script>
+  <script src="app/widgets/wwaGroup/wwaGroupDirective.js"></script>
+
   <!-- setting dialogs -->
-  <script src="app/dialogs/wwaSelectEmployeeController.js"></script>
-  <script src="app/dialogs/wwaSelectLocationController.js"></script>
+  <script src="app/dialogs/wwaSelectUserController.js"></script>
+  <script src="app/dialogs/wwaSelectGroupController.js"></script>
+  
 
 	<!--Services-->
 	<script src="app/services/authInterceptorService.js"></script>
@@ -121,6 +121,7 @@
 
 	<script type="text/javascript" src="ext-modules/dbdDashboard/dbdDashboardModule.js"></script>
 	<script type="text/javascript" src="ext-modules/dbdDashboard/dbdDashboardDirective.js"></script>
+	<script type="text/javascript" src="ext-modules/dbdDashboard/dbdWidgetBodyDirective.js"></script>
 
     	
     <script> 

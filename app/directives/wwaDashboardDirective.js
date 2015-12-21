@@ -18,51 +18,51 @@ angular.module('PanaceaReports').directive('wwaDashboard', ['localStorageService
       };
 
       scope.widgetDefinitions = [
-      {
-        title: 'Temperature',
-        settings: {
-          sizeX: 3,
-          sizeY: 3,
-          minSizeX: 2,
-          minSizeY: 2,
-          template: '<wwa-temperature></wwa-temperature>',
-          widgetSettings: {
-            id: 1000,
-            templateUrl: 'app/dialogs/wwaSelectLocationTemplate.html',
-            controller: 'wwaSelectLocationController'
+        {
+          title: 'Application',
+          settings: {
+            sizeX: 3,
+            sizeY: 3,
+            minSizeX: 2,
+            minSizeY: 2,
+            template: '<wwa-application></wwa-application>',
+            widgetSettings: {
+              id: 1000,
+              templateUrl: 'app/dialogs/wwaSelectGroupTemplate.html',
+              controller: 'wwaSelectGroupController'
+            }
+          }
+        },
+        {
+          title: 'Group',
+          settings: {
+            sizeX: 5,
+            sizeY: 3,
+            minSizeX: 2,
+            minSizeY: 2,
+            template: '<wwa-group></wwa-group>',
+            widgetSettings: {
+              id: 1002,
+              templateUrl: 'app/dialogs/wwaSelectGroupTemplate.html',
+              controller: 'wwaSelectGroupController'
+            }
+          }
+        },
+        {
+          title: 'User',
+          settings: {
+            sizeX: 5,
+            sizeY: 3,
+            minSizeX: 2,
+            minSizeY: 2,
+            template: '<wwa-user></wwa-user>',
+            widgetSettings: {
+              id: 1,
+              templateUrl: 'app/dialogs/wwaSelectUserTemplate.html',
+              controller: 'wwaSelectUserController'
+            }
           }
         }
-      },
-      {
-        title: 'Inventory',
-        settings: {
-          sizeX: 5,
-          sizeY: 3,
-          minSizeX: 2,
-          minSizeY: 2,
-          template: '<wwa-inventory></wwa-inventory>',
-          widgetSettings: {
-            id: 1002,
-            templateUrl: 'app/dialogs/wwaSelectLocationTemplate.html',
-            controller: 'wwaSelectLocationController'
-          }
-        }
-      },
-      {
-        title: 'Employee',
-        settings: {
-          sizeX: 5,
-          sizeY: 3,
-          minSizeX: 2,
-          minSizeY: 2,
-          template: '<wwa-employee></wwa-employee>',
-          widgetSettings: {
-            id: 5000,
-            templateUrl: 'app/dialogs/wwaSelectEmployeeTemplate.html',
-            controller: 'wwaSelectEmployeeController'
-          }
-        }
-      }
       ];
 
       scope.widgets = localStorageService.get('widgets') || [];

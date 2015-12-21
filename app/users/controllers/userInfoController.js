@@ -13,7 +13,7 @@ app.controller("userInfoController", ['$state', 'usersService', 'groupsService',
       deleted=true;
     scopeComService.flush();
     if (mode=='remove'){
-      usersService.remove({ userId: _id }, function (response) {
+      usersService.remove({ "userId": _id }, function (response) {
         console.log("Usern has been deleted successfully."); 
         $state.go('users.all')
       },function (response) {
@@ -34,7 +34,7 @@ app.controller("userInfoController", ['$state', 'usersService', 'groupsService',
       });
     }
     else{
-      var user=usersService.getOne({userId: _id}, function(){
+      var user=usersService.getOne({"userId": _id}, function(){
         var groups=groupsService.query(function(){
           userTable.user=user;
           userTable.groups=groups;
