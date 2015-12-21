@@ -12,13 +12,13 @@ angular.module('PanaceaReports').controller('layoutController',
 					console.log("layoutController: watch: authorized")
 					$scope.state = 'authorized';
 					$rootScope.log_name=localStorageService.get('authorizationData').log_name;
-					$state.go('lala.logged_in');
+					$state.go('start.logged_in');
 				}
 				else{
 					console.log("layoutController: watch: unauthorized")
 					$scope.state = 'unauthorized';
 					$rootScope.log_name=null;
-					$state.go('lala');
+					$state.go('start');
 				}
 			})
 		}]);

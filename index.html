@@ -13,6 +13,13 @@
 	<!--bootstrap datatables CSS -->
 	<link rel="stylesheet" href="bower_components/datatables/media/css/dataTables.jqueryui.css">	
 	<link rel="stylesheet" href="bower_components/datatables/media/css/dataTables.bootstrap.min.css">
+
+	<link href="ext-modules/dbdDashboard/dbdDashboard.css" rel="stylesheet" />
+
+
+	<link href="app/widgets/wwaTemperature/wwaTemperature.css" rel="stylesheet" />
+  <link href="app/widgets/wwaInventory/wwaInventory.css" rel="stylesheet" />
+  <link href="app/widgets/wwaEmployee/wwaEmployee.css" rel="stylesheet" />
 		    		
 	<script src="assets/jq.js"></script>
 
@@ -43,6 +50,10 @@
    
    <!--Angular datatables  -->
    <script src="bower_components/angular-datatables/dist/angular-datatables.js"></script>
+
+    <link rel="stylesheet" href="bower_components/angular-gridster/dist/angular-gridster.min.css"/>
+    <script src="bower_components/javascript-detect-element-resize/jquery.resize.js"></script>
+    <script src="bower_components/angular-gridster/dist/angular-gridster.min.js"></script>
 		
 	<!-- Application itself  -->
 	<script src="app/_appModule.js"></script>
@@ -53,6 +64,14 @@
 	<!--Directives-->
 	<script src="app/requestedPermissions/requestedPermissionsDirective.js"></script>
 	<script src="app/users/userInfoDirective.js"></script>
+
+	<script src="app/directives/wwaDashboardDirective.js"></script>
+  
+  
+
+  <!-- setting dialogs -->
+  <script src="app/dialogs/wwaSelectEmployeeController.js"></script>
+  <script src="app/dialogs/wwaSelectLocationController.js"></script>
 
 	<!--Services-->
 	<script src="app/services/authInterceptorService.js"></script>
@@ -99,6 +118,9 @@
 
 	<script type="text/javascript" src="ext-modules/dbdDetailView/dbdDetailViewModule.js"></script>
 	<script type="text/javascript" src="ext-modules/dbdDetailView/dbdDetailViewDirective.js"></script>
+
+	<script type="text/javascript" src="ext-modules/dbdDashboard/dbdDashboardModule.js"></script>
+	<script type="text/javascript" src="ext-modules/dbdDashboard/dbdDashboardDirective.js"></script>
 
     	
     <script> 

@@ -1,3 +1,3 @@
 'use strict';
 
-var app = angular.module('dbdMenuModule', []);
+var app = angular.module('dbdMenuModule', ['ui.bootstrap']);

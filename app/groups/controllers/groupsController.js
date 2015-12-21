@@ -1,9 +1,7 @@
 "use strict";
 
-app.controller("groupsController", ['localStorageService', 'consoleService' ,'groupsService','$scope', '$state',
-  function (localStorageService, consoleService, groupsService, $scope, $state ) {
-    var authData = localStorageService.get('authorizationData');
-    consoleService.printIt("auth data--gg>", authData);
+app.controller("groupsController", ['localStorageService','groupsService','$scope', '$state',
+  function (localStorageService, groupsService, $scope, $state ) {
     var groupsTable ={
       "header": [
         { "title": "_id",  "showIt": true },
@@ -16,7 +14,6 @@ app.controller("groupsController", ['localStorageService', 'consoleService' ,'gr
     }
     groupsService.query().$promise
     .then(function (groups) {
-      consoleService.printIt("groups:=>",groups);
       groups.forEach(function (group) {
         var groupData = [];
         groupData.push( {"value": group._id, "showIt": true} );
