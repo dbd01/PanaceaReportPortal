@@ -189,14 +189,14 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'groupinfo',
+      name: 'groupInfo',
       config: {
         url: "/groupInfo",
         template:'<div ui-view></div>',
       }
     },
     {
-      name: 'groupinfo.view',
+      name: 'groupInfo.view',
       config: {
         url: "/view",
         templateUrl: "app/groups/views/groupInfoView.html",
@@ -204,7 +204,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'groupinfo.deleted',
+      name: 'groupInfo.deleted',
       config: {
         url: "/deleted",
         templateUrl: "app/groups/views/groupInfoView.html",
@@ -212,7 +212,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'groupinfo.remove',
+      name: 'groupInfo.remove',
       config: {
         url: "/remove",
         templateUrl: "app/groups/views/groupInfoView.html",
@@ -220,7 +220,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'groupinfo.edit',
+      name: 'groupInfo.edit',
       config: {
         url: "/edit",
         templateUrl: "app/groups/views/groupInfoView.html",
@@ -228,7 +228,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'groupinfo.new',
+      name: 'groupInfo.new',
       config: {
         url: "/new",
         templateUrl: "app/groups/views/groupInfoView.html",
@@ -236,7 +236,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'groupinfo.add',
+      name: 'groupInfo.add',
       config: {
         url: "/add",
         templateUrl: "app/groups/views/groupInfoView.html",
@@ -244,7 +244,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'groupinfo.update',
+      name: 'groupInfo.update',
       config: {
         url: "/update",
         templateUrl: "app/groups/views/groupInfoView.html",

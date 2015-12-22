@@ -38,7 +38,7 @@ app.controller("groupInfoController", ['$state', 'groupsService', 'permissionsSe
         $scope.groupTable.detailView='groupInfo';
         $scope.groupTable.gridView='groups';
         $scope.groupTable.detailViewTemplate='app/groups/views/groupInfoTemplate.html';
-        $scope.applicationTable.context='forms';
+        $scope.groupTable.context='forms';
         $scope.groupTable.ready = true;
       });
     }
@@ -51,7 +51,7 @@ app.controller("groupInfoController", ['$state', 'groupsService', 'permissionsSe
           $scope.groupTable.detailView='groupInfo';
           $scope.groupTable.gridView='groups';
           $scope.groupTable.detailViewTemplate='app/groups/views/groupInfoTemplate.html';
-          $scope.applicationTable.context='forms';
+          $scope.groupTable.context='forms';
           $scope.groupTable.ready = true;
         });
       });
