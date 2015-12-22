@@ -6,9 +6,6 @@ angular.module('PanaceaReports').directive('wwaUser',
     return {
       templateUrl: 'app/users/views/userInfoView.html',
       link: function ($scope, el, attrs) {
-        $scope.$watch('ready', function (newvalue, oldvalue) {
-          console.log("ready: ", newvalue);
-          if(newvalue==true){
             var userTable ={
               "entity":null,
               "groups": [],
@@ -26,8 +23,6 @@ angular.module('PanaceaReports').directive('wwaUser',
                 $scope.userTable.ready = true;
               });
             });
-          }
-        });
       }
     };
   }]);

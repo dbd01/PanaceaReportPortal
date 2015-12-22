@@ -91,7 +91,7 @@ app.controller("userInfoController", ['$state', 'usersService', 'groupsService',
           groupzIDz[i] = newData.groups[i]._id; 
         }
         newData.groups=groupzIDz;
-        usersService.update({'userId': _id }, newData, function (response) {
+        usersService.partialUpdate({'userId': _id }, newData, function (response) {
           console.log("User has been updated successfully.");
           $state.go('users.all');
         },function (response) {

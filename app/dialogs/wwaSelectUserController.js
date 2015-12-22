@@ -16,10 +16,8 @@ angular.module('PanaceaReports').controller('wwaSelectUserController',
     });
 
     $scope.saveSettings = function () {
-      console.log("scope.saveSettings")
       $scope.item.widgetSettings.id = $scope.selectedUser._id;
-      $scope.$parent.selectedUser = $scope.selectedUser;
-      $scope.$parent.ready=true;
+      $scope.$parent.userTable.entity = $scope.selectedUser;
       $scope.$close();
     };
   }]);
