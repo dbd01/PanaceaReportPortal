@@ -6,15 +6,16 @@
 			$rootScope.state='unauthorized';
 			$rootScope.log_name="";
 			localStorageService.set('authorizationData', null);
-
-			$http({
-				method: 'GET',
-				url: appSettings.casLogoutPath
-			}).then(function sucessCb(response) {
-					console.log('sucesfull logout->', response);
-				}, function errorCb(response) {  
-					console.log('logout error->', response);
-				});
+			if ($rootScope.loginService=='cas'){
+				$http({
+					method: 'GET',
+					url: appSettings.casLogoutPath
+				}).then(function sucessCb(response) {
+						console.log('sucesfull logout->', response);
+					}, function errorCb(response) {  
+						console.log('logout error->', response);
+					});
+			}
 			
       /*$http.get(appSettings.casLogoutPath).
       success(function (response, status) {

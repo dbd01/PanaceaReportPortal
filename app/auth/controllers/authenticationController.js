@@ -11,5 +11,6 @@ app.controller('authenticationController', ['localStorageService', '$stateParams
 			log_name: $stateParams.user
 		});
     $rootScope.state='authorized';
+    $rootScope.loginService='polyphemus';
 	}]);
 		
