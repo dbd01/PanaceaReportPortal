@@ -27,7 +27,7 @@ angular.module('PanaceaReports').directive('wwaDashboard', ['localStorageService
             minSizeY: 5,
             template: '<wwa-user></wwa-user>',
             widgetSettings: {
-              id: null,
+              id: null,//default userId
               templateUrl: 'app/dialogs/wwaSelectUserTemplate.html',
               controller: 'wwaSelectUserController'
             }
@@ -42,7 +42,7 @@ angular.module('PanaceaReports').directive('wwaDashboard', ['localStorageService
             minSizeY: 5,
             template: '<wwa-application></wwa-application>',
             widgetSettings: {
-              id: null,
+              id: null,//default applicationId
               templateUrl: 'app/dialogs/wwaSelectApplicationTemplate.html',
               controller: 'wwaSelectApplicationController'
             }

@@ -3,7 +3,6 @@
 angular.module('PanaceaReports').controller('wwaSelectApplicationController',
   ['$scope', 'applicationsService',
   function ($scope, applicationsService) {
-    console.log("wwaSelectApplicationController");
     $scope.isLoaded = false;
     var applications=applicationsService.query(function () {
       $scope.applications = applications;

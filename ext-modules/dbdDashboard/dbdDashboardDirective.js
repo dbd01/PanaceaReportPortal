@@ -6,7 +6,6 @@ angular.module('dbdDashboardModule').directive('dbdDashboard', function () {
         link: function ($scope, element, attrs) {
             $scope.addNewWidget = function (widget) {
                 var newWidget = angular.copy(widget.settings);
-                console.log("widget.settings: ", widget.settings);
                 $scope.widgets.push(newWidget);
             }
         }
