@@ -14,6 +14,7 @@ angular.module('PanaceaReports').factory('polyphemusCommServiceIn',['localStorag
 	      	log_name: this.myValue.userName 
 	      });
 	      $rootScope.state="authorized";
+	      $rootScope.loginService='polyphemus';
 	    }
     }
 }]);
