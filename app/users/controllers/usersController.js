@@ -12,12 +12,10 @@ app.controller("usersController", ['localStorageService','usersService','$scope'
         {"title": "active", "showIt": true },
       ],
       "data": [],
-      "ready": false,
-      "mode": ""
+      "ready": false
     }
     usersService.query().$promise.then(
       function (users) {
-        console.log("users:=>",users);
         users.forEach(function (user) {
           var userData = [];
           userData.push({"value": user._id, "showIt": true});
@@ -36,8 +34,6 @@ app.controller("usersController", ['localStorageService','usersService','$scope'
       else
         $scope.usersTable.mode='editable';
       $scope.usersTable.detailView='userInfo';
-      $scope.usersTable.detailViewDeleted='userInfodeleted';
-      $scope.usersTable.detailViewRemove='userInfoRemove';
       $scope.usersTable.entity='user';
     });
 }]);

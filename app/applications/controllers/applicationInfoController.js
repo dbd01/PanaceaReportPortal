@@ -13,7 +13,7 @@ app.controller("applicationInfoController", ['$state', 'applicationsService', 'g
     scopeComService.flush();
     console.log(mode, _id, newData);
     if (mode.indexOf('remove')>-1){
-      applicationsService.remove({ applicationId: _id }, function (response) {
+      applicationsService.remove({ 'applicationId': _id }, function (response) {
         console.log("Application has been deleted successfully."); 
         $state.go('applications.all')
       },function (response) {
@@ -43,7 +43,7 @@ app.controller("applicationInfoController", ['$state', 'applicationsService', 'g
       });
     }
     else if (mode.indexOf('edit')>-1 || mode.indexOf('view')>-1 || mode.indexOf('deleted')>-1){
-      var application=applicationsService.getOne({applicationId: _id}, function(){
+      var application=applicationsService.getOne({'applicationId': _id}, function(){
         var groups=groupsService.query(function(){
           applicationTable.entity=application;
           applicationTable.groups=groups;
@@ -90,7 +90,7 @@ app.controller("applicationInfoController", ['$state', 'applicationsService', 'g
           groupzIDz[i] = newData.groups[i]._id; 
         }
         newData.groups=groupzIDz;
-        applicationsService.update({applicationId: _id }, newData, function (response) {
+        applicationsService.update({'applicationId': _id }, newData, function (response) {
           console.log("Application has been updated successfully.");
           $state.go('applications.all');
         },function (response) {

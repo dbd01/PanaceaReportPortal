@@ -5,10 +5,10 @@ angular.module('PanaceaReports').directive('wwaDashboard', ['localStorageService
     scope: {
     },
     template: '<dbd-dashboard></dbd-dashboard>',
-    link: function (scope) {
-      scope.title="Panacea Reports Dashboard";
+    link: function ($scope) {
+      $scope.title="Panacea Reports Dashboard";
 
-      scope.gridsterOpts = {
+      $scope.gridsterOpts = {
         columns: 12,
         margins: [20, 20],
         outerMargin: false,
@@ -17,7 +17,7 @@ angular.module('PanaceaReports').directive('wwaDashboard', ['localStorageService
         swapping: false
       };
 
-      scope.widgetDefinitions = [
+      $scope.widgetDefinitions = [
         {
           title: 'Application',
           settings: {
@@ -65,10 +65,10 @@ angular.module('PanaceaReports').directive('wwaDashboard', ['localStorageService
         }
       ];
 
-      scope.widgets = localStorageService.get('widgets') || [];
+      $scope.widgets = localStorageService.get('widgets') || [];
 
-      scope.$watch('widgets', function () {
-        localStorageService.set('widgets', scope.widgets);
+      $scope.$watch('widgets', function () {
+        localStorageService.set('widgets', $scope.widgets);
       }, true);
     }
   }

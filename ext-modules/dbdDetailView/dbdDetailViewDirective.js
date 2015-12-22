@@ -16,7 +16,7 @@ angular.module("dbdDetailViewModule").directive("dbdDetailView", ['$state', 'sco
               $scope.getContentUrl=function (){
                 return $scope.tabledata.detailViewTemplate;
               }
-              var mode=$state.current.name;
+              var mode=$scope.tabledata.state|| $state.current.name;
               if (mode.indexOf("edit")>-1){
                 $scope.previousData=$scope.tabledata.entity;
                 $scope.mode="edit";
