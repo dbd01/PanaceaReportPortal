@@ -42,6 +42,7 @@ app.controller("permissionInfoController", ['$state', 'permissionsService','$sco
         $scope.permissionTable.detailView='permissionInfo';
         $scope.permissionTable.gridView='permissions';
         $scope.permissionTable.detailViewTemplate='app/permissions/views/permissionInfoTemplate.html';
+        $scope.applicationTable.context='forms';
         $scope.permissionTable.ready = true;
       });
     }
@@ -52,6 +53,7 @@ app.controller("permissionInfoController", ['$state', 'permissionsService','$sco
         $scope.permissionTable.detailView='permissionInfo';
         $scope.permissionTable.gridView='permissions';
         $scope.permissionTable.detailViewTemplate='app/permissions/views/permissionInfoTemplate.html';
+        $scope.applicationTable.context='forms';
         $scope.permissionTable.ready = true;
       });
     }

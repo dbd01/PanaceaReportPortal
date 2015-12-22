@@ -40,6 +40,7 @@ app.controller("userInfoController", ['$state', 'usersService', 'groupsService',
         $scope.userTable.detailView='userInfo';
         $scope.userTable.gridView='users';
         $scope.userTable.detailViewTemplate='app/users/views/userInfoTemplate.html';
+        $scope.userTable.context='forms';
         $scope.userTable.ready = true;
       });
     }
@@ -52,6 +53,7 @@ app.controller("userInfoController", ['$state', 'usersService', 'groupsService',
           $scope.userTable.detailView='userInfo';
           $scope.userTable.gridView='users';
           $scope.userTable.detailViewTemplate='app/users/views/userInfoTemplate.html';
+          $scope.userTable.context='forms';
           $scope.userTable.ready = true;
         });
       });

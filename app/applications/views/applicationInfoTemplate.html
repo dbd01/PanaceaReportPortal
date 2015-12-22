@@ -49,19 +49,19 @@
 							</td>
 						</tr>
 					</table>
-					<div ng-if="mode=='new'">
+					<div ng-if="context=='forms' && mode=='new'">
 			    	<button  type="submit" class="btn btn-default" ng-click = "add()">Add</button>
 			    	<button  type="submit" class="btn btn-default" ng-click = "cancelAdd()">Cancel</button>
 			    </div>
-			    <div ng-if="mode=='edit'">
+			    <div ng-if="context=='forms' && mode=='edit'">
 			    	<button type="submit" class="btn btn-default" ng-click = "update()">Update</button>
 			    	<button type="submit" class="btn btn-default" ng-click = "cancelUpdate()">Cancel</button>
 			    </div>
-			    <div ng-if="mode=='view'">
+			    <div ng-if="context=='forms' && mode=='view'">
 			    	<button type="submit" class="btn btn-default" ng-click = "edit()">Edit</button>
 			    	<button type="submit" class="btn btn-default" ng-click = "cancelEdit()">Cancel</button>
 			    </div>
-			    <div ng-if="mode=='deleted'">
+			    <div ng-if="context=='forms' && mode=='deleted'">
 			    	<button type="submit" class="btn btn-default" ng-click = "restore()">Restore</button>
 			    	<button type="submit" class="btn btn-default" ng-click = "cancelEdit()">Cancel</button>
 			    </div>

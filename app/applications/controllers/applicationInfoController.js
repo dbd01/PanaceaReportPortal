@@ -39,6 +39,7 @@ app.controller("applicationInfoController", ['$state', 'applicationsService', 'g
         $scope.applicationTable.detailView='applicationInfo';
         $scope.applicationTable.gridView='applications';
         $scope.applicationTable.detailViewTemplate='app/applications/views/applicationInfoTemplate.html';
+        $scope.applicationTable.context='forms';
         $scope.applicationTable.ready = true;
       });
     }
@@ -51,6 +52,7 @@ app.controller("applicationInfoController", ['$state', 'applicationsService', 'g
           $scope.applicationTable.detailView='applicationInfo';
           $scope.applicationTable.gridView='applications';
           $scope.applicationTable.detailViewTemplate='app/applications/views/applicationInfoTemplate.html';
+          $scope.applicationTable.context='forms';
           $scope.applicationTable.ready = true;
         });
       });

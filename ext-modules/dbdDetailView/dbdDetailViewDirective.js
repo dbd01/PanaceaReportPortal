@@ -16,27 +16,35 @@ angular.module("dbdDetailViewModule").directive("dbdDetailView", ['$state', 'sco
               $scope.getContentUrl=function (){
                 return $scope.tabledata.detailViewTemplate;
               }
-              var mode=$scope.tabledata.state|| $state.current.name;
-              if (mode.indexOf("edit")>-1){
-                $scope.previousData=$scope.tabledata.entity;
-                $scope.mode="edit";
+              var mode=$scope.tabledata.state || $state.current.name;
+              var context=$scope.tabledata.context || null;
+              if (context){
+                $scope.context=context;
+                if (mode.indexOf("edit")>-1){
+                  $scope.previousData=$scope.tabledata.entity;
+                  $scope.mode="edit";
+                }
+                else if (mode.indexOf("view")>-1){
+                  $scope.previousData=$scope.tabledata.entity;
+                  $scope.mode="view";
+                }
+                else if (mode.indexOf("deleted")>-1){
+                  $scope.previousData=$scope.tabledata.entity;
+                  $scope.mode="deleted";
+                }
+                else if (mode.indexOf("new")>-1){
+                  $scope.previousData=null;
+                  $scope.mode="new";
+                }
+                else {
+                 //error
+                }
+                scopeComService.flush();
               }
-              else if (mode.indexOf("view")>-1){
-                $scope.previousData=$scope.tabledata.entity;
-                $scope.mode="view";
+              else{
+                //error
+                console.log("no context for detailView")
               }
-              else if (mode.indexOf("deleted")>-1){
-                $scope.previousData=$scope.tabledata.entity;
-                $scope.mode="deleted";
-              }
-              else if (mode.indexOf("new")>-1){
-                $scope.previousData=null;
-                $scope.mode="new";
-              }
-              else {
-               //error
-              }
-              scopeComService.flush();
               
               $scope.closeAlert = function() {
                 $scope.alert=null;

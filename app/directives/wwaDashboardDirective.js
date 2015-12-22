@@ -21,15 +21,30 @@ angular.module('PanaceaReports').directive('wwaDashboard', ['localStorageService
         {
           title: 'User',
           settings: {
-            sizeX: 5,
-            sizeY: 3,
-            minSizeX: 2,
-            minSizeY: 2,
+            sizeX: 4,
+            sizeY: 5,
+            minSizeX: 4,
+            minSizeY: 5,
             template: '<wwa-user></wwa-user>',
             widgetSettings: {
-              id: 1,
+              id: null,
               templateUrl: 'app/dialogs/wwaSelectUserTemplate.html',
               controller: 'wwaSelectUserController'
+            }
+          }
+        },
+        {
+          title: 'Application',
+          settings: {
+            sizeX: 7,
+            sizeY: 5,
+            minSizeX: 7,
+            minSizeY: 5,
+            template: '<wwa-application></wwa-application>',
+            widgetSettings: {
+              id: null,
+              templateUrl: 'app/dialogs/wwaSelectApplicationTemplate.html',
+              controller: 'wwaSelectApplicationController'
             }
           }
         }
