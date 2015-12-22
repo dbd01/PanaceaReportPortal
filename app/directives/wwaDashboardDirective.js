@@ -19,36 +19,6 @@ angular.module('PanaceaReports').directive('wwaDashboard', ['localStorageService
 
       $scope.widgetDefinitions = [
         {
-          title: 'Application',
-          settings: {
-            sizeX: 3,
-            sizeY: 3,
-            minSizeX: 2,
-            minSizeY: 2,
-            template: '<wwa-application></wwa-application>',
-            widgetSettings: {
-              id: 1000,
-              templateUrl: 'app/dialogs/wwaSelectGroupTemplate.html',
-              controller: 'wwaSelectGroupController'
-            }
-          }
-        },
-        {
-          title: 'Group',
-          settings: {
-            sizeX: 5,
-            sizeY: 3,
-            minSizeX: 2,
-            minSizeY: 2,
-            template: '<wwa-group></wwa-group>',
-            widgetSettings: {
-              id: 1002,
-              templateUrl: 'app/dialogs/wwaSelectGroupTemplate.html',
-              controller: 'wwaSelectGroupController'
-            }
-          }
-        },
-        {
           title: 'User',
           settings: {
             sizeX: 5,
