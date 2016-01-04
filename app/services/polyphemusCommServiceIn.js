@@ -11,7 +11,7 @@ angular.module('PanaceaReports').factory('polyphemusCommServiceIn',['localStorag
 	      localStorageService.set('authorizationData', { 
 	      	token: this.myValue.token, 
 	      	expires: this.myValue.expires,
-	      	log_name: this.myValue.userName 
+	      	log_name: this.myValue.userName
 	      });
 	      $rootScope.authState="authorized";
 	      $rootScope.loginService='polyphemus';
