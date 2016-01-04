@@ -10,7 +10,6 @@ app.controller('authenticationController', ['localStorageService', '$stateParams
 			expires: $stateParams.expires,
 			log_name: $stateParams.user
 		});
-    $rootScope.state='authorized';
+    $rootScope.authState='authorized';
     $rootScope.loginService='cas';
 	}]);
-		

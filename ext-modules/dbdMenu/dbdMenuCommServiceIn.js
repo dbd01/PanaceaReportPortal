@@ -6,6 +6,7 @@ angular.module('dbdMenuModule').factory('dbdMenuCommServiceIn', ['$rootScope', f
 	      return this.myValue;
 	    },
 	    setValue : function(newValue) {
+	    	console.log("dbdMenuCommServiceIn : ", newValue);
 	      this.myValue = newValue;
 	      $rootScope.states=newValue;
 	    }

@@ -3,12 +3,12 @@
 angular.module("polyphemusModule").controller("polyphemusController",
   ['$scope', 'polyphemusService' , '$rootScope', 'polyphemusCommServiceOut',
   function ($scope, polyphemusService, $rootScope, polyphemusCommServiceOut) {
-    console.log("polyphemusController");
     $scope.authData = {
       username: $scope.username,
       password: $scope.password,
       application: "polyphemus"
     };
+    console.log("polyphemusController : ", $scope.authData);
     $scope.closeAlert = function() {
       $scope.authData.username="";
       $scope.authData.password = "";

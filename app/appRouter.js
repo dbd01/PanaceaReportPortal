@@ -21,9 +21,8 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
     {
       name: 'casGetCreds',
       config: {
-        url: "/:token/:expires/:user",
-        template: "Hallo!"  ,
-        controller: 'authenticationController'
+        url: "/cas/:token/:expires/:user",
+        template:  "<div ui-view>Hallo!</div> "
       }
     },
     {

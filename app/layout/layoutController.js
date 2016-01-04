@@ -6,7 +6,7 @@ angular.module('PanaceaReports').controller('layoutController',
 			console.log("layoutController");
 			$scope.casPath = appSettings.casPath;
 			$scope.state = 'unauthorized';
-			$rootScope.$watch('state', function (newvalue, oldvalue) {
+			$rootScope.$watch('authState', function (newvalue, oldvalue) {
 				console.log("layoutController: watch");
 				if (newvalue=='authorized'){
 					console.log("layoutController: watch: authorized")

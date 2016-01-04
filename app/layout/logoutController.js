@@ -1,11 +1,12 @@
 	"use strict";
 	
   app
-	.controller('logoutController', ['$scope','$rootScope','localStorageService', '$http', 'appSettings',
-		function($scope, $rootScope, localStorageService, $http, appSettings) {
-			$rootScope.state='unauthorized';
+	.controller('logoutController', ['$scope','$rootScope','localStorageService', '$http', 'appSettings', 'dbdMenuCommServiceOut',
+		function($scope, $rootScope, localStorageService, $http, appSettings, dbdMenuCommServiceOut) {
+			$rootScope.authState='unauthorized';
 			$rootScope.log_name="";
 			localStorageService.set('authorizationData', null);
+			dbdMenuCommServiceOut.setValue([]);
 			if ($rootScope.loginService=='cas'){
 				$http({
 					method: 'GET',
