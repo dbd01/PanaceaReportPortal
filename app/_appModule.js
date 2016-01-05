@@ -1,6 +1,7 @@
 'use strict';
 
 var app = angular.module('PanaceaReports', [
+	'widgetUserModule',
 	'dbdDashboardModule',
 	'dbdDetailViewModule',
 	'dbdGridViewModule',

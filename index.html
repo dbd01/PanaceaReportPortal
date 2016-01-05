@@ -59,16 +59,7 @@
 	<!--Directives-->
 	<script src="app/requestedPermissions/requestedPermissionsDirective.js"></script>
 
-	  <script src="app/directives/wwaDashboardDirective.js"></script>
-  
-
-    <!-- widget JavaScript files -->
-  <script src="app/widgets/wwaUser/wwaUserDirective.js"></script>
-  <script src="app/widgets/wwaApplication/wwaApplicationDirective.js"></script>
-
-  <!-- setting dialogs -->
-  <script src="app/dialogs/wwaSelectUserController.js"></script>
-  <script src="app/dialogs/wwaSelectApplicationController.js"></script>
+	  <script src="app/directives/widgetDashboardDirective.js"></script>
 
 	<!--Services-->
 	<script src="app/services/authInterceptorService.js"></script>
@@ -120,6 +111,13 @@
 	<script type="text/javascript" src="ext-modules/dbdDashboard/dbdDashboardDirective.js"></script>
 	<script type="text/javascript" src="ext-modules/dbdDashboard/dbdWidgetBodyDirective.js"></script>
 
+	<script src="ext-modules/widgets/widgetUser/widgetUserModule.js"></script>
+  <script src="ext-modules/widgets/widgetUser/widgetUserDirective.js"></script>
+  <script src="ext-modules/widgets/widgetUser/dialogs/widgetSelectUserController.js"></script>
+  
+  <!--<script src="ext-modules/widgets/widgetApplication/widgetApplicationModule.js"></script>
+  <script src="ext-modules/widgets/widgetApplication/widgetApplicationDirective.js"></script>
+  <script src="ext-modules/widgets/widgetApplication/dialogs/widgetSelectApplicationController.js"></script>-->
     	
     <script> 
 		$.ajaxPrefilter(function( options, originalOptions, jqXHR ) {

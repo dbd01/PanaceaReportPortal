@@ -1,3 +1,3 @@
 'use strict';
 
-var app = angular.module('widgetUserModule', ['ui.bootstrap']);
+var app = angular.module('widgetUserModule', ['ui.bootstrap', 'PanaceaReports']);

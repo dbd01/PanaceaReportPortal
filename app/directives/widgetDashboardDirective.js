@@ -1,11 +1,12 @@
 ﻿"use strict";
 
-angular.module('PanaceaReports').directive('wwaDashboard', ['localStorageService', function (localStorageService) {
+angular.module('PanaceaReports').directive('widgetDashboard', ['localStorageService', function (localStorageService) {
   return {
     scope: {
     },
     template: '<dbd-dashboard></dbd-dashboard>',
     link: function ($scope) {
+      console.log("widgetDashboardDirective");
       $scope.title="Panacea Reports Dashboard";
 
       $scope.gridsterOpts = {
@@ -21,18 +22,18 @@ angular.module('PanaceaReports').directive('wwaDashboard', ['localStorageService
         {
           title: 'User',
           settings: {
-            sizeX: 4,
-            sizeY: 5,
-            minSizeX: 4,
-            minSizeY: 5,
-            template: '<wwa-user></wwa-user>',
+            sizeX: 7,
+            sizeY: 7,
+            minSizeX: 7,
+            minSizeY: 7,
+            template: '<widget-user></widget-user>',
             widgetSettings: {
               id: null,//default userId
-              templateUrl: 'app/dialogs/wwaSelectUserTemplate.html',
-              controller: 'wwaSelectUserController'
+              templateUrl: 'ext-modules/widgets/widgetUser/dialogs/widgetSelectUserTemplate.html',
+              controller: 'widgetSelectUserController'
             }
           }
-        },
+        }/*,
         {
           title: 'Application',
           settings: {
@@ -47,12 +48,15 @@ angular.module('PanaceaReports').directive('wwaDashboard', ['localStorageService
               controller: 'wwaSelectApplicationController'
             }
           }
-        }
+        }*/
       ];
 
       $scope.widgets = localStorageService.get('widgets') || [];
 
+      console.log("widgetDashboardDirective : widgets: ", $scope.widgets);
+
       $scope.$watch('widgets', function () {
+        console.log("widgetDashboardDirective : watch: widgets");
         localStorageService.set('widgets', $scope.widgets);
       }, true);
     }

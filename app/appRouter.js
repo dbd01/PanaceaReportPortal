@@ -42,7 +42,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       name:'dashboard',
       config: {
         url: '/dashboard',
-        template: '<wwa-dashboard></wwa-dashboard>',
+        template: '<widget-dashboard></widget-dashboard>',
         menuData: {
           displayName: "Dashboard"
         }

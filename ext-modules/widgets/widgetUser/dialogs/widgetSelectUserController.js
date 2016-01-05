@@ -1,9 +1,9 @@
 ﻿"use strict";
 
-angular.module('PanaceaReports').controller('wwaSelectUserController',
+angular.module('widgetUserModule').controller('widgetSelectUserController',
   ['$scope', 'usersService',
   function ($scope, usersService) {
-    console.log("wwaSelectUserController");
+    console.log("widgetSelectUserController");
     $scope.isLoaded = false;
     var users=usersService.query(function () {
       $scope.users = users;
