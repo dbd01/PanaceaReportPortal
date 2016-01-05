@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-angular.module('PanaceaReports').directive('wwaUser', 
+angular.module('widgetUserModule').directive('widgetUser', 
   ['groupsService','usersService',
   function (groupsService, usersService) {
     return {
