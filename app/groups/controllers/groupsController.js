@@ -25,7 +25,7 @@ app.controller("groupsController", ['localStorageService','groupsService','$scop
     .then(function () {
       $scope.groupsTable = groupsTable;
       $scope.groupsTable.ready = true;
-      if ($state.includes('groups.deleted'))
+      if ($state.includes('groups.deletedGroups'))
         $scope.groupsTable.mode='deleted';
       else
         $scope.groupsTable.mode='editable';
@@ -33,6 +33,8 @@ app.controller("groupsController", ['localStorageService','groupsService','$scop
       $scope.groupsTable.detailViewDeleted='groupInfodeleted';
       $scope.groupsTable.detailViewRemove='groupInfoRemove';
       $scope.groupsTable.entity='group';
+      $scope.groupsTable.entityC='Group';
+      $scope.groupsTable.entityCP='Groups';
     });
 }]);
 

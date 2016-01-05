@@ -15,7 +15,7 @@ app.controller("userInfoController", ['$state', 'usersService', 'groupsService',
     if (mode.indexOf('remove')>-1){
       usersService.remove({ 'userId': _id }, function (response) {
         console.log("User has been deleted successfully."); 
-        $state.go('users.all')
+        $state.go('users.allUsers')
       },function (response) {
         if (response.data == null){
           console.log("response  data is null! -(0)");
@@ -39,6 +39,8 @@ app.controller("userInfoController", ['$state', 'usersService', 'groupsService',
         $scope.userTable = userTable
         $scope.userTable.detailView='userInfo';
         $scope.userTable.gridView='users';
+        $scope.userTable.entityC='User';
+        $scope.userTable.entityCP='Users';
         $scope.userTable.detailViewTemplate='app/users/views/userInfoTemplate.html';
         $scope.userTable.context='forms';
         $scope.userTable.ready = true;
@@ -52,6 +54,8 @@ app.controller("userInfoController", ['$state', 'usersService', 'groupsService',
           $scope.userTable = userTable
           $scope.userTable.detailView='userInfo';
           $scope.userTable.gridView='users';
+          $scope.userTable.entityC='User';
+          $scope.userTable.entityCP='Users';
           $scope.userTable.detailViewTemplate='app/users/views/userInfoTemplate.html';
           $scope.userTable.context='forms';
           $scope.userTable.ready = true;
@@ -67,7 +71,7 @@ app.controller("userInfoController", ['$state', 'usersService', 'groupsService',
         newData.groups=groupzIDz;
         usersService.add(newData, function (response) {
           console.log("User has been added successfully!");
-          $state.go('users.all');
+          $state.go('users.allUsers');
         },function (response) {
           if (response.data == null){
             console.log("response data is null!!!!!");
@@ -95,7 +99,7 @@ app.controller("userInfoController", ['$state', 'usersService', 'groupsService',
         newData.groups=groupzIDz;
         usersService.partialUpdate({'userId': _id }, newData, function (response) {
           console.log("User has been updated successfully.");
-          $state.go('users.all');
+          $state.go('users.allUsers');
         },function (response) {
           if (response.data == null){
             console.log("response data is null!!!!!");

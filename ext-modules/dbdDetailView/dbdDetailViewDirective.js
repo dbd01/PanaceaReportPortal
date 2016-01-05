@@ -53,33 +53,33 @@ angular.module("dbdDetailViewModule").directive("dbdDetailView", ['$state', 'sco
               $scope.add = function(){
                 scopeComService.add(null);
                 scopeComService.add($scope.tabledata.entity);
-                $state.go($scope.tabledata.detailView+'.add');
+                $state.go($scope.tabledata.detailView+'.add'+$scope.tabledata.entityC);
               };
               $scope.update = function(){
                 scopeComService.add($scope.tabledata.entity._id);
                 scopeComService.add($scope.tabledata.entity);
-                $state.go($scope.tabledata.detailView+'.update');
+                $state.go($scope.tabledata.detailView+'.update'+$scope.tabledata.entityC);
               }
               $scope.edit = function(){
                 scopeComService.add($scope.tabledata.entity._id);
-                $state.go($scope.tabledata.detailView+'.edit');
+                $state.go($scope.tabledata.detailView+'.edit'+$scope.tabledata.entityC);
               }
               $scope.cancelEdit = function(){
                 scopeComService.add($scope.tabledata.entity._id);
                 if ($scope.mode.indexOf('deleted')>-1){
-                  $state.go($scope.tabledata.gridView+'.deleted');
+                  $state.go($scope.tabledata.gridView+'.deleted'+$scope.tabledata.entityCP);
                 }
                 else{
-                  $state.go($scope.tabledata.gridView+'.all');
+                  $state.go($scope.tabledata.gridView+'.all'+$scope.tabledata.entityCP);
                 }
               }
               $scope.cancelAdd = function(){
-                $state.go($scope.tabledata.gridView+'.all');
+                $state.go($scope.tabledata.gridView+'.all'+$scope.tabledata.entityCP);
               }
               $scope.cancelUpdate = function(){
                 $scope.tabledata.entity=$scope.previousData;
                 scopeComService.add($scope.tabledata.entity._id);
-                $state.go($scope.tabledata.detailView+'.view');
+                $state.go($scope.tabledata.detailView+'.view'+$scope.tabledata.entityC);
               }
             },0);
           }

@@ -19,10 +19,11 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'casGetCreds',
+      name: 'start.casGetCreds',
       config: {
-        url: "/cas/:token/:expires/:user",
-        template:  "<div ui-view>Hallo!</div> "
+        url: "cas/:token/:expires/:user",
+        template:  "<div ui-view>Hallo!</div> ",
+        controller: 'casController'
       }
     },
     {
@@ -70,7 +71,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'users.all',
+      name: 'users.allUsers',
       config: {
         url: "/all",
         templateUrl: "app/users/views/usersView.html",
@@ -81,7 +82,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'users.deleted',
+      name: 'users.deletedUsers',
       config: {
          url: "/deleted",
         templateUrl: "app/users/views/usersView.html",
@@ -100,7 +101,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'userInfo.view',
+      name: 'userInfo.viewUser',
       config: {
         url: "/view",
         templateUrl: "app/users/views/userInfoView.html",
@@ -108,7 +109,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'userInfo.deleted',
+      name: 'userInfo.deletedUser',
       config: {
         url: "/deleted",
         templateUrl: "app/users/views/userInfoView.html",
@@ -116,7 +117,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'userInfo.remove',
+      name: 'userInfo.removeUser',
       config: {
         url: "/remove",
         templateUrl: "app/users/views/userInfoView.html",
@@ -124,7 +125,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'userInfo.edit',
+      name: 'userInfo.editUser',
       config: {
         url: "/edit",
         templateUrl: "app/users/views/userInfoView.html",
@@ -132,7 +133,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'userInfo.new',
+      name: 'userInfo.newUser',
       config: {
         url: "/new",
         templateUrl: "app/users/views/userInfoView.html",
@@ -140,7 +141,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'userInfo.add',
+      name: 'userInfo.addUser',
       config: {
         url: "/add",
         templateUrl: "app/users/views/userInfoView.html",
@@ -148,7 +149,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'userInfo.update',
+      name: 'userInfo.updateUser',
       config: {
         url: "/update",
         templateUrl: "app/users/views/userInfoView.html",
@@ -166,7 +167,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'groups.all',
+      name: 'groups.allGroups',
       config: {
         url: "/all",
         templateUrl: "app/groups/views/groupsView.html",
@@ -177,7 +178,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'groups.deleted',
+      name: 'groups.deletedGroups',
       config: {
         url: "/deleted",
         templateUrl: "app/groups/views/groupsView.html",
@@ -195,7 +196,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'groupInfo.view',
+      name: 'groupInfo.viewGroup',
       config: {
         url: "/view",
         templateUrl: "app/groups/views/groupInfoView.html",
@@ -203,7 +204,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'groupInfo.deleted',
+      name: 'groupInfo.deletedGroup',
       config: {
         url: "/deleted",
         templateUrl: "app/groups/views/groupInfoView.html",
@@ -211,7 +212,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'groupInfo.remove',
+      name: 'groupInfo.removeGroup',
       config: {
         url: "/remove",
         templateUrl: "app/groups/views/groupInfoView.html",
@@ -219,7 +220,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'groupInfo.edit',
+      name: 'groupInfo.editGroup',
       config: {
         url: "/edit",
         templateUrl: "app/groups/views/groupInfoView.html",
@@ -227,7 +228,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'groupInfo.new',
+      name: 'groupInfo.newGroup',
       config: {
         url: "/new",
         templateUrl: "app/groups/views/groupInfoView.html",
@@ -235,7 +236,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'groupInfo.add',
+      name: 'groupInfo.addGroup',
       config: {
         url: "/add",
         templateUrl: "app/groups/views/groupInfoView.html",
@@ -243,7 +244,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'groupInfo.update',
+      name: 'groupInfo.updateGroup',
       config: {
         url: "/update",
         templateUrl: "app/groups/views/groupInfoView.html",
@@ -261,7 +262,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'applications.all',
+      name: 'applications.allApplications',
       config: {
         url: "/all",
         templateUrl: "app/applications/views/applicationsView.html",
@@ -272,7 +273,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'applications.deleted',
+      name: 'applications.deletedApplications',
       config: {
         url: "/deleted",
         templateUrl: "app/applications/views/applicationsView.html",
@@ -290,7 +291,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'applicationInfo.view',
+      name: 'applicationInfo.viewApplication',
       config: {
         url: "/view",
         templateUrl: "app/applications/views/applicationInfoView.html",
@@ -298,7 +299,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'applicationInfo.deleted',
+      name: 'applicationInfo.deletedApplication',
       config: {
         url: "/deleted",
         templateUrl: "app/applications/views/applicationInfoView.html",
@@ -306,7 +307,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'applicationInfo.remove',
+      name: 'applicationInfo.removeApplication',
       config: {
         url: "/remove",
         templateUrl: "app/applications/views/applicationInfoView.html",
@@ -314,7 +315,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'applicationInfo.edit',
+      name: 'applicationInfo.editApplication',
       config: {
         url: "/edit",
         templateUrl: "app/applications/views/applicationInfoView.html",
@@ -322,7 +323,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'applicationInfo.new',
+      name: 'applicationInfo.newApplication',
       config: {
         url: "/new",
         templateUrl: "app/applications/views/applicationInfoView.html",
@@ -330,14 +331,14 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'applicationInfo.add',
+      name: 'applicationInfo.addApplication',
       config: {
         url: "/add",
         controller: 'applicationInfoController'
       }
     },
     {
-      name: 'applicationInfo.update',
+      name: 'applicationInfo.updateApplication',
       config: {
         url: "/update",
         controller: 'applicationInfoController'
@@ -354,7 +355,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'permissions.all',
+      name: 'permissions.allPermissions',
       config: {
         url: "/all",
         templateUrl: "app/permissions/views/permissionsView.html",
@@ -365,7 +366,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'permissions.deleted',
+      name: 'permissions.deletedPermissions',
       config: {
         url: "/deleted",
         templateUrl: "app/permissions/views/permissionsView.html",
@@ -383,7 +384,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'permissionInfo.view',
+      name: 'permissionInfo.viewPermission',
       config: {
         url: "/view",
         templateUrl: "app/permissions/views/permissionInfoView.html",
@@ -391,7 +392,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'permissionInfo.deleted',
+      name: 'permissionInfo.deletedPermission',
       config: {
         url: "/deleted",
         templateUrl: "app/permissions/views/permissionInfoView.html",
@@ -399,7 +400,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'permissionInfo.remove',
+      name: 'permissionInfo.removePermission',
       config: {
         url: "/remove",
         templateUrl: "app/permissions/views/permissionInfoView.html",
@@ -407,7 +408,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'permissionInfo.edit',
+      name: 'permissionInfo.editPermission',
       config: {
         url: "/edit",
         templateUrl: "app/permissions/views/permissionInfoView.html",
@@ -415,7 +416,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'permissionInfo.new',
+      name: 'permissionInfo.newPermission',
       config: {
         url: "/new",
         templateUrl: "app/permissions/views/permissionInfoView.html",
@@ -423,7 +424,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'permissionInfo.add',
+      name: 'permissionInfo.addPermission',
       config: {
         url: "/add",
         templateUrl: "app/permissions/views/permissionInfoView.html",
@@ -431,7 +432,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
       }
     },
     {
-      name: 'permissionInfo.update',
+      name: 'permissionInfo.updatePermission',
       config: {
         url: "/update",
         templateUrl: "app/permissions/views/permissionInfoView.html",

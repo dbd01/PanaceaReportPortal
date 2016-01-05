@@ -29,12 +29,14 @@ app.controller("usersController", ['localStorageService','usersService','$scope'
     .then(function () {
       $scope.usersTable = usersTable;
       $scope.usersTable.ready = true;
-      if ($state.includes('users.deleted'))
+      if ($state.includes('users.deletedUsers'))
         $scope.usersTable.mode='deleted';
       else
         $scope.usersTable.mode='editable';
       $scope.usersTable.detailView='userInfo';
       $scope.usersTable.entity='user';
+      $scope.usersTable.entityC='User';
+      $scope.usersTable.entityCP='Users';
     });
 }]);
 

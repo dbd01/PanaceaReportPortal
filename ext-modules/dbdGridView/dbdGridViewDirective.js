@@ -25,16 +25,16 @@ angular.module("dbdGridViewModule").directive("dbdGridView", ['$state', '$timeou
                   //error
                 }
                 else{
-                  $state.go($scope.tabledata.detailView+'.new');
+                  $state.go($scope.tabledata.detailView+'.new'+$scope.tabledata.entityC);
                 }
               }
               $scope.view_entity= function(editline){
                 scopeComService.add($scope.tabledata.data[editline][0].value);
                 if ($scope.tabledata.mode=="deleted"){
-                  $state.go($scope.tabledata.detailView+'.deleted');
+                  $state.go($scope.tabledata.detailView+'.deleted'+$scope.tabledata.entityC);
                 }
                 else{
-                  $state.go($scope.tabledata.detailView+'.view');
+                  $state.go($scope.tabledata.detailView+'.view'+$scope.tabledata.entityC);
                 }
               }
               $scope.edit_entity= function(editline){
@@ -43,7 +43,7 @@ angular.module("dbdGridViewModule").directive("dbdGridView", ['$state', '$timeou
                   //error
                 }
                 else{
-                  $state.go($scope.tabledata.detailView+'.edit');
+                  $state.go($scope.tabledata.detailView+'.edit'+$scope.tabledata.entityC);
                 }
               }
               $scope.restore_entity= function(editline){
@@ -56,7 +56,7 @@ angular.module("dbdGridViewModule").directive("dbdGridView", ['$state', '$timeou
                 bootbox.confirm("Are you sure you want to delete " + entity + " <b>" + entityName +"</b> ?", function(ok){
                   if (ok){
                     scopeComService.add($scope.tabledata.data[editline][0].value);
-                    $state.go($scope.tabledata.detailView+'.remove');
+                    $state.go($scope.tabledata.detailView+'.remove'+$scope.tabledata.entityC);
                   }
                 });
               }

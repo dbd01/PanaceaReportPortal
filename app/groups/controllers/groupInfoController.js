@@ -15,7 +15,7 @@ app.controller("groupInfoController", ['$state', 'groupsService', 'permissionsSe
     if (mode.indexOf('remove')>-1){
       groupsService.remove({ groupId: _id }, function (response) {
         console.log("Group has been deleted successfully."); 
-        $state.go('groups.all')
+        $state.go('groups.allGroups')
       },function (response) {
         if (response.data == null){
           console.log("response  data is null! -(0)");
@@ -37,6 +37,8 @@ app.controller("groupInfoController", ['$state', 'groupsService', 'permissionsSe
         $scope.groupTable = groupTable
         $scope.groupTable.detailView='groupInfo';
         $scope.groupTable.gridView='groups';
+        $scope.groupTable.entityC='Group';
+        $scope.groupTable.entityCP='Groups';
         $scope.groupTable.detailViewTemplate='app/groups/views/groupInfoTemplate.html';
         $scope.groupTable.context='forms';
         $scope.groupTable.ready = true;
@@ -50,6 +52,8 @@ app.controller("groupInfoController", ['$state', 'groupsService', 'permissionsSe
           $scope.groupTable = groupTable;
           $scope.groupTable.detailView='groupInfo';
           $scope.groupTable.gridView='groups';
+          $scope.groupTable.entityC='Group';
+          $scope.groupTable.entityCP='Groups';
           $scope.groupTable.detailViewTemplate='app/groups/views/groupInfoTemplate.html';
           $scope.groupTable.context='forms';
           $scope.groupTable.ready = true;
@@ -65,7 +69,7 @@ app.controller("groupInfoController", ['$state', 'groupsService', 'permissionsSe
         newData.permissions=permissionzIDz;
         groupsService.add(newData, function (response) {
           console.log("Group has been added successfully!");
-          $state.go('groups.all');
+          $state.go('groups.allGroups');
         },function (response) {
           if (response.data == null){
             console.log("response data is null!!!!!");
@@ -93,7 +97,7 @@ app.controller("groupInfoController", ['$state', 'groupsService', 'permissionsSe
         newData.permissions=permissionzIDz;
         groupsService.update({groupId: _id }, newData, function (response) {
           console.log("Group has been updated successfully.");
-          $state.go('groups.all');
+          $state.go('groups.allGroups');
         },function (response) {
           if (response.data == null){
             console.log("response data is null!!!!!");

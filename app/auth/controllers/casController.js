@@ -1,9 +1,9 @@
 'use strict';
 
-app.controller('authenticationController', ['localStorageService', '$stateParams', '$rootScope', 
-	function (localStorageService, $stateParams, $rootScope) {
+app.controller('casController', ['localStorageService', '$stateParams', '$rootScope', '$state',
+	function (localStorageService, $stateParams, $rootScope, $state) {
 		//$rootScope.urlLink = {value:"true"};
-    console.log("authenticationController")
+    console.log("casController")
 		//set the token.
 		localStorageService.set('authorizationData', { 
 			token: $stateParams.token,
@@ -12,4 +12,5 @@ app.controller('authenticationController', ['localStorageService', '$stateParams
 		});
     $rootScope.authState='authorized';
     $rootScope.loginService='cas';
+    $state.go('start.logged_in');
 	}]);

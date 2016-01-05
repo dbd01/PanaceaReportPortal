@@ -30,12 +30,14 @@ app.controller("permissionsController", ['localStorageService', 'permissionsServ
       }).then(function () {
         $scope.permissionsTable = permissionsTable;
         $scope.permissionsTable.ready = true;
-        if ($state.includes('permissions.deleted'))
+        if ($state.includes('permissions.deletedPermissions'))
           $scope.permissionsTable.mode='deleted';
         else
           $scope.permissionsTable.mode='editable';
         $scope.permissionsTable.detailView='permissionInfo';
         $scope.permissionsTable.entity='permission';
+        $scope.permissionsTable.entityC='Permission';
+        $scope.permissionsTable.entityCP='Permissions';
       }
     );
   }

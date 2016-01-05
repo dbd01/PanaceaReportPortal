@@ -26,12 +26,14 @@ app.controller("applicationsController", ['localStorageService','applicationsSer
     .then(function () {
       $scope.applicationsTable = applicationsTable;
       $scope.applicationsTable.ready = true;
-      if ($state.includes('applications.deleted'))
+      if ($state.includes('applications.deletedApplications'))
         $scope.applicationsTable.mode='deleted';
       else
         $scope.applicationsTable.mode='editable';
       $scope.applicationsTable.detailView='applicationInfo';
       $scope.applicationsTable.entity='application';
+      $scope.applicationsTable.entityC='Application';
+      $scope.applicationsTable.entityCP='Applications';
     });
 }]);
 

@@ -15,7 +15,7 @@ app.controller("permissionInfoController", ['$state', 'permissionsService','$sco
     if (mode.indexOf('remove')>-1){
       permissionsService.remove({ permissionId: _id }, function (response) {
         console.log("Permission has been deleted successfully."); 
-        $state.go('permissions.all')
+        $state.go('permissions.allPermissions')
       },function (response) {
         if (response.data == null){
           console.log("response  data is null! -(0)");
@@ -41,6 +41,8 @@ app.controller("permissionInfoController", ['$state', 'permissionsService','$sco
         $scope.permissionTable = permissionTable
         $scope.permissionTable.detailView='permissionInfo';
         $scope.permissionTable.gridView='permissions';
+        $scope.permissionTable.entityC='Permission';
+        $scope.permissionTable.entityCP='Permissions';
         $scope.permissionTable.detailViewTemplate='app/permissions/views/permissionInfoTemplate.html';
         $scope.permissionTable.context='forms';
         $scope.permissionTable.ready = true;
@@ -52,6 +54,8 @@ app.controller("permissionInfoController", ['$state', 'permissionsService','$sco
         $scope.permissionTable = permissionTable
         $scope.permissionTable.detailView='permissionInfo';
         $scope.permissionTable.gridView='permissions';
+        $scope.permissionTable.entityC='Permission';
+        $scope.permissionTable.entityCP='Permissions';
         $scope.permissionTable.detailViewTemplate='app/permissions/views/permissionInfoTemplate.html';
         $scope.permissionTable.context='forms';
         $scope.permissionTable.ready = true;
@@ -61,7 +65,7 @@ app.controller("permissionInfoController", ['$state', 'permissionsService','$sco
       if (newData){
         permissionsService.add(newData, function (response) {
           console.log("Permission has been added successfully!");
-          $state.go('permissions.all');
+          $state.go('permissions.allPermissions');
         },function (response) {
           if (response.data == null){
             console.log("response data is null!!!!!");
@@ -84,7 +88,7 @@ app.controller("permissionInfoController", ['$state', 'permissionsService','$sco
       if (newData){
         permissionsService.update({permissionId: _id }, newData, function (response) {
           console.log("Permission has been updated successfully.");
-          $state.go('permissions.all');
+          $state.go('permissions.allPermissions');
         },function (response) {
           if (response.data == null){
             console.log("response data is null!!!!!");
