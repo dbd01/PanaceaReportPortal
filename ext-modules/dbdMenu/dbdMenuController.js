@@ -45,42 +45,5 @@ angular.module("dbdMenuModule").controller("dbdMenuController", ['$rootScope', '
       console.log(new_sidebar);
       $scope.sidebar=new_sidebar;
     });
-
-    /*$scope.login = function () {
-      console.log("polyphemusController: login: authData: ", $scope.authData);
-      polyphemusService.send($scope.authData, 
-        //success
-        function (response) {
-          //set the token
-          console.log("polyphemusController: login: response: ", response);
-          console.log("polyphemusController: login: authData: ", $scope.authData);
-          var authorizationData={
-            token: response.token,
-            userName: $scope.authData.username, 
-            expires: response.expires
-          };
-          //$rootScope.authorizationData=authorizationData;
-          //$rootScope.$broadcast("authData");
-          console.log("polyphemusController: login: $broadcast");
-          //$rootscope.broadcast(authorizationData);
-          polyphemusCommService2.setValue(authorizationData);
-        },
-        //error
-        function (response) {
-          console.log("data..>",$scope.authData);
-          if (response.data == null){
-            console.log("response data is null!");
-            $scope.message = "Server error";
-          }
-          else{
-            console.log("response error: ", response);
-            $scope.alert = { 
-              type: 'danger', 
-              msg: 'Wrong Username or password' 
-            };
-          }
-        }
-      );
-};*/
 }]);
 
