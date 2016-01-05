@@ -1,7 +1,7 @@
 "use strict";
 
-app.controller("userInfoController", ['$state', 'usersService', 'groupsService','$scope','scopeComService',
-  function ($state, usersService, groupsService, $scope, scopeComService ) {
+app.controller("userInfoController", ['$state', 'usersService', 'groupsService','$scope','scopeComService', '$timeout',
+  function ($state, usersService, groupsService, $scope, scopeComService, $timeout ) {
     var userTable ={
       "entity":null,
       "groups": [],
@@ -120,6 +120,7 @@ app.controller("userInfoController", ['$state', 'usersService', 'groupsService',
     else{
       //error
     }
+    
   }
 ]);
 

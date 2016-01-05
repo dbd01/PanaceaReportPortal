@@ -6,9 +6,10 @@ angular.module('dbdDashboardModule').directive('dbdWidgetBody',
     return {
       templateUrl: 'ext-modules/dbdDashboard/dbdWidgetBodyTemplate.html',
       link: function ($scope, element, attrs) {
-        console.log("$scope.item.template : ", $scope.item.template);
+        //console.log("$scope.item.template : ", $scope.item.template);
         var newElement = angular.element($scope.item.template);
         console.log("newElement : ", newElement);
+        //console.log("element : ", element);
         element.append(newElement);
         $scope.ready=true;
         $compile(newElement)($scope);

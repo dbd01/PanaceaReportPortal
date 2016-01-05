@@ -10,22 +10,24 @@ angular.module('PanaceaReports').directive('widgetDashboard', ['localStorageServ
       $scope.title="Panacea Reports Dashboard";
 
       $scope.gridsterOpts = {
-        columns: 12,
-        margins: [20, 20],
-        outerMargin: false,
-        pushing: true,
-        floating: false,
-        swapping: false
+        columns: 4,
+        min_cols: 1,
+        max_cols: null,
+        min_rows: 15,
+        max_size_x: false,
+        autogenerate_stylesheet: true,
+        avoid_overlapped_widgets: true,
+        margins: [20, 20]
       };
 
       $scope.widgetDefinitions = [
         {
+          sizeX: 1,
+          sizeY: 4,
+          minSizeX: 1,
+          minSizeY: 4,
           title: 'User',
           settings: {
-            sizeX: 7,
-            sizeY: 7,
-            minSizeX: 7,
-            minSizeY: 7,
             template: '<widget-user></widget-user>',
             widgetSettings: {
               id: null,//default userId
@@ -53,10 +55,7 @@ angular.module('PanaceaReports').directive('widgetDashboard', ['localStorageServ
 
       $scope.widgets = localStorageService.get('widgets') || [];
 
-      console.log("widgetDashboardDirective : widgets: ", $scope.widgets);
-
       $scope.$watch('widgets', function () {
-        console.log("widgetDashboardDirective : watch: widgets");
         localStorageService.set('widgets', $scope.widgets);
       }, true);
     }

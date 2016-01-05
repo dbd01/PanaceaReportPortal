@@ -30,21 +30,21 @@
 							<td>Groups:</td>
 							<td>
 								<div ng-if="mode=='edit' || mode=='new'" ng-repeat="group in tabledata.groups">
-									{{group.name}} <input type="checkbox" data-checklist-model="tabledata.entity.groups" data-checklist-value="group" ng-disabled="mode=='view'"> Show Permissions <input type="checkbox" ng-model="permissions_checked">
+									{{group.name}} <input type="checkbox" data-checklist-model="tabledata.entity.groups" data-checklist-value="group" ng-disabled="mode=='view'"> Show Permissions <input type="checkbox" ng-model="permissions_checked" >
 									<div ng-show="permissions_checked">
 											<span ng-repeat="permission in group.permissions">{{permission.name}}, </span>
 									</div>
-									Show Applications <input type="checkbox" ng-model="applications_checked">
+									Show Applications <input type="checkbox" ng-model="applications_checked" >
 									<div ng-show="applications_checked">
 											<span ng-repeat="application in group.applications">{{application.name}}, </span>
 									</div>
 							  </div>
 							  <div ng-if="mode=='view' || mode=='deleted'" ng-repeat="group in tabledata.entity.groups">
-									{{group.name}} : Show Permissions <input type="checkbox" ng-model="permissions_checked">
+									{{group.name}} : Show Permissions <input type="checkbox" ng-model="permissions_checked" >
 									<div ng-show="permissions_checked">
 											<span ng-repeat="permission in group.permissions">{{permission.name}}, </span>
 									</div>
-									Show Applications <input type="checkbox" ng-model="applications_checked">
+									Show Applications <input type="checkbox" ng-model="applications_checked" >
 									<div ng-show="applications_checked">
 											<span ng-repeat="application in group.applications">{{application.name}}, </span>
 									</div>
