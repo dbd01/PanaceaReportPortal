@@ -1,0 +1,25 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+
+#: ext-modules/dbdMenu/dbdMenuTemplate.html:19
+msgid "{{ item.title }}"
+msgstr ""
+
+#: index.html:149
+msgid "Hello {{log_name}}"
+msgstr ""
+
+#: ext-modules/polyphemus/polyphemusTemplate.html:5
+msgid "Login"
+msgstr ""
+
+#: index.html:145
+msgid "Or sign in with CAS"
+msgstr ""
+
+#: ext-modules/polyphemus/polyphemusTemplate.html:9
+msgid "Submit"
+msgstr ""

@@ -49,6 +49,10 @@
     <link rel="stylesheet" href="bower_components/angular-gridster/dist/angular-gridster.min.css"/>
     <script src="bower_components/javascript-detect-element-resize/jquery.resize.js"></script>
     <script src="bower_components/angular-gridster/dist/angular-gridster.min.js"></script>
+
+    <!-- multilinguality -->
+    <script src="bower_components/angular-gettext/dist/angular-gettext.min.js"></script>
+    <script src="app/translations.js"></script>
 		
 	<!-- Application itself  -->
 	<script src="app/_appModule.js"></script>
@@ -71,6 +75,7 @@
 	<script src="app/services/requestedPermissionsService.js"></script>
 	<script src="app/services/polyphemusCommServiceIn.js"></script>
 	<script src="app/services/dbdMenuCommServiceOut.js"></script>
+	<script src="app/services/dbdMenuService.js"></script>
 		
 	<!--Controllers-->
 	<script src="app/layout/layoutController.js"></script>
@@ -138,13 +143,12 @@
 				<div ng-switch-default>
 					<polyphemus-login></polyphemus-login>
 					<div>
-						<a href="{{casPath}}">Or sign in with CAS</a>
+						<a href="{{casPath}}"><translate>Or sign in with CAS</translate></a>
 					</div>
 				</div>
 				<div ng-switch-when="authorized">
-					<div>Logged In as {{log_name}}</div>
-					<div class="well" ui-view >
-					</div>
+					<div translate>Hello {{log_name}}</div>
+					<div class="well" ui-view ></div>
 				</div>
 			</div>
 		</div>

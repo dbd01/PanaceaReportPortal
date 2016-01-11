@@ -1,22 +1,19 @@
-(function () {
-    "use strict";
+"use strict";
 
-    app
-     .factory("scopeComService", function () {
+app
+ .factory("scopeComService", function () {
 
-        var messages = {};
+  var messages = {};
 
-        messages.list = [];
+  messages.list = [];
 
-        messages.add = function (message) {
-            messages.list.push(message);
-        };
+  messages.add = function (message) {
+      messages.list.push(message);
+  };
 
-        messages.flush = function (message) {
-            messages.list = [];
-        };
+  messages.flush = function (message) {
+      messages.list = [];
+  };
 
-        return messages;
-    });
-
-})();
+  return messages;
+});

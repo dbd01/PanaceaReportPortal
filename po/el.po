@@ -1,0 +1,33 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"X-Generator: Poedit 1.8.6\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: el\n"
+
+#: ext-modules/dbdMenu/dbdMenuTemplate.html:19
+msgid "{{ item.title }}"
+msgstr "{{ item.title }}"
+
+#: index.html:149
+msgid "Hello {{log_name}}"
+msgstr "Γεια σου {{log_name}}"
+
+#: ext-modules/polyphemus/polyphemusTemplate.html:5
+msgid "Login"
+msgstr "Σύνδεση"
+
+#: index.html:145
+msgid "Or sign in with CAS"
+msgstr "Ή σύνδεση με CAS"
+
+#: ext-modules/polyphemus/polyphemusTemplate.html:9
+msgid "Submit"
+msgstr "Υποβολή"
