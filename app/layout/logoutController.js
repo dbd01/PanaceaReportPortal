@@ -6,7 +6,7 @@
 			$rootScope.authState='unauthorized';
 			$rootScope.log_name="";
 			localStorageService.set('authorizationData', null);
-			dbdMenuCommServiceOut.setValue([]);
+			dbdMenuCommServiceOut.setStates([]);
 			if ($rootScope.loginService=='cas'){
 				$http({
 					method: 'GET',

@@ -5,7 +5,9 @@ angular.module('PanaceaReports').controller('layoutController',
 		function ($state, $scope, $rootScope, localStorageService, appSettings, gettextCatalog, dbdMenuCommServiceOut, dbdGridViewCommServiceOut) {
 			console.log("layoutController");
 			$scope.languages=['en', 'el'];
-			$scope.lang='el';
+			$scope.lang=localStorageService.get('lang');
+			if (!$scope.lang)
+				$scope.lang='el';
 			$scope.casPath = appSettings.casPath;
 			$scope.state = 'unauthorized';
 			$rootScope.$watch('authState', function (newvalue, oldvalue) {
@@ -16,6 +18,9 @@ angular.module('PanaceaReports').controller('layoutController',
 					$rootScope.log_name=localStorageService.get('authorizationData').log_name;
 					if ($state.includes('start')&&!$state.includes('start.logged_in')){
 						$state.go('start.logged_in');
+					}
+					else{
+						dbdMenuCommServiceOut.setStates($state.get());
 					}
 				}
 				else{
@@ -29,5 +34,6 @@ angular.module('PanaceaReports').controller('layoutController',
 				gettextCatalog.setCurrentLanguage($scope.lang);
 				dbdMenuCommServiceOut.setLang($scope.lang);
 				dbdGridViewCommServiceOut.setLang($scope.lang);
+				localStorageService.set('lang', $scope.lang);
 			}
 		}]);

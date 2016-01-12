@@ -120,7 +120,6 @@ app.controller("userInfoController", ['$state', 'usersService', 'groupsService',
     else{
       //error
     }
-    
   }
 ]);
 
