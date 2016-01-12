@@ -21,7 +21,7 @@ msgstr "Ενεργός:"
 #: app/permissions/views/permissionInfoTemplate.html:59
 #: app/users/views/userInfoTemplate.html:57
 msgid "Add"
-msgstr "Πρόσθεσε"
+msgstr "Προσθήκη"
 
 #: ext-modules/dbdGridView/dbdGridViewTemplate.html:10
 msgid "Add New"
