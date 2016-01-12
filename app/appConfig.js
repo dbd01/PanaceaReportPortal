@@ -17,11 +17,4 @@ app
   $rootScope.log_link = {value:"Logout"};
   gettextCatalog.setCurrentLanguage('el');
   gettextCatalog.debug = true;
-  
-  var states=dbdMenuService.list;
-  //var states=[];
-  console.log(states);
-  states.forEach(function (state) {
-    $routeProviderReference.state(state.name, state.config);
-  });
 }]);
