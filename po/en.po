@@ -1,43 +1,51 @@
 msgid ""
 msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Project-Id-Version: \n"
+"X-Generator: Poedit 1.8.6\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: app/users/views/userInfoTemplate.html:26
 msgid "Active:"
-msgstr ""
+msgstr "Active:"
 
 #: app/applications/views/applicationInfoTemplate.html:53
 #: app/groups/views/groupInfoTemplate.html:46
 #: app/permissions/views/permissionInfoTemplate.html:59
 #: app/users/views/userInfoTemplate.html:57
 msgid "Add"
-msgstr ""
+msgstr "Add"
 
 #: ext-modules/dbdGridView/dbdGridViewTemplate.html:10
 msgid "Add New"
-msgstr ""
+msgstr "Add New"
 
 #: ext-modules/dbdDashboard/dbdDashboardTemplate.html:6
 msgid "Add Widget"
-msgstr ""
+msgstr "Add Widget"
 
 #: app/applications/views/applicationInfoTemplate.html:8
 msgid "Application Id:"
-msgstr ""
+msgstr "Application Id:"
 
 #: app/applications/views/applicationInfoTemplate.html:5
 msgid "Application Information"
-msgstr ""
+msgstr "Application Information"
 
 #: app/applications/views/applicationInfoTemplate.html:12
 msgid "Application Name:"
-msgstr ""
+msgstr "Application Name:"
 
 #: app/groups/views/groupInfoTemplate.html:33
 msgid "Applications:"
-msgstr ""
+msgstr "Applications:"
 
 #: app/applications/views/applicationInfoTemplate.html:54
 #: app/applications/views/applicationInfoTemplate.html:58
@@ -57,29 +65,29 @@ msgstr ""
 #: app/users/views/userInfoTemplate.html:70
 #: ext-modules/widgets/widgetUser/dialogs/widgetSelectUserTemplate.html:13
 msgid "Cancel"
-msgstr ""
+msgstr "Cancel"
 
 #: app/users/views/userInfoTemplate.html:22
 msgid "Confirmed:"
-msgstr ""
+msgstr "Confirmed:"
 
 #: app/requestedPermissions/views/requestedPermissionsTemplate.html:13
 #: app/requestedPermissions/views/requestedPermissionsTemplate.html:22
 msgid "Create"
-msgstr ""
+msgstr "Create"
 
 #: app/requestedPermissions/views/requestedPermissionsTemplate.html:14
 #: app/requestedPermissions/views/requestedPermissionsTemplate.html:27
 #: ext-modules/dbdGridView/dbdGridViewTemplate.html:18
 #: ext-modules/dbdGridView/dbdGridViewTemplate.html:38
 msgid "Delete"
-msgstr ""
+msgstr "Delete"
 
 #: app/applications/views/applicationInfoTemplate.html:17
 #: app/groups/views/groupInfoTemplate.html:17
 #: app/permissions/views/permissionInfoTemplate.html:28
 msgid "Description:"
-msgstr ""
+msgstr "Description:"
 
 #: app/applications/views/applicationInfoTemplate.html:61
 #: app/groups/views/groupInfoTemplate.html:54
@@ -88,65 +96,65 @@ msgstr ""
 #: ext-modules/dbdGridView/dbdGridViewTemplate.html:17
 #: ext-modules/dbdGridView/dbdGridViewTemplate.html:33
 msgid "Edit"
-msgstr ""
+msgstr "Edit"
 
 #: app/users/views/userInfoTemplate.html:17
 msgid "Email:"
-msgstr ""
+msgstr "Email:"
 
 #: app/groups/views/groupInfoTemplate.html:8
 msgid "Group Id:"
-msgstr ""
+msgstr "Group Id:"
 
 #: app/groups/views/groupInfoTemplate.html:5
 msgid "Group Information"
-msgstr ""
+msgstr "Group Information"
 
 #: app/groups/views/groupInfoTemplate.html:12
 msgid "Group Name:"
-msgstr ""
+msgstr "Group Name:"
 
 #: app/applications/views/applicationInfoTemplate.html:27
 #: app/permissions/views/permissionInfoTemplate.html:43
 #: app/users/views/userInfoTemplate.html:30
 msgid "Groups:"
-msgstr ""
+msgstr "Groups:"
 
 #: index.html:154
 msgid "Hello {{log_name}}"
-msgstr ""
+msgstr "Hello {{log_name}}"
 
 #: ext-modules/polyphemus/polyphemusTemplate.html:5
 msgid "Login"
-msgstr ""
+msgstr "Login"
 
 #: app/permissions/views/permissionInfoTemplate.html:38
 msgid "Model:"
-msgstr ""
+msgstr "Model:"
 
 #: ext-modules/widgets/widgetUser/dialogs/widgetSelectUserTemplate.html:12
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: index.html:150
 msgid "Or sign in with CAS"
-msgstr ""
+msgstr "Or sign in with CAS"
 
 #: app/permissions/views/permissionInfoTemplate.html:8
 msgid "Permission Id:"
-msgstr ""
+msgstr "Permission Id:"
 
 #: app/permissions/views/permissionInfoTemplate.html:5
 msgid "Permission Information"
-msgstr ""
+msgstr "Permission Information"
 
 #: app/permissions/views/permissionInfoTemplate.html:12
 msgid "Permission Name:"
-msgstr ""
+msgstr "Permission Name:"
 
 #: app/groups/views/groupInfoTemplate.html:22
 msgid "Permissions:"
-msgstr ""
+msgstr "Permissions:"
 
 #: app/applications/views/applicationInfoTemplate.html:65
 #: app/groups/views/groupInfoTemplate.html:58
@@ -155,86 +163,86 @@ msgstr ""
 #: ext-modules/dbdGridView/dbdGridViewTemplate.html:20
 #: ext-modules/dbdGridView/dbdGridViewTemplate.html:53
 msgid "Restore"
-msgstr ""
+msgstr "Restore"
 
 #: index.html:141
 msgid "Select a language:"
-msgstr ""
+msgstr "Select a language:"
 
 #: ext-modules/widgets/widgetUser/dialogs/widgetSelectUserTemplate.html:3
 msgid "Select User"
-msgstr ""
+msgstr "Select User"
 
 #: app/permissions/views/permissionInfoTemplate.html:46
 #: app/users/views/userInfoTemplate.html:37
 #: app/users/views/userInfoTemplate.html:47
 msgid "Show Applications"
-msgstr ""
+msgstr "Show Applications"
 
 #: app/applications/views/applicationInfoTemplate.html:30
 #: app/applications/views/applicationInfoTemplate.html:40
 #: app/users/views/userInfoTemplate.html:33
 #: app/users/views/userInfoTemplate.html:43
 msgid "Show Permissions"
-msgstr ""
+msgstr "Show Permissions"
 
 #: app/applications/views/applicationInfoTemplate.html:34
 #: app/applications/views/applicationInfoTemplate.html:44
 #: app/permissions/views/permissionInfoTemplate.html:50
 msgid "Show Users"
-msgstr ""
+msgstr "Show Users"
 
 #: ext-modules/polyphemus/polyphemusTemplate.html:9
 msgid "Submit"
-msgstr ""
+msgstr "Submit"
 
 #: app/permissions/views/permissionInfoTemplate.html:17
 msgid "Type:"
-msgstr ""
+msgstr "Type:"
 
 #: app/applications/views/applicationInfoTemplate.html:57
 #: app/groups/views/groupInfoTemplate.html:50
 #: app/permissions/views/permissionInfoTemplate.html:63
 #: app/users/views/userInfoTemplate.html:61
 msgid "Update"
-msgstr ""
+msgstr "Update"
 
 #: app/applications/views/applicationInfoTemplate.html:22
 #: app/permissions/views/permissionInfoTemplate.html:33
 msgid "Url:"
-msgstr ""
+msgstr "Url:"
 
 #: app/users/views/userInfoTemplate.html:8
 msgid "User Id:"
-msgstr ""
+msgstr "User Id:"
 
 #: app/users/views/userInfoTemplate.html:5
 msgid "User Information"
-msgstr ""
+msgstr "User Information"
 
 #: ext-modules/widgets/widgetUser/dialogs/widgetSelectUserTemplate.html:6
 msgid "Username"
-msgstr ""
+msgstr "Username"
 
 #: app/users/views/userInfoTemplate.html:12
 msgid "Username:"
-msgstr ""
+msgstr "Username:"
 
 #: app/groups/views/groupInfoTemplate.html:39
 msgid "Users:"
-msgstr ""
+msgstr "Users:"
 
 #: ext-modules/dbdGridView/dbdGridViewTemplate.html:16
 #: ext-modules/dbdGridView/dbdGridViewTemplate.html:19
 #: ext-modules/dbdGridView/dbdGridViewTemplate.html:28
 #: ext-modules/dbdGridView/dbdGridViewTemplate.html:48
 msgid "View"
-msgstr ""
+msgstr "View"
 
 #: app/auth/views/logged_inView.html:3
 msgid "Welcome to Panacea ..."
-msgstr ""
+msgstr "Welcome to Panacea ..."
 
 #: app/reports/views/reportsView.html:3
 msgid "Welcome to reports"
-msgstr ""
+msgstr "Welcome to reports"

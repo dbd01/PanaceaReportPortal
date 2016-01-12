@@ -1,14 +1,16 @@
 "use strict";
-angular.module("dbdGridViewModule").directive("dbdGridView", ['$state', '$timeout', 'scopeComService',
-  function ($state, $timeout, scopeComService) {
+angular.module("dbdGridViewModule").directive("dbdGridView", ['$state', '$timeout', 'scopeComService', '$rootScope',
+  function ($state, $timeout, scopeComService, $rootScope) {
     return {
     	templateUrl: "ext-modules/dbdGridView/dbdGridViewTemplate.html",
       restrict: 'E',
       scope: {
         tableid: '@',
         tabletitle: '@',
+        tabletitles: '=',
         tabledata: '=',
-        ready: '@'
+        ready: '@',
+        lang: '='
       },
       link: function ($scope, element, attrs) {
         $scope.$watch('ready', function (newvalue, oldvalue) {
@@ -19,6 +21,8 @@ angular.module("dbdGridViewModule").directive("dbdGridView", ['$state', '$timeou
               else
                 $scope.toolbar_width = "col-md-12";
 
+              $scope.tabletitle=$scope.tabletitles[$scope.lang];
+              
               scopeComService.flush();
               $scope.addNewEntity = function(){
                 if ($scope.tabledata.mode=="deleted"){
@@ -62,7 +66,14 @@ angular.module("dbdGridViewModule").directive("dbdGridView", ['$state', '$timeou
               }
             }, 0);
           }
-        })
+        });
+        $rootScope.$watch('lang', function(newvalue, oldvalue){
+          console.log("dbdGridViewModule: lang: ", newvalue);
+          $scope.lang=$rootScope.lang;
+          $scope.tabletitle=$scope.tabletitles[$scope.lang];
+          //$scope.ready="false";
+          //$scope.ready="true";
+        });
       }
     }
   }]);

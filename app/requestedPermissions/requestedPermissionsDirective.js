@@ -1,11 +1,12 @@
-app.directive('requestedPermissions', ['$state', '$timeout', 'scopeComService',
-  function ($state, $timeout, scopeComService) {
+app.directive('requestedPermissions', ['$state', '$timeout', 'scopeComService', '$rootScope',
+  function ($state, $timeout, scopeComService, $rootScope) {
     return {
       restrict: 'E',
       templateUrl: 'app/requestedPermissions/views/requestedPermissionsTemplate.html',
       scope: {
         tableid: '@',
         tabletitle: '@',
+        tabletitles: '=',
         tabledata: '=',
         ready: '@',
         tableresult: '='
@@ -18,7 +19,9 @@ app.directive('requestedPermissions', ['$state', '$timeout', 'scopeComService',
                 $scope.toolbar_width = "col-md-6";
               else
                 $scope.toolbar_width = "col-md-12";
-              //console.log($scope.tabledata.detailView);
+              
+              $scope.tabletitle=$scope.tabletitles[$scope.lang];
+              
               scopeComService.flush();
               $scope.create_permission= function(editline){
                 if ($state.includes('requestedPermissions')){
@@ -42,7 +45,11 @@ app.directive('requestedPermissions', ['$state', '$timeout', 'scopeComService',
               }
             }, 0);
           }
-        })
+        });
+        $rootScope.$watch('lang', function(newvalue, oldvalue){
+          $scope.lang=$rootScope.lang;
+          $scope.tabletitle=$scope.tabletitles[$scope.lang];
+        });
       }
     }
   }]);

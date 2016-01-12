@@ -10,8 +10,8 @@
       <thead>
         <tr>
           <th ng-repeat="title in tabledata.header" ng-if="title.showIt">{{title.title}}</th>
-          <th>Create</th>
-          <th>Delete</th>
+          <th translate>Create</th>
+          <th translate>Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -19,12 +19,12 @@
           <td ng-repeat="item in row" ng-if="item.showIt" >{{item.value}}</td>
           <td>
             <button class='btn btn-warning btn-xs' type="submit" ng-click="create_permission(rowNum)" value="create">
-              <span class="glyphicon glyphicon-plus fa fa-times" aria-hidden="true"></span> Create
+              <span class="glyphicon glyphicon-plus fa fa-times" aria-hidden="true"></span><translate> Create</translate>
             </button>
           </td>
           <td>
             <button class='btn btn-danger btn-xs' type="submit" ng-click="delete_entity(rowNum)" value="delete">
-              <span class="glyphicon glyphicon-minus fa fa-times" aria-hidden="true"></span> Delete
+              <span class="glyphicon glyphicon-minus fa fa-times" aria-hidden="true"></span><translate> Delete</translate>
             </button> 
           </td>
         </tr>

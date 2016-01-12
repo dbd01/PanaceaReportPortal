@@ -2,49 +2,49 @@
 	<div class = "row" >
 			<form class="navbar-form navbar-left" role="search">
 				<div class="form-group">
-				    <h4> User Information</h4>
+				    <h4 translate> User Information</h4>
 				    <table class="table table-responsive" cellspacing="3" >
 					    <tr ng-if="mode!='new'">
-					    	<td>User Id:</td>
+					    	<td translate>User Id:</td>
 					    	<td> {{_id}}</td>
 					    </tr>
 						<tr>
-							<td>Username:</td>
+							<td translate>Username:</td>
 							<td ng-if="mode=='edit' || mode=='new'"> <input type="text" class="form-control"  ng-model ="tabledata.entity.username" required> </td>
 							<td ng-if="mode=='view' || mode=='deleted'"> {{tabledata.entity.username}} </td>
 						</tr>
 						<tr>
-							<td>Email:</td>
+							<td translate>Email:</td>
 							<td ng-if="mode=='edit' || mode=='new'"> <input type="textarea" rows="4" class="form-control"  ng-model ="tabledata.entity.email" required> </td>
 							<td ng-if="mode=='view' || mode=='deleted'"> {{tabledata.entity.email}} </td>
 						</tr>
 						<tr ng-if="mode!='new'">
-							<td>Confirmed:</td>
+							<td translate>Confirmed:</td>
 							<td> <input type="checkbox" ng-model="tabledata.entity.confirmed" ng-disabled="mode=='view' || mode=='deleted'"> </td>
 						</tr>
 						<tr ng-if="mode!='new'">
-							<td>Active:</td>
+							<td translate>Active:</td>
 							<td><input type="checkbox" ng-model="tabledata.entity.active" ng-disabled="mode=='view' || mode=='deleted'"></td> 
 						</tr>
 						<tr >
-							<td>Groups:</td>
+							<td translate>Groups:</td>
 							<td>
 								<div ng-if="mode=='edit' || mode=='new'" ng-repeat="group in tabledata.groups">
-									{{group.name}} <input type="checkbox" data-checklist-model="tabledata.entity.groups" data-checklist-value="group" ng-disabled="mode=='view'"> Show Permissions <input type="checkbox" ng-model="permissions_checked" >
+									{{group.name}} <input type="checkbox" data-checklist-model="tabledata.entity.groups" data-checklist-value="group" ng-disabled="mode=='view'"> <translate>Show Permissions</translate> <input type="checkbox" ng-model="permissions_checked" >
 									<div ng-show="permissions_checked">
 											<span ng-repeat="permission in group.permissions">{{permission.name}}, </span>
 									</div>
-									Show Applications <input type="checkbox" ng-model="applications_checked" >
+									<translate>Show Applications</translate> <input type="checkbox" ng-model="applications_checked" >
 									<div ng-show="applications_checked">
 											<span ng-repeat="application in group.applications">{{application.name}}, </span>
 									</div>
 							  </div>
 							  <div ng-if="mode=='view' || mode=='deleted'" ng-repeat="group in tabledata.entity.groups">
-									{{group.name}} : Show Permissions <input type="checkbox" ng-model="permissions_checked" >
+									{{group.name}} : <translate>Show Permissions</translate> <input type="checkbox" ng-model="permissions_checked" >
 									<div ng-show="permissions_checked">
 											<span ng-repeat="permission in group.permissions">{{permission.name}}, </span>
 									</div>
-									Show Applications <input type="checkbox" ng-model="applications_checked" >
+									<translate>Show Applications </translate><input type="checkbox" ng-model="applications_checked" >
 									<div ng-show="applications_checked">
 											<span ng-repeat="application in group.applications">{{application.name}}, </span>
 									</div>
@@ -54,20 +54,20 @@
 						
 					</table>
 					<div ng-if="context=='forms' && mode=='new'">
-			    	<button  type="submit" class="btn btn-default" ng-click = "add()">Add</button>
-			    	<button  type="submit" class="btn btn-default" ng-click = "cancelAdd()">Cancel</button>
+			    	<button  type="submit" class="btn btn-default" ng-click = "add()"><translate>Add</translate></button>
+			    	<button  type="submit" class="btn btn-default" ng-click = "cancelAdd()"><translate>Cancel</translate></button>
 			    </div>
 			    <div ng-if="context=='forms' && mode=='edit'">
-			    	<button type="submit" class="btn btn-default" ng-click = "update()">Update</button>
-			    	<button type="submit" class="btn btn-default" ng-click = "cancelUpdate()">Cancel</button>
+			    	<button type="submit" class="btn btn-default" ng-click = "update()"><translate>Update</translate></button>
+			    	<button type="submit" class="btn btn-default" ng-click = "cancelUpdate()"><translate>Cancel</translate></button>
 			    </div>
 			    <div ng-if="context=='forms' && mode=='view'">
-			    	<button type="submit" class="btn btn-default" ng-click = "edit()">Edit</button>
-			    	<button type="submit" class="btn btn-default" ng-click = "cancelEdit()">Cancel</button>
+			    	<button type="submit" class="btn btn-default" ng-click = "edit()"><translate>Edit</translate></button>
+			    	<button type="submit" class="btn btn-default" ng-click = "cancelEdit()"><translate>Cancel</translate></button>
 			    </div>
 			    <div ng-if="context=='forms' && mode=='deleted'">
-			    	<button type="submit" class="btn btn-default" ng-click = "restore()">Restore</button>
-			    	<button type="submit" class="btn btn-default" ng-click = "cancelEdit()">Cancel</button>
+			    	<button type="submit" class="btn btn-default" ng-click = "restore()"><translate>Restore</translate></button>
+			    	<button type="submit" class="btn btn-default" ng-click = "cancelEdit()"><translate>Cancel</translate></button>
 			    </div>
 	  					<alert type="{{alert.type}}" close="closeAlert()" ng-show="alert != null" >
 							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>		

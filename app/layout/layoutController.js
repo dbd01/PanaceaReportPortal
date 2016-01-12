@@ -1,10 +1,10 @@
 "use strict";
 
 angular.module('PanaceaReports').controller('layoutController',
-	['$state', '$scope', '$rootScope', 'localStorageService', 'appSettings', 'gettextCatalog', 'dbdMenuCommServiceOut',
-		function ($state, $scope, $rootScope, localStorageService, appSettings, gettextCatalog, dbdMenuCommServiceOut) {
+	['$state', '$scope', '$rootScope', 'localStorageService', 'appSettings', 'gettextCatalog', 'dbdMenuCommServiceOut', 'dbdGridViewCommServiceOut',
+		function ($state, $scope, $rootScope, localStorageService, appSettings, gettextCatalog, dbdMenuCommServiceOut, dbdGridViewCommServiceOut) {
 			console.log("layoutController");
-			$scope.languages=['en_US', 'el'];
+			$scope.languages=['en', 'el'];
 			$scope.lang='el';
 			$scope.casPath = appSettings.casPath;
 			$scope.state = 'unauthorized';
@@ -26,5 +26,6 @@ angular.module('PanaceaReports').controller('layoutController',
 			$scope.changeLanguage=function(){
 				gettextCatalog.setCurrentLanguage($scope.lang);
 				dbdMenuCommServiceOut.setLang($scope.lang);
+				dbdGridViewCommServiceOut.setLang($scope.lang);
 			}
 		}]);

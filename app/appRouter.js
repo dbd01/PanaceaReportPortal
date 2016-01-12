@@ -35,7 +35,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         controller: 'logoutController',
         menuData: {
           displayName: {
-            en_US: "Logout",
+            en: "Logout",
             el: "Αποσύνδεση"
           },
           icon:"glyphicon glyphicon-log-out"
@@ -49,7 +49,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         template: '<widget-dashboard></widget-dashboard>',
         menuData: {
           displayName: {
-            en_US: "Dashboard",
+            en: "Dashboard",
             el: "Ντασμποαρντ"
           }
         }
@@ -63,7 +63,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         controller: 'reportsController',
         menuData: {
           displayName: {
-            en_US: "Reports",
+            en: "Reports",
             el: "Αναφορές"
           }
         }
@@ -76,7 +76,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         template:'<div ui-view></div>',
         menuData: {
           displayName: {
-            en_US: "Users",
+            en: "Users",
             el: "Χρήστες"
           },
           icon:"glyphicon glyphicon-user"
@@ -91,7 +91,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         controller: 'usersController',
         menuData: {
           displayName: {
-            en_US: "All",
+            en: "All",
             el: "Όλοι"
           }
         }
@@ -105,7 +105,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         controller: 'usersController',
         menuData: {
           displayName: {
-            en_US: "Deleted",
+            en: "Deleted",
             el: "Διαγραμμένοι"
           },
           icon: "glyphicon glyphicon-remove"
@@ -182,7 +182,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         template:'<div ui-view></div>',
         menuData: {
           displayName: {
-            en_US: "Groups",
+            en: "Groups",
             el: "Ομάδες"
           }
         }
@@ -196,7 +196,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         controller:  'groupsController',
         menuData: {
           displayName: {
-            en_US: "All",
+            en: "All",
             el: "Όλες"
           }
         }
@@ -210,7 +210,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         controller:  'groupsController',
         menuData: {
           displayName: {
-            en_US: "Deleted",
+            en: "Deleted",
             el: "Διαγραμμένες"
           }
         }
@@ -286,7 +286,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         template:'<div ui-view></div>',
         menuData: {
           displayName: {
-            en_US: "Applications",
+            en: "Applications",
             el: "Εφαρμογές"
           }
         }
@@ -300,7 +300,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         controller:  'applicationsController',
         menuData: {
           displayName: {
-            en_US: "All",
+            en: "All",
             el: "Όλες"
           }
         }
@@ -314,7 +314,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         controller:  'applicationsController',
         menuData: {
           displayName: {
-            en_US: "Deleted",
+            en: "Deleted",
             el: "Διαγραμμένες"
           }
         }
@@ -388,7 +388,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         template:'<div ui-view></div>',
         menuData: {
           displayName: {
-            en_US: "Permissions",
+            en: "Permissions",
             el: "Δικαιώματα"
           }
         }
@@ -402,7 +402,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         controller:  'permissionsController',
         menuData: {
           displayName: {
-            en_US: "All",
+            en: "All",
             el: "Όλα"
           }
         }
@@ -416,7 +416,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         controller:  'permissionsController',
         menuData: {
           displayName: {
-            en_US: "Deleted",
+            en: "Deleted",
             el: "Διαγραμμένα"
           }
         }
@@ -493,7 +493,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         controller:  'requestedPermissionsController',
         menuData: {
           displayName: {
-            en_US: "Requested Permissions",
+            en: "Requested Permissions",
             el: "Δικαιώματα που ζητήθηκαν"
           }
         }
