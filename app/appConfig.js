@@ -12,7 +12,7 @@ app
   console.log("app.config: localStorageServiceProvider");
   localStorageServiceProvider.setPrefix('ls');
 }])
-.run(['$rootScope', 'gettextCatalog', 'dbdMenuService', function($rootScope, gettextCatalog, dbdMenuService){
+.run(['$rootScope', 'gettextCatalog', function($rootScope, gettextCatalog){
   console.log("app.config : run");
   $rootScope.log_link = {value:"Logout"};
   gettextCatalog.setCurrentLanguage('el');
