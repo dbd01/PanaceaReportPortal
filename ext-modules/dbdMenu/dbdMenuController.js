@@ -4,8 +4,17 @@ angular.module("dbdMenuModule").controller("dbdMenuController", ['$rootScope', '
   function ($rootScope, $scope) {
     console.log("dbdMenuController");
     $rootScope.$watch('states', function (newvalue, oldvalue) {
-      console.log("dbdMenuController: watch: states: ", newvalue);
+      console.log("dbdMenuController: watch: states: ", newvalue, $rootScope.lang);
       var all_states = $rootScope.states;
+      var lang=$rootScope.lang;
+      populateMenu(all_states, lang);
+    });
+    $rootScope.$watch('lang', function(newvalue, oldvalue){
+      var all_states = $rootScope.states;
+      var lang=$rootScope.lang;
+      populateMenu(all_states, lang)
+    });
+    function populateMenu(all_states, lang){
       var new_sidebar = [];
       _(all_states).forEach(function (state) {
         if (state.menuData) {
@@ -15,7 +24,7 @@ angular.module("dbdMenuModule").controller("dbdMenuController", ['$rootScope', '
           // if no dots, create new item
           if (hier.length == 1) {
             new_sidebar.push({
-              "title": state.menuData.displayName,
+              "title": state.menuData.displayName[lang],
               "state": state.name,
               "url": "#" + state.url,
               "icon": state.menuData.icon,
@@ -30,7 +39,7 @@ angular.module("dbdMenuModule").controller("dbdMenuController", ['$rootScope', '
             });
             // add to the parents childre the current node
             new_sidebar[position].children.push({
-              "title": state.menuData.displayName,
+              "title": state.menuData.displayName[lang],
               "state": state.name,
               "url": "#" + state.url,
               "icon": state.menuData.icon,
@@ -44,6 +53,6 @@ angular.module("dbdMenuModule").controller("dbdMenuController", ['$rootScope', '
       }).value();
       console.log(new_sidebar);
       $scope.sidebar=new_sidebar;
-    });
+    }
 }]);
 

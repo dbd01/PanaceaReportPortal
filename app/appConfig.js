@@ -12,9 +12,10 @@ app
   console.log("app.config: localStorageServiceProvider");
   localStorageServiceProvider.setPrefix('ls');
 }])
-.run(['$rootScope', 'gettextCatalog', function($rootScope, gettextCatalog){
+.run(['$rootScope', 'gettextCatalog', 'dbdMenuCommServiceOut', function($rootScope, gettextCatalog, dbdMenuCommServiceOut){
   console.log("app.config : run");
   $rootScope.log_link = {value:"Logout"};
   gettextCatalog.setCurrentLanguage('el');
   gettextCatalog.debug = true;
+  dbdMenuCommServiceOut.setLang('el');
 }]);

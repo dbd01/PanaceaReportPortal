@@ -34,7 +34,10 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         template: "<div> Bye bye </div>",
         controller: 'logoutController',
         menuData: {
-          displayName: "Logout",
+          displayName: {
+            en_US: "Logout",
+            el: "Αποσύνδεση"
+          },
           icon:"glyphicon glyphicon-log-out"
         }
       }
@@ -45,7 +48,10 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         url: '/dashboard',
         template: '<widget-dashboard></widget-dashboard>',
         menuData: {
-          displayName: "Dashboard"
+          displayName: {
+            en_US: "Dashboard",
+            el: "Ντασμποαρντ"
+          }
         }
       }
     },
@@ -56,7 +62,10 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         templateUrl: "app/reports/views/reportsView.html",
         controller: 'reportsController',
         menuData: {
-          displayName: "Reports"
+          displayName: {
+            en_US: "Reports",
+            el: "Αναφορές"
+          }
         }
       }
     },
@@ -66,7 +75,10 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         url: "/users",
         template:'<div ui-view></div>',
         menuData: {
-          displayName: "Users",
+          displayName: {
+            en_US: "Users",
+            el: "Χρήστες"
+          },
           icon:"glyphicon glyphicon-user"
         }
       }
@@ -78,7 +90,10 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         templateUrl: "app/users/views/usersView.html",
         controller: 'usersController',
         menuData: {
-          displayName: "All"
+          displayName: {
+            en_US: "All",
+            el: "Όλοι"
+          }
         }
       }
     },
@@ -89,7 +104,10 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         templateUrl: "app/users/views/usersView.html",
         controller: 'usersController',
         menuData: {
-          displayName: "Deleted",
+          displayName: {
+            en_US: "Deleted",
+            el: "Διαγραμμένοι"
+          },
           icon: "glyphicon glyphicon-remove"
         }
       }
@@ -163,7 +181,10 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         url: "/groups",
         template:'<div ui-view></div>',
         menuData: {
-          displayName: "Groups"
+          displayName: {
+            en_US: "Groups",
+            el: "Ομάδες"
+          }
         }
       }
     },
@@ -174,7 +195,10 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         templateUrl: "app/groups/views/groupsView.html",
         controller:  'groupsController',
         menuData: {
-          displayName: "All"
+          displayName: {
+            en_US: "All",
+            el: "Όλες"
+          }
         }
       }
     },
@@ -185,7 +209,10 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         templateUrl: "app/groups/views/groupsView.html",
         controller:  'groupsController',
         menuData: {
-          displayName: "Deleted"
+          displayName: {
+            en_US: "Deleted",
+            el: "Διαγραμμένες"
+          }
         }
       }
     },
@@ -258,7 +285,10 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         url:"/applications",
         template:'<div ui-view></div>',
         menuData: {
-          displayName: "Applications"
+          displayName: {
+            en_US: "Applications",
+            el: "Εφαρμογές"
+          }
         }
       }
     },
@@ -269,7 +299,10 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         templateUrl: "app/applications/views/applicationsView.html",
         controller:  'applicationsController',
         menuData: {
-          displayName: "All"
+          displayName: {
+            en_US: "All",
+            el: "Όλες"
+          }
         }
       }
     },
@@ -280,7 +313,10 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         templateUrl: "app/applications/views/applicationsView.html",
         controller:  'applicationsController',
         menuData: {
-          displayName: "Deleted"
+          displayName: {
+            en_US: "Deleted",
+            el: "Διαγραμμένες"
+          }
         }
       }
     },
@@ -351,7 +387,10 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         url: "/permissions",
         template:'<div ui-view></div>',
         menuData: {
-          displayName: "Permissions"
+          displayName: {
+            en_US: "Permissions",
+            el: "Δικαιώματα"
+          }
         }
       }
     },
@@ -362,7 +401,10 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         templateUrl: "app/permissions/views/permissionsView.html",
         controller:  'permissionsController',
         menuData: {
-          displayName: "All"
+          displayName: {
+            en_US: "All",
+            el: "Όλα"
+          }
         }
       }
     },
@@ -373,7 +415,10 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         templateUrl: "app/permissions/views/permissionsView.html",
         controller:  'permissionsController',
         menuData: {
-          displayName: "Deleted"
+          displayName: {
+            en_US: "Deleted",
+            el: "Διαγραμμένα"
+          }
         }
       }
     },
@@ -447,7 +492,10 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
         templateUrl: "app/requestedPermissions/views/requestedPermissionsView.html",
         controller:  'requestedPermissionsController',
         menuData: {
-          displayName: "Requested Permissions"
+          displayName: {
+            en_US: "Requested Permissions",
+            el: "Δικαιώματα που ζητήθηκαν"
+          }
         }
       }
     },

@@ -2,13 +2,13 @@
 
 angular.module('dbdMenuModule').factory('dbdMenuCommServiceIn', ['$rootScope', function($rootScope) {
 		return{
-    	getValue : function() {
-	      return this.myValue;
-	    },
-	    setValue : function(newValue) {
+	    setStates : function(newValue) {
 	    	console.log("dbdMenuCommServiceIn : ", newValue);
-	      this.myValue = newValue;
 	      $rootScope.states=newValue;
+	    },
+	    setLang : function(newValue) {
+	    	console.log("dbdMenuCommServiceIn : ", newValue);
+	      $rootScope.lang=newValue;
 	    }
     }
 }]);

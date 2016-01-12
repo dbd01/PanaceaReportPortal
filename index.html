@@ -137,6 +137,11 @@
 <body ng-controller="layoutController">
 	<div class="panel panel-default">
 		<div class="panel-body">
+		<div>
+			<label translate>Select a language:</label>
+			<select ng-model="lang" ng-options="lang for lang in languages" ng-change="changeLanguage()">
+			</select>
+		</div>
 			<dbd-menu></dbd-menu>
 			<div ng-switch="state">
 				<div ng-switch-default>

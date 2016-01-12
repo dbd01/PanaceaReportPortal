@@ -2,11 +2,11 @@
 
 angular.module('PanaceaReports').factory('dbdMenuCommServiceOut',function(dbdMenuCommServiceIn) {
 	return{
-		getValue : function() {
-			return dbdMenuCommServiceIn.getValue();
+		setStates: function(newValue) {
+			dbdMenuCommServiceIn.setStates(newValue);
 		},
-		setValue : function(newValue) {
-			dbdMenuCommServiceIn.setValue(newValue);
+		setLang : function(newValue) {
+			dbdMenuCommServiceIn.setLang(newValue);
 		}
 	}
 });

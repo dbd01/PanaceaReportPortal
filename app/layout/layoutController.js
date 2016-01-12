@@ -1,9 +1,11 @@
 "use strict";
 
 angular.module('PanaceaReports').controller('layoutController',
-	['$state', '$scope', '$rootScope', 'localStorageService', 'appSettings',
-		function ($state, $scope, $rootScope, localStorageService, appSettings) {
+	['$state', '$scope', '$rootScope', 'localStorageService', 'appSettings', 'gettextCatalog', 'dbdMenuCommServiceOut',
+		function ($state, $scope, $rootScope, localStorageService, appSettings, gettextCatalog, dbdMenuCommServiceOut) {
 			console.log("layoutController");
+			$scope.languages=['en_US', 'el'];
+			$scope.lang='el';
 			$scope.casPath = appSettings.casPath;
 			$scope.state = 'unauthorized';
 			$rootScope.$watch('authState', function (newvalue, oldvalue) {
@@ -21,4 +23,8 @@ angular.module('PanaceaReports').controller('layoutController',
 					$state.go('start');
 				}
 			})
+			$scope.changeLanguage=function(){
+				gettextCatalog.setCurrentLanguage($scope.lang);
+				dbdMenuCommServiceOut.setLang($scope.lang);
+			}
 		}]);
