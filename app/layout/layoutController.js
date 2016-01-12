@@ -14,7 +14,9 @@ angular.module('PanaceaReports').controller('layoutController',
 					console.log("layoutController: watch: authorized")
 					$scope.state = 'authorized';
 					$rootScope.log_name=localStorageService.get('authorizationData').log_name;
-					$state.go('start.logged_in');
+					if ($state.includes('start')&&!$state.includes('start.logged_in')){
+						$state.go('start.logged_in');
+					}
 				}
 				else{
 					console.log("layoutController: watch: unauthorized")
