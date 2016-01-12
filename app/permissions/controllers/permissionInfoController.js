@@ -1,15 +1,15 @@
 "use strict";
 
-app.controller("permissionInfoController", ['$state', 'permissionsService','$scope', 'scopeComService',
-  function ($state, permissionsService , $scope , scopeComService) {
+app.controller("permissionInfoController", ['$state', 'permissionsService','$scope', 'scopeComService', '$stateParams',
+  function ($state, permissionsService , $scope , scopeComService, $stateParams) {
     var permissionTable={
       "entity":null,
       "ready": false
     };
     var mode=$state.current.name;
-    var _id=scopeComService.list[0];
-    var newData=scopeComService.list[1];
-    var newPermissionName=scopeComService.list[2];
+    var _id=$stateParams.id;//scopeComService.list[0];
+    var newData=scopeComService.list[0]
+    var newPermissionName=scopeComService.list[1];
     scopeComService.flush();
     console.log(mode, _id, newData);
     if (mode.indexOf('remove')>-1){

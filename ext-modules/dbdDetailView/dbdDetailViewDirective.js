@@ -1,6 +1,6 @@
 "use strict";
-angular.module("dbdDetailViewModule").directive("dbdDetailView", ['$state', 'scopeComService', '$timeout',
-  function ($state, scopeComService, $timeout) {
+angular.module("dbdDetailViewModule").directive("dbdDetailView", ['$state', 'scopeComService', '$timeout', '$location',
+  function ($state, scopeComService, $timeout, $location) {
     return {
       restrict: 'E',
       template: '<div ng-include="getContentUrl()"></div>',
@@ -51,21 +51,29 @@ angular.module("dbdDetailViewModule").directive("dbdDetailView", ['$state', 'sco
                 $scope.tabledata.entity=null;
               }
               $scope.add = function(){
-                scopeComService.add(null);
+                //scopeComService.add(null);
                 scopeComService.add($scope.tabledata.entity);
                 $state.go($scope.tabledata.detailView+'.add'+$scope.tabledata.entityC);
               };
               $scope.update = function(){
-                scopeComService.add($scope.tabledata.entity._id);
+                //scopeComService.add($scope.tabledata.entity._id);
                 scopeComService.add($scope.tabledata.entity);
-                $state.go($scope.tabledata.detailView+'.update'+$scope.tabledata.entityC);
+                //$state.go($scope.tabledata.detailView+'.update'+$scope.tabledata.entityC);
+                var id=$scope.tabledata.entity._id;
+                var path=$scope.tabledata.detailView+'/update/'+id;
+                console.log("path:", path);
+                $location.path(path)
               }
               $scope.edit = function(){
-                scopeComService.add($scope.tabledata.entity._id);
-                $state.go($scope.tabledata.detailView+'.edit'+$scope.tabledata.entityC);
+                //scopeComService.add($scope.tabledata.entity._id);
+                //$state.go($scope.tabledata.detailView+'.edit'+$scope.tabledata.entityC);
+                var id=$scope.tabledata.entity._id;
+                var path=$scope.tabledata.detailView+'/edit/'+id;
+                console.log("path:", path);
+                $location.path(path)
               }
               $scope.cancelEdit = function(){
-                scopeComService.add($scope.tabledata.entity._id);
+                //scopeComService.add($scope.tabledata.entity._id);
                 if ($scope.mode.indexOf('deleted')>-1){
                   $state.go($scope.tabledata.gridView+'.deleted'+$scope.tabledata.entityCP);
                 }
@@ -78,8 +86,12 @@ angular.module("dbdDetailViewModule").directive("dbdDetailView", ['$state', 'sco
               }
               $scope.cancelUpdate = function(){
                 $scope.tabledata.entity=$scope.previousData;
-                scopeComService.add($scope.tabledata.entity._id);
-                $state.go($scope.tabledata.detailView+'.view'+$scope.tabledata.entityC);
+                //scopeComService.add($scope.tabledata.entity._id);
+                //$state.go($scope.tabledata.detailView+'.view'+$scope.tabledata.entityC);
+                var id=$scope.tabledata.entity._id;
+                var path=$scope.tabledata.detailView+'/view/'+id;
+                console.log("path:", path);
+                $location.path(path)
               }
             },0);
           }

@@ -1,15 +1,15 @@
 "use strict";
 
-app.controller("applicationInfoController", ['$state', 'applicationsService', 'groupsService','$scope', 'scopeComService',
-  function ($state, applicationsService, groupsService, $scope , scopeComService) {
+app.controller("applicationInfoController", ['$state', 'applicationsService', 'groupsService','$scope', 'scopeComService', '$stateParams',
+  function ($state, applicationsService, groupsService, $scope , scopeComService, $stateParams) {
     var applicationTable ={
       "entity":null,
       "groups": [],
       "ready": false
     };
     var mode=$state.current.name;
-    var _id=scopeComService.list[0];
-    var newData=scopeComService.list[1];
+    var _id=$stateParams.id;//scopeComService.list[0];
+    var newData=scopeComService.list[0]
     scopeComService.flush();
     console.log(mode, _id, newData);
     if (mode.indexOf('remove')>-1){

@@ -1,6 +1,6 @@
 "use strict";
-angular.module("dbdGridViewModule").directive("dbdGridView", ['$state', '$timeout', 'scopeComService', '$rootScope',
-  function ($state, $timeout, scopeComService, $rootScope) {
+angular.module("dbdGridViewModule").directive("dbdGridView", ['$state', '$timeout', 'scopeComService', '$rootScope', '$location',
+  function ($state, $timeout, scopeComService, $rootScope, $location) {
     return {
     	templateUrl: "ext-modules/dbdGridView/dbdGridViewTemplate.html",
       restrict: 'E',
@@ -39,11 +39,16 @@ angular.module("dbdGridViewModule").directive("dbdGridView", ['$state', '$timeou
                 var id=$scope.tabledata.data[editline][0].value;
                 //scopeComService.add(id);
                 if ($scope.tabledata.mode=="deleted"){
-                  $state.go($scope.tabledata.detailView+'.deleted'+$scope.tabledata.entityC);
-                  //$location.path()
+                  //$state.go($scope.tabledata.detailView+'.deleted'+$scope.tabledata.entityC);
+                  var path=$scope.tabledata.detailView+'/deleted/'+id;
+                  console.log("path:", path);
+                  $location.path(path);
                 }
                 else{
-                  $state.go($scope.tabledata.detailView+'.view'+$scope.tabledata.entityC);
+                  //$state.go($scope.tabledata.detailView+'.view'+$scope.tabledata.entityC);
+                  var path=$scope.tabledata.detailView+'/view/'+id;
+                  console.log("path:", path);
+                  $location.path(path);
                 }
               }
               $scope.edit_entity= function(editline){
@@ -53,7 +58,10 @@ angular.module("dbdGridViewModule").directive("dbdGridView", ['$state', '$timeou
                   //error
                 }
                 else{
-                  $state.go($scope.tabledata.detailView+'.edit'+$scope.tabledata.entityC);
+                  //$state.go($scope.tabledata.detailView+'.edit'+$scope.tabledata.entityC);
+                  var path=$scope.tabledata.detailView+'/edit/'+id;
+                  console.log("path:", path);
+                  $location.path(path);
                 }
               }
               $scope.restore_entity= function(editline){
@@ -67,7 +75,8 @@ angular.module("dbdGridViewModule").directive("dbdGridView", ['$state', '$timeou
                   if (ok){
                     var id=$scope.tabledata.data[editline][0].value;
                     //scopeComService.add(id);
-                    $state.go($scope.tabledata.detailView+'.remove'+$scope.tabledata.entityC);
+                    //$state.go($scope.tabledata.detailView+'.remove'+$scope.tabledata.entityC);
+                    var path=$scope.tabledata.detailView+'/remove/'+id;
                   }
                 });
               }

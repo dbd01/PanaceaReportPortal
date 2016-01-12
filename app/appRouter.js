@@ -138,7 +138,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
     {
       name: 'userInfo.removeUser',
       config: {
-        url: "/remove:/id",
+        url: "/remove/:id",
         templateUrl: "app/users/views/userInfoView.html",
         controller: 'userInfoController'
       }
@@ -226,7 +226,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
     {
       name: 'groupInfo.viewGroup',
       config: {
-        url: "/view",
+        url: "/view/:id",
         templateUrl: "app/groups/views/groupInfoView.html",
         controller: 'groupInfoController'
       }
@@ -234,7 +234,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
     {
       name: 'groupInfo.deletedGroup',
       config: {
-        url: "/deleted",
+        url: "/deleted/:id",
         templateUrl: "app/groups/views/groupInfoView.html",
         controller: 'groupInfoController'
       }
@@ -242,7 +242,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
     {
       name: 'groupInfo.removeGroup',
       config: {
-        url: "/remove",
+        url: "/remove/:id",
         templateUrl: "app/groups/views/groupInfoView.html",
         controller: 'groupInfoController'
       }
@@ -250,7 +250,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
     {
       name: 'groupInfo.editGroup',
       config: {
-        url: "/edit",
+        url: "/edit/:id",
         templateUrl: "app/groups/views/groupInfoView.html",
         controller: 'groupInfoController'
       }
@@ -274,7 +274,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
     {
       name: 'groupInfo.updateGroup',
       config: {
-        url: "/update",
+        url: "/update/:id",
         templateUrl: "app/groups/views/groupInfoView.html",
         controller: 'groupInfoController'
       }
@@ -330,7 +330,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
     {
       name: 'applicationInfo.viewApplication',
       config: {
-        url: "/view",
+        url: "/view/:id",
         templateUrl: "app/applications/views/applicationInfoView.html",
         controller: 'applicationInfoController'
       }
@@ -338,7 +338,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
     {
       name: 'applicationInfo.deletedApplication',
       config: {
-        url: "/deleted",
+        url: "/deleted/:id",
         templateUrl: "app/applications/views/applicationInfoView.html",
         controller: 'applicationInfoController'
       }
@@ -346,7 +346,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
     {
       name: 'applicationInfo.removeApplication',
       config: {
-        url: "/remove",
+        url: "/remove/:id",
         templateUrl: "app/applications/views/applicationInfoView.html",
         controller: 'applicationInfoController'
       }
@@ -354,7 +354,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
     {
       name: 'applicationInfo.editApplication',
       config: {
-        url: "/edit",
+        url: "/edit/:id",
         templateUrl: "app/applications/views/applicationInfoView.html",
         controller: 'applicationInfoController'
       }
@@ -377,7 +377,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
     {
       name: 'applicationInfo.updateApplication',
       config: {
-        url: "/update",
+        url: "/update/:id",
         controller: 'applicationInfoController'
       }
     },
@@ -432,7 +432,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
     {
       name: 'permissionInfo.viewPermission',
       config: {
-        url: "/view",
+        url: "/view/:id",
         templateUrl: "app/permissions/views/permissionInfoView.html",
         controller: 'permissionInfoController'
       }
@@ -440,7 +440,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
     {
       name: 'permissionInfo.deletedPermission',
       config: {
-        url: "/deleted",
+        url: "/deleted/:id",
         templateUrl: "app/permissions/views/permissionInfoView.html",
         controller: 'permissionInfoController'
       }
@@ -448,7 +448,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
     {
       name: 'permissionInfo.removePermission',
       config: {
-        url: "/remove",
+        url: "/remove/:id",
         templateUrl: "app/permissions/views/permissionInfoView.html",
         controller: 'permissionInfoController'
       }
@@ -456,7 +456,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
     {
       name: 'permissionInfo.editPermission',
       config: {
-        url: "/edit",
+        url: "/edit/:id",
         templateUrl: "app/permissions/views/permissionInfoView.html",
         controller: 'permissionInfoController'
       }
@@ -480,7 +480,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
     {
       name: 'permissionInfo.updatePermission',
       config: {
-        url: "/update",
+        url: "/update/:id",
         templateUrl: "app/permissions/views/permissionInfoView.html",
         controller: 'permissionInfoController'
       }
