@@ -4,9 +4,14 @@ app.controller("groupsController", ['localStorageService','groupsService','$scop
   function (localStorageService, groupsService, $scope, $state ) {
     var groupsTable ={
       "header": [
-        { "title": "_id",  "showIt": true },
-        { "title": "name",  "showIt": true },
-        { "title": "description", "showIt": true }
+        { "title": {en: "Id", el:"Αναγνωριστικό"},  "showIt": true },
+        { "title": {en: "Name", el:"Όνομα"},  "showIt": true },
+        { "title": {en: "Description", el:"Περιγραφή"}, "showIt": true }
+      ],
+      "headers": [
+        { "title": "",  "showIt": true },
+        { "title": "",  "showIt": true },
+        { "title": "", "showIt": true }
       ],
       "data": [],
       "ready": false,

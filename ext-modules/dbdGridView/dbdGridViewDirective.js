@@ -23,7 +23,10 @@ angular.module("dbdGridViewModule").directive("dbdGridView", ['$state', '$timeou
 
               $scope.tabletitle=$scope.tabletitles[$scope.lang];
               
-              scopeComService.flush();
+              for (var i = 0; i < $scope.tabledata.header.length; i++) {
+                $scope.tabledata.headers[i].title=$scope.tabledata.header[i].title[$scope.lang];
+              };
+              //scopeComService.flush();
               $scope.addNewEntity = function(){
                 if ($scope.tabledata.mode=="deleted"){
                   //error
@@ -33,16 +36,19 @@ angular.module("dbdGridViewModule").directive("dbdGridView", ['$state', '$timeou
                 }
               }
               $scope.view_entity= function(editline){
-                scopeComService.add($scope.tabledata.data[editline][0].value);
+                var id=$scope.tabledata.data[editline][0].value;
+                //scopeComService.add(id);
                 if ($scope.tabledata.mode=="deleted"){
                   $state.go($scope.tabledata.detailView+'.deleted'+$scope.tabledata.entityC);
+                  //$location.path()
                 }
                 else{
                   $state.go($scope.tabledata.detailView+'.view'+$scope.tabledata.entityC);
                 }
               }
               $scope.edit_entity= function(editline){
-                scopeComService.add($scope.tabledata.data[editline][0].value);
+                var id=$scope.tabledata.data[editline][0].value;
+                //scopeComService.add(id);
                 if ($scope.tabledata.mode=="deleted"){
                   //error
                 }
@@ -59,7 +65,8 @@ angular.module("dbdGridViewModule").directive("dbdGridView", ['$state', '$timeou
                 entity=$scope.tabledata.entity;
                 bootbox.confirm("Are you sure you want to delete " + entity + " <b>" + entityName +"</b> ?", function(ok){
                   if (ok){
-                    scopeComService.add($scope.tabledata.data[editline][0].value);
+                    var id=$scope.tabledata.data[editline][0].value;
+                    //scopeComService.add(id);
                     $state.go($scope.tabledata.detailView+'.remove'+$scope.tabledata.entityC);
                   }
                 });
@@ -71,6 +78,12 @@ angular.module("dbdGridViewModule").directive("dbdGridView", ['$state', '$timeou
           console.log("dbdGridViewModule: lang: ", newvalue);
           $scope.lang=$rootScope.lang;
           $scope.tabletitle=$scope.tabletitles[$scope.lang];
+          if ($scope.tabledata){
+            for (var i = 0; i < $scope.tabledata.header.length; i++) {
+              $scope.tabledata.headers[i].title=$scope.tabledata.header[i].title[$scope.lang];
+            };
+          }
+          
           //$scope.ready="false";
           //$scope.ready="true";
         });

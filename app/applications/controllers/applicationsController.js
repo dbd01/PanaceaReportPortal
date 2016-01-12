@@ -4,10 +4,16 @@ app.controller("applicationsController", ['localStorageService','applicationsSer
   function (localStorageService, applicationsService , $scope, $state ) {
     var applicationsTable ={
       "header": [
-        { "title": "_id",  "showIt": true },
-        { "title": "name", "showIt": true },
-        { "title": "description", "showIt": true },
-        { "title": "url", "showIt": true }
+        { "title": {en: "Id", el:"Αναγνωριστικό"},  "showIt": true },
+        { "title": {en: "Name", el: "Όνομα"}, "showIt": true },
+        { "title": {en: "Description", el: "Περιγραφή"}, "showIt": true },
+        { "title": {en: "Url", el: "Url"}, "showIt": true }
+      ],
+      "headers": [
+        { "title": "",  "showIt": true },
+        { "title": "", "showIt": true },
+        { "title": "", "showIt": true },
+        { "title": "", "showIt": true }
       ],
       "data": [],
       "ready": false

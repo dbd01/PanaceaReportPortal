@@ -5,11 +5,18 @@ app.controller("usersController", ['localStorageService','usersService','$scope'
     console.log("usersController");
     var usersTable ={
       "header": [
-        {"title": "_id", "showIt": true },
-        {"title": "username", "showIt": true },
-        {"title": "email", "showIt": true },
-        {"title": "confirmed", "showIt": true },
-        {"title": "active", "showIt": true },
+        {"title": {en:"Id", el:"Αναγνωριστικό"}, "showIt": true },
+        {"title": {en:"Username", el:"Όνομα χρήστη"}, "showIt": true },
+        {"title": {en: "Email", el: "Ηλεκτρονική διεύθυνση"}, "showIt": true },
+        {"title": {en: "Confirmed", el: "Επιβεβαιωμένος"}, "showIt": true },
+        {"title": {en: "Active", el: "Ενεργός"}, "showIt": true },
+      ],
+      "headers": [
+        {"title": "", "showIt": true },
+        {"title": "", "showIt": true },
+        {"title": "", "showIt": true },
+        {"title": "", "showIt": true },
+        {"title": "", "showIt": true },
       ],
       "data": [],
       "ready": false

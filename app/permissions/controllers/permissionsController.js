@@ -4,12 +4,20 @@ app.controller("permissionsController", ['localStorageService', 'permissionsServ
   function (localStorageService, permissionsService, $scope, $state ) {
     var permissionsTable ={
       "header": [
-        { "title": "_id",  "showIt": true },
-        { "title": "name",  "showIt": true },
-        { "title": "type", "showIt": true },
-        { "title": "description", "showIt": true },
-        { "title": "url", "showIt": true },
-        { "title": "model", "showIt": true }
+        { "title": {en: "Id", el:"Αναγνωριστικό"},  "showIt": true },
+        { "title": {en: "Name", el:"Όνομα"},  "showIt": true },
+        { "title": {en: "Type", el:"Τύπος"}, "showIt": true },
+        { "title": {en: "Description", el:"Περιγραφή"}, "showIt": true },
+        { "title": {en: "Url", el:"Url"}, "showIt": true },
+        { "title": {en: "Model", el:"Μοντέλο"}, "showIt": true }
+      ],
+      "headers": [
+        { "title": "",  "showIt": true },
+        { "title": "",  "showIt": true },
+        { "title": "", "showIt": true },
+        { "title": "", "showIt": true },
+        { "title": "", "showIt": true },
+        { "title": "", "showIt": true }
       ],
   		"data": [],
   		"ready": false,

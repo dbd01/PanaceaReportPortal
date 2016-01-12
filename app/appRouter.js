@@ -122,7 +122,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
     {
       name: 'userInfo.viewUser',
       config: {
-        url: "/view",
+        url: "/view/:id",
         templateUrl: "app/users/views/userInfoView.html",
         controller: 'userInfoController'
       }
@@ -130,7 +130,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
     {
       name: 'userInfo.deletedUser',
       config: {
-        url: "/deleted",
+        url: "/deleted/:id",
         templateUrl: "app/users/views/userInfoView.html",
         controller: 'userInfoController'
       }
@@ -138,7 +138,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
     {
       name: 'userInfo.removeUser',
       config: {
-        url: "/remove",
+        url: "/remove:/id",
         templateUrl: "app/users/views/userInfoView.html",
         controller: 'userInfoController'
       }
@@ -146,7 +146,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
     {
       name: 'userInfo.editUser',
       config: {
-        url: "/edit",
+        url: "/edit/:id",
         templateUrl: "app/users/views/userInfoView.html",
         controller: 'userInfoController'
       }
@@ -170,7 +170,7 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
     {
       name: 'userInfo.updateUser',
       config: {
-        url: "/update",
+        url: "/update/:id",
         templateUrl: "app/users/views/userInfoView.html",
         controller: 'userInfoController'
       }

@@ -5,10 +5,16 @@ app.controller("requestedPermissionsController", ['requestedPermissionsService',
   function (requestedPermissionsService, $scope ) {
     var requestedPermissionsTable ={
       "header": [
-        { "title": "_id",  "showIt": true },
-        { "title": "name",  "showIt": true },
-        { "title": "user", "showIt": true },
-        { "title": "application", "showIt": true }
+        { "title": {en: "Id", el:"Αναγνωριστικό"},  "showIt": true },
+        { "title": {en: "Name", el:"Όνομα"},  "showIt": true },
+        { "title": {en: "User", el:"Χρήστης"}, "showIt": true },
+        { "title": {en: "Application", el:"Εφαρμογή"}, "showIt": true }
+      ],
+      "headers": [
+        { "title": "",  "showIt": true },
+        { "title": "",  "showIt": true },
+        { "title": "", "showIt": true },
+        { "title": "", "showIt": true }
       ],
       "data": [],
       "ready": false

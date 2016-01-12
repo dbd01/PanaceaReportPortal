@@ -21,6 +21,10 @@ app.directive('requestedPermissions', ['$state', '$timeout', 'scopeComService', 
                 $scope.toolbar_width = "col-md-12";
               
               $scope.tabletitle=$scope.tabletitles[$scope.lang];
+
+              for (var i = 0; i < $scope.tabledata.header.length; i++) {
+                $scope.tabledata.headers[i].title=$scope.tabledata.header[i].title[$scope.lang];
+              };
               
               scopeComService.flush();
               $scope.create_permission= function(editline){
@@ -49,6 +53,11 @@ app.directive('requestedPermissions', ['$state', '$timeout', 'scopeComService', 
         $rootScope.$watch('lang', function(newvalue, oldvalue){
           $scope.lang=$rootScope.lang;
           $scope.tabletitle=$scope.tabletitles[$scope.lang];
+          if ($scope.tabledata){
+            for (var i = 0; i < $scope.tabledata.header.length; i++) {
+              $scope.tabledata.headers[i].title=$scope.tabledata.header[i].title[$scope.lang];
+            };
+          }
         });
       }
     }
