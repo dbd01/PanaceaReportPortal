@@ -9,7 +9,7 @@
     <button ng-if="tabledata.mode=='editable'" type="button" class="btn btn-info btn-sm" ng-click="addNewEntity()">
       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <translate>Add New </translate>
     </button>
-    <table class="table table-striped table-bordered table-hover table-responsive" id="{{tableid}}">
+    <table datatable="ng" dt-options="dtOptions" class="table table-striped table-bordered table-hover table-responsive" id="{{tableid}}">
       <thead>
         <tr>
           <th ng-repeat="title in tabledata.headers" ng-if="title.showIt">{{title.title}}</th>
