@@ -177,20 +177,20 @@ msgstr "Επιλογή χρήστη"
 #: app/users/views/userInfoTemplate.html:37
 #: app/users/views/userInfoTemplate.html:47
 msgid "Show Applications"
-msgstr "Εφαρμογές"
+msgstr "Εφαρμογές "
 
 #: app/applications/views/applicationInfoTemplate.html:30
 #: app/applications/views/applicationInfoTemplate.html:40
 #: app/users/views/userInfoTemplate.html:33
 #: app/users/views/userInfoTemplate.html:43
 msgid "Show Permissions"
-msgstr "Διακιώματα"
+msgstr "Διακιώματα "
 
 #: app/applications/views/applicationInfoTemplate.html:34
 #: app/applications/views/applicationInfoTemplate.html:44
 #: app/permissions/views/permissionInfoTemplate.html:50
 msgid "Show Users"
-msgstr "Χρήστες"
+msgstr "Χρήστες "
 
 #: ext-modules/polyphemus/polyphemusTemplate.html:9
 msgid "Submit"
