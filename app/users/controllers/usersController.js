@@ -2,8 +2,8 @@
 "use strict";
 
   angular.module('PanaceaReports').controller("usersController", usersController);
-  usersController.$inject= ['localStorageService', 'usersService', '$scope', '$state', '$stateParams'];
-  function usersController(localStorageService, usersService , $scope, $state, $stateParams) {
+  usersController.$inject= ['localStorageService', 'usersService', '$scope', '$state', '$stateParams', 'exceptionService'];
+  function usersController(localStorageService, usersService , $scope, $state, $stateParams, exceptionService) {
     console.log("usersController");
     var usersTable ={
       "header": [
@@ -39,6 +39,10 @@
           userData.push({"value": user.active, "showIt": true}); 
           usersTable.data.push(userData);
         });
+      }, function(error){
+        console.log(exceptionService);
+        console.log(error);
+        exceptionService.catcher("usersService query failed")(error);
       })
     .then(function () {
       $scope.usersTable = usersTable;

@@ -25,7 +25,7 @@
         for (var i = 0; i < $scope.tabledata.header.length; i++) {
           $scope.tabledata.headers[i].title=$scope.tabledata.header[i].title[$scope.lang];
         };
-        console.log($scope.tabledata.headers);
+        
         $scope.tabletitle=$scope.tabletitles[$scope.lang];
       }
     });
