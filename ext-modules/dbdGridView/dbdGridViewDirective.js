@@ -1,8 +1,8 @@
 (function(){
   "use strict";
   
-  angular.module("dbdGridViewModule").directive("dbdGridView", ['$state', '$timeout', 'scopeComService', '$rootScope',
-    '$location', 'DTOptionsBuilder', dbdGridView]);
+  angular.module("dbdGridViewModule").directive("dbdGridView", dbdGridView);
+  dbdGridView.$inject= ['$state', '$timeout', 'scopeComService', '$rootScope', '$location', 'DTOptionsBuilder'];
   function dbdGridView($state, $timeout, scopeComService, $rootScope, $location, DTOptionsBuilder) {
     return {
       controller: "dbdGridViewController",

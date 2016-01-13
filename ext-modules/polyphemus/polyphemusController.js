@@ -1,8 +1,8 @@
 ﻿(function(){
   'use strict';
 
-  angular.module("polyphemusModule").controller("polyphemusController",
-    ['$scope', 'polyphemusService' , '$rootScope', 'polyphemusCommServiceOut', polyphemusController]);
+  angular.module("polyphemusModule").controller("polyphemusController", polyphemusController);
+  polyphemusController.$inject= ['$scope', 'polyphemusService' , '$rootScope', 'polyphemusCommServiceOut'];
   
   function polyphemusController($scope, polyphemusService, $rootScope, polyphemusCommServiceOut) {
     $scope.authData = {

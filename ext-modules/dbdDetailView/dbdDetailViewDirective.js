@@ -1,6 +1,7 @@
 (function(){
 "use strict";
-  angular.module("dbdDetailViewModule").directive("dbdDetailView", ['$state', 'scopeComService', '$timeout', '$location', dbdDetailView]);
+  angular.module("dbdDetailViewModule").directive("dbdDetailView", dbdDetailView);
+  dbdDetailView.$inject= ['$state', 'scopeComService', '$timeout', '$location'];
   
   function dbdDetailView($state, scopeComService, $timeout, $location) {
     return {

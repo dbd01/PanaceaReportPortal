@@ -1,8 +1,8 @@
 (function(){
 "use strict";
 
-  angular.module('PanaceaReports').controller("permissionsController", ['localStorageService', 'permissionsService',
-    '$scope', '$state', permissionsController]);
+  angular.module('PanaceaReports').controller("permissionsController", permissionsController);
+  permissionsController.$inject= ['localStorageService', 'permissionsService', '$scope', '$state'];
   function permissionsController(localStorageService, permissionsService, $scope, $state ) {
     var permissionsTable ={
       "header": [

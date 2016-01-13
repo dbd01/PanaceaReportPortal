@@ -1,8 +1,8 @@
 (function(){
 "use strict";
 
-  angular.module('PanaceaReports').controller("permissionInfoController", ['$state', 'permissionsService',
-    '$scope', 'scopeComService', '$stateParams', permissionInfoController]);
+  angular.module('PanaceaReports').controller("permissionInfoController", permissionInfoController);
+  permissionInfoController.$inject= ['$state', 'permissionsService','$scope', 'scopeComService', '$stateParams'];
   function permissionInfoController($state, permissionsService , $scope , scopeComService, $stateParams) {
     var permissionTable={
       "entity":null,

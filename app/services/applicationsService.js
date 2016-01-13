@@ -1,7 +1,8 @@
 (function(){
   "use strict";
   
-  angular.module('PanaceaReports').factory("applicationsService", ["$resource", "appSettings", "localStorageService", applicationsService])
+  angular.module('PanaceaReports').factory("applicationsService", applicationsService);
+  applicationsService.$inject= ["$resource", "appSettings", "localStorageService"];
   function applicationsService($resource, appSettings, localStorageService) {
     return $resource(appSettings.authServerPath + '/api/v1/application/:applicationId', {}, {
       query: { 

@@ -1,7 +1,8 @@
 (function(){
 "use strict";
 
-	angular.module('PanaceaReports').factory('polyphemusCommServiceIn',['localStorageService', '$rootScope', polyphemusCommServiceIn]);
+	angular.module('PanaceaReports').factory('polyphemusCommServiceIn', polyphemusCommServiceIn);
+	polyphemusCommServiceIn.$inject= ['localStorageService', '$rootScope'];
 	
 	function polyphemusCommServiceIn(localStorageService, $rootScope) {
 		return{

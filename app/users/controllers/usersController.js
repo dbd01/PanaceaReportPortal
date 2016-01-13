@@ -1,8 +1,8 @@
 (function(){
 "use strict";
 
-  angular.module('PanaceaReports').controller("usersController", ['localStorageService','usersService',
-    '$scope', '$state', '$stateParams', usersController]);
+  angular.module('PanaceaReports').controller("usersController", usersController);
+  usersController.$inject= ['localStorageService', 'usersService', '$scope', '$state', '$stateParams'];
   function usersController(localStorageService, usersService , $scope, $state, $stateParams) {
     console.log("usersController");
     var usersTable ={

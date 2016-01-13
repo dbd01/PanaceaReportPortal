@@ -1,7 +1,8 @@
 ﻿(function(){
 "use strict";
 
-  angular.module('PanaceaReports').directive('widgetDashboard', ['localStorageService', widgetDashboard]);
+  angular.module('PanaceaReports').directive('widgetDashboard', widgetDashboard);
+  widgetDashboard.$inject= ['localStorageService'];
   function widgetDashboard(localStorageService) {
     return {
       scope: {

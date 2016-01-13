@@ -1,6 +1,6 @@
 (function(){
-  angular.module('PanaceaReports').directive('requestedPermissions', ['$state', '$timeout',
-    'scopeComService', '$rootScope', requestedPermissions]);
+  angular.module('PanaceaReports').directive('requestedPermissions', requestedPermissions);
+  requestedPermissions.$inject= ['$state', '$timeout', 'scopeComService', '$rootScope'];
   function requestedPermissions($state, $timeout, scopeComService, $rootScope) {
     return {
       restrict: 'E',

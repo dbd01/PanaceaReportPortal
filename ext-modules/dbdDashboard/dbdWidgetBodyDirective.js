@@ -1,8 +1,8 @@
 ﻿(function(){
 "use strict";
 
-  angular.module('dbdDashboardModule').directive('dbdWidgetBody',
-    ['$compile', '$modal', dbdWidgetBody]);
+  angular.module('dbdDashboardModule').directive('dbdWidgetBody', dbdWidgetBody);
+  dbdWidgetBody.$inject= ['$compile', '$modal'];
   function dbdWidgetBody($compile, $modal) {
     return {
       templateUrl: 'ext-modules/dbdDashboard/dbdWidgetBodyTemplate.html',

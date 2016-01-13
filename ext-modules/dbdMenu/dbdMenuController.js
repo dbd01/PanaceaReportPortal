@@ -1,7 +1,8 @@
 ﻿(function(){
 'use strict';
 
-  angular.module("dbdMenuModule").controller("dbdMenuController", ['$rootScope', '$scope', dbdMenuController]);
+  angular.module("dbdMenuModule").controller("dbdMenuController", dbdMenuController);
+  dbdMenuController.$inject= ['$rootScope', '$scope'];
   
   function dbdMenuController($rootScope, $scope) {
     console.log("dbdMenuController");

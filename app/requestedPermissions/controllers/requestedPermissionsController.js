@@ -1,7 +1,8 @@
 (function(){
   "use strict";
 
-  angular.module('PanaceaReports').controller("requestedPermissionsController", ['requestedPermissionsService','$scope', requestedPermissionsController]);
+  angular.module('PanaceaReports').controller("requestedPermissionsController", requestedPermissionsController);
+  requestedPermissionsController.$inject= ['requestedPermissionsService', '$scope'];
   function requestedPermissionsController(requestedPermissionsService, $scope ) {
     var requestedPermissionsTable ={
       "header": [

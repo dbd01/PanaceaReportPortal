@@ -1,8 +1,8 @@
 (function(){
 	"use strict";
 	
-  angular.module('PanaceaReports').controller('logoutController', ['$scope','$rootScope',
-  	'localStorageService', '$http', 'appSettings', 'dbdMenuCommServiceOut', logoutController]);
+  angular.module('PanaceaReports').controller('logoutController', logoutController);
+  logoutController.$inject= ['$scope', '$rootScope', 'localStorageService', '$http', 'appSettings', 'dbdMenuCommServiceOut'];
 	function logoutController($scope, $rootScope, localStorageService, $http, appSettings, dbdMenuCommServiceOut) {
 		$rootScope.authState='unauthorized';
 		$rootScope.log_name="";

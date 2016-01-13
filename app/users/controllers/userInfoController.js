@@ -1,8 +1,8 @@
 (function(){
 "use strict";
 
-  angular.module('PanaceaReports').controller("userInfoController", ['$state', 'usersService', 'groupsService', 
-    '$scope','scopeComService', '$timeout', '$stateParams', userInfoController]);
+  angular.module('PanaceaReports').controller("userInfoController", userInfoController);
+  userInfoController.$inject= ['$state', 'usersService', 'groupsService', '$scope','scopeComService', '$timeout', '$stateParams'];
   function userInfoController($state, usersService, groupsService, $scope, scopeComService, $timeout, $stateParams ) {
     var userTable ={
       "entity":null,

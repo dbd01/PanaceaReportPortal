@@ -1,9 +1,8 @@
 (function(){
 "use strict";
 
-	angular.module('PanaceaReports').controller('layoutController',
-		['$state', '$scope', '$rootScope', 'localStorageService', 'appSettings', 'gettextCatalog', 
-		'dbdMenuCommServiceOut', 'dbdGridViewCommServiceOut', layoutController]);
+	angular.module('PanaceaReports').controller('layoutController', layoutController);
+		layoutController.$inject= ['$state', '$scope', '$rootScope', 'localStorageService', 'appSettings', 'gettextCatalog', 'dbdMenuCommServiceOut', 'dbdGridViewCommServiceOut'];
 		function layoutController($state, $scope, $rootScope, localStorageService, appSettings, gettextCatalog,dbdMenuCommServiceOut, dbdGridViewCommServiceOut){
 			console.log("layoutController");
 			$scope.languages=['en', 'el'];

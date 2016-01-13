@@ -1,7 +1,8 @@
 (function(){
 "use strict";
 
-  angular.module('PanaceaReports').controller("groupsController", ['localStorageService','groupsService','$scope', '$state', groupsController]);
+  angular.module('PanaceaReports').controller("groupsController", groupsController);
+  groupsController.$inject= ['localStorageService', 'groupsService', '$scope', '$state'];
   function groupsController(localStorageService, groupsService, $scope, $state ) {
     var groupsTable ={
       "header": [

@@ -1,8 +1,8 @@
 (function(){
   "use strict";
 
-  angular.module('PanaceaReports').controller("applicationsController", ['localStorageService','applicationsService',
-    '$scope', '$state', applicationsController]);
+  angular.module('PanaceaReports').controller("applicationsController", applicationsController);
+  applicationsController.$inject=['localStorageService', 'applicationsService', '$scope', '$state'];
   function applicationsController(localStorageService, applicationsService , $scope, $state ) {
     var applicationsTable ={
       "header": [

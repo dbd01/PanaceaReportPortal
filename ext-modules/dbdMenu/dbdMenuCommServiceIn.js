@@ -1,7 +1,8 @@
 ﻿(function(){
 	"use strict";
 
-	angular.module('dbdMenuModule').factory('dbdMenuCommServiceIn', ['$rootScope', dbdMenuCommServiceIn]);
+	angular.module('dbdMenuModule').factory('dbdMenuCommServiceIn', dbdMenuCommServiceIn);
+	dbdMenuCommServiceIn.$inject= ['$rootScope'];
 	
 	function dbdMenuCommServiceIn($rootScope) {
 		return{

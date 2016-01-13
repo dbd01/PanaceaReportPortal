@@ -1,8 +1,8 @@
 (function(){
   "use strict";
 
-  angular.module('PanaceaReports').controller("applicationInfoController", ['$state', 'applicationsService', 
-    'groupsService','$scope', 'scopeComService', '$stateParams', applicationInfoController]);
+  angular.module('PanaceaReports').controller("applicationInfoController", applicationInfoController);
+  applicationInfoController.$inject=['$state', 'applicationsService', 'groupsService','$scope', 'scopeComService', '$stateParams'];
   function applicationInfoController($state, applicationsService, groupsService, $scope , scopeComService, $stateParams) {
     var applicationTable ={
       "entity":null,

@@ -1,8 +1,8 @@
 (function(){
 	'use strict';
 
-	angular.module('PanaceaReports').controller('casController', ['localStorageService', '$stateParams', 
-		'$rootScope', '$state', casController]);
+	angular.module('PanaceaReports').controller('casController', casController);
+	casController.$inject= ['localStorageService', '$stateParams', '$rootScope', '$state'];
 	function casController(localStorageService, $stateParams, $rootScope, $state) {
 		//$rootScope.urlLink = {value:"true"};
     console.log("casController")

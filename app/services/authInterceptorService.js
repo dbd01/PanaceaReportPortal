@@ -1,8 +1,8 @@
 (function(){
 "use strict";
 
-  angular.module('PanaceaReports').factory("authInterceptorService", ['$injector','$rootScope', '$location', 
-    'localStorageService', authService])
+  angular.module('PanaceaReports').factory("authInterceptorService", authService);
+  authService.$inject= ['$injector','$rootScope', '$location', 'localStorageService'];
 
   function authService($injector, $rootScope, $location, localStorageService) {
     var state=null;

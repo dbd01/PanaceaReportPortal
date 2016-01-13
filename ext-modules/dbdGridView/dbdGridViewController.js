@@ -1,7 +1,8 @@
 ﻿(function(){
   'use strict';
 
-  angular.module("dbdGridViewModule").controller("dbdGridViewController",['$scope', dbdGridViewController]);
+  angular.module("dbdGridViewModule").controller("dbdGridViewController",dbdGridViewController);
+  dbdGridViewController.$inject= ['$scope'];
   function dbdGridViewController($scope) {
     $scope.$watch('ready', function (newvalue, oldvalue) {
       if (newvalue=="true") {
