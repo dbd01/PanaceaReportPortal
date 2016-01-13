@@ -26,17 +26,19 @@
     else
       applicationsTable.mode='editable';
 
-    applicationsService.query().$promise
-    .then(function (applications) {
-      applications.forEach(function (application) {
-        var applicationData = [];
-        applicationData.push( {"value": application._id, "showIt": true} );
-        applicationData.push( {"value": application.name, "showIt": true} );
-        applicationData.push( {"value": application.description, "showIt": true} );
-        applicationData.push( {"value": application.url, "showIt": true} );
-        applicationsTable.data.push(applicationData);
-      });
-    })
+    applicationsService.query().$promise.then(
+      function (applications) {
+        applications.forEach(function (application) {
+          var applicationData = [];
+          applicationData.push( {"value": application._id, "showIt": true} );
+          applicationData.push( {"value": application.name, "showIt": true} );
+          applicationData.push( {"value": application.description, "showIt": true} );
+          applicationData.push( {"value": application.url, "showIt": true} );
+          applicationsTable.data.push(applicationData);
+        });
+      }), function(error){
+        exceptionService.catcher("ApplicationsService query failed")(error);
+      })
     .then(function () {
       $scope.applicationsTable = applicationsTable;
       $scope.applicationsTable.ready = true;

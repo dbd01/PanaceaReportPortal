@@ -43,7 +43,10 @@
           permissionData.push( {"value": permission.model, "showIt": true} );
           permissionsTable.data.push(permissionData);
         });
-      }).then(function () {
+      }), function(error){
+        exceptionService.catcher("PermissionsService query failed")(error);
+      })
+    .then(function () {
         $scope.permissionsTable = permissionsTable;
         $scope.permissionsTable.ready = true;
         $scope.permissionsTable.detailView='permissionInfo';

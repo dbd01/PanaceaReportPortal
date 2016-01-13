@@ -31,6 +31,8 @@
           requestedPermissionData.push( {"value": requestedPermission.Application.name, "showIt": true} ); 
           requestedPermissionsTable.data.push(requestedPermissionData);
         });
+      }), function(error){
+        exceptionService.catcher("RequestedPermissionsService query failed")(error);
       })
     .then(function () {
       $scope.requestedPermissionsTable = requestedPermissionsTable;

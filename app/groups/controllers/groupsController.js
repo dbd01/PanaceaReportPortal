@@ -25,16 +25,18 @@
     else
       groupsTable.mode='editable';
 
-    groupsService.query().$promise
-    .then(function (groups) {
-      groups.forEach(function (group) {
-        var groupData = [];
-        groupData.push( {"value": group._id, "showIt": true} );
-        groupData.push( {"value": group.name, "showIt": true} );
-        groupData.push( {"value": group.description, "showIt": true} );
-        groupsTable.data.push(groupData);
-      });
-    })
+    groupsService.query().$promise.then(
+      function (groups) {
+        groups.forEach(function (group) {
+          var groupData = [];
+          groupData.push( {"value": group._id, "showIt": true} );
+          groupData.push( {"value": group.name, "showIt": true} );
+          groupData.push( {"value": group.description, "showIt": true} );
+          groupsTable.data.push(groupData);
+        });
+      }), function(error){
+        exceptionService.catcher("GroupsService query failed")(error);
+      })
     .then(function () {
       $scope.groupsTable = groupsTable;
       $scope.groupsTable.ready = true;

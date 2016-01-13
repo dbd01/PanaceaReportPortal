@@ -40,9 +40,7 @@
           usersTable.data.push(userData);
         });
       }, function(error){
-        console.log(exceptionService);
-        console.log(error);
-        exceptionService.catcher("usersService query failed")(error);
+        exceptionService.catcher("UsersService query failed")(error);
       })
     .then(function () {
       $scope.usersTable = usersTable;
