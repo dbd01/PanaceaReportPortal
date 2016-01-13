@@ -2,8 +2,8 @@
   "use strict";
 
   angular.module('PanaceaReports').controller("requestedPermissionsController", requestedPermissionsController);
-  requestedPermissionsController.$inject= ['requestedPermissionsService', '$scope'];
-  function requestedPermissionsController(requestedPermissionsService, $scope ) {
+  requestedPermissionsController.$inject= ['requestedPermissionsService', '$scope', 'exceptionService'];
+  function requestedPermissionsController(requestedPermissionsService, $scope, exceptionService ) {
     var requestedPermissionsTable ={
       "header": [
         { "title": {en: "Id", el:"Αναγνωριστικό"},  "showIt": true },
@@ -31,7 +31,7 @@
           requestedPermissionData.push( {"value": requestedPermission.Application.name, "showIt": true} ); 
           requestedPermissionsTable.data.push(requestedPermissionData);
         });
-      }), function(error){
+      }, function(error){
         exceptionService.catcher("RequestedPermissionsService query failed")(error);
       })
     .then(function () {

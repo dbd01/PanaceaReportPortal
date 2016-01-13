@@ -2,8 +2,8 @@
 "use strict";
 
   angular.module('PanaceaReports').controller("groupsController", groupsController);
-  groupsController.$inject= ['localStorageService', 'groupsService', '$scope', '$state'];
-  function groupsController(localStorageService, groupsService, $scope, $state ) {
+  groupsController.$inject= ['localStorageService', 'groupsService', '$scope', '$state', 'exceptionService'];
+  function groupsController(localStorageService, groupsService, $scope, $state, exceptionService ) {
     var groupsTable ={
       "header": [
         { "title": {en: "Id", el:"Αναγνωριστικό"},  "showIt": true },
@@ -34,7 +34,7 @@
           groupData.push( {"value": group.description, "showIt": true} );
           groupsTable.data.push(groupData);
         });
-      }), function(error){
+      }, function(error){
         exceptionService.catcher("GroupsService query failed")(error);
       })
     .then(function () {

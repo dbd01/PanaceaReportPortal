@@ -2,8 +2,8 @@
 "use strict";
 
   angular.module('PanaceaReports').controller("permissionsController", permissionsController);
-  permissionsController.$inject= ['localStorageService', 'permissionsService', '$scope', '$state'];
-  function permissionsController(localStorageService, permissionsService, $scope, $state ) {
+  permissionsController.$inject= ['localStorageService', 'permissionsService', '$scope', '$state', 'exceptionService'];
+  function permissionsController(localStorageService, permissionsService, $scope, $state, exceptionService ) {
     var permissionsTable ={
       "header": [
         { "title": {en: "Id", el:"Αναγνωριστικό"},  "showIt": true },
@@ -43,7 +43,7 @@
           permissionData.push( {"value": permission.model, "showIt": true} );
           permissionsTable.data.push(permissionData);
         });
-      }), function(error){
+      }, function(error){
         exceptionService.catcher("PermissionsService query failed")(error);
       })
     .then(function () {

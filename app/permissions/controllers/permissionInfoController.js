@@ -2,8 +2,8 @@
 "use strict";
 
   angular.module('PanaceaReports').controller("permissionInfoController", permissionInfoController);
-  permissionInfoController.$inject= ['$state', 'permissionsService','$scope', 'scopeComService', '$stateParams'];
-  function permissionInfoController($state, permissionsService , $scope , scopeComService, $stateParams) {
+  permissionInfoController.$inject= ['$state', 'permissionsService','$scope', 'scopeComService', '$stateParams', 'exceptionService'];
+  function permissionInfoController($state, permissionsService , $scope , scopeComService, $stateParams, exceptionService) {
     var permissionTable={
       "entity":null,
       "ready": false
@@ -61,6 +61,8 @@
         $scope.permissionTable.detailViewTemplate='app/permissions/views/permissionInfoTemplate.html';
         $scope.permissionTable.context='forms';
         $scope.permissionTable.ready = true;
+      }, function(error){
+        exceptionService.catcher("PermissionsService query failed")(error);
       });
     }
     else if (mode.indexOf('add')>-1){

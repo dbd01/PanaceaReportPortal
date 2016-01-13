@@ -2,8 +2,8 @@
 "use strict";
 
   angular.module('PanaceaReports').controller("userInfoController", userInfoController);
-  userInfoController.$inject= ['$state', 'usersService', 'groupsService', '$scope','scopeComService', '$timeout', '$stateParams'];
-  function userInfoController($state, usersService, groupsService, $scope, scopeComService, $timeout, $stateParams ) {
+  userInfoController.$inject= ['$state', 'usersService', 'groupsService', '$scope','scopeComService', '$timeout', '$stateParams', 'exceptionService'];
+  function userInfoController($state, usersService, groupsService, $scope, scopeComService, $timeout, $stateParams, exceptionService ) {
     var userTable ={
       "entity":null,
       "groups": [],
@@ -62,6 +62,8 @@
           $scope.userTable.context='forms';
           $scope.userTable.ready = true;
         });
+      },function(error){
+        exceptionService.catcher("UsersService query failed")(error);
       });
     }
     else if (mode.indexOf('add')>-1){

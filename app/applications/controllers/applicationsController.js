@@ -2,8 +2,8 @@
   "use strict";
 
   angular.module('PanaceaReports').controller("applicationsController", applicationsController);
-  applicationsController.$inject=['localStorageService', 'applicationsService', '$scope', '$state'];
-  function applicationsController(localStorageService, applicationsService , $scope, $state ) {
+  applicationsController.$inject=['localStorageService', 'applicationsService', '$scope', '$state', 'exceptionService'];
+  function applicationsController(localStorageService, applicationsService , $scope, $state, exceptionService ) {
     var applicationsTable ={
       "header": [
         { "title": {en: "Id", el:"Αναγνωριστικό"},  "showIt": true },
@@ -36,7 +36,7 @@
           applicationData.push( {"value": application.url, "showIt": true} );
           applicationsTable.data.push(applicationData);
         });
-      }), function(error){
+      }, function(error){
         exceptionService.catcher("ApplicationsService query failed")(error);
       })
     .then(function () {
