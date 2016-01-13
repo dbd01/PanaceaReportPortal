@@ -1,7 +1,8 @@
 ﻿(function(){
 "use strict";
 
-  angular.module('PanaceaReports').directive('widgetDashboard', ['localStorageService', function (localStorageService) {
+  angular.module('PanaceaReports').directive('widgetDashboard', ['localStorageService', widgetDashboard]);
+  function widgetDashboard(localStorageService) {
     return {
       scope: {
       },
@@ -61,5 +62,5 @@
         }, true);
       }
     }
-  }]);
+  };
 })();

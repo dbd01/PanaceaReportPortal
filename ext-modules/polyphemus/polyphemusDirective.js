@@ -1,7 +1,8 @@
 (function(){
 "use strict";
 
-	angular.module("polyphemusModule").directive("polyphemusLogin", function () {
+	angular.module("polyphemusModule").directive("polyphemusLogin", polyphemusLogin); 
+	function polyphemusLogin() {
 	  return {
 	    transclude: true,
 	    scope: {
@@ -11,5 +12,5 @@
 	    controller: "polyphemusController",
 	    templateUrl: "ext-modules/polyphemus/polyphemusTemplate.html"
 	  };
-	});
+	}
 })();

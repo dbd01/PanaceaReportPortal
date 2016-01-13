@@ -1,6 +1,6 @@
 "use strict";
 //var $stateProviderReference;
-angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',  function ($stateProvider, $urlRouterProvider) {
+angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
   //$stateProviderReference = $stateProvider;
 
   var states=[

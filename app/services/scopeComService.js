@@ -1,7 +1,8 @@
 (function(){
 "use strict";
 
-	angular.module('PanaceaReports').factory("scopeComService", function () {
+	angular.module('PanaceaReports').factory("scopeComService", scopeComService);
+	function scopeComService() {
 		var messages = {};
 		messages.list = [];
 		messages.add = function (message) {
@@ -11,5 +12,5 @@
 			messages.list = [];
 		};
 		return messages;
-	});
+	};
 })();

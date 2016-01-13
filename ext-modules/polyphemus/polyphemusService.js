@@ -1,9 +1,10 @@
 ﻿(function(){
 	"use strict";
-	angular.module('polyphemusModule').factory('polyphemusService', ["$resource", "polyphemusSettings",
-		function($resource, polyphemusSettings) {
-			return $resource(polyphemusSettings.authServerPath + '/login', {}, {
-				send: { method: 'POST' }
-			});
-		}]);
+	angular.module('polyphemusModule').factory('polyphemusService', ["$resource", "polyphemusSettings", polyphemusService]);
+	
+	function polyphemusService($resource, polyphemusSettings) {
+		return $resource(polyphemusSettings.authServerPath + '/login', {}, {
+			send: { method: 'POST' }
+		});
+	}
 })();

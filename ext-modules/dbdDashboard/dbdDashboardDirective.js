@@ -1,7 +1,9 @@
 ﻿(function(){
   "use strict";
 
-  angular.module('dbdDashboardModule').directive('dbdDashboard', function () {
+  angular.module('dbdDashboardModule').directive('dbdDashboard', dbdDashboard);
+
+  function dbdDashboard() {
     return {
       templateUrl: 'ext-modules/dbdDashboard/dbdDashboardTemplate.html',
       link: function ($scope, element, attrs) {
@@ -16,5 +18,5 @@
         }
       }
     };
-  });
+  };
 })();

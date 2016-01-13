@@ -1,7 +1,9 @@
 (function(){
 "use strict";
 
-	angular.module('PanaceaReports').factory('dbdMenuCommServiceOut',function(dbdMenuCommServiceIn) {
+	angular.module('PanaceaReports').factory('dbdMenuCommServiceOut', dbdMenuCommServiceOut);
+
+	function dbdMenuCommServiceOut(dbdMenuCommServiceIn) {
 		return{
 			setStates: function(newValue) {
 				dbdMenuCommServiceIn.setStates(newValue);
@@ -10,5 +12,5 @@
 				dbdMenuCommServiceIn.setLang(newValue);
 			}
 		}
-	});
+	};
 })();
