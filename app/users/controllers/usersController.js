@@ -21,6 +21,11 @@ app.controller("usersController", ['localStorageService','usersService','$scope'
       "data": [],
       "ready": false
     }
+    if ($state.includes('users.deletedUsers'))
+      usersTable.mode='deleted';
+    else
+      usersTable.mode='editable';
+    
     usersService.query().$promise.then(
       function (users) {
         users.forEach(function (user) {
@@ -36,10 +41,6 @@ app.controller("usersController", ['localStorageService','usersService','$scope'
     .then(function () {
       $scope.usersTable = usersTable;
       $scope.usersTable.ready = true;
-      if ($state.includes('users.deletedUsers'))
-        $scope.usersTable.mode='deleted';
-      else
-        $scope.usersTable.mode='editable';
       $scope.usersTable.detailView='userInfo';
       $scope.usersTable.entity='user';
       $scope.usersTable.entityC='User';

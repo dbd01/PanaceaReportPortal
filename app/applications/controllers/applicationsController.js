@@ -18,6 +18,12 @@ app.controller("applicationsController", ['localStorageService','applicationsSer
       "data": [],
       "ready": false
     }
+
+    if ($state.includes('applications.deletedApplications'))
+      applicationsTable.mode='deleted';
+    else
+      applicationsTable.mode='editable';
+
     applicationsService.query().$promise
     .then(function (applications) {
       applications.forEach(function (application) {
@@ -32,10 +38,6 @@ app.controller("applicationsController", ['localStorageService','applicationsSer
     .then(function () {
       $scope.applicationsTable = applicationsTable;
       $scope.applicationsTable.ready = true;
-      if ($state.includes('applications.deletedApplications'))
-        $scope.applicationsTable.mode='deleted';
-      else
-        $scope.applicationsTable.mode='editable';
       $scope.applicationsTable.detailView='applicationInfo';
       $scope.applicationsTable.entity='application';
       $scope.applicationsTable.entityC='Application';

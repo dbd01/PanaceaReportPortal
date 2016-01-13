@@ -2,6 +2,7 @@
 angular.module("dbdGridViewModule").directive("dbdGridView", ['$state', '$timeout', 'scopeComService', '$rootScope', '$location', 'DTOptionsBuilder',
   function ($state, $timeout, scopeComService, $rootScope, $location, DTOptionsBuilder) {
     return {
+      controller: "dbdGridViewController",
     	templateUrl: "ext-modules/dbdGridView/dbdGridViewTemplate.html",
       restrict: 'E',
       scope: {
@@ -16,8 +17,10 @@ angular.module("dbdGridViewModule").directive("dbdGridView", ['$state', '$timeou
         $scope.$watch('ready', function (newvalue, oldvalue) {
           if (newvalue=="true") {
             $timeout(function () {
-             /* // apply DataTable options, use defaults if none specified by user
-              var options = {};
+              //$scope.tabletitle=$scope.tabletitles[$scope.lang];
+              //scopeComService.flush();
+              // apply DataTable options, use defaults if none specified by user
+              /*var options = {};
                 options = {
                   "bStateSave": true,
                   "iCookieDuration": 2419200, //1 month 
@@ -27,26 +30,20 @@ angular.module("dbdGridViewModule").directive("dbdGridView", ['$state', '$timeou
                   "bFilter": false,
                   "bInfo": false,
                   "bDestroy": true
-                };
-              // apply the plugin
-              var dataTable = element.dataTable(options);*/
-
+                };*/
+              var table = $('#' + $scope.tableid);
+              //var oTable = table.dataTable(options);
+              var oTable = table.dataTable();
               // DataTables configurable options
-              $scope.dtOptions = DTOptionsBuilder.newOptions()
+              /*$scope.dtOptions = DTOptionsBuilder.newOptions()
                   .withDisplayLength(10)
-                  .withOption('bLengthChange', false);
+                  .withOption('bLengthChange', false);*/
 
               if ($scope.tabledata.mode=='editable')
                 $scope.toolbar_width = "col-md-6";
               else
                 $scope.toolbar_width = "col-md-12";
 
-              $scope.tabletitle=$scope.tabletitles[$scope.lang];
-              
-              for (var i = 0; i < $scope.tabledata.header.length; i++) {
-                $scope.tabledata.headers[i].title=$scope.tabledata.header[i].title[$scope.lang];
-              };
-              //scopeComService.flush();
               $scope.addNewEntity = function(){
                 if ($scope.tabledata.mode=="deleted"){
                   //error

@@ -23,6 +23,12 @@ app.controller("permissionsController", ['localStorageService', 'permissionsServ
   		"ready": false,
       "mode": ""
     }
+
+    if ($state.includes('permissions.deletedPermissions'))
+      permissionsTable.mode='deleted';
+    else
+      permissionsTable.mode='editable';
+
     permissionsService.query().$promise.then(
       function (permissions) {
         permissions.forEach(function (permission) {
@@ -38,10 +44,6 @@ app.controller("permissionsController", ['localStorageService', 'permissionsServ
       }).then(function () {
         $scope.permissionsTable = permissionsTable;
         $scope.permissionsTable.ready = true;
-        if ($state.includes('permissions.deletedPermissions'))
-          $scope.permissionsTable.mode='deleted';
-        else
-          $scope.permissionsTable.mode='editable';
         $scope.permissionsTable.detailView='permissionInfo';
         $scope.permissionsTable.entity='permission';
         $scope.permissionsTable.entityC='Permission';

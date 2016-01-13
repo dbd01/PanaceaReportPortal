@@ -17,6 +17,12 @@ app.controller("groupsController", ['localStorageService','groupsService','$scop
       "ready": false,
       "mode": ""
     }
+
+    if ($state.includes('groups.deletedGroups'))
+      groupsTable.mode='deleted';
+    else
+      groupsTable.mode='editable';
+
     groupsService.query().$promise
     .then(function (groups) {
       groups.forEach(function (group) {
@@ -30,10 +36,6 @@ app.controller("groupsController", ['localStorageService','groupsService','$scop
     .then(function () {
       $scope.groupsTable = groupsTable;
       $scope.groupsTable.ready = true;
-      if ($state.includes('groups.deletedGroups'))
-        $scope.groupsTable.mode='deleted';
-      else
-        $scope.groupsTable.mode='editable';
       $scope.groupsTable.detailView='groupInfo';
       $scope.groupsTable.detailViewDeleted='groupInfodeleted';
       $scope.groupsTable.detailViewRemove='groupInfoRemove';
