@@ -59,7 +59,11 @@
           $scope.groupTable.detailViewTemplate='app/groups/views/groupInfoTemplate.html';
           $scope.groupTable.context='forms';
           $scope.groupTable.ready = true;
+        }, function(error){
+          exceptionService.catcher("PermissionsService query failed")(error);
         });
+      }, function(error){
+        exceptionService.catcher("GroupsService query failed")(error);
       });
     }
     else if (mode.indexOf('add')>-1){
