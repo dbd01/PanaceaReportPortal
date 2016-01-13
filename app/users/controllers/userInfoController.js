@@ -61,6 +61,8 @@
           $scope.userTable.detailViewTemplate='app/users/views/userInfoTemplate.html';
           $scope.userTable.context='forms';
           $scope.userTable.ready = true;
+        }, function(error){
+          exceptionService.catcher("GroupsService query failed")(error);
         });
       },function(error){
         exceptionService.catcher("UsersService query failed")(error);

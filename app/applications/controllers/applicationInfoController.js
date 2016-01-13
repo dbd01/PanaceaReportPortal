@@ -62,7 +62,11 @@
           $scope.applicationTable.detailViewTemplate='app/applications/views/applicationInfoTemplate.html';
           $scope.applicationTable.context='forms';
           $scope.applicationTable.ready = true;
+        }, function(error){
+          exceptionService.catcher("GroupsService query failed")(error);
         });
+      }, function(error){
+        exceptionService.catcher("ApplicationService query failed")(error);
       });
     }
     else if (mode.indexOf('add')>-1){
