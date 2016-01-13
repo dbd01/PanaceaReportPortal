@@ -1,6 +1,7 @@
-﻿"use strict";
+﻿(function(){
+	"use strict";
 
-angular.module('polyphemusModule').factory('polyphemusCommServiceOut', function(polyphemusCommServiceIn) {
+	angular.module('polyphemusModule').factory('polyphemusCommServiceOut', function(polyphemusCommServiceIn) {
 		return{
 			getValue : function() {
 				return polyphemusCommServiceIn.getValue();
@@ -9,4 +10,5 @@ angular.module('polyphemusModule').factory('polyphemusCommServiceOut', function(
 				polyphemusCommServiceIn.setValue(newValue);
 			}
 		}
-});
+	});
+})();
