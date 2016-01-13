@@ -20,8 +20,8 @@
           <th ng-if="tabledata.mode=='deleted'" translate>Restore</th>
         </tr>
       </thead>
-      <tbody ng-if="tabledata.mode=='editable'">
-        <tr ng-repeat="row in tabledata.data" ng-init="rowNum = $index">
+      <tbody >
+        <tr ng-repeat="row in tabledata.data" ng-init="rowNum = $index" ng-if="tabledata.mode=='editable'">
           <td ng-repeat="item in row" ng-if="item.showIt" >{{item.value}}</td>
           <td>
             <button class='btn btn-info btn-xs' type="submit" ng-click="view_entity(rowNum)" value="view">
@@ -39,9 +39,7 @@
             </button> 
           </td>
         </tr>
-      </tbody>
-      <tbody ng-if="tabledata.mode=='deleted'">
-        <tr ng-repeat="row in tabledata.data" ng-init="rowNum = $index">
+        <tr ng-repeat="row in tabledata.data" ng-init="rowNum = $index" ng-if="tabledata.mode=='deleted'">
           <td ng-repeat="item in row" ng-if="item.showIt" >{{item.value}}</td>
           <td>
             <button class='btn btn-info btn-xs' type="submit" ng-click="view_entity(rowNum)" value="view">
