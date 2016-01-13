@@ -1,7 +1,7 @@
 (function(){
 "use strict";
 
-  app.controller("userInfoController", ['$state', 'usersService', 'groupsService','$scope','scopeComService', '$timeout', '$stateParams',
+  angular.module('PanaceaReports').controller("userInfoController", ['$state', 'usersService', 'groupsService','$scope','scopeComService', '$timeout', '$stateParams',
     function ($state, usersService, groupsService, $scope, scopeComService, $timeout, $stateParams ) {
       var userTable ={
         "entity":null,

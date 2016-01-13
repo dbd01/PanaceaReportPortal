@@ -1,7 +1,6 @@
 ﻿"use strict";
 
-app
-.config(['$httpProvider',function ($httpProvider) {
+angular.module('PanaceaReports').config(['$httpProvider',function ($httpProvider) {
   console.log("app.config");
   $httpProvider.interceptors.push('authInterceptorService');
   $httpProvider.defaults.useXDomain = true;

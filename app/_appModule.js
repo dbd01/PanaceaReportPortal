@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('PanaceaReports', [
+angular.module('PanaceaReports', [
 	'gettext',
 	'widgetUserModule',
 	'dbdDashboardModule',
@@ -16,5 +16,5 @@ var app = angular.module('PanaceaReports', [
 	'ngRoute',
 	'datatables',
 	'checklist-model'
-	]);
+]);
 
