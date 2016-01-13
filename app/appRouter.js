@@ -1,8 +1,8 @@
 "use strict";
-//var $stateProviderReference;
-angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-  //$stateProviderReference = $stateProvider;
 
+angular.module('PanaceaReports').config(appRouter);
+appRouter.$inject= ['$stateProvider', '$urlRouterProvider'];
+function appRouter($stateProvider, $urlRouterProvider) {
   var states=[
     {
       name: 'start',
@@ -512,4 +512,4 @@ angular.module('PanaceaReports').config(['$stateProvider', '$urlRouterProvider',
     $stateProvider.state(state.name, state.config);
   });
   $urlRouterProvider.otherwise("/");
-}]);
+};

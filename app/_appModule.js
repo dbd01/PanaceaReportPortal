@@ -17,4 +17,3 @@ angular.module('PanaceaReports', [
 	'datatables',
 	'checklist-model'
 ]);
-
