@@ -2,9 +2,9 @@
 "use strict";
 
   angular.module('PanaceaReports').factory("authInterceptorService", authService);
-  authService.$inject= ['$injector','$rootScope', '$location', 'localStorageService'];
+  authService.$inject= ['$injector','$rootScope', '$location', 'localStorageService', 'exceptionService'];
 
-  function authService($injector, $rootScope, $location, localStorageService) {
+  function authService($injector, $rootScope, $location, localStorageService, exceptionService) {
     var state=null;
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
       //event.preventDefault();
@@ -53,6 +53,7 @@
     });
     $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
       console.log("authInterceptorService: stateChangeError: ", error);
+      exceptionService.catcher("Routing to "+toState.name+" failed.")(error);
     });
     var quest = {};
     var _request  = function (config) {
