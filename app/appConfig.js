@@ -20,6 +20,7 @@ function extendExceptionHandler($delegate) {
      * throw exception;
      */
     //toastr.error(exception.msg, errorData);
+    alert(exception.msg, errorData);
   };
 };
 
