@@ -1,37 +1,34 @@
- "use strict";
+(function(){
+  "use strict";
 
-    app
-        .factory("permissionsService", ["$resource", "appSettings", "localStorageService", permissionsService])
+  angular.module('PanaceaReports').factory("permissionsService", ["$resource", "appSettings", "localStorageService", permissionsService])
 
-    function permissionsService($resource, appSettings, localStorageService) {
-
-        return $resource(appSettings.authServerPath + '/api/v1/permission/:permissionId', {}, {
-            query: { 
-                method: 'GET', 
-                isArray: true ,
-                params: { permissionId: '' }               
-            },
-            getOne: {
-                 method: 'GET',
-                 params: { permissionId: '@permissionId' }
-            },            
-            add: {
-                 method: 'POST'                 
-            },
-            update: { 
-                method: 'PUT',
-                params: { permissionId: '@permissionId' }
-                
-            },
-             partialUpdate: { 
-                method: 'PATCH',
-                params: { permissionId: '@permissionId' }               
-            },
-
-            remove: { 
-                method: 'DELETE',
-                params: { permissionId: '@permissionId' }                
-            }
-
-        });
-    }
+  function permissionsService($resource, appSettings, localStorageService) {
+    return $resource(appSettings.authServerPath + '/api/v1/permission/:permissionId', {}, {
+      query: { 
+        method: 'GET', 
+        isArray: true ,
+        params: { permissionId: '' }               
+      },
+      getOne: {
+        method: 'GET',
+        params: { permissionId: '@permissionId' }
+      },
+      add: {
+        method: 'POST'
+      },
+      update: {
+        method: 'PUT',
+        params: { permissionId: '@permissionId' }
+      },
+      partialUpdate: { 
+        method: 'PATCH',
+        params: { permissionId: '@permissionId' }
+      },
+      remove: { 
+        method: 'DELETE',
+        params: { permissionId: '@permissionId' }
+      }
+    });
+  }
+})();

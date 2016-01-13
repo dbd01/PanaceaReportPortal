@@ -34,10 +34,6 @@ angular.module("dbdGridViewModule").directive("dbdGridView", ['$state', '$timeou
               var table = $('#' + $scope.tableid);
               //var oTable = table.dataTable(options);
               var oTable = table.dataTable();
-              // DataTables configurable options
-              /*$scope.dtOptions = DTOptionsBuilder.newOptions()
-                  .withDisplayLength(10)
-                  .withOption('bLengthChange', false);*/
 
               if ($scope.tabledata.mode=='editable')
                 $scope.toolbar_width = "col-md-6";

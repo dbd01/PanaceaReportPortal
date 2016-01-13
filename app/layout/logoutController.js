@@ -1,7 +1,8 @@
+(function(){
 	"use strict";
 	
-  app
-	.controller('logoutController', ['$scope','$rootScope','localStorageService', '$http', 'appSettings', 'dbdMenuCommServiceOut',
+  angular.module('PanaceaReports').controller('logoutController', ['$scope','$rootScope',
+  	'localStorageService', '$http', 'appSettings', 'dbdMenuCommServiceOut',
 		function($scope, $rootScope, localStorageService, $http, appSettings, dbdMenuCommServiceOut) {
 			$rootScope.authState='unauthorized';
 			$rootScope.log_name="";
@@ -28,3 +29,4 @@
          console.log('logout error->', response);
       });   */
 	}]);
+})();

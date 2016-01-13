@@ -1,6 +1,6 @@
-
+(function(){
 "use strict";
 
-app.controller("reportsController", [ function () {
-}]);
-
+	angular.module('PanaceaReports').controller("reportsController", [ function () {
+	}]);
+})();
