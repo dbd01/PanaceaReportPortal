@@ -87,16 +87,25 @@
                 var entityName, entity="";
                 entityName = $scope.tabledata.data[editline][1].value;
                 entity=$scope.tabledata.entity;
-                //bootbox.confirm("Are you sure you want to delete " + entity + " <b>" + entityName +"</b> ?", function(ok){
-                  //if (ok){
+                if (confirm("Are you sure you want to delete " + entity + " " + entityName +" ?")){
+                  var id=$scope.tabledata.data[editline][0].value;
+                  //scopeComService.add(id);
+                  //$state.go($scope.tabledata.detailView+'.remove'+$scope.tabledata.entityC);
+                  var path=$scope.tabledata.detailView+'/remove/'+id;
+                  console.log("path:", path);
+                  $location.path(path);
+                }
+                /*bootbox.confirm("Are you sure you want to delete " + entity + " <b>" + entityName +"</b> ?", function(ok){
+                  console.log(ok)
+                  if (ok){
                     var id=$scope.tabledata.data[editline][0].value;
                     //scopeComService.add(id);
                     //$state.go($scope.tabledata.detailView+'.remove'+$scope.tabledata.entityC);
                     var path=$scope.tabledata.detailView+'/remove/'+id;
                     console.log("path:", path);
                     $location.path(path);
-                  //}
-                //});
+                  }
+                });*/
               }
             }, 0);
           }
