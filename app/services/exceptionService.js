@@ -11,7 +11,12 @@ function exceptionService($log) {
   function catcher(message) {
     return function(reason) {
       $log.error(message, reason);
-      alert(message, reason);
+      var errMsg=message;
+      if (reason.data){
+        if (reason.data.message)
+          errMsg+=" : "+reason.data.message;
+      }
+      alert(errMsg);
     };
   }
 }

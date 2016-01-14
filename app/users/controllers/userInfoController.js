@@ -135,6 +135,7 @@
           $state.go('users.allUsers');
         },
         function (error) {
+          console.log(error);
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('UsersService','addOne'))(error);
         });
     }
