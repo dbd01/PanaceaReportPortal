@@ -3,9 +3,9 @@
 
   angular.module('PanaceaReports').controller("applicationInfoController", applicationInfoController);
 
-  applicationInfoController.$inject=['$state', 'applicationsService', 'groupsService','$scope', 'scopeComService', '$stateParams', 'exceptionService'];
+  applicationInfoController.$inject=['$state', 'applicationsService', 'groupsService','$scope', 'scopeComService', '$stateParams', 'exceptionService', '$rootScope'];
 
-  function applicationInfoController($state, applicationsService, groupsService, $scope , scopeComService, $stateParams, exceptionService) {
+  function applicationInfoController($state, applicationsService, groupsService, $scope , scopeComService, $stateParams, exceptionService, $rootScope) {
     var applicationTable ={
       "entity":null,
       "groups": [],
@@ -15,6 +15,29 @@
     var _id=$stateParams.id;
     var newData=scopeComService.list[0]
     scopeComService.flush();
+
+    var customMessages={
+      invalidModeError:{
+        en:"Non valid mode: "+mode+".",
+        el:"Μη έγκυρη κατάσταση φόρμας: "+mode+"."
+      },
+      removeSuccess:{
+        en:function(_id){
+          return "Application "+_id+" deleted.";
+        },
+        el:function(_id){
+          return "Η εφαρμογή "+_id+" διαγράφηκε.";
+        }
+      },
+      actionFailedError:{
+        en:function(serviceName, actionName){
+          return serviceName+" failed on action: "+actionName+".";
+        },
+        el:function(serviceName, actionName){
+          return "H υπηρεσία "+ serviceName+" απέτυχε να εκτελέσει τη δράση: "+actionName+".";
+        },
+      }
+    }
 
     if (mode.indexOf('remove')>-1){
       removeOne();
@@ -40,7 +63,7 @@
       }
     }
     else{
-      exceptionService.catcher("Non valid mode: "+mode+".")(error);
+      exceptionService.catcher(customMessages.invalidModeError[$rootScope.lang])(error);
     }
     function configApplicationTable(groups, cb){
       applicationTable.groups=groups;
@@ -65,11 +88,11 @@
       applicationsService.remove({ id:_id }).$promise.then(
         function (response){
           console.log(response);
-          alert('Application '+_id+" deleted.");
+          alert(customMessages.removeSuccess[$rootScope.lang](_id));
           $state.go('applications.allApplications')
         },
         function (error) {
-          exceptionService.catcher("ApplicationsService remove failed")(error);
+          exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('ApplicationsService','removeOne'))(error);
         });
     }
     function newOne(){
@@ -87,7 +110,7 @@
           });
         }, 
         function (error){
-          exceptionService.catcher("GroupsService query failed")(error);
+          exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('GroupsService','query'))(error);
         });
     }
     function getOne(){
@@ -101,11 +124,11 @@
               });
             },
             function (error){
-              exceptionService.catcher("GroupsService query failed")(error);
+              exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('GroupsService','query'))(error);
             });
         },
         function (error){
-          exceptionService.catcher("ApplicationsService query failed")(error);
+          exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('ApplicationsService','query'))(error);
         });
     }
     function addOne(){
@@ -115,7 +138,7 @@
           $state.go('applications.allApplications');
         },
         function (error) {
-          exceptionService.catcher("ApplicationsService save failed.")(error);
+          exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('ApplicationsService','addOne'))(error);
         });
     }
     function updateOne(){
@@ -125,7 +148,7 @@
           $state.go('applications.allApplications');
         },
         function (error) {
-          exceptionService.catcher("ApplicationsService update failed.")(error);
+          exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('ApplicationsService','updateOne'))(error);
         });
     }
 
