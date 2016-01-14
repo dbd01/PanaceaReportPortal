@@ -1,5 +1,6 @@
 ﻿"use strict";
 
+/* $exceptionHandler decorator*/
 angular.module('PanaceaReports').config(exceptionConfig);
 exceptionConfig.$inject = ['$provide'];
 function exceptionConfig($provide) {
@@ -8,11 +9,11 @@ function exceptionConfig($provide) {
 extendExceptionHandler.$inject = ['$delegate'];
 function extendExceptionHandler($delegate) {
   return function(exception, cause) {
-    $delegate(exception, cause);
-    var errorData = {
+    $delegate(exception, cause);//execute the default behaviour
+    /*var errorData = {
       exception: exception,
       cause: cause
-    };
+    };*/
     /**
      * Could add the error to a service's collection,
      * add errors to $rootScope, log errors to remote web server,
@@ -20,7 +21,7 @@ function extendExceptionHandler($delegate) {
      * throw exception;
      */
     //toastr.error(exception.msg, errorData);
-    alert(exception, errorData);
+    alert(cause+" : "+exception);
   };
 };
 
