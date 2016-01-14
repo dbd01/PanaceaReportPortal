@@ -13,6 +13,10 @@
 							<td ng-if="mode=='edit' || mode=='new'"> <input type="text" class="form-control"  ng-model ="tabledata.entity.username" required> </td>
 							<td ng-if="mode=='view' || mode=='deleted'"> {{tabledata.entity.username}} </td>
 						</tr>
+						<tr ng-if="mode=='new'">
+							<td translate>Password:</td>
+							<td> <input type="password" class="form-control"  ng-model ="tabledata.entity.password" required> </td>
+						</tr>
 						<tr>
 							<td translate>Email:</td>
 							<td ng-if="mode=='edit' || mode=='new'"> <input type="textarea" rows="4" class="form-control"  ng-model ="tabledata.entity.email" required> </td>

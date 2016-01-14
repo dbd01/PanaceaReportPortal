@@ -4,31 +4,31 @@
   angular.module('PanaceaReports').factory("applicationsService", applicationsService);
   applicationsService.$inject= ["$resource", "appSettings", "localStorageService"];
   function applicationsService($resource, appSettings, localStorageService) {
-    return $resource(appSettings.authServerPath + '/api/v1/application/:applicationId', {}, {
-      query: { 
+    return $resource(appSettings.authServerPath + '/api/v1/application/:id', null, {
+      /*'query': { 
         method: 'GET', 
         isArray: true ,
-        params: { applicationId: '' }
+        //params: { applicationId: '' }
       },
-      getOne: {
+      'getOne': {
         method: 'GET',
-        params: { applicationId: '@applicationId' }
+        //params: { applicationId: '@applicationId' }
       },
-      add: {
+      'add': {
         method: 'POST'
-      },
-      update: { 
+      },*/
+      'update': { 
         method: 'PUT',
-        params: { applicationId: '@applicationId' }
+        //params: { applicationId: '@applicationId' }
       },
-      partialUpdate: { 
+      'partialUpdate': { 
         method: 'PATCH',
-        params: { applicationId: '@applicationId' }
+        //params: { applicationId: '@applicationId' }
       },
-      remove: { 
+      /*'remove': { 
         method: 'DELETE',
-        params: { applicationId: '@applicationId' }
-      }
+        //params: { applicationId: '@applicationId' }
+      }*/
     });
   }
 })();

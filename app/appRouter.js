@@ -139,7 +139,7 @@ function appRouter($stateProvider, $urlRouterProvider) {
       name: 'userInfo.removeUser',
       config: {
         url: "/remove/:id",
-        templateUrl: "app/users/views/userInfoView.html",
+        template: '<div></div>',
         controller: 'userInfoController'
       }
     },

@@ -12,124 +12,121 @@
       "ready": false
     };
     var mode=$state.current.name;
-    var _id=$stateParams.id;//scopeComService.list[0];
+    var _id=$stateParams.id;
     var newData=scopeComService.list[0]
     scopeComService.flush();
-    console.log(mode, _id, newData);
     if (mode.indexOf('remove')>-1){
-      applicationsService.remove({ 'applicationId': _id }, function (response) {
-        console.log("Application has been deleted successfully."); 
-        $state.go('applications.allApplications')
-      },function (response) {
-        if (response.data == null){
-          console.log("response  data is null! -(0)");
-        }
-        else{
-          console.log("response (0) ->", response);
-        }
-      });
+      removeOne();
     }
     else if (mode.indexOf('new')>-1){
-      var groups=groupsService.query(function(){
-        applicationTable.groups=groups;
-        applicationTable.entity={
-          "_id":'',
-          "name":'',
-          "description":'',
-          "url":'',
-          "groups": []
-        };
-        $scope.applicationTable = applicationTable
-        $scope.applicationTable.detailView='applicationInfo';
-        $scope.applicationTable.gridView='applications';
-        $scope.applicationTable.entityC='Application';
-        $scope.applicationTable.entityCP='Applications';
-        $scope.applicationTable.detailViewTemplate='app/applications/views/applicationInfoTemplate.html';
-        $scope.applicationTable.context='forms';
-        $scope.applicationTable.ready = true;
-      });
+      newOne();
     }
     else if (mode.indexOf('edit')>-1 || mode.indexOf('view')>-1 || mode.indexOf('deleted')>-1){
-      var application=applicationsService.getOne({'applicationId': _id}, function(){
-        var groups=groupsService.query(function(){
-          applicationTable.entity=application;
-          applicationTable.groups=groups;
-          $scope.applicationTable = applicationTable;
-          $scope.applicationTable.detailView='applicationInfo';
-          $scope.applicationTable.gridView='applications';
-          $scope.applicationTable.entityC='Application';
-          $scope.applicationTable.entityCP='Applications';
-          $scope.applicationTable.detailViewTemplate='app/applications/views/applicationInfoTemplate.html';
-          $scope.applicationTable.context='forms';
-          $scope.applicationTable.ready = true;
-        }, function(error){
-          exceptionService.catcher("GroupsService query failed")(error);
-        });
-      }, function(error){
-        exceptionService.catcher("ApplicationService query failed")(error);
-      });
+      getOne();
     }
     else if (mode.indexOf('add')>-1){
       if (newData){
-        var groupzIDz =[];
-        for (var i=0; i< newData.groups.length; i++){
-          groupzIDz[i] = newData.groups[i]._id; 
-        }
-        newData.groups=groupzIDz;
-        applicationsService.add(newData, function (response) {
-          console.log("Application has been added successfully!");
-          $state.go('applications.allApplications');
-        },function (response) {
-          if (response.data == null){
-            console.log("response data is null!!!!!");
-            $scope.alert = { 
-              type: 'danger',
-              msg: 'No response from server'
-            };
-          }
-          else{
-            console.log("response ->", response);
-            $scope.alert = {
-              type: 'danger', 
-              msg: response.data.message 
-            };
-          }
+        assignGroups(function(){
+          addOne();
         });
       }
     }
     else if (mode.indexOf('update')>-1){
       if (newData){
-        var groupzIDz =[];
-        for (var i=0; i< newData.groups.length; i++){
-          groupzIDz[i] = newData.groups[i]._id; 
-        }
-        newData.groups=groupzIDz;
-        applicationsService.update({'applicationId': _id }, newData, function (response) {
-          console.log("Application has been updated successfully.");
-          $state.go('applications.allApplications');
-        },function (response) {
-          if (response.data == null){
-            console.log("response data is null!!!!!");
-            $scope.alert = {
-              type: 'danger',
-              msg: 'No response from server'
-            };
-          }
-          else{
-            $scope.alert = {
-              type: 'danger',
-              msg: response.data.message
-            };
-          }
+        assignGroups(function(){
+          updateOne();
         });
       }
     }
     else{
-      //error
+      exceptionService.catcher("Non valid mode: "+mode+".")(error);
     }
-  };
+    function configApplicationTable(groups, cb){
+      applicationTable.groups=groups;
+      applicationTable.detailView='applicationInfo';
+      applicationTable.gridView='applications';
+      applicationTable.entityC='Application';
+      applicationTable.entityCP='Applications';
+      applicationTable.detailViewTemplate='app/applications/views/applicationInfoTemplate.html';
+      applicationTable.context='forms';
+      applicationTable.ready = true;
+      cb();
+    }
+    function assignGroups(cb){
+      var groupzIDz =[];
+      for (var i=0; i< newData.groups.length; i++){
+        groupzIDz[i] = newData.groups[i]._id; 
+      }
+      newData.groups=groupzIDz;
+      cb();
+    }
+    function removeOne(){
+      applicationsService.remove({ id:_id }).$promise.then(
+        function (response){
+          console.log(response);
+          alert('Application '+_id+" deleted.");
+          $state.go('applications.allApplications')
+        },
+        function (error) {
+          exceptionService.catcher("ApplicationService remove failed")(error);
+        });
+    }
+    function newOne(){
+      applicationTable.entity={
+        "_id":'',
+        "name":'',
+        "description":'',
+        "url":'',
+        "groups": []
+      };
+      groupsService.query().$promise.then(
+        function (groups){
+          configApplicationTable(groups, function(){
+            $scope.applicationTable = applicationTable;
+          });
+        }, 
+        function (error){
+          exceptionService.catcher("GroupsService query failed")(error);
+        });
+    }
+    function getOne(){
+      applicationsService.get({id:_id}).$promise.then(
+        function (application){
+          applicationTable.entity=application;
+          groupsService.query().$promise.then(
+            function (groups){
+              configApplicationTable(groups, function(){
+                $scope.applicationTable = applicationTable;
+              });
+            },
+            function (error){
+              exceptionService.catcher("GroupsService query failed")(error);
+            });
+        },
+        function (error){
+          exceptionService.catcher("ApplicationService query failed")(error);
+        });
+    }
+    function addOne(){
+      applicationsService.save(newData).$promise.then(
+        function (response) {
+          alert(response.message);
+          $state.go('applications.allApplications');
+        },
+        function (error) {
+          exceptionService.catcher("ApplicationService save failed.")(error);
+        });
+    }
+    function updateOne(){
+      applicationsService.update({'applicationId': _id }, newData).$promise.then(
+        function (response) {
+          alert(response.message);
+          $state.go('applications.allApplications');
+        },
+        function (error) {
+          exceptionService.catcher("ApplicationService update failed.")(error);
+        });
+    }
 
-  function removeSuccessCb(){
-    
-  }
+  };
 })();
