@@ -163,7 +163,7 @@ function appRouter($stateProvider, $urlRouterProvider) {
       name: 'userInfo.addUser',
       config: {
         url: "/add",
-        templateUrl: "app/users/views/userInfoView.html",
+        template: '<div></div>',
         controller: 'userInfoController'
       }
     },
@@ -171,7 +171,7 @@ function appRouter($stateProvider, $urlRouterProvider) {
       name: 'userInfo.updateUser',
       config: {
         url: "/update/:id",
-        templateUrl: "app/users/views/userInfoView.html",
+        template: '<div></div>',
         controller: 'userInfoController'
       }
     },
@@ -243,7 +243,7 @@ function appRouter($stateProvider, $urlRouterProvider) {
       name: 'groupInfo.removeGroup',
       config: {
         url: "/remove/:id",
-        templateUrl: "app/groups/views/groupInfoView.html",
+        template: '<div></div>',
         controller: 'groupInfoController'
       }
     },
@@ -267,7 +267,7 @@ function appRouter($stateProvider, $urlRouterProvider) {
       name: 'groupInfo.addGroup',
       config: {
         url: "/add",
-        templateUrl: "app/groups/views/groupInfoView.html",
+        template: '<div></div>',
         controller: 'groupInfoController'
       }
     },
@@ -275,7 +275,7 @@ function appRouter($stateProvider, $urlRouterProvider) {
       name: 'groupInfo.updateGroup',
       config: {
         url: "/update/:id",
-        templateUrl: "app/groups/views/groupInfoView.html",
+        template: '<div></div>',
         controller: 'groupInfoController'
       }
     },
@@ -347,7 +347,7 @@ function appRouter($stateProvider, $urlRouterProvider) {
       name: 'applicationInfo.removeApplication',
       config: {
         url: "/remove/:id",
-        templateUrl: "app/applications/views/applicationInfoView.html",
+        template: '<div></div>',
         controller: 'applicationInfoController'
       }
     },
@@ -371,6 +371,7 @@ function appRouter($stateProvider, $urlRouterProvider) {
       name: 'applicationInfo.addApplication',
       config: {
         url: "/add",
+        template: '<div></div>',
         controller: 'applicationInfoController'
       }
     },
@@ -378,6 +379,7 @@ function appRouter($stateProvider, $urlRouterProvider) {
       name: 'applicationInfo.updateApplication',
       config: {
         url: "/update/:id",
+        template: '<div></div>',
         controller: 'applicationInfoController'
       }
     },
@@ -449,7 +451,7 @@ function appRouter($stateProvider, $urlRouterProvider) {
       name: 'permissionInfo.removePermission',
       config: {
         url: "/remove/:id",
-        templateUrl: "app/permissions/views/permissionInfoView.html",
+        template: '<div></div>',
         controller: 'permissionInfoController'
       }
     },
@@ -473,7 +475,7 @@ function appRouter($stateProvider, $urlRouterProvider) {
       name: 'permissionInfo.addPermission',
       config: {
         url: "/add",
-        templateUrl: "app/permissions/views/permissionInfoView.html",
+        template: '<div></div>',
         controller: 'permissionInfoController'
       }
     },
@@ -481,7 +483,7 @@ function appRouter($stateProvider, $urlRouterProvider) {
       name: 'permissionInfo.updatePermission',
       config: {
         url: "/update/:id",
-        templateUrl: "app/permissions/views/permissionInfoView.html",
+        template: '<div></div>',
         controller: 'permissionInfoController'
       }
     },

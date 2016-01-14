@@ -5,8 +5,8 @@
   permissionsService.$inject= ["$resource", "appSettings", "localStorageService"];
 
   function permissionsService($resource, appSettings, localStorageService) {
-    return $resource(appSettings.authServerPath + '/api/v1/permission/:permissionId', {}, {
-      query: { 
+    return $resource(appSettings.authServerPath + '/api/v1/permission/:id', null, {
+      /*query: { 
         method: 'GET', 
         isArray: true ,
         params: { permissionId: '' }               
@@ -17,19 +17,19 @@
       },
       add: {
         method: 'POST'
-      },
+      },*/
       update: {
         method: 'PUT',
-        params: { permissionId: '@permissionId' }
+        //params: { permissionId: '@permissionId' }
       },
       partialUpdate: { 
         method: 'PATCH',
-        params: { permissionId: '@permissionId' }
+        //params: { permissionId: '@permissionId' }
       },
-      remove: { 
+      /*remove: { 
         method: 'DELETE',
         params: { permissionId: '@permissionId' }
-      }
+      }*/
     });
   }
 })();

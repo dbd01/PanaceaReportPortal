@@ -23,22 +23,34 @@
 
     requestedPermissionsService.query().$promise.then(
       function (requestedPermissions) {
-        requestedPermissions.forEach(function (requestedPermission) {
-          var requestedPermissionData = [];
-          requestedPermissionData.push( {"value": requestedPermission._id, "showIt": true} );
-          requestedPermissionData.push( {"value": requestedPermission.name, "showIt": true} );
-          requestedPermissionData.push( {"value": requestedPermission.User.username, "showIt": true} );
-          requestedPermissionData.push( {"value": requestedPermission.Application.name, "showIt": true} ); 
-          requestedPermissionsTable.data.push(requestedPermissionData);
+        populateRequestedPermissionsTable(requestedPermissions, function(){
+          configRequestedPermissionsTable(function(){
+            $scope.requestedPermissionsTable = requestedPermissionsTable;
+          });
         });
-      }, function(error){
+      },
+      function(error){
         exceptionService.catcher("RequestedPermissionsService query failed")(error);
-      })
-    .then(function () {
-      $scope.requestedPermissionsTable = requestedPermissionsTable;
-      $scope.requestedPermissionsTable.ready = true;
-      $scope.requestedPermissionsTable.detailView='permissionInfo';
-      $scope.requestedPermissionsTable.entity='requested permission';
-    });
+      });
+
+    function populateRequestedPermissionsTable(requestedPermissions, cb){
+      requestedPermissions.forEach(function (requestedPermission) {
+        var requestedPermissionData = [];
+        requestedPermissionData.push( {"value": requestedPermission._id, "showIt": true} );
+        requestedPermissionData.push( {"value": requestedPermission.name, "showIt": true} );
+        requestedPermissionData.push( {"value": requestedPermission.User.username, "showIt": true} );
+        requestedPermissionData.push( {"value": requestedPermission.Application.name, "showIt": true} );
+        requestedPermissionsTable.data.push(requestedPermissionData);
+      });
+      cb();
+    };
+    function configRequestedPermissionsTable(cb){
+      requestedPermissionsTable.detailView='permissionInfo';
+      requestedPermissionsTable.entity='requested permission';
+      requestedPermissionsTable.entityC='Requested Permission';
+      requestedPermissionsTable.entityCP='Requested Permissions';
+      requestedPermissionsTable.ready = true;
+      cb();
+    };
   };
 })();

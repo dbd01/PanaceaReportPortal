@@ -28,8 +28,7 @@
 
     applicationsService.query().$promise.then(
       function (applications) {
-        populateApplicationData(applications, function (applicationData){
-          applicationsTable.data.push(applicationData);
+        populateApplicationsTable(applications, function (){
           configApplicationsTable(function(){
             $scope.applicationsTable = applicationsTable;
           });
@@ -39,15 +38,16 @@
         exceptionService.catcher("ApplicationsService query failed")(error);
       });
 
-    function populateApplicationData(applications, cb){
+    function populateApplicationsTable(applications, cb){
       applications.forEach(function (application) {
         var applicationData = [];
         applicationData.push( {"value": application._id, "showIt": true} );
         applicationData.push( {"value": application.name, "showIt": true} );
         applicationData.push( {"value": application.description, "showIt": true} );
         applicationData.push( {"value": application.url, "showIt": true} );
-        cb(applicationData);
+        applicationsTable.data.push(applicationData);
       });
+      cb();
     }
 
     function configApplicationsTable(cb){

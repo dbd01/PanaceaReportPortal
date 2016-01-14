@@ -5,8 +5,8 @@
   groupsService.$inject= ["$resource", "appSettings", "localStorageService"];
 
   function groupsService($resource, appSettings, localStorageService) {
-    return $resource(appSettings.authServerPath + '/api/v1/group/:groupId', {}, {
-      query: { 
+    return $resource(appSettings.authServerPath + '/api/v1/group/:id', null, {
+      /*query: { 
         method: 'GET', 
         isArray: true ,
         params: { groupId: '' }
@@ -17,19 +17,19 @@
       },
       add: {
         method: 'POST'
-      },
-      update: { 
+      },*/
+      'update': { 
         method: 'PUT',
-        params: { groupId: '@groupId' }
+        //params: { groupId: '@groupId' }
       },
-      partialUpdate: { 
+      'partialUpdate': { 
         method: 'PATCH',
-        params: { groupId: '@groupId' }
+        //params: { groupId: '@groupId' }
       },
-      remove: { 
+      /*remove: { 
         method: 'DELETE',
         params: { groupId: '@groupId' }
-      }
+      }*/
     });
   }
 })();

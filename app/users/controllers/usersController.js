@@ -23,6 +23,7 @@
       "data": [],
       "ready": false
     }
+
     if ($state.includes('users.deletedUsers'))
       usersTable.mode='deleted';
     else
@@ -30,25 +31,36 @@
     
     usersService.query().$promise.then(
       function (users) {
-        users.forEach(function (user) {
-          var userData = [];
-          userData.push({"value": user._id, "showIt": true});
-          userData.push({"value": user.username, "showIt": true});
-          userData.push({"value": user.email, "showIt": true});
-          userData.push({"value": user.confirmed, "showIt": true});
-          userData.push({"value": user.active, "showIt": true}); 
-          usersTable.data.push(userData);
+        populateUsersTable(users, function (){
+          configUsersTable(function(){
+            $scope.usersTable = usersTable;
+          })
         });
-      }, function(error){
+      },
+      function (error){
         exceptionService.catcher("UsersService query failed")(error);
-      })
-    .then(function () {
-      $scope.usersTable = usersTable;
-      $scope.usersTable.ready = true;
-      $scope.usersTable.detailView='userInfo';
-      $scope.usersTable.entity='user';
-      $scope.usersTable.entityC='User';
-      $scope.usersTable.entityCP='Users';
-    });
+      });
+
+    function populateUsersTable(users, cb){
+      users.forEach(function (user) {
+        var userData = [];
+        userData.push({"value": user._id, "showIt": true});
+        userData.push({"value": user.username, "showIt": true});
+        userData.push({"value": user.email, "showIt": true});
+        userData.push({"value": user.confirmed, "showIt": true});
+        userData.push({"value": user.active, "showIt": true});
+        usersTable.data.push(userData);
+      });
+      cb();
+    };
+
+    function configUsersTable(cb){
+      usersTable.detailView='userInfo';
+      usersTable.entity='user';
+      usersTable.entityC='User';
+      usersTable.entityCP='Users';
+      usersTable.ready = true;
+      cb();
+    }
   };
 })();

@@ -27,25 +27,31 @@
 
     groupsService.query().$promise.then(
       function (groups) {
-        groups.forEach(function (group) {
-          var groupData = [];
-          groupData.push( {"value": group._id, "showIt": true} );
-          groupData.push( {"value": group.name, "showIt": true} );
-          groupData.push( {"value": group.description, "showIt": true} );
-          groupsTable.data.push(groupData);
+        populateGroupsTable(groups, function (){
+          configGroupsTable(function(){
+            $scope.groupsTable = groupsTable;
+          });
         });
       }, function(error){
         exceptionService.catcher("GroupsService query failed")(error);
-      })
-    .then(function () {
-      $scope.groupsTable = groupsTable;
-      $scope.groupsTable.ready = true;
-      $scope.groupsTable.detailView='groupInfo';
-      $scope.groupsTable.detailViewDeleted='groupInfodeleted';
-      $scope.groupsTable.detailViewRemove='groupInfoRemove';
-      $scope.groupsTable.entity='group';
-      $scope.groupsTable.entityC='Group';
-      $scope.groupsTable.entityCP='Groups';
-    });
+      });
+    function populateGroupsTable(groups, cb){
+      groups.forEach(function (group) {
+        var groupData = [];
+        groupData.push( {"value": group._id, "showIt": true} );
+        groupData.push( {"value": group.name, "showIt": true} );
+        groupData.push( {"value": group.description, "showIt": true} );
+        groupsTable.data.push(groupData);
+      });
+      cb();
+    };
+    function configGroupsTable(cb){
+      groupsTable.detailView='groupInfo';
+      groupsTable.entity='group';
+      groupsTable.entityC='Group';
+      groupsTable.entityCP='Groups';
+      groupsTable.ready = true;
+      cb();
+    };
   };
 })();

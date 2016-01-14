@@ -13,9 +13,9 @@
 							<td ng-if="mode=='edit' || mode=='new'"> <input type="text" class="form-control"  ng-model ="tabledata.entity.username" required> </td>
 							<td ng-if="mode=='view' || mode=='deleted'"> {{tabledata.entity.username}} </td>
 						</tr>
-						<tr ng-if="mode=='new'">
+						<tr ng-if="mode=='edit' || mode=='new'">
 							<td translate>Password:</td>
-							<td> <input type="password" class="form-control"  ng-model ="tabledata.entity.password" required> </td>
+							<td> <input type="password" class="form-control"  ng-model ="tabledata.entity.hashedPassword" required ng-disabled="mode=='edit'"> </td>
 						</tr>
 						<tr>
 							<td translate>Email:</td>

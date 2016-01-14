@@ -9,109 +9,102 @@
       "ready": false
     };
     var mode=$state.current.name;
-    var _id=$stateParams.id;//scopeComService.list[0];
+    var _id=$stateParams.id;
     var newData=scopeComService.list[0]
     var newPermissionName=scopeComService.list[1];
     scopeComService.flush();
-    console.log(mode, _id, newData);
+
     if (mode.indexOf('remove')>-1){
-      permissionsService.remove({ permissionId: _id }, function (response) {
-        console.log("Permission has been deleted successfully."); 
-        $state.go('permissions.allPermissions')
-      },function (response) {
-        if (response.data == null){
-          console.log("response  data is null! -(0)");
-        }
-        else{
-          console.log("response (0) ->", response);
-        }
-      });
+      removeOne();
     }
     else if (mode.indexOf('new')>-1){
-      var permissions=permissionsService.query(function(){
-        if (!newPermissionName)
-          newPermissionName='';
-        permissionTable.entity={
-          "_id":'',
-          "name":newPermissionName,
-          "type":'',
-          "description":'',
-          "url":'',
-          "model":'',
-          "groups": []
-        };
-        $scope.permissionTable = permissionTable
-        $scope.permissionTable.detailView='permissionInfo';
-        $scope.permissionTable.gridView='permissions';
-        $scope.permissionTable.entityC='Permission';
-        $scope.permissionTable.entityCP='Permissions';
-        $scope.permissionTable.detailViewTemplate='app/permissions/views/permissionInfoTemplate.html';
-        $scope.permissionTable.context='forms';
-        $scope.permissionTable.ready = true;
-      });
+      newOne();
     }
     else if (mode.indexOf('edit')>-1 || mode.indexOf('view')>-1 || mode.indexOf('deleted')>-1){
-      var permission=permissionsService.getOne({permissionId: _id}, function(){
-        permissionTable.entity=permission;
-        $scope.permissionTable = permissionTable
-        $scope.permissionTable.detailView='permissionInfo';
-        $scope.permissionTable.gridView='permissions';
-        $scope.permissionTable.entityC='Permission';
-        $scope.permissionTable.entityCP='Permissions';
-        $scope.permissionTable.detailViewTemplate='app/permissions/views/permissionInfoTemplate.html';
-        $scope.permissionTable.context='forms';
-        $scope.permissionTable.ready = true;
-      }, function(error){
-        exceptionService.catcher("PermissionsService query failed")(error);
-      });
+      getOne();
     }
     else if (mode.indexOf('add')>-1){
       if (newData){
-        permissionsService.add(newData, function (response) {
-          console.log("Permission has been added successfully!");
-          $state.go('permissions.allPermissions');
-        },function (response) {
-          if (response.data == null){
-            console.log("response data is null!!!!!");
-            $scope.alert = { 
-              type: 'danger',
-              msg: 'No response from server'
-            };
-          }
-          else{
-            console.log("response ->", response);
-            $scope.alert = {
-              type: 'danger', 
-              msg: response.data.message 
-            };
-          }
-        });
+       addOne();
       }
     }
     else if (mode.indexOf('update')>-1){
       if (newData){
-        permissionsService.update({permissionId: _id }, newData, function (response) {
-          console.log("Permission has been updated successfully.");
-          $state.go('permissions.allPermissions');
-        },function (response) {
-          if (response.data == null){
-            console.log("response data is null!!!!!");
-            $scope.alert = {
-              type: 'danger',
-              msg: 'No response from server'
-            };
-          }
-          else{
-            $scope.alert = {
-              type: 'danger',
-              msg: response.data.message
-            };
-          }
-        });
+        updateOne();
       }
     }
     else{
-      //error
+      exceptionService.catcher("Non valid mode: "+mode+".")(error);
     }
+
+    function configPermissionTable(cb){
+      permissionTable.detailView='permissionInfo';
+      permissionTable.gridView='permissions';
+      permissionTable.entityC='Permission';
+      permissionTable.entityCP='Permissions';
+      permissionTable.detailViewTemplate='app/permissions/views/permissionInfoTemplate.html';
+      permissionTable.context='forms';
+      permissionTable.ready = true;
+      cb();
+    };
+    function removeOne(){
+      permissionsService.remove({ id:_id }).$promise.then(
+        function (response){
+          console.log(response);
+          alert('Permission '+_id+" deleted.");
+          $state.go('permissions.allPermissions');
+        },
+        function (error) {
+          exceptionService.catcher("PermissionsService remove failed")(error);
+        });
+    };
+    function newOne(){
+      if (!newPermissionName)
+        newPermissionName='';
+      permissionTable.entity={
+        "_id":'',
+        "name":newPermissionName,
+        "type":'',
+        "description":'',
+        "url":'',
+        "model":'',
+        "groups": []
+      };
+      configPermissionTable(function(){
+        $scope.permissionTable = permissionTable;
+      });
+    };
+    function getOne(){
+      permissionsService.get({id:_id}).$promise.then(
+        function (permission){
+          permissionTable.entity=permission;
+          configPermissionTable(function(){
+            $scope.permissionTable = permissionTable;
+          });
+        },
+        function (error){
+          exceptionService.catcher("PermissionsService query failed")(error);
+        });
+    };
+    function addOne(){
+      permissionsService.save(newData).$promise.then(
+        function (response) {
+          alert(response.message);
+          $state.go('permissions.allPermissions');
+        },
+        function (error) {
+          exceptionService.catcher("PermissionsService save failed")(error);
+        });
+    };
+    function updateOne(){
+      permissionsService.update({id: _id }, newData).$promise.then(
+        function (response) {
+          alert(response.message);
+          $state.go('permissions.allPermissions');
+        },
+        function (error) {
+          exceptionService.catcher("PermissionsService update failed")(error);
+        });
+    };
   };
 })();

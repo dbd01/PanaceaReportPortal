@@ -15,6 +15,7 @@
     var _id=$stateParams.id;
     var newData=scopeComService.list[0]
     scopeComService.flush();
+
     if (mode.indexOf('remove')>-1){
       removeOne();
     }
@@ -68,7 +69,7 @@
           $state.go('applications.allApplications')
         },
         function (error) {
-          exceptionService.catcher("ApplicationService remove failed")(error);
+          exceptionService.catcher("ApplicationsService remove failed")(error);
         });
     }
     function newOne(){
@@ -104,7 +105,7 @@
             });
         },
         function (error){
-          exceptionService.catcher("ApplicationService query failed")(error);
+          exceptionService.catcher("ApplicationsService query failed")(error);
         });
     }
     function addOne(){
@@ -114,17 +115,17 @@
           $state.go('applications.allApplications');
         },
         function (error) {
-          exceptionService.catcher("ApplicationService save failed.")(error);
+          exceptionService.catcher("ApplicationsService save failed.")(error);
         });
     }
     function updateOne(){
-      applicationsService.update({'applicationId': _id }, newData).$promise.then(
+      applicationsService.update({id: _id }, newData).$promise.then(
         function (response) {
           alert(response.message);
           $state.go('applications.allApplications');
         },
         function (error) {
-          exceptionService.catcher("ApplicationService update failed.")(error);
+          exceptionService.catcher("ApplicationsService update failed.")(error);
         });
     }
 

@@ -13,118 +13,121 @@
     var _id=$stateParams.id;//scopeComService.list[0];
     var newData=scopeComService.list[0];
     scopeComService.flush();
-    console.log(mode, _id, newData);
+    
     if (mode.indexOf('remove')>-1){
-      usersService.remove({ 'userId': _id }, function (response) {
-        console.log("User has been deleted successfully."); 
-        $state.go('users.allUsers')
-      },function (response) {
-        if (response.data == null){
-          console.log("response  data is null! -(0)");
-        }
-        else{
-          console.log("response (0) ->", response);
-        }
-      });
+      removeOne();
     }
     else if (mode.indexOf('new')>-1){
-      var groups=groupsService.query(function(){
-        userTable.groups=groups;
-        userTable.entity={
-          "_id":'',
-          "username":'',
-          "email":'',
-          "confirmed":'',
-          "active":'',
-          "groups": []
-        };
-        $scope.userTable = userTable
-        $scope.userTable.detailView='userInfo';
-        $scope.userTable.gridView='users';
-        $scope.userTable.entityC='User';
-        $scope.userTable.entityCP='Users';
-        $scope.userTable.detailViewTemplate='app/users/views/userInfoTemplate.html';
-        $scope.userTable.context='forms';
-        $scope.userTable.ready = true;
-      });
+      newOne();
     }
     else if (mode.indexOf('edit')>-1 || mode.indexOf('view')>-1 || mode.indexOf('deleted')>-1){
-      var user=usersService.getOne({'userId': _id}, function(){
-        var groups=groupsService.query(function(){
-          userTable.entity=user;
-          userTable.groups=groups;
-          $scope.userTable = userTable
-          $scope.userTable.detailView='userInfo';
-          $scope.userTable.gridView='users';
-          $scope.userTable.entityC='User';
-          $scope.userTable.entityCP='Users';
-          $scope.userTable.detailViewTemplate='app/users/views/userInfoTemplate.html';
-          $scope.userTable.context='forms';
-          $scope.userTable.ready = true;
-        }, function(error){
-          exceptionService.catcher("GroupsService query failed")(error);
-        });
-      },function(error){
-        exceptionService.catcher("UsersService query failed")(error);
-      });
+      getOne();
     }
     else if (mode.indexOf('add')>-1){
       if (newData){
-        var groupzIDz =[];
-        for (var i=0; i< newData.groups.length; i++){
-          groupzIDz[i] = newData.groups[i]._id; 
-        }
-        newData.groups=groupzIDz;
-        usersService.add(newData, function (response) {
-          console.log("User has been added successfully!");
-          $state.go('users.allUsers');
-        },function (response) {
-          if (response.data == null){
-            console.log("response data is null!!!!!");
-            $scope.alert = { 
-              type: 'danger',
-              msg: 'No response from server'
-            };
-          }
-          else{
-            console.log("response ->", response);
-            $scope.alert = {
-              type: 'danger', 
-              msg: response.data.message 
-            };
-          }
+        newData.password=newData.hashedPassword;
+        assignGroups(function(){
+          addOne();
         });
       }
     }
     else if (mode.indexOf('update')>-1){
       if (newData){
-        var groupzIDz =[];
-        for (var i=0; i< newData.groups.length; i++){
-          groupzIDz[i] = newData.groups[i]._id; 
-        }
-        newData.groups=groupzIDz;
-        usersService.partialUpdate({'userId': _id }, newData, function (response) {
-          console.log("User has been updated successfully.");
-          $state.go('users.allUsers');
-        },function (response) {
-          if (response.data == null){
-            console.log("response data is null!!!!!");
-            $scope.alert = {
-              type: 'danger',
-              msg: 'No response from server'
-            };
-          }
-          else{
-            $scope.alert = {
-              type: 'danger',
-              msg: response.data.message
-            };
-          }
+        assignGroups(function(){
+          updatePartiallyOne();
         });
       }
     }
     else{
-      //error
+      exceptionService.catcher("Non valid mode: "+mode+".")(error);
+    }
+
+    function configUserTable(groups, cb){
+      userTable.groups=groups;
+      userTable.detailView='userInfo';
+      userTable.gridView='users';
+      userTable.entityC='User';
+      userTable.entityCP='Users';
+      userTable.detailViewTemplate='app/users/views/userInfoTemplate.html';
+      userTable.context='forms';
+      userTable.ready = true;
+      cb();
+    }
+    function assignGroups(cb){
+      var groupzIDz =[];
+      for (var i=0; i< newData.groups.length; i++){
+        groupzIDz[i] = newData.groups[i]._id; 
+      }
+      newData.groups=groupzIDz;
+      cb();
+    }
+    function removeOne(){
+      usersService.remove({ id:_id }).$promise.then(
+        function (response){
+          console.log(response);
+          alert('User '+_id+" deleted.");
+          $state.go('users.allUsers')
+        },
+        function (error) {
+          exceptionService.catcher("UsersService remove failed")(error);
+        });
+    }
+    function newOne(){
+      userTable.entity={
+        "_id":'',
+        "username":'',
+        "email":'',
+        "confirmed":'',
+        "active":'',
+        "groups": []
+      };
+      groupsService.query().$promise.then(
+        function (groups){
+          configUserTable(groups, function(){
+            $scope.userTable = userTable;
+          });
+        }, 
+        function (error){
+          exceptionService.catcher("GroupsService query failed")(error);
+        });
+    }
+    function getOne(){
+      usersService.get({id:_id}).$promise.then(
+        function (user){
+          userTable.entity=user;
+          groupsService.query().$promise.then(
+            function (groups){
+              configUserTable(groups, function(){
+                $scope.userTable = userTable;
+              });
+            },
+            function (error){
+              exceptionService.catcher("GroupsService query failed")(error);
+            });
+        },
+        function (error){
+          exceptionService.catcher("UsersService query failed")(error);
+        });
+    }
+    function addOne(){
+      usersService.save(newData).$promise.then(
+        function (response) {
+          alert(response.message);
+          $state.go('users.allUsers');
+        },
+        function (error) {
+          exceptionService.catcher("UsersService save failed.")(error);
+        });
+    }
+    function updatePartiallyOne(){
+      usersService.partialUpdate({id: _id }, newData).$promise.then(
+        function (response) {
+          alert(response.message);
+          $state.go('users.allUsers');
+        },
+        function (error) {
+          exceptionService.catcher("UsersService update failed.")(error);
+        });
     }
   };
 })();

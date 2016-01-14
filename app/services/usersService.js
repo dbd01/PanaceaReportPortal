@@ -5,8 +5,8 @@
   userService.$inject= ["$resource", "appSettings", "localStorageService"];
 
   function userService($resource, appSettings, localStorageService) {
-    return $resource(appSettings.authServerPath + '/api/v1/user/:userId', {}, {
-      query: { 
+    return $resource(appSettings.authServerPath + '/api/v1/user/:id', {}, {
+      /*query: { 
         method: 'GET', 
         isArray: true ,
         params: { userId: '' }
@@ -17,19 +17,19 @@
       },
       add: {
         method: 'POST'
-      },
+      },*/
       update: { 
         method: 'PUT',
-        params: { userId: '@userId' }
+        //params: { userId: '@userId' }
       },
       partialUpdate: { 
         method: 'PATCH',
-        params: { userId: '@userId' }
+        //params: { userId: '@userId' }
       },
-      remove: { 
+      /*remove: { 
         method: 'DELETE',
         params: { userId: '@userId' }
-      }
+      }*/
     });
   }
 })();
