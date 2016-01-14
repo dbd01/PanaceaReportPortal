@@ -5,7 +5,9 @@
   authService.$inject= ['$injector','$rootScope', '$location', 'localStorageService', 'exceptionService'];
 
   function authService($injector, $rootScope, $location, localStorageService, exceptionService) {
+    //executes each time a state transition (routing) occurs
     var state=null;
+    //executes when the transition starts
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
       //event.preventDefault();
       console.log("authInterceptorService : fromState: ", fromState.name);
@@ -48,12 +50,14 @@
         }
       }
     });
+    //executes when the transition gets completed successfully
     $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
       console.log("authInterceptorService: stateChangeSuccess");
     });
+    //executes when the transition fails
     $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
-      console.log("authInterceptorService: stateChangeError: ", error);
-      exceptionService.catcher("Routing to "+toState.name+" failed.")(error);
+      //console.log("authInterceptorService: stateChangeError: ", error);
+      exceptionService.catcher("Routing to "+toState.name+" failed : Status : "+error.status+" : "+error.statusText)(error);
     });
     var quest = {};
     var _request  = function (config) {

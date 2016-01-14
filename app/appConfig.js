@@ -21,10 +21,13 @@ function extendExceptionHandler($delegate) {
      * throw exception;
      */
     //toastr.error(exception.msg, errorData);
+
+    //cannot use services (exceptionService) on .config because they dont exist yet
     alert(cause+" : "+exception);
   };
 };
 
+/*authInterceptorService to provide authorization data for each request*/
 angular.module('PanaceaReports').config(authInterceptorConfig);
 authInterceptorConfig.$inject= ['$httpProvider'];
 function authInterceptorConfig($httpProvider) {
