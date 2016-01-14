@@ -20,12 +20,8 @@
         el:"Μη έγκυρη κατάσταση φόρμας: "+mode+"."
       },
       removeSuccess:{
-        en:function(_id){
-          return "Permission "+_id+" deleted.";
-        },
-        el:function(_id){
-          return "Το δικαίωμα "+_id+" διαγράφηκε.";
-        }
+        en:"Permission "+_id+" deleted.",
+        el:"Το δικαίωμα "+_id+" διαγράφηκε."
       },
       actionFailedError:{
         en:function(serviceName, actionName){
@@ -74,7 +70,7 @@
       permissionsService.remove({ id:_id }).$promise.then(
         function (response){
           console.log(response);
-          alert(customMessages.removeSuccess[$rootScope.lang](_id));
+          alert(customMessages.removeSuccess[$rootScope.lang]);
           $state.go('permissions.allPermissions');
         },
         function (error) {

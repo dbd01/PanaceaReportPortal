@@ -20,12 +20,8 @@
         el:"Μη έγκυρη κατάσταση φόρμας: "+mode+"."
       },
       removeSuccess:{
-        en:function(_id){
-          return "User "+_id+" deleted.";
-        },
-        el:function(_id){
-          return "Ο χρήστης "+_id+" διαγράφηκε.";
-        }
+        en:"User "+_id+" deleted.",
+        el:"Ο χρήστης "+_id+" διαγράφηκε."
       },
       actionFailedError:{
         en:function(serviceName, actionName){
@@ -88,7 +84,7 @@
       usersService.remove({ id:_id }).$promise.then(
         function (response){
           console.log(response);
-          alert(customMessages.removeSuccess[$rootScope.lang](_id));
+          alert(customMessages.removeSuccess[$rootScope.lang]);
           $state.go('users.allUsers')
         },
         function (error) {

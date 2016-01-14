@@ -20,12 +20,8 @@
         el:"Μη έγκυρη κατάσταση φόρμας: "+mode+"."
       },
       removeSuccess:{
-        en:function(_id){
-          return "Group "+_id+" deleted.";
-        },
-        el:function(_id){
-          return "Η ομάδα "+_id+" διαγράφηκε.";
-        }
+        en: "Group "+_id+" deleted.",
+        el:"Η ομάδα "+_id+" διαγράφηκε."
       },
       actionFailedError:{
         en:function(serviceName, actionName){
@@ -87,7 +83,7 @@
       groupsService.remove({ id: _id }).$promise.then(
         function (response) {
           console.log("response");
-          alert(customMessages.removeSuccess[$rootScope.lang](_id));
+          alert(customMessages.removeSuccess[$rootScope.lang]);
           $state.go('groups.allGroups');
         },
         function (error) {
