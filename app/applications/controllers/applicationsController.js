@@ -28,24 +28,35 @@
 
     applicationsService.query().$promise.then(
       function (applications) {
-        applications.forEach(function (application) {
-          var applicationData = [];
-          applicationData.push( {"value": application._id, "showIt": true} );
-          applicationData.push( {"value": application.name, "showIt": true} );
-          applicationData.push( {"value": application.description, "showIt": true} );
-          applicationData.push( {"value": application.url, "showIt": true} );
+        populateApplicationData(applications, function (applicationData){
           applicationsTable.data.push(applicationData);
+          configApplicationsTable(function(){
+            $scope.applicationsTable = applicationsTable;
+          });
         });
-      }, function(error){
+      },
+      function (error){
         exceptionService.catcher("ApplicationsService query failed")(error);
-      })
-    .then(function () {
-      $scope.applicationsTable = applicationsTable;
-      $scope.applicationsTable.ready = true;
-      $scope.applicationsTable.detailView='applicationInfo';
-      $scope.applicationsTable.entity='application';
-      $scope.applicationsTable.entityC='Application';
-      $scope.applicationsTable.entityCP='Applications';
-    });
+      });
+
+    function populateApplicationData(applications, cb){
+      applications.forEach(function (application) {
+        var applicationData = [];
+        applicationData.push( {"value": application._id, "showIt": true} );
+        applicationData.push( {"value": application.name, "showIt": true} );
+        applicationData.push( {"value": application.description, "showIt": true} );
+        applicationData.push( {"value": application.url, "showIt": true} );
+        cb(applicationData);
+      });
+    }
+
+    function configApplicationsTable(cb){
+      applicationsTable.detailView='applicationInfo';
+      applicationsTable.entity='application';
+      applicationsTable.entityC='Application';
+      applicationsTable.entityCP='Applications';
+      applicationsTable.ready = true;
+      cb();
+    }
   };
 })();
