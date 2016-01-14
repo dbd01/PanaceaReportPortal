@@ -2,8 +2,8 @@
 "use strict";
 
   angular.module('PanaceaReports').controller("permissionInfoController", permissionInfoController);
-  permissionInfoController.$inject= ['$state', 'permissionsService','$scope', 'scopeComService', '$stateParams', 'exceptionService'];
-  function permissionInfoController($state, permissionsService , $scope , scopeComService, $stateParams, exceptionService) {
+  permissionInfoController.$inject= ['$state', 'permissionsService','$scope', 'scopeComService', '$stateParams', 'exceptionService', '$rootScope'];
+  function permissionInfoController($state, permissionsService , $scope , scopeComService, $stateParams, exceptionService, $rootScope) {
     var permissionTable={
       "entity":null,
       "ready": false
@@ -13,6 +13,29 @@
     var newData=scopeComService.list[0]
     var newPermissionName=scopeComService.list[1];
     scopeComService.flush();
+
+    var customMessages={
+      invalidModeError:{
+        en:"Non valid mode: "+mode+".",
+        el:"Μη έγκυρη κατάσταση φόρμας: "+mode+"."
+      },
+      removeSuccess:{
+        en:function(_id){
+          return "Permission "+_id+" deleted.";
+        },
+        el:function(_id){
+          return "Το δικαίωμα "+_id+" διαγράφηκε.";
+        }
+      },
+      actionFailedError:{
+        en:function(serviceName, actionName){
+          return serviceName+" failed on action: "+actionName+".";
+        },
+        el:function(serviceName, actionName){
+          return "H υπηρεσία "+ serviceName+" απέτυχε να εκτελέσει τη δράση: "+actionName+".";
+        },
+      }
+    }
 
     if (mode.indexOf('remove')>-1){
       removeOne();
@@ -34,7 +57,7 @@
       }
     }
     else{
-      exceptionService.catcher("Non valid mode: "+mode+".")(error);
+      exceptionService.catcher(customMessages.invalidModeError[$rootScope.lang])(error);
     }
 
     function configPermissionTable(cb){
@@ -51,11 +74,11 @@
       permissionsService.remove({ id:_id }).$promise.then(
         function (response){
           console.log(response);
-          alert('Permission '+_id+" deleted.");
+          alert(customMessages.removeSuccess[$rootScope.lang](_id));
           $state.go('permissions.allPermissions');
         },
         function (error) {
-          exceptionService.catcher("PermissionsService remove failed")(error);
+          exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('PermissionsService','removeOne'))(error);
         });
     };
     function newOne(){
@@ -83,7 +106,7 @@
           });
         },
         function (error){
-          exceptionService.catcher("PermissionsService query failed")(error);
+          exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('PermissionsService','query'))(error);
         });
     };
     function addOne(){
@@ -93,7 +116,7 @@
           $state.go('permissions.allPermissions');
         },
         function (error) {
-          exceptionService.catcher("PermissionsService save failed")(error);
+          exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('PermissionsService','addOne'))(error);
         });
     };
     function updateOne(){
@@ -103,7 +126,7 @@
           $state.go('permissions.allPermissions');
         },
         function (error) {
-          exceptionService.catcher("PermissionsService update failed")(error);
+          exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('PermissionsService','updateOne'))(error);
         });
     };
   };

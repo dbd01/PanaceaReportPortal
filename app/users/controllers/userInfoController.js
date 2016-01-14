@@ -2,8 +2,8 @@
 "use strict";
 
   angular.module('PanaceaReports').controller("userInfoController", userInfoController);
-  userInfoController.$inject= ['$state', 'usersService', 'groupsService', '$scope','scopeComService', '$timeout', '$stateParams', 'exceptionService'];
-  function userInfoController($state, usersService, groupsService, $scope, scopeComService, $timeout, $stateParams, exceptionService ) {
+  userInfoController.$inject= ['$state', 'usersService', 'groupsService', '$scope','scopeComService', '$timeout', '$stateParams', 'exceptionService', '$rootScope'];
+  function userInfoController($state, usersService, groupsService, $scope, scopeComService, $timeout, $stateParams, exceptionService, $rootScope ) {
     var userTable ={
       "entity":null,
       "groups": [],
@@ -14,6 +14,29 @@
     var newData=scopeComService.list[0];
     scopeComService.flush();
     
+    var customMessages={
+      invalidModeError:{
+        en:"Non valid mode: "+mode+".",
+        el:"Μη έγκυρη κατάσταση φόρμας: "+mode+"."
+      },
+      removeSuccess:{
+        en:function(_id){
+          return "User "+_id+" deleted.";
+        },
+        el:function(_id){
+          return "Ο χρήστης "+_id+" διαγράφηκε.";
+        }
+      },
+      actionFailedError:{
+        en:function(serviceName, actionName){
+          return serviceName+" failed on action: "+actionName+".";
+        },
+        el:function(serviceName, actionName){
+          return "H υπηρεσία "+ serviceName+" απέτυχε να εκτελέσει τη δράση: "+actionName+".";
+        },
+      }
+    }
+
     if (mode.indexOf('remove')>-1){
       removeOne();
     }
@@ -39,7 +62,7 @@
       }
     }
     else{
-      exceptionService.catcher("Non valid mode: "+mode+".")(error);
+      exceptionService.catcher(customMessages.invalidModeError[$rootScope.lang])(error);
     }
 
     function configUserTable(groups, cb){
@@ -65,11 +88,11 @@
       usersService.remove({ id:_id }).$promise.then(
         function (response){
           console.log(response);
-          alert('User '+_id+" deleted.");
+          alert(customMessages.removeSuccess[$rootScope.lang](_id));
           $state.go('users.allUsers')
         },
         function (error) {
-          exceptionService.catcher("UsersService remove failed")(error);
+          exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('UsersService','removeOne'))(error);
         });
     }
     function newOne(){
@@ -88,7 +111,7 @@
           });
         }, 
         function (error){
-          exceptionService.catcher("GroupsService query failed")(error);
+          exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('GroupsService','query'))(error);
         });
     }
     function getOne(){
@@ -102,11 +125,11 @@
               });
             },
             function (error){
-              exceptionService.catcher("GroupsService query failed")(error);
+              exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('GroupsService','query'))(error);
             });
         },
         function (error){
-          exceptionService.catcher("UsersService query failed")(error);
+          exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('UsersService','query'))(error);
         });
     }
     function addOne(){
@@ -116,7 +139,7 @@
           $state.go('users.allUsers');
         },
         function (error) {
-          exceptionService.catcher("UsersService save failed.")(error);
+          exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('UsersService','addOne'))(error);
         });
     }
     function updatePartiallyOne(){
@@ -126,7 +149,7 @@
           $state.go('users.allUsers');
         },
         function (error) {
-          exceptionService.catcher("UsersService update failed.")(error);
+          exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('UsersService','updateOne'))(error);
         });
     }
   };

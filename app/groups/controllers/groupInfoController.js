@@ -2,8 +2,8 @@
 "use strict";
 
   angular.module('PanaceaReports').controller("groupInfoController", groupInfoController);
-  groupInfoController.$inject= ['$state', 'groupsService', 'permissionsService','$scope', 'scopeComService', '$stateParams', 'exceptionService'];
-  function groupInfoController($state, groupsService, permissionsService, $scope , scopeComService, $stateParams, exceptionService) {
+  groupInfoController.$inject= ['$state', 'groupsService', 'permissionsService','$scope', 'scopeComService', '$stateParams', 'exceptionService', '$rootScope'];
+  function groupInfoController($state, groupsService, permissionsService, $scope , scopeComService, $stateParams, exceptionService, $rootScope) {
     var groupTable ={
       "entity":null,
       "permissions": [],
@@ -14,6 +14,29 @@
     var newData=scopeComService.list[0]
     scopeComService.flush();
     
+    var customMessages={
+      invalidModeError:{
+        en:"Non valid mode: "+mode+".",
+        el:"Μη έγκυρη κατάσταση φόρμας: "+mode+"."
+      },
+      removeSuccess:{
+        en:function(_id){
+          return "Group "+_id+" deleted.";
+        },
+        el:function(_id){
+          return "Η ομάδα "+_id+" διαγράφηκε.";
+        }
+      },
+      actionFailedError:{
+        en:function(serviceName, actionName){
+          return serviceName+" failed on action: "+actionName+".";
+        },
+        el:function(serviceName, actionName){
+          return "H υπηρεσία "+ serviceName+" απέτυχε να εκτελέσει τη δράση: "+actionName+".";
+        },
+      }
+    }
+
     if (mode.indexOf('remove')>-1){
       removeOne();
     }
@@ -38,7 +61,7 @@
       }
     }
     else{
-      exceptionService.catcher("Non valid mode: "+mode+".")(error);
+      exceptionService.catcher(customMessages.invalidModeError[$rootScope.lang])(error);
     }
 
     function configGroupTable(permissions, cb){
@@ -64,7 +87,7 @@
       groupsService.remove({ id: _id }).$promise.then(
         function (response) {
           console.log("response");
-          alert('Group '+_id+" deleted.");
+          alert(customMessages.removeSuccess[$rootScope.lang](_id));
           $state.go('groups.allGroups');
         },
         function (error) {
@@ -82,11 +105,10 @@
         function (permissions){
           configGroupTable(permissions, function(){
             $scope.groupTable = groupTable;
-          })
-          groupTable.permissions=permissions;
+          });
         },
         function (error){
-          exceptionService.catcher("PermissionsService query failed")(error);
+          exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('PermissionsService','query'))(error);
         });
     }
     function getOne(){
@@ -100,11 +122,11 @@
               });
             },
             function (error){
-              exceptionService.catcher("PermissionsService query failed")(error);
+              exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('PermissionsService','query'))(error);
             });
         },
         function (error){
-          exceptionService.catcher("GroupsService query failed")(error);
+          exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('GroupsService','query'))(error);
         });
     }
     function addOne(){
@@ -114,7 +136,7 @@
           $state.go('groups.allGroups');
         },
         function (error) {
-          exceptionService.catcher("GroupsService save failed.")(error);
+          exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('GroupsService','addOne'))(error);
         });
     }
     function updateOne(){
@@ -124,7 +146,7 @@
           $state.go('groups.allGroups');
         },
         function (error) {
-          exceptionService.catcher("GroupsService save failed.")(error);
+          exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('GroupsService','updateOne'))(error);
         });
     }
   };
