@@ -128,4 +128,8 @@
       //error
     }
   };
+
+  function removeSuccessCb(){
+    
+  }
 })();
