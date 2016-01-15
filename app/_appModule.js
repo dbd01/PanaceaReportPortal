@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('PanaceaReports', [
+	'dbdAccordionModule',
 	'gettext',
 	'widgetUserModule',
 	'dbdDashboardModule',
