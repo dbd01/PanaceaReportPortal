@@ -18,7 +18,7 @@
           return "Η μετάβαση στην κατάσταση "+toStateName+" δεν είναι δυνατή.";
         },
       }
-    }
+    };
     //executes each time a state transition (routing) occurs
     var state=null;
     //executes when the transition starts
@@ -44,7 +44,7 @@
       }
       else if (state=='start'){
         //no redirection for start state, but set unauthorized flag
-        console.log("authInterceptorService: start");
+        console.log("authInterceptorService: state: start");
         //$rootScope.authState='unauthorized';
       }
       else{

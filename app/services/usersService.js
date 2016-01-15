@@ -6,30 +6,12 @@
 
   function userService($resource, appSettings, localStorageService) {
     return $resource(appSettings.authServerPath + '/api/v1/user/:id', {}, {
-      /*query: { 
-        method: 'GET', 
-        isArray: true ,
-        params: { userId: '' }
-      },
-      getOne: {
-        method: 'GET',
-        params: { userId: '@userId' }
-      },
-      add: {
-        method: 'POST'
-      },*/
       update: { 
-        method: 'PUT',
-        //params: { userId: '@userId' }
+        method: 'PUT'
       },
       partialUpdate: { 
-        method: 'PATCH',
-        //params: { userId: '@userId' }
-      },
-      /*remove: { 
-        method: 'DELETE',
-        params: { userId: '@userId' }
-      }*/
+        method: 'PATCH'
+      }
     });
   }
 })();

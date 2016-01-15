@@ -61,7 +61,7 @@
                     return "Σίγουρα θέλετε να διαγράψετε την οντότητα " + entity + " " + entityName +" ;"
                   }
                 }
-              }
+              };
               
               $scope.addNewEntity = function(){
                 if (mode=="deleted"){
@@ -70,7 +70,7 @@
                 else{
                   $state.go($scope.tabledata.detailView+'.new'+$scope.tabledata.entityC);
                 }
-              }
+              };
               $scope.view_entity= function(editline){
                 var id=$scope.tabledata.data[editline][0].value;
                 if (mode=="deleted"){
@@ -81,7 +81,7 @@
                   var stateStr=$scope.tabledata.detailView+".view"+$scope.tabledata.entityC;
                   $state.go(stateStr, {'id':id});
                 }
-              }
+              };
               $scope.edit_entity= function(editline){
                 if (mode=="deleted"){
                   exceptionService.catcher(customMessages.editEntityError[$rootScope.lang])(error);
@@ -91,10 +91,10 @@
                   var stateStr=$scope.tabledata.detailView+".edit"+$scope.tabledata.entityC;
                   $state.go(stateStr, {'id':id});
                 }
-              }
+              };
               $scope.restore_entity= function(editline){
                 //TODO : restore the deleted row 
-              }
+              };
               $scope.delete_entity= function(editline){
                 var entityName, entity="";
                 entityName = $scope.tabledata.data[editline][1].value;
@@ -111,7 +111,6 @@
           }
         });
         $rootScope.$watch('lang', function(newvalue, oldvalue){
-          console.log("dbdGridViewModule: lang: ", newvalue);
           $scope.lang=$rootScope.lang;
           $scope.tabletitle=$scope.tabletitles[$scope.lang];
           if ($scope.tabledata){

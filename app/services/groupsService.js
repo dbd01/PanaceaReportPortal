@@ -6,30 +6,12 @@
 
   function groupsService($resource, appSettings, localStorageService) {
     return $resource(appSettings.authServerPath + '/api/v1/group/:id', null, {
-      /*query: { 
-        method: 'GET', 
-        isArray: true ,
-        params: { groupId: '' }
-      }, 
-      getOne: {
-        method: 'GET',
-        params: { groupId: '@groupId' }
-      },
-      add: {
-        method: 'POST'
-      },*/
       'update': { 
-        method: 'PUT',
-        //params: { groupId: '@groupId' }
+        method: 'PUT'
       },
       'partialUpdate': { 
-        method: 'PATCH',
-        //params: { groupId: '@groupId' }
-      },
-      /*remove: { 
-        method: 'DELETE',
-        params: { groupId: '@groupId' }
-      }*/
+        method: 'PATCH'
+      }
     });
   }
 })();

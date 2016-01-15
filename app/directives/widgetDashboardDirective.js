@@ -9,7 +9,6 @@
       },
       template: '<dbd-dashboard></dbd-dashboard>',
       link: function ($scope) {
-        console.log("widgetDashboardDirective");
         $scope.title="Panacea Reports Dashboard";
 
         $scope.gridsterOpts = {
