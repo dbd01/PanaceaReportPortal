@@ -23,7 +23,6 @@
     var state=null;
     //executes when the transition starts
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-      //event.preventDefault();
       console.log("authInterceptorService : fromState: ", fromState.name);
       console.log("authInterceptorService :to state: ", toState.name, toParams);
       state=toState.name;
@@ -71,7 +70,6 @@
     });
     //executes when the transition fails
     $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
-      //console.log("authInterceptorService: stateChangeError: ", error);
       exceptionService.catcher(customMessages.stateChangeFailedError[$rootScope.lang](toState.name))(error);
     });
     var quest = {};
