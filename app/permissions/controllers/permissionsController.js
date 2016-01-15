@@ -37,11 +37,6 @@
       "mode": ""
     };
 
-    if ($state.includes('permissions.deletedPermissions'))
-      permissionsTable.mode='deleted';
-    else
-      permissionsTable.mode='editable';
-
     permissionsService.query().$promise.then(
       function (permissions) {
         populatePermissionsTable(permissions, function (){
@@ -67,6 +62,10 @@
       cb();
     };
     function configPermissionTable(cb){
+      if ($state.includes('permissions.deletedPermissions'))
+        permissionsTable.mode='deleted';
+      else
+        permissionsTable.mode='editable';
       permissionsTable.detailView='permissionInfo';
       permissionsTable.entity='permission';
       permissionsTable.entityC='Permission';

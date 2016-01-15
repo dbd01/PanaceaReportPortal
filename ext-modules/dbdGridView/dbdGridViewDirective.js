@@ -96,9 +96,8 @@
                 //TODO : restore the deleted row 
               };
               $scope.delete_entity= function(editline){
-                var entityName, entity="";
-                entityName = $scope.tabledata.data[editline][1].value;
-                entity=$scope.tabledata.entity;
+                var entityName = $scope.tabledata.data[editline][1].value;
+                var entity=$scope.tabledata.entity;
                 bootbox.confirm(customMessages.deleteEntityMessage[$rootScope.lang](entityName, entity), function(ok){
                   if (ok){
                     var id=$scope.tabledata.data[editline][0].value;

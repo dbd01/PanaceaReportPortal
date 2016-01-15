@@ -33,11 +33,6 @@
       "data": [],
       "ready": false
     };
-
-    if ($state.includes('users.deletedUsers'))
-      usersTable.mode='deleted';
-    else
-      usersTable.mode='editable';
     
     usersService.query().$promise.then(
       function (users) {
@@ -65,6 +60,10 @@
     };
 
     function configUsersTable(cb){
+      if ($state.includes('users.deletedUsers'))
+        usersTable.mode='deleted';
+      else
+        usersTable.mode='editable';
       usersTable.detailView='userInfo';
       usersTable.entity='user';
       usersTable.entityC='User';

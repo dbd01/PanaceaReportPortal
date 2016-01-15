@@ -32,11 +32,6 @@
       "ready": false
     };
 
-    if ($state.includes('applications.deletedApplications'))
-      applicationsTable.mode='deleted';
-    else
-      applicationsTable.mode='editable';
-
     applicationsService.query().$promise.then(
       function (applications) {
         populateApplicationsTable(applications, function (){
@@ -62,6 +57,10 @@
     };
 
     function configApplicationsTable(cb){
+      if ($state.includes('applications.deletedApplications'))
+        applicationsTable.mode='deleted';
+      else
+        applicationsTable.mode='editable';
       applicationsTable.detailView='applicationInfo';
       applicationsTable.entity='application';
       applicationsTable.entityC='Application';

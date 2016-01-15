@@ -31,11 +31,6 @@
       "mode": ""
     };
 
-    if ($state.includes('groups.deletedGroups'))
-      groupsTable.mode='deleted';
-    else
-      groupsTable.mode='editable';
-
     groupsService.query().$promise.then(
       function (groups) {
         populateGroupsTable(groups, function (){
@@ -58,6 +53,10 @@
       cb();
     };
     function configGroupsTable(cb){
+      if ($state.includes('groups.deletedGroups'))
+        groupsTable.mode='deleted';
+      else
+        groupsTable.mode='editable';
       groupsTable.detailView='groupInfo';
       groupsTable.entity='group';
       groupsTable.entityC='Group';
