@@ -1,9 +1,9 @@
 (function(){
 "use strict";
   angular.module("dbdDetailViewModule").directive("dbdDetailView", dbdDetailView);
-  dbdDetailView.$inject= ['$state', 'scopeComService', '$timeout', '$location'];
+  dbdDetailView.$inject= ['$state', 'scopeComService', '$timeout'];
   
-  function dbdDetailView($state, scopeComService, $timeout, $location) {
+  function dbdDetailView($state, scopeComService, $timeout) {
     return {
       restrict: 'E',
       template: '<div ng-include="getContentUrl()"></div>',
@@ -54,29 +54,21 @@
                 $scope.tabledata.entity=null;
               }
               $scope.add = function(){
-                //scopeComService.add(null);
                 scopeComService.add($scope.tabledata.entity);
                 $state.go($scope.tabledata.detailView+'.add'+$scope.tabledata.entityC);
               };
               $scope.update = function(){
-                //scopeComService.add($scope.tabledata.entity._id);
                 scopeComService.add($scope.tabledata.entity);
-                //$state.go($scope.tabledata.detailView+'.update'+$scope.tabledata.entityC);
                 var id=$scope.tabledata.entity._id;
-                var path=$scope.tabledata.detailView+'/update/'+id;
-                console.log("path:", path);
-                $location.path(path)
+                var stateStr=$scope.tabledata.detailView+".update"+$scope.tabledata.entityC;
+                $state.go(stateStr, {'id':id});
               }
               $scope.edit = function(){
-                //scopeComService.add($scope.tabledata.entity._id);
-                //$state.go($scope.tabledata.detailView+'.edit'+$scope.tabledata.entityC);
                 var id=$scope.tabledata.entity._id;
-                var path=$scope.tabledata.detailView+'/edit/'+id;
-                console.log("path:", path);
-                $location.path(path)
+                var stateStr=$scope.tabledata.detailView+".edit"+$scope.tabledata.entityC;
+                $state.go(stateStr, {'id':id});
               }
               $scope.cancelEdit = function(){
-                //scopeComService.add($scope.tabledata.entity._id);
                 if ($scope.mode.indexOf('deleted')>-1){
                   $state.go($scope.tabledata.gridView+'.deleted'+$scope.tabledata.entityCP);
                 }
@@ -89,12 +81,9 @@
               }
               $scope.cancelUpdate = function(){
                 $scope.tabledata.entity=$scope.previousData;
-                //scopeComService.add($scope.tabledata.entity._id);
-                //$state.go($scope.tabledata.detailView+'.view'+$scope.tabledata.entityC);
                 var id=$scope.tabledata.entity._id;
-                var path=$scope.tabledata.detailView+'/view/'+id;
-                console.log("path:", path);
-                $location.path(path)
+                var stateStr=$scope.tabledata.detailView+".view"+$scope.tabledata.entityC;
+                $state.go(stateStr, {'id':id});
               }
             },0);
           }
