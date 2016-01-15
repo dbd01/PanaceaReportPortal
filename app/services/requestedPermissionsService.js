@@ -2,9 +2,9 @@
   "use strict";
 
   angular.module('PanaceaReports').factory("requestedPermissionsService", requestedPermissionsService);
-  requestedPermissionsService.$inject= ["$resource", "appSettings", "localStorageService"];
+  requestedPermissionsService.$inject= ["$resource", "appSettings"];
 
-  function requestedPermissionsService($resource, appSettings, localStorageService) {
+  function requestedPermissionsService($resource, appSettings) {
     return $resource(appSettings.authServerPath + '/api/v1/requestedPermission/:id', null, {
     });
   }
