@@ -23,7 +23,7 @@ function extendExceptionHandler($delegate) {
     //toastr.error(exception.msg, errorData);
 
     //cannot use services (exceptionService) on .config because they dont exist yet
-    alert(cause+" : "+exception);
+    bootbox.alert(cause+" : "+exception, function(ok) { });
   };
 };
 

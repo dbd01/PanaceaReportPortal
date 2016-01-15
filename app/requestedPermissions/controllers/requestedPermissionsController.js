@@ -58,7 +58,7 @@
     function configRequestedPermissionsTable(cb){
       requestedPermissionsTable.detailView='permissionInfo';
       requestedPermissionsTable.entity='requested permission';
-      requestedPermissionsTable.entityC='Requested Permission';
+      requestedPermissionsTable.entityC='Permission';
       requestedPermissionsTable.entityCP='Requested Permissions';
       requestedPermissionsTable.ready = true;
       cb();

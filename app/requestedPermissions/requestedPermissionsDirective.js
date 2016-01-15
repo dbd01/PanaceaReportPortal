@@ -32,9 +32,8 @@
               $scope.create_permission= function(editline){
                 if ($state.includes('requestedPermissions')){
                   scopeComService.add(null);
-                  scopeComService.add(null);
                   scopeComService.add($scope.tabledata.data[editline][1].value);
-                  $state.go($scope.tabledata.detailView+".new"); 
+                  $state.go($scope.tabledata.detailView+".new"+$scope.tabledata.entityC);
                 }
               }
               $scope.delete_entity= function(editline){
@@ -44,8 +43,8 @@
                 bootbox.confirm("Are you sure you want to delete " + entity + " <b>" + entityName +"</b> ?", function(ok){
                   if (ok){
                     scopeComService.add("remove");
-                    scopeComService.add($scope.tabledata.data[editline][0].value);
-                    $state.go($scope.tabledata.detailViewRemove);
+                    var id=$scope.tabledata.data[editline][0].value;
+                    $state.go($scope.tabledata.detailView+".remove"+$scope.tabledata.entityC, {'id':id});
                   }
                 });
               }
