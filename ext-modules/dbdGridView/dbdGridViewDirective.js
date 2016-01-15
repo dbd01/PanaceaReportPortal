@@ -20,6 +20,24 @@
         $scope.$watch('ready', function (newvalue, oldvalue) {
           if (newvalue=="true") {
             $timeout(function () {
+              var customMessages={
+                addNewEntityError:{
+                  en:"Non valid mode: "+mode+" for add new entity.",
+                  el:"Μη έγκυρη κατάσταση φόρμας: "+mode+" για προσθήκη νέας οντότητας."
+                },
+                editEntityError:{
+                  en:"Non valid mode: "+mode+" for edit entity.",
+                  el:"Μη έγκυρη κατάσταση φόρμας: "+mode+" για επεξεργασία οντότητας."
+                },
+                deleteEntityMessage:{
+                  en:function(entityName, entity){
+                    return "Are you sure you want to delete " + entity + " " + entityName +" ?"
+                  },
+                  el:function(entityName, entity){
+                    return "Σίγουρα θέλετε να διαγράψετε την οντότητα " + entity + " " + entityName +" ;"
+                  }
+                }
+              };
               //$scope.tabletitle=$scope.tabletitles[$scope.lang];
               //scopeComService.flush();
               // apply DataTable options, use defaults if none specified by user
@@ -44,24 +62,6 @@
                 $scope.toolbar_width = "col-md-12";
 
               var mode=$scope.tabledata.mode;
-              var customMessages={
-                addNewEntityError:{
-                  en:"Non valid mode: "+mode+" for add new entity.",
-                  el:"Μη έγκυρη κατάσταση φόρμας: "+mode+" για προσθήκη νέας οντότητας."
-                },
-                editEntityError:{
-                  en:"Non valid mode: "+mode+" for edit entity.",
-                  el:"Μη έγκυρη κατάσταση φόρμας: "+mode+" για επεξεργασία οντότητας."
-                },
-                deleteEntityMessage:{
-                  en:function(entityName, entity){
-                    return "Are you sure you want to delete " + entity + " " + entityName +" ?"
-                  },
-                  el:function(entityName, entity){
-                    return "Σίγουρα θέλετε να διαγράψετε την οντότητα " + entity + " " + entityName +" ;"
-                  }
-                }
-              };
               
               $scope.addNewEntity = function(){
                 if (mode=="deleted"){
