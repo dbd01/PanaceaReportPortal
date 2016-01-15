@@ -9,14 +9,22 @@ function exceptionService($log) {
   return service;
 
   function catcher(message) {
-    return function(reason) {
-      $log.error(message, reason);
+    return function(error) {
+      $log.error(message, error);
       var errMsg=message;
-      if (reason.data){
-        if (reason.data.message)
-          errMsg+=" : "+reason.data.message;
+      if (error){
+        if (error.status){
+          errMsg+=" Status: "+error.status;
+        }
+        if (error.statusText){
+          errMsg+=" StatusText: "+error.statusText;
+        }
+        if (error.data){
+          if (error.data.message)
+            errMsg+="Message : "+error.data.message;
+        }
       }
-      alert(errMsg);
+      bootbox.alert(errMsg, function(ok) { });
     };
   }
 }

@@ -5,6 +5,20 @@
   authService.$inject= ['$injector','$rootScope', '$location', 'localStorageService', 'exceptionService'];
 
   function authService($injector, $rootScope, $location, localStorageService, exceptionService) {
+    var customMessages={
+      connectionExpiredError:{
+        en:"Your allowed connection period has expired. Please login again.",
+        el:"Η ισχύς της σύνδεσής σας έληξε. Παρακαλώ ξανασυνδεθείτε."
+      },
+      stateChangeFailedError:{
+        en:function(toStateName){
+          return "Routing to "+toStateName+" failed.";
+        },
+        el:function(toStateName){
+          return "Η μετάβαση στην κατάσταση "+toStateName+" δεν είναι δυνατή.";
+        },
+      }
+    }
     //executes each time a state transition (routing) occurs
     var state=null;
     //executes when the transition starts
@@ -44,6 +58,7 @@
         else {
           //no authData : transition to logged_out state , unauthorized flag
           console.log("authInterceptorService: unauthorized");
+          exceptionService.catcher(customMessages.connectionExpiredError[$rootScope.lang])(null);
           event.preventDefault();
           $rootScope.authState='unauthorized';
           $location.path('/');
@@ -57,7 +72,7 @@
     //executes when the transition fails
     $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
       //console.log("authInterceptorService: stateChangeError: ", error);
-      exceptionService.catcher("Routing to "+toState.name+" failed : Status : "+error.status+" : "+error.statusText)(error);
+      exceptionService.catcher(customMessages.stateChangeFailedError[$rootScope.lang](toState.name))(error);
     });
     var quest = {};
     var _request  = function (config) {
@@ -66,11 +81,11 @@
       if (authData && (Date.now() > authData.expires )){
         //if token has expired, clear auth data..
         console.log("authInterceptorService : _request: token expired");
+        exceptionService.catcher(customMessages.connectionExpiredError[$rootScope.lang])(null);
         authData=null;
         $rootScope.log_link.value="Login"; 
         $location.path('/login');
         localStorageService.set('authorizationData', null);
-        bootbox.confirm("Your allowed connection period has expired. Please login again.", function(ok) { });
       }
       if (authData) {
         console.log("authInterceptorService: _request: authData: ", authData);
