@@ -4,6 +4,17 @@
   angular.module('PanaceaReports').controller("groupsController", groupsController);
   groupsController.$inject= ['localStorageService', 'groupsService', '$scope', '$state', 'exceptionService'];
   function groupsController(localStorageService, groupsService, $scope, $state, exceptionService ) {
+    var customMessages={
+      actionFailedError:{
+        en:function(serviceName, actionName){
+          return serviceName+" failed on action: "+actionName+".";
+        },
+        el:function(serviceName, actionName){
+          return "H υπηρεσία "+ serviceName+" απέτυχε να εκτελέσει τη δράση: "+actionName+".";
+        },
+      }
+    };
+
     var groupsTable ={
       "header": [
         { "title": {en: "Id", el:"Αναγνωριστικό"},  "showIt": true },
@@ -18,7 +29,7 @@
       "data": [],
       "ready": false,
       "mode": ""
-    }
+    };
 
     if ($state.includes('groups.deletedGroups'))
       groupsTable.mode='deleted';
@@ -32,9 +43,10 @@
             $scope.groupsTable = groupsTable;
           });
         });
-      }, function(error){
-        exceptionService.catcher("GroupsService query failed")(error);
+      }, function (error){
+        exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]("GroupsService", "query"))(error);
       });
+
     function populateGroupsTable(groups, cb){
       groups.forEach(function (group) {
         var groupData = [];

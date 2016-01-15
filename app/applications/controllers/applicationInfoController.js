@@ -85,8 +85,7 @@
       applicationsService.remove({ id:_id }).$promise.then(
         function (response){
           console.log(response);
-          alert(customMessages.removeSuccess[$rootScope.lang]);
-          $state.go('applications.allApplications')
+          bootbox.alert(customMessages.removeSuccess[$rootScope.lang], function(ok) { $state.go('applications.allApplications');});
         },
         function (error) {
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('ApplicationsService','removeOne'))(error);
@@ -131,8 +130,7 @@
     function addOne(){
       applicationsService.save(newData).$promise.then(
         function (response) {
-          alert(response.message);
-          $state.go('applications.allApplications');
+          bootbox.alert(response.message, function(ok) { $state.go('applications.allApplications');});
         },
         function (error) {
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('ApplicationsService','addOne'))(error);
@@ -141,8 +139,7 @@
     function updateOne(){
       applicationsService.update({id: _id }, newData).$promise.then(
         function (response) {
-          alert(response.message);
-          $state.go('applications.allApplications');
+          bootbox.alert(response.message, function(ok) { $state.go('applications.allApplications');});
         },
         function (error) {
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('ApplicationsService','updateOne'))(error);

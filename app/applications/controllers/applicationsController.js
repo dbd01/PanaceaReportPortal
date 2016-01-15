@@ -4,6 +4,17 @@
   angular.module('PanaceaReports').controller("applicationsController", applicationsController);
   applicationsController.$inject=['localStorageService', 'applicationsService', '$scope', '$state', 'exceptionService'];
   function applicationsController(localStorageService, applicationsService , $scope, $state, exceptionService ) {
+    var customMessages={
+      actionFailedError:{
+        en:function(serviceName, actionName){
+          return serviceName+" failed on action: "+actionName+".";
+        },
+        el:function(serviceName, actionName){
+          return "H υπηρεσία "+ serviceName+" απέτυχε να εκτελέσει τη δράση: "+actionName+".";
+        },
+      }
+    };
+
     var applicationsTable ={
       "header": [
         { "title": {en: "Id", el:"Αναγνωριστικό"},  "showIt": true },
@@ -19,7 +30,7 @@
       ],
       "data": [],
       "ready": false
-    }
+    };
 
     if ($state.includes('applications.deletedApplications'))
       applicationsTable.mode='deleted';
@@ -35,7 +46,7 @@
         });
       },
       function (error){
-        exceptionService.catcher("ApplicationsService query failed")(error);
+        exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]("ApplicationsService", "query"))(error);
       });
 
     function populateApplicationsTable(applications, cb){
@@ -48,7 +59,7 @@
         applicationsTable.data.push(applicationData);
       });
       cb();
-    }
+    };
 
     function configApplicationsTable(cb){
       applicationsTable.detailView='applicationInfo';
@@ -57,6 +68,6 @@
       applicationsTable.entityCP='Applications';
       applicationsTable.ready = true;
       cb();
-    }
+    };
   };
 })();

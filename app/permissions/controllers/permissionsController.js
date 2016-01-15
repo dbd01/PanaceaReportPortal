@@ -4,6 +4,17 @@
   angular.module('PanaceaReports').controller("permissionsController", permissionsController);
   permissionsController.$inject= ['localStorageService', 'permissionsService', '$scope', '$state', 'exceptionService'];
   function permissionsController(localStorageService, permissionsService, $scope, $state, exceptionService ) {
+    var customMessages={
+      actionFailedError:{
+        en:function(serviceName, actionName){
+          return serviceName+" failed on action: "+actionName+".";
+        },
+        el:function(serviceName, actionName){
+          return "H υπηρεσία "+ serviceName+" απέτυχε να εκτελέσει τη δράση: "+actionName+".";
+        },
+      }
+    };
+
     var permissionsTable ={
       "header": [
         { "title": {en: "Id", el:"Αναγνωριστικό"},  "showIt": true },
@@ -24,7 +35,7 @@
       "data": [],
       "ready": false,
       "mode": ""
-    }
+    };
 
     if ($state.includes('permissions.deletedPermissions'))
       permissionsTable.mode='deleted';
@@ -39,7 +50,7 @@
           })
         });
       }, function(error){
-        exceptionService.catcher("PermissionsService query failed")(error);
+        exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]("PermissionsService", "query"))(error);
       });
 
     function populatePermissionsTable(permissions, cb){

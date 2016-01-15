@@ -4,6 +4,17 @@
   angular.module('PanaceaReports').controller("requestedPermissionsController", requestedPermissionsController);
   requestedPermissionsController.$inject= ['requestedPermissionsService', '$scope', 'exceptionService'];
   function requestedPermissionsController(requestedPermissionsService, $scope, exceptionService ) {
+    var customMessages={
+      actionFailedError:{
+        en:function(serviceName, actionName){
+          return serviceName+" failed on action: "+actionName+".";
+        },
+        el:function(serviceName, actionName){
+          return "H υπηρεσία "+ serviceName+" απέτυχε να εκτελέσει τη δράση: "+actionName+".";
+        },
+      }
+    };
+
     var requestedPermissionsTable ={
       "header": [
         { "title": {en: "Id", el:"Αναγνωριστικό"},  "showIt": true },
@@ -19,7 +30,7 @@
       ],
       "data": [],
       "ready": false
-    }    
+    };
 
     requestedPermissionsService.query().$promise.then(
       function (requestedPermissions) {
@@ -29,8 +40,8 @@
           });
         });
       },
-      function(error){
-        exceptionService.catcher("RequestedPermissionsService query failed")(error);
+      function (error){
+        exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]("RequestedPermissionsService", "query"))(error);
       });
 
     function populateRequestedPermissionsTable(requestedPermissions, cb){

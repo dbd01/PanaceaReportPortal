@@ -70,8 +70,7 @@
       permissionsService.remove({ id:_id }).$promise.then(
         function (response){
           console.log(response);
-          alert(customMessages.removeSuccess[$rootScope.lang]);
-          $state.go('permissions.allPermissions');
+          bootbox.alert(customMessages.removeSuccess[$rootScope.lang], function(ok) { $state.go('permissions.allPermissions');});
         },
         function (error) {
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('PermissionsService','removeOne'))(error);
@@ -108,8 +107,7 @@
     function addOne(){
       permissionsService.save(newData).$promise.then(
         function (response) {
-          alert(response.message);
-          $state.go('permissions.allPermissions');
+          bootbox.alert(response.message, function(ok) { $state.go('permissions.allPermissions');});
         },
         function (error) {
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('PermissionsService','addOne'))(error);
@@ -118,8 +116,7 @@
     function updateOne(){
       permissionsService.update({id: _id }, newData).$promise.then(
         function (response) {
-          alert(response.message);
-          $state.go('permissions.allPermissions');
+          bootbox.alert(response.message, function(ok) { $state.go('permissions.allPermissions');});
         },
         function (error) {
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('PermissionsService','updateOne'))(error);

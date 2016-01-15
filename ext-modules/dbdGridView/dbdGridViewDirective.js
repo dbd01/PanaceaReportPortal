@@ -2,8 +2,8 @@
   "use strict";
   
   angular.module("dbdGridViewModule").directive("dbdGridView", dbdGridView);
-  dbdGridView.$inject= ['$state', '$timeout', 'scopeComService', '$rootScope', '$location', 'exceptionService'];
-  function dbdGridView($state, $timeout, scopeComService, $rootScope, $location, exceptionService) {
+  dbdGridView.$inject= ['$state', '$timeout', 'scopeComService', '$rootScope', 'exceptionService'];
+  function dbdGridView($state, $timeout, scopeComService, $rootScope, exceptionService) {
     return {
       controller: "dbdGridViewController",
       templateUrl: "ext-modules/dbdGridView/dbdGridViewTemplate.html",
@@ -74,22 +74,22 @@
               $scope.view_entity= function(editline){
                 var id=$scope.tabledata.data[editline][0].value;
                 if (mode=="deleted"){
-                  var path=$scope.tabledata.detailView+'/deleted/'+id;
-                  $location.path(path);
+                  var stateStr=$scope.tabledata.detailView+".deleted"+$scope.tabledata.entityC;
+                  $state.go(stateStr, {'id':id});
                 }
                 else{
-                  var path=$scope.tabledata.detailView+'/view/'+id;
-                  $location.path(path);
+                  var stateStr=$scope.tabledata.detailView+".view"+$scope.tabledata.entityC;
+                  $state.go(stateStr, {'id':id});
                 }
               }
               $scope.edit_entity= function(editline){
-                var id=$scope.tabledata.data[editline][0].value;
                 if (mode=="deleted"){
                   exceptionService.catcher(customMessages.editEntityError[$rootScope.lang])(error);
                 }
                 else{
-                  var path=$scope.tabledata.detailView+'/edit/'+id;
-                  $location.path(path);
+                  var id=$scope.tabledata.data[editline][0].value;
+                  var stateStr=$scope.tabledata.detailView+".edit"+$scope.tabledata.entityC;
+                  $state.go(stateStr, {'id':id});
                 }
               }
               $scope.restore_entity= function(editline){
@@ -99,20 +99,13 @@
                 var entityName, entity="";
                 entityName = $scope.tabledata.data[editline][1].value;
                 entity=$scope.tabledata.entity;
-                if (confirm(customMessages.deleteEntityMessage[$rootScope.lang](entityName, entity))){
-                  var id=$scope.tabledata.data[editline][0].value;
-                  var path=$scope.tabledata.detailView+'/remove/'+id;
-                  $location.path(path);
-                }
-                /*bootbox.confirm("Are you sure you want to delete " + entity + " <b>" + entityName +"</b> ?", function(ok){
-                  console.log(ok)
+                bootbox.confirm(customMessages.deleteEntityMessage[$rootScope.lang](entityName, entity), function(ok){
                   if (ok){
                     var id=$scope.tabledata.data[editline][0].value;
-                    var path=$scope.tabledata.detailView+'/remove/'+id;
-                    console.log("path:", path);
-                    $location.path(path);
+                    var stateStr=$scope.tabledata.detailView+".remove"+$scope.tabledata.entityC;
+                    $state.go(stateStr, {'id':id});
                   }
-                });*/
+                });
               }
             }, 0);
           }

@@ -84,8 +84,7 @@
       usersService.remove({ id:_id }).$promise.then(
         function (response){
           console.log(response);
-          alert(customMessages.removeSuccess[$rootScope.lang]);
-          $state.go('users.allUsers')
+          bootbox.alert(customMessages.removeSuccess[$rootScope.lang], function(ok) { $state.go('users.allUsers');});
         },
         function (error) {
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('UsersService','removeOne'))(error);
@@ -131,8 +130,7 @@
     function addOne(){
       usersService.save(newData).$promise.then(
         function (response) {
-          alert(response.message);
-          $state.go('users.allUsers');
+          bootbox.alert(response.message, function(ok) { $state.go('users.allUsers');});
         },
         function (error) {
           console.log(error);
@@ -142,8 +140,7 @@
     function updatePartiallyOne(){
       usersService.partialUpdate({id: _id }, newData).$promise.then(
         function (response) {
-          alert(response.message);
-          $state.go('users.allUsers');
+          bootbox.alert(response.message, function(ok) { $state.go('users.allUsers');});
         },
         function (error) {
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('UsersService','updateOne'))(error);

@@ -4,7 +4,17 @@
   angular.module('PanaceaReports').controller("usersController", usersController);
   usersController.$inject= ['localStorageService', 'usersService', '$scope', '$state', '$stateParams', 'exceptionService'];
   function usersController(localStorageService, usersService , $scope, $state, $stateParams, exceptionService) {
-    console.log("usersController");
+    var customMessages={
+      actionFailedError:{
+        en:function(serviceName, actionName){
+          return serviceName+" failed on action: "+actionName+".";
+        },
+        el:function(serviceName, actionName){
+          return "H υπηρεσία "+ serviceName+" απέτυχε να εκτελέσει τη δράση: "+actionName+".";
+        },
+      }
+    };
+
     var usersTable ={
       "header": [
         {"title": {en:"Id", el:"Αναγνωριστικό"}, "showIt": true },
@@ -22,7 +32,7 @@
       ],
       "data": [],
       "ready": false
-    }
+    };
 
     if ($state.includes('users.deletedUsers'))
       usersTable.mode='deleted';
@@ -38,7 +48,7 @@
         });
       },
       function (error){
-        exceptionService.catcher("UsersService query failed")(error);
+        exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]("UsersService", "query"))(error);
       });
 
     function populateUsersTable(users, cb){

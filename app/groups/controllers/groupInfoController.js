@@ -83,8 +83,7 @@
       groupsService.remove({ id: _id }).$promise.then(
         function (response) {
           console.log("response");
-          alert(customMessages.removeSuccess[$rootScope.lang]);
-          $state.go('groups.allGroups');
+          bootbox.alert(customMessages.removeSuccess[$rootScope.lang], function(ok) { $state.go('groups.allGroups'); });
         },
         function (error) {
           exceptionService.catcher("GroupsService remove failed")(error);
@@ -128,8 +127,7 @@
     function addOne(){
       groupsService.save(newData).$promise.then(
         function (response) {
-          alert(response.message);
-          $state.go('groups.allGroups');
+          bootbox.alert(response.message, function(ok) { $state.go('groups.allGroups');});
         },
         function (error) {
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('GroupsService','addOne'))(error);
@@ -138,8 +136,7 @@
     function updateOne(){
       groupsService.update({id: _id }, newData).$promise.then(
         function (response) {
-          alert(response.message);
-          $state.go('groups.allGroups');
+          bootbox.alert(response.message, function(ok) { $state.go('groups.allGroups');});
         },
         function (error) {
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('GroupsService','updateOne'))(error);
