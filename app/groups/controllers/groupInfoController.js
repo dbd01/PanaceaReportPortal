@@ -31,7 +31,7 @@
           return "H υπηρεσία "+ serviceName+" απέτυχε να εκτελέσει τη δράση: "+actionName+".";
         },
       }
-    }
+    };
 
     if (mode.indexOf('remove')>-1){
       removeOne();
@@ -70,7 +70,7 @@
       groupTable.context='forms';
       groupTable.ready = true;
       cb();
-    }
+    };
     function assignPermissions(cb){
       var permissionzIDz =[];
       for (var i=0; i< newData.permissions.length; i++){
@@ -78,11 +78,10 @@
       }
       newData.permissions=permissionzIDz;
       cb();
-    }
+    };
     function removeOne(){
       groupsService.remove({ id: _id }).$promise.then(
         function (response) {
-          console.log("response");
           bootbox.alert(customMessages.removeSuccess[$rootScope.lang], function(ok) { $state.go('groups.allGroups'); });
         },
         function (error) {
@@ -105,7 +104,7 @@
         function (error){
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('PermissionsService','query'))(error);
         });
-    }
+    };
     function getOne(){
       groupsService.get({id:_id}).$promise.then(
         function (group){
@@ -123,7 +122,7 @@
         function (error){
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('GroupsService','query'))(error);
         });
-    }
+    };
     function addOne(){
       groupsService.save(newData).$promise.then(
         function (response) {
@@ -132,7 +131,7 @@
         function (error) {
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('GroupsService','addOne'))(error);
         });
-    }
+    };
     function updateOne(){
       groupsService.update({id: _id }, newData).$promise.then(
         function (response) {
@@ -141,6 +140,6 @@
         function (error) {
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('GroupsService','updateOne'))(error);
         });
-    }
+    };
   };
 })();

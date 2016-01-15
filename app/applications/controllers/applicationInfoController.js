@@ -33,7 +33,7 @@
           return "H υπηρεσία "+ serviceName+" απέτυχε να εκτελέσει τη δράση: "+actionName+".";
         },
       }
-    }
+    };
 
     if (mode.indexOf('remove')>-1){
       removeOne();
@@ -84,7 +84,6 @@
     function removeOne(){
       applicationsService.remove({ id:_id }).$promise.then(
         function (response){
-          console.log(response);
           bootbox.alert(customMessages.removeSuccess[$rootScope.lang], function(ok) { $state.go('applications.allApplications');});
         },
         function (error) {

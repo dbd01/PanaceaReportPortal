@@ -8,7 +8,7 @@
       "entity":null,
       "groups": [],
       "ready": false
-    }
+    };
     var mode=$state.current.name;
     var _id=$stateParams.id;//scopeComService.list[0];
     var newData=scopeComService.list[0];
@@ -31,7 +31,7 @@
           return "H υπηρεσία "+ serviceName+" απέτυχε να εκτελέσει τη δράση: "+actionName+".";
         },
       }
-    }
+    };
 
     if (mode.indexOf('remove')>-1){
       removeOne();
@@ -71,7 +71,7 @@
       userTable.context='forms';
       userTable.ready = true;
       cb();
-    }
+    };
     function assignGroups(cb){
       var groupzIDz =[];
       for (var i=0; i< newData.groups.length; i++){
@@ -79,17 +79,16 @@
       }
       newData.groups=groupzIDz;
       cb();
-    }
+    };
     function removeOne(){
       usersService.remove({ id:_id }).$promise.then(
         function (response){
-          console.log(response);
           bootbox.alert(customMessages.removeSuccess[$rootScope.lang], function(ok) { $state.go('users.allUsers');});
         },
         function (error) {
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('UsersService','removeOne'))(error);
         });
-    }
+    };
     function newOne(){
       userTable.entity={
         "_id":'',
@@ -108,7 +107,7 @@
         function (error){
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('GroupsService','query'))(error);
         });
-    }
+    };
     function getOne(){
       usersService.get({id:_id}).$promise.then(
         function (user){
@@ -126,17 +125,16 @@
         function (error){
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('UsersService','query'))(error);
         });
-    }
+    };
     function addOne(){
       usersService.save(newData).$promise.then(
         function (response) {
           bootbox.alert(response.message, function(ok) { $state.go('users.allUsers');});
         },
         function (error) {
-          console.log(error);
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('UsersService','addOne'))(error);
         });
-    }
+    };
     function updatePartiallyOne(){
       usersService.partialUpdate({id: _id }, newData).$promise.then(
         function (response) {
@@ -145,6 +143,6 @@
         function (error) {
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('UsersService','updateOne'))(error);
         });
-    }
+    };
   };
 })();
