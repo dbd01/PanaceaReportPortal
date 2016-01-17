@@ -16,17 +16,18 @@
       link: function ($scope, element, attrs) {
         $scope.$watch('ready', function (newvalue, oldvalue) {
           if (newvalue=="true") {
-            $timeout(function() {
+            //$timeout(function() {
               generateData(function(){
                 generateAccordion();
               });
-            }, 0);
+            //}, 0);
           }
         });
 
         function generateData(cb){
           console.log('element: ',element);
           console.log($scope.data)
+          cb();
         };
 
         function generateAccordion() {

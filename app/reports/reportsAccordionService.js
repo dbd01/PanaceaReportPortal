@@ -15,7 +15,7 @@
 
 	      $timeout(function() {
 	        deferred.resolve(data);
-	      }, 1000);
+	      }, 0);
 
 	      return deferred.promise;
 	};
