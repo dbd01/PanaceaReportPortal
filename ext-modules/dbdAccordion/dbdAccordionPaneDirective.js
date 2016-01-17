@@ -7,7 +7,7 @@
     return {
       transclude: true,
       restrict: 'E',
-      template: "<div></div>",
+      template: "ext-modules/dbdAccordion/dbdAccordionPaneTemplate.html",
       scope: {
         ready: '@',
         lang: '='
@@ -16,16 +16,11 @@
         $scope.$watch('ready', function (newvalue, oldvalue) {
           if (newvalue=="true") {
             $timeout(function() {
-              //generateAccordion();
+              
             }, 0);
           }
         });
-        function generateAccordion() {
-          console.log("element: ", element)
-          $(element).accordion({
-            header: "> div > h3"
-          });
-        }
+       
         $rootScope.$watch('lang', function(newvalue, oldvalue){
           $scope.lang=$rootScope.lang;
         });

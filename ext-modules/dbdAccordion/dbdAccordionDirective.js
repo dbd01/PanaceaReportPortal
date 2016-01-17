@@ -7,22 +7,36 @@
     return {
       transclude: true,
       restrict: 'E',
-      template:"<div></div>",
+      templateUrl:"ext-modules/dbdAccordion/dbdAccordionTemplate.html",
       scope: {
+        data:'=',
         ready: '@',
         lang: '='
       },
       link: function ($scope, element, attrs) {
-        $timeout(function() {
-          generateAccordion();
-        }, 0);
-        
-        function generateAccordion() {
+        $scope.$watch('ready', function (newvalue, oldvalue) {
+          if (newvalue=="true") {
+            $timeout(function() {
+              generateData(function(){
+                generateAccordion();
+              });
+            }, 0);
+          }
+        });
+
+        function generateData(cb){
           console.log('element: ',element);
-          $(element).accordion({
-            header: "h3"
-          });
-        }
+          console.log($scope.data)
+        };
+
+        function generateAccordion() {
+          $timeout(function() {   //<--- used $timeout to make sure ng-repeat is REALLY finished
+            $(element).accordion({
+              header: "> div > h3"
+            });
+           });
+         }
+
         $rootScope.$watch('lang', function(newvalue, oldvalue){
           $scope.lang=$rootScope.lang;
         });
