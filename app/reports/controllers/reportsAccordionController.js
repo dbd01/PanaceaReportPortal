@@ -11,32 +11,21 @@
       },
     };
     var accordionObj={
-      "html_array":[],
+      "accohtml":[],
       "ready":false
     };
 
-    var accoTitles=$element.find(".accotitle");
-    var accoContents=$element.find(".accocontent");
+    var accohtml=$element.find(".accocontent");
 
-    if (accoTitles.length!=accoContents.length){
-      exceptionService.catcher(customMessages.differentTitlesContentsLenthError[$rootScope.lang])(null);
-    }
-    else{
-      for (var i = 0; i < accoTitles.length; i++) {
-        var accoItem={
-          title: accoTitles[i],
-          htmlContent: accoContents[i]
-        }
-        
-        accordionObj.html_array.push(accoItem);
-      };
+    console.log(accohtml);
 
-      accordionObj.ready=true;
-      $scope.accordionObj = accordionObj;
+    accordionObj.accohtml=accohtml;
 
-      $scope.add = function(){
-        exceptionService.catcher("fjdsoifodisfjoisdfj")(null);
-      };
-    }
+    accordionObj.ready=true;
+    $scope.accordionObj = accordionObj;
+
+    $scope.add = function(){
+      exceptionService.catcher("fjdsoifodisfjoisdfj")(null);
+    };
   };
 })();
