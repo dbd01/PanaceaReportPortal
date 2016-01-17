@@ -9,7 +9,7 @@
       restrict: 'E',
       templateUrl:"ext-modules/dbdAccordion/dbdAccordionTemplate.html",
       scope: {
-        data:'=',
+        htmlarray:'=',
         ready: '@',
         lang: '='
       },
@@ -17,18 +17,18 @@
         $scope.$watch('ready', function (newvalue, oldvalue) {
           if (newvalue=="true") {
             //$timeout(function() {
-              generateData(function(){
+              makeSafeHtml(function(){
                 generateAccordion();
               });
             //}, 0);
           }
         });
 
-        function generateData(cb){
+        function makeSafeHtml(cb){
           //console.log($scope.accodata)
-          for (var i = 0; i < $scope.data.length; i++) {
-            $scope.data[i].title = $sce.trustAsHtml($scope.data[i].title.innerHTML);
-            $scope.data[i].data = $sce.trustAsHtml($scope.data[i].data.innerHTML);
+          for (var i = 0; i < $scope.htmlarray.length; i++) {
+            $scope.htmlarray[i].title = $sce.trustAsHtml($scope.htmlarray[i].title.innerHTML);
+            $scope.htmlarray[i].htmlContent = $sce.trustAsHtml($scope.htmlarray[i].htmlContent.innerHTML);
           };
           console.log($scope.data)
           cb();

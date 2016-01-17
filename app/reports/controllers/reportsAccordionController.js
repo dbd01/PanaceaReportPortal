@@ -11,7 +11,7 @@
       },
     };
     var accordionObj={
-      "data":[],
+      "html_array":[],
       "ready":false
     };
 
@@ -25,10 +25,10 @@
       for (var i = 0; i < accoTitles.length; i++) {
         var accoItem={
           title: accoTitles[i],
-          data: accoContents[i]
+          htmlContent: accoContents[i]
         }
         
-        accordionObj.data.push(accoItem);
+        accordionObj.html_array.push(accoItem);
       };
 
       accordionObj.ready=true;
