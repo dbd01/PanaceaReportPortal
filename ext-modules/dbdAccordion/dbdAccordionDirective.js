@@ -9,7 +9,6 @@
       restrict: 'E',
       templateUrl:"ext-modules/dbdAccordion/dbdAccordionTemplate.html",
       scope: {
-        //accodata:'=',
         data:'=',
         ready: '@',
         lang: '='
