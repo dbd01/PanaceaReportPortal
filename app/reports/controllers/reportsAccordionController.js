@@ -33,6 +33,10 @@
 
       accordionObj.ready=true;
       $scope.accordionObj = accordionObj;
+
+      $scope.add = function(){
+        exceptionService.catcher("fjdsoifodisfjoisdfj")(null);
+      };
     }
   };
 })();
