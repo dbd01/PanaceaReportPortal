@@ -14,7 +14,7 @@
         }
         var userId=$scope.item.widgetSettings.id;
         if (userId){
-          var user=usersService.getOne({ "userId": userId}, function () {
+          var user=usersService.get({ "id": userId}, function () {
             var groups=groupsService.query(function(){
               userTable.entity=user;
               userTable.groups=groups;
