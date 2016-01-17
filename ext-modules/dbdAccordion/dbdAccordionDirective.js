@@ -2,16 +2,15 @@
   "use strict";
   
   angular.module("dbdAccordionModule").directive("dbdAccordion", dbdAccordion);
-  dbdAccordion.$inject= ['$timeout', '$rootScope', '$sce'];
-  function dbdAccordion($timeout, $rootScope, $sce) {
+  dbdAccordion.$inject= ['$timeout'];
+  function dbdAccordion($timeout) {
     return {
       transclude: true,
       restrict: 'E',
-      templateUrl:"ext-modules/dbdAccordion/dbdAccordionTemplate.html",
+      template:"<div ng-transclude></div>",
       scope: {
         accohtml:'=',
-        ready: '@',
-        lang: '='
+        ready: '@'
       },
       link: function ($scope, element, attrs) {
         $scope.$watch('ready', function (newvalue, oldvalue) {
@@ -25,10 +24,6 @@
             $scope.accohtml.accordion();
            });
          }
-
-        $rootScope.$watch('lang', function(newvalue, oldvalue){
-          $scope.lang=$rootScope.lang;
-        });
       }
     }
   };
