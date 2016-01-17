@@ -2,13 +2,14 @@
   "use strict";
   
   angular.module("dbdAccordionModule").directive("dbdAccordion", dbdAccordion);
-  dbdAccordion.$inject= ['$timeout', '$rootScope'];
-  function dbdAccordion($timeout, $rootScope) {
+  dbdAccordion.$inject= ['$timeout', '$rootScope', '$sce'];
+  function dbdAccordion($timeout, $rootScope, $sce) {
     return {
       transclude: true,
       restrict: 'E',
       templateUrl:"ext-modules/dbdAccordion/dbdAccordionTemplate.html",
       scope: {
+        //accodata:'=',
         data:'=',
         ready: '@',
         lang: '='
@@ -25,7 +26,11 @@
         });
 
         function generateData(cb){
-          console.log('element: ',element);
+          //console.log($scope.accodata)
+          for (var i = 0; i < $scope.data.length; i++) {
+            $scope.data[i].title = $sce.trustAsHtml($scope.data[i].title.innerHTML);
+            $scope.data[i].data = $sce.trustAsHtml($scope.data[i].data.innerHTML);
+          };
           console.log($scope.data)
           cb();
         };

@@ -1,6 +1,6 @@
 ﻿<div ng-repeat="item in data">
-	<h3 ng-bind="item.title"></h3>
+	<h3 ng-bind-html="item.title"></h3>
 	<div>
-		<p ng-bind="item.data"></p>
+		<p ng-bind-html="item.data"></p>
 	</div>
 </div>
