@@ -5,7 +5,7 @@
   dbdAccordion.$inject= ['$state', '$timeout', '$rootScope', 'exceptionService'];
   function dbdAccordion($state, $timeout, $rootScope, exceptionService) {
     return {
-      controller:"dbdAccordionController",
+      //controller:"dbdAccordionController",
       //transclude: true,
       templateUrl: "ext-modules/dbdAccordion/dbdAccordionTemplate.html",
       restrict: 'E',

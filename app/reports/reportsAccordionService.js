@@ -1,9 +1,9 @@
 ﻿(function(){
 	"use strict";
 
-	angular.module('dbdAccordionModule').factory('dbdAccordionService', dbdAccordionService);
-	dbdAccordionService.$inject= ['$q', '$timeout'];
-	function dbdAccordionService($q, $timeout) {
+	angular.module('PanaceaReports').factory('reportsAccordionService', reportsAccordionService);
+	reportsAccordionService.$inject= ['$q', '$timeout'];
+	function reportsAccordionService($q, $timeout) {
 	      var deferred = $q.defer();
 	      var data = [{
 	        title: 'Section 1',

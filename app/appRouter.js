@@ -60,7 +60,7 @@ function appRouter($stateProvider, $urlRouterProvider) {
       config: {
         url: "/reports",
         templateUrl: "app/reports/views/reportsView.html",
-        controller: 'reportsController',
+        controller: 'reportsAccordionController',
         menuData: {
           displayName: {
             en: "Reports",
