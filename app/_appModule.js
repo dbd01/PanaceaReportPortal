@@ -15,6 +15,5 @@ angular.module('PanaceaReports', [
 	'ui.bootstrap',
 	'ngResource',
 	'ngRoute',
-	'datatables',
 	'checklist-model'
 ]);

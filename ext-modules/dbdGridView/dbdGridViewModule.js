@@ -1,3 +1,3 @@
 'use strict';
 
-var app = angular.module('dbdGridViewModule', ['datatables']);
+var app = angular.module('dbdGridViewModule', []);
