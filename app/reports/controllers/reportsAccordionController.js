@@ -10,6 +10,8 @@
         el:"φξδσοιφοδισφξοισδφξ"
       },
     };
+    
+    //dbd-accordion module config
     var accordionObj={
       "accohtml":[],
       "ready":false
@@ -21,6 +23,7 @@
     accordionObj.ready=true;
 
     $scope.accordionObj = accordionObj;
+    //end of dbd-accordion config
 
     $scope.add = function(){
       exceptionService.catcher(customMessages.sillyMessage[$rootScope.lang])(null);

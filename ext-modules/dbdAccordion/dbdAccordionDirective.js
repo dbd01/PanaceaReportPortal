@@ -15,15 +15,15 @@
       link: function ($scope, element, attrs) {
         $scope.$watch('ready', function (newvalue, oldvalue) {
           if (newvalue=="true") {
-            generateAccordion();
+            $timeout(function () {
+              generateAccordion();
+            }, 0);
           }
         });
 
         function generateAccordion() {
-          $timeout(function() {   //<--- used $timeout to make sure ng-repeat is REALLY finished
-            $scope.accohtml.accordion();
-           });
-         }
+          $scope.accohtml.accordion();
+        }
       }
     }
   };
