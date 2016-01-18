@@ -13,13 +13,13 @@
     
     //dbd-accordion module config
     var accordionObj={
-      "accohtml":[],
+      "accoelem":null,
       "ready":false
     };
 
-    var accohtml=$element.find(".accocontent");
+    var accoelem=$element.find(".accocontent");
 
-    accordionObj.accohtml=accohtml;
+    accordionObj.accoelem=accoelem;
     accordionObj.ready=true;
 
     $scope.accordionObj = accordionObj;

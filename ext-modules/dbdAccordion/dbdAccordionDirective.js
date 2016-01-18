@@ -9,7 +9,7 @@
       restrict: 'E',
       template:"<div ng-transclude></div>",
       scope: {
-        accohtml:'=',
+        accoelem:'=',
         ready: '@'
       },
       link: function ($scope, element, attrs) {
@@ -22,7 +22,7 @@
         });
 
         function generateAccordion() {
-          $scope.accohtml.accordion();
+          $scope.accoelem.accordion();
         }
       }
     }
