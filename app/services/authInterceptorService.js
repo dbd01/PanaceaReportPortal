@@ -100,7 +100,7 @@
       return config;
     }
     console.log("authInterceptorService: request");
-    quest.request = _request;
+    //quest.request = _request;
     return quest;
   }
 })();
