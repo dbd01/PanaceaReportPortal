@@ -2,6 +2,6 @@
 
 var app = angular.module('polyphemusSettingsModule', []);
 app.constant("polyphemusSettings",{
-    authServerPath: "http://localhost:4451"
+    authServerPath: "https://pandora.dotbydot.eu:4451"
   });
 

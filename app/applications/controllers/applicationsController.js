@@ -2,8 +2,8 @@
   "use strict";
 
   angular.module('PanaceaReports').controller("applicationsController", applicationsController);
-  applicationsController.$inject=['localStorageService', 'applicationsService', '$scope', '$state', 'exceptionService'];
-  function applicationsController(localStorageService, applicationsService , $scope, $state, exceptionService ) {
+  applicationsController.$inject=['localStorageService', 'applicationsService', '$scope', '$state', 'exceptionService', '$rootScope'];
+  function applicationsController(localStorageService, applicationsService , $scope, $state, exceptionService, $rootScope ) {
     var customMessages={
       actionFailedError:{
         en:function(serviceName, actionName){

@@ -2,8 +2,8 @@
 "use strict";
 
   angular.module('PanaceaReports').controller("permissionsController", permissionsController);
-  permissionsController.$inject= ['localStorageService', 'permissionsService', '$scope', '$state', 'exceptionService'];
-  function permissionsController(localStorageService, permissionsService, $scope, $state, exceptionService ) {
+  permissionsController.$inject= ['localStorageService', 'permissionsService', '$scope', '$state', 'exceptionService', '$rootScope'];
+  function permissionsController(localStorageService, permissionsService, $scope, $state, exceptionService, $rootScope ) {
     var customMessages={
       actionFailedError:{
         en:function(serviceName, actionName){

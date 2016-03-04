@@ -97,6 +97,7 @@
           config.headers["deleted"]=true;
         }
       }
+      console.log('authService: ', config)
       return config;
     }
     console.log("authInterceptorService: request");
