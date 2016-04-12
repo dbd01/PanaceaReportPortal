@@ -11,7 +11,7 @@
 				$scope.lang='el';
 			$scope.casPath = appSettings.casPath;
 			$scope.state = 'unauthorized';
-			$rootScope.$watch('authState', function (newvalue, oldvalue) {
+			var destroyRootscopeWatcherAuthState = $rootScope.$watch('authState', function (newvalue, oldvalue) {
 				console.log("layoutController: watch");
 				if (newvalue=='authorized'){
 					console.log("layoutController: watch: authorized");
@@ -31,10 +31,24 @@
 					$state.go('start');
 				}
 			});
+			var destroyRootscopeWatcherAuthData = $rootScope.$watch('authData', function(newvalue, oldValue) {
+				if (newvalue) {
+					localStorageService.set('authorizationData', { 
+					token: newValue.token, 
+					expires: newValue.expires,
+					log_name: newValue.userName
+				});
+				$rootScope.authState="authorized";
+				$rootScope.loginService='polyphemus';
+				}
+			});
 			$scope.changeLanguage=function(){
 				gettextCatalog.setCurrentLanguage($scope.lang);
 				$rootScope.lang = $scope.lang;
 				localStorageService.set('lang', $scope.lang);
 			};
+
+      $scope.$on('destroy', destroyRootscopeWatcherAuthState);
+      $scope.$on('destroy', destroyRootscopeWatcherAuthData);
 		}
 })();

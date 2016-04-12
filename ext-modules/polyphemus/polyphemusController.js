@@ -2,9 +2,9 @@
   'use strict';
 
   angular.module("polyphemusModule").controller("polyphemusController", polyphemusController);
-  polyphemusController.$inject= ['$scope', 'polyphemusService' , '$rootScope', 'polyphemusCommServiceOut'];
+  polyphemusController.$inject= ['$scope', 'polyphemusService' , '$rootScope'];
   
-  function polyphemusController($scope, polyphemusService, $rootScope, polyphemusCommServiceOut) {
+  function polyphemusController($scope, polyphemusService, $rootScope) {
     $scope.authData = {
       username: $scope.username,
       password: $scope.password,
@@ -30,7 +30,7 @@
             expires: response.expires
           };
           console.log("polyphemusController: login: $broadcast");
-          polyphemusCommServiceOut.setValue(authorizationData);
+          $rootScope.authData = authorizationData;
         },
         //error
         function (error) {
