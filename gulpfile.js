@@ -26,7 +26,27 @@ var gulp = require('gulp'),
     'bower_components/angular-gettext/dist/angular-gettext.min.js',
     'ext-modules/widgets/widgetUser/widgetUserModule.js',
     'ext-modules/widgets/widgetUser/widgetUserDirective.js',
-    'ext-modules/widgets/widgetUser/dialogs/widgetSelectUserController.js'
+    'ext-modules/widgets/widgetUser/dialogs/widgetSelectUserController.js',
+    'ext-modules/dbdDashboard/dbdDashboardModule.js',
+    'ext-modules/dbdDashboard/dbdDashboardDirective.js',
+    'ext-modules/dbdDashboard/dbdWidgetBodyDirective.js',
+    'ext-modules/dbdDetailView/dbdDetailViewModule.js',
+    'ext-modules/dbdDetailView/dbdDetailViewDirective.js',
+    'ext-modules/dbdGridView/dbdGridViewModule.js',
+    'ext-modules/dbdGridView/dbdGridViewCommServiceIn.js',
+    'ext-modules/dbdGridView/dbdGridViewController.js',
+    'ext-modules/dbdGridView/dbdGridViewDirective.js',
+    'ext-modules/dbdMenu/dbdMenuModule.js',
+    'ext-modules/dbdMenu/dbdMenuCommServiceIn.js',
+    'ext-modules/dbdMenu/dbdMenuController.js',
+    'ext-modules/dbdMenu/dbdMenuDirective.js',
+    'ext-modules/dbdMenu/dbdMenuDirective.js',
+    'ext-modules/polyphemus/polyphemusModule.js',
+    'ext-modules/polyphemus/polyphemusCommServiceOut.js',
+    'ext-modules/polyphemus/polyphemusController.js',
+    'ext-modules/polyphemus/polyphemusDirective.js',
+    'ext-modules/polyphemus/polyphemusService.js',
+    'ext-modules/polyphemus/polyphemusSettingsModule.js'
  ];
     
 var app_files = [
@@ -61,7 +81,8 @@ var app_files = [
      'assets/bootstrap/css/*.*',
      'assets/bootstrap/fonts/*.*',
      'assets/bootstrap/js/*.*',
-     'bower_components/datatables/media/css/*.*'
+     'bower_components/datatables/media/css/*.*',
+     'ext-modules/dbdDashboard/dbdDashboard.css',
  ]
 
  //views =  html files
