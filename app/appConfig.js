@@ -46,9 +46,9 @@
   }
 
   ng.module('PanaceaReports').run(appRun);
-  appRun.$inject= ['$rootScope', 'gettextCatalog', 'dbdMenuCommServiceOut', 'dbdGridViewCommServiceOut', 'localStorageService', 
+  appRun.$inject= ['$rootScope', 'gettextCatalog', 'localStorageService', 
     '$log', '$location'];
-  function appRun($rootScope, gettextCatalog, dbdMenuCommServiceOut, dbdGridViewCommServiceOut, localStorageService, $log, $location){
+  function appRun($rootScope, gettextCatalog, localStorageService, $log, $location){
     $rootScope.log_link = {value:"Logout"};
     gettextCatalog.debug = true;
     console.log("config : lang: ", $rootScope.lang);
@@ -56,8 +56,7 @@
     if (!lang)
       lang='el';
     gettextCatalog.setCurrentLanguage(lang);
-    dbdMenuCommServiceOut.setLang(lang);
-    dbdGridViewCommServiceOut.setLang(lang);
+    $rootScope.lang = lang;
     localStorageService.set('lang', lang);
   }
 })(angular);

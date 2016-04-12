@@ -6,17 +6,6 @@
   
   function dbdMenuController($rootScope, $scope) {
     console.log("dbdMenuController");
-    $rootScope.$watch('states', function (newvalue, oldvalue) {
-      console.log("dbdMenuController: watch: states: ", newvalue, $rootScope.lang);
-      var all_states = $rootScope.states;
-      var lang=$rootScope.lang;
-      populateMenu(all_states, lang);
-    });
-    $rootScope.$watch('lang', function(newvalue, oldvalue){
-      var all_states = $rootScope.states;
-      var lang=$rootScope.lang;
-      populateMenu(all_states, lang)
-    });
     function populateMenu(all_states, lang){
       var new_sidebar = [];
       _(all_states).forEach(function (state) {
@@ -57,5 +46,19 @@
       console.log(new_sidebar);
       $scope.sidebar=new_sidebar;
     }
+    var destroyRootscopeWatcherStates =  $rootScope.$watch('states', function (newvalue, oldvalue) {
+      console.log("dbdMenuController: watch: states: ", newvalue, $rootScope.lang);
+      var all_states = $rootScope.states;
+      var lang=$rootScope.lang;
+      populateMenu(all_states, lang);
+    });
+    var destroyRootscopeWatcherLang = $rootScope.$watch('lang', function(newvalue, oldvalue){
+      var all_states = $rootScope.states;
+      var lang=$rootScope.lang;
+      populateMenu(all_states, lang)
+    });
+
+    $scope.$on('destroy', destroyRootscopeWatcherStates);
+    $scope.$on('destroy', destroyRootscopeWatcherLang);
   };
 })();

@@ -2,9 +2,9 @@
 	"use strict";
 
 	angular.module('PanaceaReports').controller('loggedInController', loggedInController);
-	loggedInController.$inject= ['$scope', '$rootScope', '$state', 'dbdMenuCommServiceOut'];
-	function loggedInController($scope, $rootScope, $state, dbdMenuCommServiceOut) {
+	loggedInController.$inject= ['$scope', '$rootScope', '$state'];
+	function loggedInController($scope, $rootScope, $state) {
 		console.log("loggedInController: ", $rootScope.authState);
-		dbdMenuCommServiceOut.setStates($state.get());
+		$rootScope.states = $state.get();
 	}
 })();

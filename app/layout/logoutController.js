@@ -2,12 +2,12 @@
 	"use strict";
 	
   angular.module('PanaceaReports').controller('logoutController', logoutController);
-  logoutController.$inject= ['$scope', '$rootScope', 'localStorageService', '$http', 'appSettings', 'dbdMenuCommServiceOut'];
-	function logoutController($scope, $rootScope, localStorageService, $http, appSettings, dbdMenuCommServiceOut) {
+  logoutController.$inject= ['$scope', '$rootScope', 'localStorageService', '$http', 'appSettings'];
+	function logoutController($scope, $rootScope, localStorageService, $http, appSettings) {
 		$rootScope.authState='unauthorized';
 		$rootScope.log_name="";
 		localStorageService.set('authorizationData', null);
-		dbdMenuCommServiceOut.setStates([]);
+		$rootScope.states = [];
 		if ($rootScope.loginService=='cas'){
 			$http({
 				method: 'GET',

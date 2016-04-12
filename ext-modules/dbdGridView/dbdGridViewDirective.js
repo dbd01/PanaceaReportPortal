@@ -109,7 +109,7 @@
             }, 0);
           }
         });
-        $rootScope.$watch('lang', function(newvalue, oldvalue){
+        var destroyRootscopeWatcherLang = $rootScope.$watch('lang', function(newvalue, oldvalue){
           $scope.lang=$rootScope.lang;
           $scope.tabletitle=$scope.tabletitles[$scope.lang];
           if ($scope.tabledata){
@@ -118,6 +118,8 @@
             };
           }
         });
+
+        $scope.$on('destroy', destroyRootscopeWatcherLang);
       }
     }
   };
