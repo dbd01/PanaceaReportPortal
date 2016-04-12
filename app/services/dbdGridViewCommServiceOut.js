@@ -7,6 +7,6 @@
 			setLang : function(newValue) {
 				dbdGridViewCommServiceIn.setLang(newValue);
 			}
-		}
-	};
+		};
+	}
 })();

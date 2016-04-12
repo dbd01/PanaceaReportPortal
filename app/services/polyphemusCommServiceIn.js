@@ -19,6 +19,6 @@
 				$rootScope.authState="authorized";
 				$rootScope.loginService='polyphemus';
 			}
-		}
-	};
+		};
+	}
 })();

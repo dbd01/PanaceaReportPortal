@@ -12,5 +12,5 @@
 			messages.list = [];
 		};
 		return messages;
-	};
+	}
 })();

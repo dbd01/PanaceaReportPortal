@@ -5,7 +5,7 @@
 	casController.$inject= ['localStorageService', '$stateParams', '$rootScope', '$state'];
 	function casController(localStorageService, $stateParams, $rootScope, $state) {
 		//$rootScope.urlLink = {value:"true"};
-    console.log("casController")
+    console.log("casController");
 		//set the token.
 		localStorageService.set('authorizationData', { 
 			token: $stateParams.token,
@@ -15,5 +15,5 @@
     $rootScope.authState='authorized';
     $rootScope.loginService='cas';
     $state.go('start.logged_in');
-	};
+	}
 })();

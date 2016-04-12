@@ -42,7 +42,7 @@
         populatePermissionsTable(permissions, function (){
           configPermissionTable(function(){
             $scope.permissionsTable = permissionsTable;
-          })
+          });
         });
       }, function(error){
         exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]("PermissionsService", "query"))(error);
@@ -60,7 +60,7 @@
         permissionsTable.data.push(permissionData);
       });
       cb();
-    };
+    }
     function configPermissionTable(cb){
       if ($state.includes('permissions.deletedPermissions'))
         permissionsTable.mode='deleted';
@@ -72,6 +72,6 @@
       permissionsTable.entityCP='Permissions';
       permissionsTable.ready = true;
       cb();
-    };
-  };
+    }
+  }
 })();

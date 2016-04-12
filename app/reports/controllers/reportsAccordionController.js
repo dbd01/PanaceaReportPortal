@@ -28,5 +28,5 @@
     $scope.add = function(){
       exceptionService.catcher(customMessages.sillyMessage[$rootScope.lang])(null);
     };
-  };
+  }
 })();

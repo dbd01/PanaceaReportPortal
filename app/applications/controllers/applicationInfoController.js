@@ -13,7 +13,7 @@
     };
     var mode=$state.current.name;
     var _id=$stateParams.id;
-    var newData=scopeComService.list[0]
+    var newData=scopeComService.list[0];
     scopeComService.flush();
 
     var customMessages={
@@ -72,7 +72,7 @@
       applicationTable.context='forms';
       applicationTable.ready = true;
       cb();
-    };
+    }
     function assignGroups(cb){
       var groupzIDz =[];
       for (var i=0; i< newData.groups.length; i++){
@@ -80,7 +80,7 @@
       }
       newData.groups=groupzIDz;
       cb();
-    };
+    }
     function removeOne(){
       applicationsService.remove({ id:_id }).$promise.then(
         function (response){
@@ -89,7 +89,7 @@
         function (error) {
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('ApplicationsService','removeOne'))(error);
         });
-    };
+    }
     function newOne(){
       applicationTable.entity={
         "_id":'',
@@ -107,7 +107,7 @@
         function (error){
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('GroupsService','query'))(error);
         });
-    };
+    }
     function getOne(){
       applicationsService.get({id:_id}).$promise.then(
         function (application){
@@ -125,7 +125,7 @@
         function (error){
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('ApplicationsService','query'))(error);
         });
-    };
+    }
     function addOne(){
       applicationsService.save(newData).$promise.then(
         function (response) {
@@ -134,7 +134,7 @@
         function (error) {
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('ApplicationsService','addOne'))(error);
         });
-    };
+    }
     function updateOne(){
       applicationsService.update({id: _id }, newData).$promise.then(
         function (response) {
@@ -143,7 +143,7 @@
         function (error) {
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('ApplicationsService','updateOne'))(error);
         });
-    };
+    }
 
-  };
+  }
 })();

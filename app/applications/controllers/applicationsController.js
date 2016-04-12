@@ -54,7 +54,7 @@
         applicationsTable.data.push(applicationData);
       });
       cb();
-    };
+    }
 
     function configApplicationsTable(cb){
       if ($state.includes('applications.deletedApplications'))
@@ -67,6 +67,6 @@
       applicationsTable.entityCP='Applications';
       applicationsTable.ready = true;
       cb();
-    };
-  };
+    }
+  }
 })();

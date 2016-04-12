@@ -51,7 +51,7 @@
         groupsTable.data.push(groupData);
       });
       cb();
-    };
+    }
     function configGroupsTable(cb){
       if ($state.includes('groups.deletedGroups'))
         groupsTable.mode='deleted';
@@ -63,6 +63,6 @@
       groupsTable.entityCP='Groups';
       groupsTable.ready = true;
       cb();
-    };
-  };
+    }
+  }
 })();

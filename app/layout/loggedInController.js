@@ -6,5 +6,5 @@
 	function loggedInController($scope, $rootScope, $state, dbdMenuCommServiceOut) {
 		console.log("loggedInController: ", $rootScope.authState);
 		dbdMenuCommServiceOut.setStates($state.get());
-	};
+	}
 })();

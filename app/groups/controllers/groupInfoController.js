@@ -11,7 +11,7 @@
     };
     var mode=$state.current.name;
     var _id=$stateParams.id;//scopeComService.list[0];
-    var newData=scopeComService.list[0]
+    var newData=scopeComService.list[0];
     scopeComService.flush();
     
     var customMessages={
@@ -70,7 +70,7 @@
       groupTable.context='forms';
       groupTable.ready = true;
       cb();
-    };
+    }
     function assignPermissions(cb){
       var permissionzIDz =[];
       for (var i=0; i< newData.permissions.length; i++){
@@ -78,7 +78,7 @@
       }
       newData.permissions=permissionzIDz;
       cb();
-    };
+    }
     function removeOne(){
       groupsService.remove({ id: _id }).$promise.then(
         function (response) {
@@ -87,7 +87,7 @@
         function (error) {
           exceptionService.catcher("GroupsService remove failed")(error);
         });
-    };
+    }
     function newOne(){
       groupTable.entity={
         "_id":'',
@@ -104,7 +104,7 @@
         function (error){
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('PermissionsService','query'))(error);
         });
-    };
+    }
     function getOne(){
       groupsService.get({id:_id}).$promise.then(
         function (group){
@@ -122,7 +122,7 @@
         function (error){
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('GroupsService','query'))(error);
         });
-    };
+    }
     function addOne(){
       groupsService.save(newData).$promise.then(
         function (response) {
@@ -131,7 +131,7 @@
         function (error) {
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('GroupsService','addOne'))(error);
         });
-    };
+    }
     function updateOne(){
       groupsService.update({id: _id }, newData).$promise.then(
         function (response) {
@@ -140,6 +140,6 @@
         function (error) {
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('GroupsService','updateOne'))(error);
         });
-    };
-  };
+    }
+  }
 })();

@@ -10,7 +10,7 @@
     };
     var mode=$state.current.name;
     var _id=$stateParams.id;
-    var newData=scopeComService.list[0]
+    var newData=scopeComService.list[0];
     var newPermissionName=scopeComService.list[1];
     scopeComService.flush();
 
@@ -65,7 +65,7 @@
       permissionTable.context='forms';
       permissionTable.ready = true;
       cb();
-    };
+    }
     function removeOne(){
       permissionsService.remove({ id:_id }).$promise.then(
         function (response){
@@ -74,7 +74,7 @@
         function (error) {
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('PermissionsService','removeOne'))(error);
         });
-    };
+    }
     function newOne(){
       if (!newPermissionName)
         newPermissionName='';
@@ -90,7 +90,7 @@
       configPermissionTable(function(){
         $scope.permissionTable = permissionTable;
       });
-    };
+    }
     function getOne(){
       permissionsService.get({id:_id}).$promise.then(
         function (permission){
@@ -102,7 +102,7 @@
         function (error){
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('PermissionsService','query'))(error);
         });
-    };
+    }
     function addOne(){
       permissionsService.save(newData).$promise.then(
         function (response) {
@@ -111,7 +111,7 @@
         function (error) {
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('PermissionsService','addOne'))(error);
         });
-    };
+    }
     function updateOne(){
       permissionsService.update({id: _id }, newData).$promise.then(
         function (response) {
@@ -120,6 +120,6 @@
         function (error) {
           exceptionService.catcher(customMessages.actionFailedError[$rootScope.lang]('PermissionsService','updateOne'))(error);
         });
-    };
-  };
+    }
+  }
 })();

@@ -11,6 +11,6 @@
 			setLang : function(newValue) {
 				dbdMenuCommServiceIn.setLang(newValue);
 			}
-		}
-	};
+		};
+	}
 })();

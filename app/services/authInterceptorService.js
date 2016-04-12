@@ -90,16 +90,16 @@
         config.headers = { 
           'Content-Type': 'application/json',
           'x-access-token': localStorageService.get('authorizationData').token
-        }
-        console.log("authInterceptorService: state: ", state)
+        };
+        console.log("authInterceptorService: state: ", state);
         //set headers if deleted records are asked
         if (state && state.indexOf("deleted")>-1){
-          config.headers["deleted"]=true;
+          config.headers.deleted=true;
         }
       }
-      console.log('authService: ', config)
+      console.log('authService: ', config);
       return config;
-    }
+    };
     console.log("authInterceptorService: request");
     //quest.request = _request;
     return quest;

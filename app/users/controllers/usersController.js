@@ -39,7 +39,7 @@
         populateUsersTable(users, function (){
           configUsersTable(function(){
             $scope.usersTable = usersTable;
-          })
+          });
         });
       },
       function (error){
@@ -57,7 +57,7 @@
         usersTable.data.push(userData);
       });
       cb();
-    };
+    }
 
     function configUsersTable(cb){
       if ($state.includes('users.deletedUsers'))
@@ -71,5 +71,5 @@
       usersTable.ready = true;
       cb();
     }
-  };
+  }
 })();

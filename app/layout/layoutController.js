@@ -14,7 +14,7 @@
 			$rootScope.$watch('authState', function (newvalue, oldvalue) {
 				console.log("layoutController: watch");
 				if (newvalue=='authorized'){
-					console.log("layoutController: watch: authorized")
+					console.log("layoutController: watch: authorized");
 					$scope.state = 'authorized';
 					$rootScope.log_name=localStorageService.get('authorizationData').log_name;
 					if ($state.includes('start')&&!$state.includes('start.logged_in')){
@@ -25,17 +25,17 @@
 					}
 				}
 				else{
-					console.log("layoutController: watch: unauthorized")
+					console.log("layoutController: watch: unauthorized");
 					$scope.state = 'unauthorized';
 					$rootScope.log_name=null;
 					$state.go('start');
 				}
-			})
+			});
 			$scope.changeLanguage=function(){
 				gettextCatalog.setCurrentLanguage($scope.lang);
 				dbdMenuCommServiceOut.setLang($scope.lang);
 				dbdGridViewCommServiceOut.setLang($scope.lang);
 				localStorageService.set('lang', $scope.lang);
-			}
-		};
+			};
+		}
 })();
