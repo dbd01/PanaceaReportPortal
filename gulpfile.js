@@ -66,7 +66,8 @@ var app_files = [
     'app/groups/*.js',
     'app/common/*.json',
     'app/common/*.js', 
-    'app/services/*.js'
+    'app/services/*.js',
+    'app/services/dbdMenuCommServiceOut.js'
  ];   
 
  var html_css_files =[
