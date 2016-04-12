@@ -31,8 +31,8 @@
 					$state.go('start');
 				}
 			});
-			var destroyRootscopeWatcherAuthData = $rootScope.$watch('authData', function(newvalue, oldValue) {
-				if (newvalue) {
+			var destroyRootscopeWatcherAuthData = $rootScope.$watch('authData', function(newValue, oldValue) {
+				if (newValue) {
 					localStorageService.set('authorizationData', { 
 					token: newValue.token, 
 					expires: newValue.expires,
