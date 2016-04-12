@@ -24,6 +24,7 @@ var gulp = require('gulp'),
     'bower_components/checklist-model/checklist-model.js',
     'bower_components/bootstrap/dist/js/bootstrap.min.js',
     'bower_components/angular-gettext/dist/angular-gettext.min.js',
+    'bower_components/angular-gridster/dist/angular-gridster.min.js',
     'ext-modules/widgets/widgetUser/widgetUserModule.js',
     'ext-modules/widgets/widgetUser/widgetUserDirective.js',
     'ext-modules/widgets/widgetUser/dialogs/widgetSelectUserController.js',
@@ -83,6 +84,7 @@ var app_files = [
      'assets/bootstrap/js/*.*',
      'bower_components/datatables/media/css/*.*',
      'ext-modules/dbdDashboard/dbdDashboard.css',
+     'bower_components/angular-gridster/dist/angular-gridster.min.css',
  ]
 
  //views =  html files
