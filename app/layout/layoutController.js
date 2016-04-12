@@ -48,7 +48,7 @@
 				localStorageService.set('lang', $scope.lang);
 			};
 
-      $scope.$on('destroy', destroyRootscopeWatcherAuthState);
-      $scope.$on('destroy', destroyRootscopeWatcherAuthData);
+      $scope.$on('$destroy', destroyRootscopeWatcherAuthState);
+      $scope.$on('$destroy', destroyRootscopeWatcherAuthData);
 		}
 })();

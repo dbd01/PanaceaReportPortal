@@ -119,7 +119,7 @@
           }
         });
 
-        $scope.$on('destroy', destroyRootscopeWatcherLang);
+        $scope.$on('$destroy', destroyRootscopeWatcherLang);
       }
     }
   };

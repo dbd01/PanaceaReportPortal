@@ -58,7 +58,7 @@
       populateMenu(all_states, lang)
     });
 
-    $scope.$on('destroy', destroyRootscopeWatcherStates);
-    $scope.$on('destroy', destroyRootscopeWatcherLang);
+    $scope.$on('$destroy', destroyRootscopeWatcherStates);
+    $scope.$on('$destroy', destroyRootscopeWatcherLang);
   };
 })();
