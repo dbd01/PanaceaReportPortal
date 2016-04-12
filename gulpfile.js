@@ -22,7 +22,8 @@ var gulp = require('gulp'),
     'bower_components/datatables-tabletools/js/dataTables.tableTools.js',
     'bower_components/bootbox/bootbox.js',
     'bower_components/checklist-model/checklist-model.js',
-    'bower_components/bootstrap/dist/js/bootstrap.min.js'
+    'bower_components/bootstrap/dist/js/bootstrap.min.js',
+    'bower_components/angular-gettext/dist/angular-gettext.min.js'
  ];
     
 var app_files = [
