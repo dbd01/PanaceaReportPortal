@@ -23,7 +23,10 @@ var gulp = require('gulp'),
     'bower_components/bootbox/bootbox.js',
     'bower_components/checklist-model/checklist-model.js',
     'bower_components/bootstrap/dist/js/bootstrap.min.js',
-    'bower_components/angular-gettext/dist/angular-gettext.min.js'
+    'bower_components/angular-gettext/dist/angular-gettext.min.js',
+    'ext-modules/widgets/widgetUser/widgetUserModule.js',
+    'ext-modules/widgets/widgetUser/widgetUserDirective.js',
+    'ext-modules/widgets/widgetUser/dialogs/widgetSelectUserController.js'
  ];
     
 var app_files = [
@@ -42,7 +45,7 @@ var app_files = [
     'app/groups/*.js',
     'app/common/*.json',
     'app/common/*.js', 
-    'app/services/*.js'    
+    'app/services/*.js'
  ];   
 
  var html_css_files =[
