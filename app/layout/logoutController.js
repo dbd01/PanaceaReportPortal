@@ -28,5 +28,5 @@
     	console.log(status);                      
        console.log('logout error->', response);
     });   */
-  };
+  }
 })();

@@ -51,7 +51,7 @@
   function appRun($rootScope, gettextCatalog, dbdMenuCommServiceOut, dbdGridViewCommServiceOut, localStorageService, $log, $location){
     $rootScope.log_link = {value:"Logout"};
     gettextCatalog.debug = true;
-    console.log("config : lang: ", $rootScope.lang)
+    console.log("config : lang: ", $rootScope.lang);
     var lang=localStorageService.get('lang');
     if (!lang)
       lang='el';
@@ -59,5 +59,5 @@
     dbdMenuCommServiceOut.setLang(lang);
     dbdGridViewCommServiceOut.setLang(lang);
     localStorageService.set('lang', lang);
-  };
+  }
 })(angular);
